@@ -1,0 +1,76 @@
+.cards-list::-webkit-scrollbar {
+    
+    height: 0.7em;
+    
+}
+.cards-list::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(209, 209, 209, 0.3);
+}
+.cards-list::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 224, 224);
+  outline: 1px solid rgb(214, 214, 214);
+  border-radius: 10px;
+}
+
+html, body{
+    margin: 0;
+}
+
+.root{
+    height: 100vh;
+}
+
+.website{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+/*** Dark Mode ***/
+
+body.dark{
+    background-color: #21222A;
+    color:white;
+}
+
+.website.dark {
+    background-color: #21222A;
+    color:white;
+}
+/* Navbar */
+nav.dark {
+    background-color: #21222A;
+    color:white;
+}
+
+nav.dark .toggler--slider {
+    border-color: white;
+    background-color: #F5F5F5;
+}
+
+nav.dark .toggler--slider {
+    justify-content: flex-end;
+}
+
+nav.dark .toggler--slider--circle {
+    background-color: black;
+}
+
+/* FeatureCards */
+feature.dark {
+    background-color: #21222A;
+    color: white;    
+}
+
+.card--profile.dark{
+    background-color: #f1f1f1;
+} 
+
+/* Footer */
+footer.dark {
+    background-color: #21222A;
+    color: white;    
+}
+
