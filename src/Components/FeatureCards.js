@@ -8,8 +8,20 @@ import cardsData from "../raw/cardsData.js";
 export default function FeatureCards(props){
     
     var [cards, setCards] = React.useState(
-        ()=>JSON.parse(localStorage.getItem("cards")) || cardsData
+        ()=>JSON.parse(localStorage.getItem("cards")) || []
     )
+
+    React.useEffect(() => {
+        async function getData() {
+          await fetch(`http://www.webframe.one/cards`)
+            .then(response => response.json())
+            .then(data =>{
+                setCards(data)
+            }) 
+        }
+        getData()
+      }, [])
+
     
     React.useEffect(() => {
         localStorage.setItem("cards", JSON.stringify(cards))
