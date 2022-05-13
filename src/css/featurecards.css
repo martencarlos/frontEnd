@@ -1,0 +1,22 @@
+
+
+feature{
+    display: flex;
+    font-size: large;
+    flex-direction: column;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.cards-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+feature > h1{
+    
+}
