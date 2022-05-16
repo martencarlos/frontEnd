@@ -3,7 +3,7 @@ import "../css/featurecards.css";
 import Card from "./Card";
 import React from "react"
 import NewCard from "./NewCard";
-import cardsData from "../raw/cardsData.js";
+import axios from "axios";
 
 export default function FeatureCards(props){
     
@@ -13,7 +13,7 @@ export default function FeatureCards(props){
 
     React.useEffect(() => {
         async function getData() {
-          await fetch(`http://www.webframe.one/cards`)
+          await fetch(`http://www.localhost/cards`)
             .then(response => response.json())
             .then(data =>{
                 setCards(data)
@@ -32,6 +32,25 @@ export default function FeatureCards(props){
     function addCard(newCard) {
         console.log("Added new card");
         console.log(newCard)
+
+        // Sending and receiving data in JSON format using POST method
+        const config = {
+            url: 'http://www.localhost/cards',
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(newCard),
+        };
+        axios(config) 
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
         setCards(prevCards => {
             return [
                 ...prevCards,
@@ -51,7 +70,7 @@ export default function FeatureCards(props){
 
     return (
         <feature className={props.darkMode ? "dark" : ""}>
-            <h1>Feature Cats</h1>
+            <h1>Feature Cards</h1>
             <section className="cards-list">
                 {cardElements (props.darkMode)}
             </section>

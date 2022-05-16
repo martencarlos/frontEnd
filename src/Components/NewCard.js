@@ -40,7 +40,7 @@ export default function NewCard(props){
     return (
         <newcard className={props.darkMode ? "dark" : ""}>
             <div className="newcard--form">
-                <h1>Add a new cat</h1>
+                <h1>Add a new card</h1>
                 <div className="newcard--input">
                     <input
                     name="title"
