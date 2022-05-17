@@ -58,6 +58,11 @@ nav.dark .toggler--slider--circle {
     background-color: black;
 }
 
+div.dark{
+    background-color: #21222A;
+    color: white;    
+}
+
 /* FeatureCards */
 feature.dark {
     background-color: #21222A;

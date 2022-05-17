@@ -51,7 +51,7 @@ export default function NewCard(props){
                     />
                     <input
                     name="image"
-                    type="text"
+                    type="url"
                     placeholder="image url"
                     required="required"
                     value={formData.image}
