@@ -157,7 +157,7 @@ export default function Register(props){
                         onChange={handleChange}
                         />
                     </div>
-                    <button type="button" onClick={validate}>Register</button>
+                    <button className="register" type="button" onClick={validate}>Register</button>
                     
                 </div>
             </form>
