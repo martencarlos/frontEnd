@@ -4,7 +4,8 @@ import React from "react"
 import Card from "./Card";
 
 export default function NewCard(props){
-    console.log("rendered NewCard")
+    console.log("Rendering NewCard")
+    
     const [formData, setFormData] = React.useState(
         {
             title: "", 
@@ -27,18 +28,16 @@ export default function NewCard(props){
     }
 
     function handleChange(event) {
-        
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
             [name]: value
-            
         }))
         
     }
 
     return (
-        <newcard className={props.darkMode ? "dark" : ""}>
+        <newcard is="x3d" className={props.darkMode ? "dark" : ""}>
             <div className="newcard--form">
                 <h1>Add a new card</h1>
                 <div className="newcard--input">
