@@ -6,12 +6,15 @@ import NewCard from "./NewCard";
 import axios from "axios";
 
 export default function FeatureCards(props){
-    
+    console.log("Rendering Feature Cards")
+
     var [cards, setCards] = React.useState(
         ()=>JSON.parse(localStorage.getItem("cards")) || []
     )
-
+    
+    //Get the cards from Database - only once after render
     React.useEffect(() => {
+        console.log("Loading cards from DB")
         async function getData() {
           await fetch(`http://www.localhost/cards`)
             .then(response => response.json())
@@ -29,11 +32,12 @@ export default function FeatureCards(props){
     }, [cards])
 
     
+    //Add new card
     function addCard(newCard) {
         console.log("Added new card");
         console.log(newCard)
 
-        // Sending and receiving data in JSON format using POST method
+        
         const config = {
             url: 'http://www.localhost/cards',
             method: 'POST',
@@ -59,9 +63,11 @@ export default function FeatureCards(props){
         })
     }
     
+    //Display cards
     function cardElements(darkmode){
         return cards.map(mycard => {
             return <Card
+                    key = {mycard._id}
                     darkMode = {darkmode}
                     item = {mycard}
                 />
@@ -69,7 +75,7 @@ export default function FeatureCards(props){
         }
 
     return (
-        <feature className={props.darkMode ? "dark" : ""}>
+        <feature is="x3d" className={props.darkMode ? "dark" : ""}>
             <h1>Feature Cards</h1>
             <section className="cards-list">
                 {cardElements (props.darkMode)}
