@@ -1,4 +1,42 @@
-div.dark{
-    background-color: #21222A;
-    color: white;    
+
+h1{
+    font-size: 2em;
+    margin-top: 0px;
+    margin-bottom: 0.45em;
+    font-weight: bold;
+}
+
+.register-form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+    width:300px;
+}
+
+
+.register-form-inputs{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    
+}
+
+.register-form-input-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+i{
+    margin:5px;
+}
+
+input{
+    display: flex;
+    flex-grow: 1;
+}
+
+button{
+    margin-top: 1em;
 }
