@@ -2,7 +2,7 @@
 h1{
     font-size: 2em;
     margin-top: 0px;
-    margin-bottom: 0.45em;
+    margin-bottom: 0.8em;
     font-weight: bold;
 }
 
@@ -37,6 +37,7 @@ input{
     flex-grow: 1;
 }
 
-button{
+button.register{
     margin-top: 1em;
+    height: 2.5em;
 }

@@ -33,6 +33,12 @@ nav > ul{
     padding-left: 2em;
 }
 
+.sign-buttons{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
 .nav-button{
     margin-right: 1.2em;
     cursor: pointer;
