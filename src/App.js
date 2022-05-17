@@ -5,13 +5,16 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Navbar from "./Components/Navbar";
 import FeatureCards from "./Components/FeatureCards";
 import Login from "./Components/Login";
+import Register from "./Components/Register";
+import Features from "./Components/Features";
+import Blog from "./Components/Blog";
 import About from "./Components/About";
 import Footer from "./Components/Footer";
 
 import "./css/theme.css";
 
 export default function App(){
-    
+    console.log("Rendering App")
     const [darkMode, setDarkMode] = React.useState(false)
 
     function toggleDarkMode() {
@@ -37,6 +40,15 @@ export default function App(){
                 </Route>
                 <Route path="/login">
                     <Login darkMode = {darkMode}/>
+                </Route>
+                <Route path="/register">
+                    <Register darkMode = {darkMode}/>
+                </Route>
+                <Route path="/features">
+                    <Features darkMode = {darkMode}/>
+                </Route>
+                <Route path="/blog">
+                    <Blog darkMode = {darkMode}/>
                 </Route>
                 <Route path="/about">
                     <About darkMode = {darkMode}/>

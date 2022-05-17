@@ -16,13 +16,13 @@ export default function Navbar(props){
             <a className="nav-brand"  href="/">{props.siteTitle}</a>
 
             <ul className="nav-links">
-                <li><a className="nav-link" href="/#">{features}</a></li>
-                <li><a className="nav-link" href="/#">Blog</a></li>
+                <li><Link className="nav-link" to="/features">{features}</Link></li>
+                <li><Link className="nav-link" to="/blog">Blog</Link></li>
                 <li><Link className="nav-link" to="/about">About</Link></li>
             </ul>
             <div className="sign-buttons">
                 <button className="nav-button" type="button" onClick={() => history.push('/login')}>Login</button>
-                <button className="nav-button" type="button" onClick="/">Sign-up</button>
+                <button className="nav-button" type="button" onClick={() => history.push('/register')}>Sign-up</button>
             </div>
             <div 
                 className="toggler" 
