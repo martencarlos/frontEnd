@@ -1,9 +1,14 @@
 import "../css/navbar.css";
+import {Link} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 
 export default function Navbar(props){
     var features = "Features"
+
+    const history = useHistory();
+
     return (
         
        //<img src={`../images/${props.img}`} className="card--image" />
@@ -13,10 +18,10 @@ export default function Navbar(props){
             <ul className="nav-links">
                 <li><a className="nav-link" href="/#">{features}</a></li>
                 <li><a className="nav-link" href="/#">Blog</a></li>
-                <li><a className="nav-link" href="/#">About</a></li>
+                <li><Link className="nav-link" to="/about">About</Link></li>
             </ul>
             <div className="sign-buttons">
-                <button className="nav-button" type="button" onClick="/">Login</button>
+                <button className="nav-button" type="button" onClick={() => history.push('/login')}>Login</button>
                 <button className="nav-button" type="button" onClick="/">Sign-up</button>
             </div>
             <div 
