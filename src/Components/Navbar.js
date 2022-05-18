@@ -22,7 +22,7 @@ export default function Navbar(props){
             </ul>
             <div className="sign-buttons">
                 <button className="nav-button" type="button" onClick={() => history.push('/login')}>Login</button>
-                <button className="nav-button" type="button" onClick={() => history.push('/register')}>Sign-up</button>
+                <button className="nav-button" type="button" onClick={() => history.push('/register')}>Register</button>
             </div>
             <div 
                 className="toggler" 
