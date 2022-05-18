@@ -28,6 +28,12 @@ h1{
     width: 100%;
 }
 
+.register-form-input-row-inputanderror{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
 i{
     margin:5px;
 }
@@ -35,6 +41,10 @@ i{
 input{
     display: flex;
     flex-grow: 1;
+}
+
+label.error{
+    color: red;
 }
 
 button.register{
