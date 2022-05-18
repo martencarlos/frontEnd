@@ -2,3 +2,57 @@ div.dark{
     background-color: #21222A;
     color: white;    
 }
+
+
+h1{
+    font-size: 2em;
+    margin-top: 0px;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+    width:300px;
+}
+
+
+.login-form-inputs{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    
+}
+
+.login-form-input-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.login-form-input-row-inputanderror{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+i{
+    margin:5px;
+}
+
+input{
+    display: flex;
+    flex-grow: 1;
+}
+
+label.error{
+    color: red;
+}
+
+button.login{
+    margin-top: 1em;
+    height: 2.5em;
+}
