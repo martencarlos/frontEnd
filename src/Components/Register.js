@@ -1,6 +1,7 @@
 
 import "../css/register.css";
 import {useState} from "react"
+import axios from "axios";
 
 export default function Register(props){
     console.log("rendering Register")
@@ -10,8 +11,7 @@ export default function Register(props){
             username: "",
             email:"",
             password: "",
-            password2: "",
-            valid: false
+            password2: ""
         }
     )
     const[formErrors,setFormErrors] = useState({
@@ -58,14 +58,42 @@ export default function Register(props){
         return errors
     }
 
-    function validate(event){
+    function validate(){
         //event.preventDefault();
-        const currentErrors = validateForm(event.target.name)
+        const currentErrors = validateForm()
         setFormErrors(currentErrors)
         console.log(Object.keys(currentErrors).length)
         if(Object.keys(currentErrors).length===0){
              console.log("submitting form")
+             registerUser()
         }
+    }
+
+    //Register User
+    function registerUser() {
+        console.log("registering user");
+        var user = { ...formData };
+        delete user.password2;
+
+        const config = {
+            url: 'http://www.localhost/registeruser',
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(user),
+        };
+        axios(config) 
+            .then(function (response) {
+                const {email,username} = response.data;
+                let newErrors = {...formErrors,email,username};
+                setFormErrors(newErrors);
+                
+            })
+            .catch(function (error) {
+            console.log(error);
+            });
     }
 
     return (
@@ -86,7 +114,6 @@ export default function Register(props){
                                 required="required"
                                 value={formData.name}
                                 onChange={handleChange}
-                               
                             />
                             {formErrors.name && <label className="error">{formErrors.name}</label>}
                         </div>
