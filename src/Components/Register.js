@@ -2,9 +2,12 @@
 import "../css/register.css";
 import {useState} from "react"
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export default function Register(props){
     console.log("rendering Register")
+    const history = useHistory();
+
     const [formData, setFormData] = useState(
         {
             name: "", 
@@ -23,13 +26,11 @@ export default function Register(props){
     })
     
     function handleChange(event) {
-        
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
             [name]: value
         }))
-        
     }
 
     function validateForm(){
@@ -86,10 +87,14 @@ export default function Register(props){
         };
         axios(config) 
             .then(function (response) {
-                const {email,username} = response.data;
-                let newErrors = {...formErrors,email,username};
-                setFormErrors(newErrors);
+                const {email,username, success} = response.data;
                 
+                if(!success){
+                    let newErrors = {...formErrors,email,username};
+                    setFormErrors(newErrors);
+                }else{
+                    history.push('/login') 
+                }
             })
             .catch(function (error) {
             console.log(error);
