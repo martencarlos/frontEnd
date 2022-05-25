@@ -44,6 +44,11 @@ nav > ul{
     cursor: pointer;
 }
 
+label.nav-username{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 li{
     padding-left: 5px;
     padding-right: 5px;

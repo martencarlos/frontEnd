@@ -42,7 +42,7 @@ img.card--info-img{
      margin-right: 10px;
      margin-left: 10px;
      display: flex;
-     
+     align-items: center;
     }
   i {margin-right: 10px;}
  

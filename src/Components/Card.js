@@ -3,7 +3,7 @@ import "../css/card.css";
 
 
 export default function Card(props){
-
+    console.log("Rendering Card")
     
     return (
         <div  className="card">

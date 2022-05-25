@@ -2,6 +2,7 @@
 import "../css/footer.css";
 
 export default function Footer(props){
+    console.log("Rendering Footer")
     return (
         <footer className={props.darkMode ? "dark" : ""}>
             
