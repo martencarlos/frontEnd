@@ -2,11 +2,11 @@
 import "../css/register.css";
 import {useState} from "react"
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Register(props){
     console.log("rendering Register")
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
         {
@@ -93,7 +93,7 @@ export default function Register(props){
                     let newErrors = {...formErrors,email,username};
                     setFormErrors(newErrors);
                 }else{
-                    history.push('/login') 
+                    navigate('/login') 
                 }
             })
             .catch(function (error) {

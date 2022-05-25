@@ -1,10 +1,17 @@
 import React from "react";
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+  } from "react-router-dom";
+import {getCookie} from "./Components/Cookie";
 
 import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
 import FeatureCards from "./Components/FeatureCards";
 import Login from "./Components/Login";
+import Logout from "./Components/Logout";
 import Register from "./Components/Register";
 import Features from "./Components/Features";
 import Blog from "./Components/Blog";
@@ -20,42 +27,69 @@ export default function App(){
     function toggleDarkMode() {
         setDarkMode(prevMode => !prevMode)
     }
+
     if(darkMode){
         document.getElementById("body").classList.add("dark");
     }else{
         document.getElementById("body").classList.remove("dark")
     }
+
+    var [login, setLogin] = React.useState(
+        ()=>getCookie("me") ? true : false
+    )
+    
+    function toggleLogin() {
+        setLogin(prevMode => !prevMode)
+    }
+
+    // React.useEffect(() => {
+    //     console.log("re-render App")
+    // }, [login])
+    
     
     return (
-        <Router>
+        <BrowserRouter>
             <div className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
                     siteTitle= "WebFrame"
+                    login = {login}
                     darkMode = {darkMode} 
                     toggleDarkMode={toggleDarkMode}
             />
-            <Switch>
-            <Route exact path="/">
-                    <FeatureCards darkMode = {darkMode}/>
+            <Routes>
+                <Route path="/" element={
+                    <FeatureCards darkMode = {darkMode}/>}>
                 </Route>
-                <Route path="/login">
-                    <Login darkMode = {darkMode}/>
+                <Route path="/home" element={
+                    <Home darkMode = {darkMode}/>}>
                 </Route>
-                <Route path="/register">
-                    <Register darkMode = {darkMode}/>
+                <Route path="/login" element={
+                    <Login 
+                        darkMode = {darkMode}
+                        toggleLogin={toggleLogin}
+                        />}>
                 </Route>
-                <Route path="/features">
-                    <Features darkMode = {darkMode}/>
+                <Route path="/logout" element={
+                    <Logout 
+                        darkMode = {darkMode}
+                        toggleLogin={toggleLogin}
+                    />}>
                 </Route>
-                <Route path="/blog">
-                    <Blog darkMode = {darkMode}/>
+                <Route path="/register" element={
+                    <Register darkMode = {darkMode}/>}>
                 </Route>
-                <Route path="/about">
-                    <About darkMode = {darkMode}/>
+                <Route path="/features" element={
+                    <Features darkMode = {darkMode}/>}>
                 </Route>
-            </Switch>
+                <Route path="/blog" element={
+                    <Blog darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="/about" element={
+                    <About darkMode = {darkMode}/>}>
+                </Route>
+            </Routes>
             <Footer darkMode = {darkMode} />
             </div>
-        </Router>
+        </BrowserRouter>
     )
 }

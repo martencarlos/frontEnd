@@ -2,10 +2,14 @@
 import "../css/login.css";
 import {useState} from "react"
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {setCookie} from "./Cookie";
 
 export default function Login(props){
-    const history = useHistory();
+    console.log("Rendering Login")
+
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
             email:"",
             password: "",
@@ -23,8 +27,6 @@ export default function Login(props){
             ...prevFormData,
             [name]: value
         }))
-        
-        
     }
 
     function login(){
@@ -33,23 +35,32 @@ export default function Login(props){
             url: 'http://www.localhost/login',
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
             },
             data: JSON.stringify(user),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+            
         };
 
         axios(config) 
             .then(function (response) {
-                console.log(response)
+                
                 const {email,password, errors} = response.data;
                 
                 if(errors){
                     let newErrors = {...formErrors,email,password};
                     setFormErrors(newErrors);
                 }else{
-                    console.log("showing private home")
-                    //history.push('/login') 
+                    setCookie("me", JSON.stringify(response.data), 1/24)
+                    
+                    navigate({
+                        pathname: '/home',
+                        state: {  
+                            user: response.data
+                        }
+                      })
+                      
+                    props.toggleLogin()
                 }
             })
             .catch(function (error) {
@@ -62,7 +73,7 @@ export default function Login(props){
         const currentErrors = validateForm()
         setFormErrors(currentErrors)
 
-        console.log(Object.keys(currentErrors).length)
+        
         if(Object.keys(currentErrors).length===0){
              console.log("submitting form")
              login()
