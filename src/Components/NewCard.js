@@ -61,10 +61,12 @@ export default function NewCard(props){
                     
                 </div>
             </div>
-            {urlIsImage(formData.image) && <Card
-                    darkMode = {props.darkmode}
-                    item = {formData}
-                />}
+            {urlIsImage(formData.image) && <div className="cardPreview">
+                    <Card
+                        darkMode = {props.darkmode}
+                        item = {formData}
+                    />
+                </div>}
         </newcard>
     )
 }

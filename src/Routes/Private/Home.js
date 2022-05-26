@@ -1,18 +1,19 @@
 
-import "../css/home.css";
-import { useLocation } from 'react-router-dom';
+import "../../css/home.css";
+import { useNavigate } from 'react-router-dom';
 
-import NewCard from "./NewCard";
-import UploadImage from "./UploadImage";
-import {getCookie} from "./Cookie";
+import NewCard from "../../Components/NewCard";
+import UploadImage from "../../Components/UploadImage";
+import {getCookie} from "../../Util/Cookie";
 import axios from "axios";
 import {useState} from "react"
 import {useEffect} from "react"
 
 export default function Home(props){
     console.log("Rendering Home")
+    const navigate = useNavigate();
+  
     
-    const location = useLocation();
 
     var [cards, setCards] = useState(
         ()=>JSON.parse(localStorage.getItem("cards")) || []
@@ -30,14 +31,14 @@ export default function Home(props){
     )
 
     useEffect(() => {
+        console.log("logged in: " + props.login)
+        if(!props.login){
+            navigate("/login")
+        }
         if(getCookie("me")){
             console.log("cookie me exists")
             setUserData(JSON.parse(getCookie("me")))
         }
-        // if(location.state){
-        //     console.log("cookie me does not exist")
-        //     setUserData(JSON.parse(getCookie("me")))
-        // }
         
       }, [])
     
@@ -80,16 +81,23 @@ export default function Home(props){
     }
 
     return (
-        <div className={props.darkMode ? "dark" : ""}>
-        
-            hello {userData.name}
-            <UploadImage />
-            <NewCard 
-                darkMode = {props.darkMode}
-                handleClick = {addCard}
-            />
+        props.login &&
+        <div className= {`home ${props.darkMode ? "dark": ""}`}>
+            <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
+                <div className="sidebar-username">
+                    {userData.name} 
+                </div>
+                <div className="sidebar-imageUpload">
+                    <UploadImage />
+                </div>
+            </div>
+            <div className="home-main">
+                <NewCard 
+                    darkMode = {props.darkMode}
+                    handleClick = {addCard}
+                />
+            </div>
+            
         </div>
-
-        
     )
 }

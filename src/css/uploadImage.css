@@ -1,0 +1,10 @@
+.userImagePreview{
+    width: 80px;
+    height: 80px;
+    margin-top: 40px;
+    border-radius: 50%;
+}
+
+.imageUpload{
+    text-align: center;
+}

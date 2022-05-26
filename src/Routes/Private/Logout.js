@@ -1,5 +1,5 @@
 
-import {delCookie} from "./Cookie";
+import {delCookie} from "../../Util/Cookie";
 import { useNavigate } from "react-router-dom";
 import {useEffect} from "react"
 
@@ -15,6 +15,6 @@ export default function Logout(props){
     delCookie("me")
     
     return (
-        <div>nothing</div>
+        <div></div>
     )
 }

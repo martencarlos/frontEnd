@@ -1,5 +1,5 @@
 
-import "../css/blog.css";
+import "../../css/blog.css";
 
 export default function Blog(props){
     console.log("Rendering Blog")

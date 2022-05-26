@@ -1,4 +1,32 @@
 div.dark{
     background-color: #21222A;
-    color: white;    
+    color: white;
 }
+
+div.home{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+div.sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    height:100%
+}
+
+
+div.sidebar-username{
+    margin-top: 40px;
+    margin-bottom:40px;
+    align-self: center;
+}
+div.sidebar-imageUpload{
+}
+
+div.home-main{
+    display:flex;
+    height: 100%;
+}
+

@@ -1,6 +1,6 @@
 
-import "../css/featurecards.css";
-import Card from "./Card";
+import "../../css/featurecards.css";
+import Card from "../../Components/Card";
 import React from "react"
 
 
