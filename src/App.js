@@ -1,21 +1,17 @@
 import React from "react";
 
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-  } from "react-router-dom";
-import {getCookie} from "./Components/Cookie";
+import {BrowserRouter,Routes,Route,} from "react-router-dom";
+import {getCookie} from "./Util/Cookie";
 
 import Navbar from "./Components/Navbar";
-import Home from "./Components/Home";
-import FeatureCards from "./Components/FeatureCards";
-import Login from "./Components/Login";
-import Logout from "./Components/Logout";
-import Register from "./Components/Register";
-import Features from "./Components/Features";
-import Blog from "./Components/Blog";
-import About from "./Components/About";
+import Home from "./Routes/Private/Home";
+import FeatureCards from "./Routes/Public/FeatureCards";
+import Login from "./Routes/Public/Login";
+import Logout from "./Routes/Private/Logout";
+import Register from "./Routes/Public/Register";
+import Features from "./Routes/Public/Features";
+import Blog from "./Routes/Public/Blog";
+import About from "./Routes/Public/About";
 import Footer from "./Components/Footer";
 
 import "./css/theme.css";
@@ -42,9 +38,7 @@ export default function App(){
         setLogin(prevMode => !prevMode)
     }
 
-    // React.useEffect(() => {
-    //     console.log("re-render App")
-    // }, [login])
+    
     
     
     return (
@@ -55,13 +49,17 @@ export default function App(){
                     login = {login}
                     darkMode = {darkMode} 
                     toggleDarkMode={toggleDarkMode}
+                    toggleLogin={toggleLogin}
             />
             <Routes>
                 <Route path="/" element={
                     <FeatureCards darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/home" element={
-                    <Home darkMode = {darkMode}/>}>
+                    <Home 
+                        darkMode = {darkMode}
+                        login = {login}
+                    />}>
                 </Route>
                 <Route path="/login" element={
                     <Login 

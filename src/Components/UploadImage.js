@@ -1,3 +1,6 @@
+
+import "../css/uploadImage.css";
+
 import { useState, useEffect } from "react";
 
 export default function UploadImage(){
@@ -16,9 +19,9 @@ export default function UploadImage(){
     }
 
     return(
-        <div>
+        <div className="imageUpload">
             <input type="file" multiple accept="image/*" onChange={onImageChange}/>
-            {imagesURLs.map(imageSrc => <img src={imageSrc}/>)}
+            {imagesURLs.map(imageSrc => <img className="userImagePreview" src={imageSrc}/>)}
         </div>
     )
 }

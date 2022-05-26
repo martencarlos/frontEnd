@@ -73,6 +73,12 @@ feature.dark {
     background-color: #f1f1f1;
 } 
 
+/* Home */
+div.sidebar.dark{
+    background-color: #21222A!important;
+    color: white;  
+}
+
 /* Footer */
 footer.dark {
     background-color: #21222A;

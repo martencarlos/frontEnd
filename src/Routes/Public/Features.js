@@ -1,5 +1,5 @@
 
-import "../css/features.css";
+import "../../css/features.css";
 
 export default function Features(props){
     console.log("Rendering Features")
