@@ -2,6 +2,7 @@ import "../css/navbar.css";
 import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../Util/Cookie";
+import { useEffect } from "react";
 
 
 export default function Navbar(props){
@@ -10,11 +11,13 @@ export default function Navbar(props){
     
     const navigate = useNavigate();
 
+    
     //Logout if cookie expired
-    if(!getCookie("me") && props.login){
+    if(getCookie("me")==="" && props.login){
         props.toggleLogin()
     }
-
+    
+    
     return (
         
        //<img src={`../images/${props.img}`} className="card--image" />
@@ -31,7 +34,7 @@ export default function Navbar(props){
                 <button className="nav-button" type="button" onClick={() => navigate('/login')}>Login</button>
                 <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button>
             </div>}
-            {props.login && <div className="sign-buttons">
+            {getCookie("me") && <div className="sign-buttons">
                 <label className="nav-username">{JSON.parse(getCookie("me")).name}</label>
                 <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
             </div>}

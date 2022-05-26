@@ -13,6 +13,12 @@ export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
   
+    useEffect(() => {
+        if(!props.login){
+            navigate("/login")
+        }
+      }, [props.login])
+    
     
 
     var [cards, setCards] = useState(
@@ -31,10 +37,6 @@ export default function Home(props){
     )
 
     useEffect(() => {
-        console.log("logged in: " + props.login)
-        if(!props.login){
-            navigate("/login")
-        }
         if(getCookie("me")){
             console.log("cookie me exists")
             setUserData(JSON.parse(getCookie("me")))
