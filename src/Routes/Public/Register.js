@@ -63,16 +63,14 @@ export default function Register(props){
         //event.preventDefault();
         const currentErrors = validateForm()
         setFormErrors(currentErrors)
-        console.log(Object.keys(currentErrors).length)
         if(Object.keys(currentErrors).length===0){
-             console.log("submitting form")
+             
              registerUser()
         }
     }
 
     //Register User
     function registerUser() {
-        console.log("registering user");
         var user = { ...formData };
         delete user.password2;
 

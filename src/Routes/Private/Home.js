@@ -38,7 +38,6 @@ export default function Home(props){
 
     useEffect(() => {
         if(getCookie("me")){
-            console.log("cookie me exists")
             setUserData(JSON.parse(getCookie("me")))
         }
         
@@ -46,16 +45,12 @@ export default function Home(props){
     
       useEffect(() => {
         localStorage.setItem("cards", JSON.stringify(cards))
-        console.log("Set local storage if cards array is changed")
     }, [cards])
 
    
     
     //Add new card
     function addCard(newCard) {
-        console.log("Added new card");
-        console.log(newCard)
-
         
         const config = {
             url: 'http://www.localhost/cards',

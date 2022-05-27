@@ -1,7 +1,7 @@
 import React from "react";
 
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
-import {getCookie} from "./Util/Cookie";
+import {getCookie, setCookie} from "./Util/Cookie";
 
 import Navbar from "./Components/Navbar";
 import Home from "./Routes/Private/Home";
@@ -18,29 +18,32 @@ import "./css/theme.css";
 
 export default function App(){
     console.log("Rendering App")
-    const [darkMode, setDarkMode] = React.useState(false)
+    
+    // Use States
+    const [darkMode, setDarkMode] = React.useState(
+        ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
+        
+    
+    var [login, setLogin] = React.useState(
+        ()=>getCookie("me") ? true : false
+    )
 
+    // Toggles
     function toggleDarkMode() {
         setDarkMode(prevMode => !prevMode)
+        setCookie("dark",!darkMode, 1)
+    }
+    function toggleLogin() {
+        setLogin(prevMode => !prevMode)
     }
 
+    // Checks - Remove darkmode from Body
     if(darkMode){
         document.getElementById("body").classList.add("dark");
     }else{
         document.getElementById("body").classList.remove("dark")
     }
 
-    var [login, setLogin] = React.useState(
-        ()=>getCookie("me") ? true : false
-    )
-    
-    function toggleLogin() {
-        setLogin(prevMode => !prevMode)
-    }
-
-    
-    
-    
     return (
         <BrowserRouter>
             <div className= {`website ${darkMode ? "dark": ""}`}>

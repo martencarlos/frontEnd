@@ -75,7 +75,6 @@ export default function Login(props){
 
         
         if(Object.keys(currentErrors).length===0){
-             console.log("submitting form")
              login()
         }
         
