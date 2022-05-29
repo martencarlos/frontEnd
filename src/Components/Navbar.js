@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../Util/Cookie";
 
+import ProfilePicture from '../Images/profile.png';
+
 
 export default function Navbar(props){
     console.log("Rendering Navbar")
@@ -33,7 +35,10 @@ export default function Navbar(props){
                 <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button>
             </div>}
             {getCookie("me") && <div className="sign-buttons">
-                <label className="nav-username">{JSON.parse(getCookie("me")).name}</label>
+                <div className="tooltip">
+                    <img className="nav-profilepicture" src={ProfilePicture} alt={JSON.parse(getCookie("me")).name} />
+                    <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
+                </div>
                 <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
             </div>}
             <div 

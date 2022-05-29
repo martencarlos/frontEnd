@@ -1,6 +1,7 @@
 
 import "../../css/home.css";
 import { useNavigate } from 'react-router-dom';
+import ProfilePicture from '../../Images/profile.png';
 
 import NewCard from "../../Components/NewCard";
 import UploadImage from "../../Components/UploadImage";
@@ -13,10 +14,12 @@ export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
   
+    
     useEffect(() => {
         if(!props.login){
             navigate("/login")
         }
+        // eslint-disable-next-line 
       }, [props.login])
     
     
@@ -77,16 +80,43 @@ export default function Home(props){
         })
     }
 
+    function changePicture(){
+        
+        var input = document.createElement('input');
+        input.type = 'file';
+
+        input.onchange = e => { 
+            // getting a hold of the file reference
+            var file = e.target.files[0]; 
+            // setting up the reader
+            var reader = new FileReader();
+            reader.readAsDataURL(file); // this is reading as data url
+
+            // here we tell the reader what to do when it's done reading...
+            reader.onload = readerEvent => {
+                var image = readerEvent.target.result; // this is the content!
+                
+                
+                document.getElementById("profilePic").src=image
+            }
+        }
+
+input.click();
+    }
+
     return (
         props.login &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
+            <div className="wrap-img">
+                <img id="profilePic" className="sidebar-profilepicture" src={ProfilePicture} alt="profile pic" />
+                <div className="wrap-text" onClick={changePicture}>change image</div>
+            </div>
+                
                 <div className="sidebar-username">
                     {userData.name} 
                 </div>
-                <div className="sidebar-imageUpload">
-                    <UploadImage />
-                </div>
+                
             </div>
             <div className="home-main">
                 <NewCard 
