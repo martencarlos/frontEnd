@@ -13,15 +13,8 @@ import {useEffect} from "react"
 export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
-  
-    
-    useEffect(() => {
-        if(!props.login){
-            navigate("/login")
-        }
-        // eslint-disable-next-line 
-      }, [props.login])
-    
+
+    const [uploadProgress, setUploadProgress] = useState('')
     
 
     var [cards, setCards] = useState(
@@ -40,10 +33,17 @@ export default function Home(props){
     )
 
     useEffect(() => {
+        if(!props.login){
+            navigate("/login")
+        }
+        // eslint-disable-next-line 
+      }, [props.login])
+
+    useEffect(() => {
         if(getCookie("me")){
             setUserData(JSON.parse(getCookie("me")))
+            document.getElementById("profilePic").src=localStorage.getItem("profilePic")
         }
-        
       }, [])
     
       useEffect(() => {
@@ -88,29 +88,79 @@ export default function Home(props){
         input.onchange = e => { 
             // getting a hold of the file reference
             var file = e.target.files[0]; 
-            // setting up the reader
-            var reader = new FileReader();
-            reader.readAsDataURL(file); // this is reading as data url
+            
+            
+            console.log(URL.createObjectURL(file));
 
-            // here we tell the reader what to do when it's done reading...
-            reader.onload = readerEvent => {
-                var image = readerEvent.target.result; // this is the content!
+            //to send encoded info
+            var form_data = new FormData();
+            form_data.append("profile_image",file);
+            
+            //Upload the file
+            axios.post('http://www.localhost/setImageProfile',form_data,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'enc-type': 'multipart/form-data',
+                },
+                onUploadProgress: (event)=>{
+                    const totalUploaded = Math.floor((event.loaded / event.total) * 100)
+                    setUploadProgress(totalUploaded)
+                },
+                withCredentials: true, 
+                }) 
+              .then(function (response) {
+                setUploadProgress('')
                 
-                
-                document.getElementById("profilePic").src=image
-            }
+              }).finally(function(response){
+                // const imgSrc = URL.createObjectURL(file) //blob
+                // document.getElementById("profilePic").src=imgSrc;
+                // document.getElementById("navProfilePic").src=imgSrc;
+                console.log("finally")
+                retrieveProfilePicture()
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
         }
 
-input.click();
+    input.click();
+    }
+
+    function retrieveProfilePicture(){
+        
+        // if(localStorage.getItem("profilePic")){
+        //     document.getElementById("profilePic").src=localStorage.getItem("profilePic")
+        // }else{
+            console.log("retrieving pic")
+        const config = {
+            url: 'http://www.localhost/getProfileImage',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: getCookie("me"),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+        };
+        axios(config).then(function (response) {
+            console.log(response.data)
+            document.getElementById("profilePic").src=response.data
+            document.getElementById("navProfilePic").src=response.data;
+            localStorage.setItem("profilePic", response.data)
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
+        // }
     }
 
     return (
         props.login &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
-            <div className="wrap-img">
+            <div  className="wrap-img">
                 <img id="profilePic" className="sidebar-profilepicture" src={ProfilePicture} alt="profile pic" />
-                <div className="wrap-text" onClick={changePicture}>change image</div>
+                {!uploadProgress && <div className="wrap-text" onClick={changePicture}>change image</div>}
+                {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
             </div>
                 
                 <div className="sidebar-username">
@@ -124,7 +174,6 @@ input.click();
                     handleClick = {addCard}
                 />
             </div>
-            
         </div>
     )
 }
