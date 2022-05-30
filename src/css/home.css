@@ -41,6 +41,7 @@ div.home-main{
 .wrap-img {
     display:flex;
     align-self: center;
+    text-align: center;
     position:relative;
     cursor: pointer;
     width:80px
@@ -57,6 +58,16 @@ div.home-main{
     font-size: smaller;
     /* transition effect. not necessary */
     transition: opacity .2s, visibility .2s;
+}
+.upload-progress{
+    position:absolute;
+    background-color: black;
+    color: white;
+    border-radius: 6px;
+    left: 30%;
+    padding: 3px;
+    bottom: 30%;
+    font-size: smaller;
 }
 
 .wrap-img:hover .wrap-text{
