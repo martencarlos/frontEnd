@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import ProfilePicture from '../../Images/profile.png';
 
 import NewCard from "../../Components/NewCard";
-import UploadImage from "../../Components/UploadImage";
 import {getCookie} from "../../Util/Cookie";
 import axios from "axios";
 import {useState} from "react"
@@ -28,7 +27,8 @@ export default function Home(props){
             email:"",
             password: "",
             __v: 0,
-            _id: ""
+            _id: "",
+            profile: ""
         }
     )
 
@@ -41,17 +41,23 @@ export default function Home(props){
 
     useEffect(() => {
         if(getCookie("me")){
-            setUserData(JSON.parse(getCookie("me")))
+            const cookieUser = JSON.parse(getCookie("me"))
+            if(!localStorage.getItem("profilePic")){
+                retrieveProfilePicture()
+                localStorage.setItem("firstName", cookieUser.name)
+                
+            }
+            
             document.getElementById("profilePic").src=localStorage.getItem("profilePic")
         }
       }, [])
     
-      useEffect(() => {
+    //cards
+    useEffect(() => {
         localStorage.setItem("cards", JSON.stringify(cards))
     }, [cards])
 
    
-    
     //Add new card
     function addCard(newCard) {
         
@@ -66,7 +72,7 @@ export default function Home(props){
         };
         axios(config) 
           .then(function (response) {
-            console.log(response);
+            
           })
           .catch(function (error) {
             console.log(error);
@@ -89,9 +95,6 @@ export default function Home(props){
             // getting a hold of the file reference
             var file = e.target.files[0]; 
             
-            
-            console.log(URL.createObjectURL(file));
-
             //to send encoded info
             var form_data = new FormData();
             form_data.append("profile_image",file);
@@ -112,10 +115,6 @@ export default function Home(props){
                 setUploadProgress('')
                 
               }).finally(function(response){
-                // const imgSrc = URL.createObjectURL(file) //blob
-                // document.getElementById("profilePic").src=imgSrc;
-                // document.getElementById("navProfilePic").src=imgSrc;
-                console.log("finally")
                 retrieveProfilePicture()
               })
               .catch(function (error) {
@@ -127,11 +126,7 @@ export default function Home(props){
     }
 
     function retrieveProfilePicture(){
-        
-        // if(localStorage.getItem("profilePic")){
-        //     document.getElementById("profilePic").src=localStorage.getItem("profilePic")
-        // }else{
-            console.log("retrieving pic")
+        console.log("retrieving pic")
         const config = {
             url: 'http://www.localhost/getProfileImage',
             method: 'POST',
@@ -142,15 +137,19 @@ export default function Home(props){
             withCredentials: true, // Now this is was the missing piece in the client side 
         };
         axios(config).then(function (response) {
-            console.log(response.data)
+            console.log("setting pic storage:"+response.data)
             document.getElementById("profilePic").src=response.data
             document.getElementById("navProfilePic").src=response.data;
             localStorage.setItem("profilePic", response.data)
+            setUserData(JSON.parse(getCookie("me")))
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profile: response.data
+            }))
         })
         .catch(function (error) {
         console.log(error);
         });
-        // }
     }
 
     return (
@@ -169,10 +168,12 @@ export default function Home(props){
                 
             </div>
             <div className="home-main">
+            {localStorage.getItem("profilePic") && 
                 <NewCard 
                     darkMode = {props.darkMode}
                     handleClick = {addCard}
-                />
+                    userData ={userData}
+                />}
             </div>
         </div>
     )

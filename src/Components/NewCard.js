@@ -3,6 +3,8 @@ import "../css/newcard.css";
 import React from "react"
 import Card from "./Card";
 
+
+
 export default function NewCard(props){
     console.log("Rendering NewCard")
     
@@ -16,18 +18,30 @@ export default function NewCard(props){
                 downloads: 0
             },
             author:{
-                pic: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-                firstName: "Carlos",
-                lastName: "Marten"
+                pic: props.userData.profile,
+                firstName: localStorage.getItem("firstName"),
+                lastName: ""
             }
         }
     )
+
+    React.useEffect(() => {
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            author:{
+                firstName: props.userData.name,
+                lastName:"",
+                pic: props.userData.profile
+            }
+        }))
+      }, [props.userData])
 
     function urlIsImage(url) {
         return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
     }
 
     function handleChange(event) {
+        
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
