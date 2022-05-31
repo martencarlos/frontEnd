@@ -1,6 +1,6 @@
 
 import "../../css/login.css";
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setCookie} from "../../Util/Cookie";
@@ -20,6 +20,22 @@ export default function Login(props){
         email:"",
         password: "",
     })
+
+    useEffect(() => {
+        // Get the input field
+        var input = document.getElementById("pass");
+
+        // Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("login").click();
+        }
+        });
+      }, [])
 
     function handleChange(event) {
         const {name, value} = event.target
@@ -128,6 +144,7 @@ export default function Login(props){
                         <div className="login-form-input-row-inputanderror">
                             <input
                                 name="password"
+                                id="pass"
                                 type="password"
                                 placeholder="password"
                                 autoComplete="section-red new-password"
@@ -140,7 +157,7 @@ export default function Login(props){
                         </div>
                     </div>
                    
-                    <button className="login" type="button" onClick={validate}>Login</button>
+                    <button id="login" className="login" type="button" onClick={validate}>Login</button>
 
                 </div>
             </form>

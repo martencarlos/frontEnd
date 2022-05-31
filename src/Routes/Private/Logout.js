@@ -9,6 +9,9 @@ export default function Logout(props){
 
     useEffect(() => {
         props.toggleLogin()
+        localStorage.removeItem("profilePic")
+        localStorage.removeItem("firstName")
+        localStorage.removeItem("cards")
         navigate("/login")
       }, [])
 
