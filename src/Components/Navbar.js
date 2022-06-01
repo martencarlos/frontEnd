@@ -59,6 +59,11 @@ export default function Navbar(props){
             {!props.login && <div className="sign-buttons">
                 <button className="nav-button" type="button" onClick={() => navigate('/login')}>Login</button>
                 <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button>
+                <div className="toggler" >
+                    <div className="toggler--slider" onClick={props.toggleDarkMode} >
+                        <div className="toggler--slider--circle"></div>
+                    </div>
+                </div>
             </div>}
             {getCookie("me") && <div className="sign-buttons">
                 <div className="tooltip">
@@ -66,18 +71,13 @@ export default function Navbar(props){
                     <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                 </div>
                 <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
-            </div>}
-            <div 
-                className="toggler" 
-            >
-                <div 
-                    className="toggler--slider"
-                    onClick={props.toggleDarkMode}
-                >
-                    <div className="toggler--slider--circle"></div>
+                <div className="toggler" >
+                    <div className="toggler--slider" onClick={props.toggleDarkMode} >
+                        <div className="toggler--slider--circle"></div>
+                    </div>
                 </div>
-                
-            </div>
+            </div>}
+            
         </nav>
     )
 }
