@@ -38,22 +38,7 @@ export default function Navbar(props){
             if(localStorage.getItem("profilePic")){
                 document.getElementById("navProfilePic").src=localStorage.getItem("profilePic")
             }
-            //get profile image
-            // const config = {
-            //     url: 'http://www.localhost/getProfileImage',
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     data: getCookie("me"),
-            //     withCredentials: true, // Now this is was the missing piece in the client side 
-            // };
-            // axios(config).then(function (response) {
-            //     document.getElementById("navProfilePic").src=response.data
-            // })
-            // .catch(function (error) {
-            // console.log(error);
-            // });
+           
         }
       }, [props.login])
 
