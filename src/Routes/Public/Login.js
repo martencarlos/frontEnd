@@ -48,7 +48,7 @@ export default function Login(props){
     function login(){
         var user = { ...formData };
         const config = {
-            url: 'http://www.localhost/login',
+            url: process.env.REACT_APP_SERVER+'/login',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

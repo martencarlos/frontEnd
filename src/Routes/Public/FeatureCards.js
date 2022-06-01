@@ -14,7 +14,7 @@ export default function FeatureCards(props){
     //Get the cards from Database - only once after render
     React.useEffect(() => {
         async function getData() {
-            await fetch(`http://www.localhost/cards`,{
+            await fetch(process.env.REACT_APP_SERVER+`/cards`,{
                 method: 'GET',
                 credentials: 'include'
               })
