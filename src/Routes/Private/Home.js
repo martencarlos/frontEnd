@@ -133,7 +133,6 @@ export default function Home(props){
 
     function retrieveProfilePicture(){
         console.log("retrieving pic")
-        console.log(process.env)
         const config = {
             url: process.env.REACT_APP_SERVER+'/getProfileImage',
             method: 'POST',
