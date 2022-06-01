@@ -75,7 +75,7 @@ export default function Register(props){
         delete user.password2;
 
         const config = {
-            url: 'http://www.localhost/registeruser',
+            url: process.env.REACT_APP_SERVER+'/registeruser',
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',

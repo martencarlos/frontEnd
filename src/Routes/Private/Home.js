@@ -12,7 +12,7 @@ import {useEffect} from "react"
 export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
-
+    
     const [uploadProgress, setUploadProgress] = useState('')
     
 
@@ -62,7 +62,7 @@ export default function Home(props){
     function addCard(newCard) {
         
         const config = {
-            url: 'http://www.localhost/cards',
+            url: process.env.REACT_APP_SERVER+'/cards',
             method: 'POST',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -100,7 +100,7 @@ export default function Home(props){
             form_data.append("profile_image",file);
             
             //Upload the file
-            axios.post('http://www.localhost/setImageProfile',form_data,{
+            axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'enc-type': 'multipart/form-data',
@@ -128,7 +128,7 @@ export default function Home(props){
     function retrieveProfilePicture(){
         console.log("retrieving pic")
         const config = {
-            url: 'http://www.localhost/getProfileImage',
+            url: process.env.REACT_APP_SERVER+'/getProfileImage',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
