@@ -1,3 +1,9 @@
+@media (max-width: 640px) {
+    
+    
+  }
+
+
 div.dark{
     background-color: #21222A;
     color: white;
@@ -7,6 +13,7 @@ div.home{
     display: flex;
     flex-direction: row;
     height: 100%;
+    width: 100%;
 }
 
 div.sidebar{
@@ -19,22 +26,22 @@ div.sidebar{
 
 
 div.sidebar-username{
-    margin-top: 10px;
-    margin-bottom:20px;
+    margin-top: 5px;
+    margin-bottom:5px;
     align-self: center;
+    text-align: center;
 }
 
 img.sidebar-profilepicture{
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-top: 10px;
+    margin: 10px;
     align-self: center;
 }
 
 div.home-main{
-    display:flex;
-    height: 100%;
+    width: 100%;
 }
 
 
@@ -44,7 +51,6 @@ div.home-main{
     text-align: center;
     position:relative;
     cursor: pointer;
-    width:80px
 }
 .wrap-text{
     position:absolute;

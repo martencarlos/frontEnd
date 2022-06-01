@@ -51,36 +51,35 @@ export default function NewCard(props){
     }
 
     return (
-        <newcard is="x3d" className={props.darkMode ? "dark" : ""}>
+        <div className={`newcard ${props.darkMode ? "dark": ""}`}>
             <div className="newcard--form">
-                <h1>Add a new card</h1>
+                <h2>Add a new card</h2>
                 <div className="newcard--input">
                     <input
-                    name="title"
-                    type="text"
-                    placeholder="Title"
-                    required="required"
-                    value={formData.title}
-                    onChange={handleChange}
+                        name="title"
+                        type="text"
+                        placeholder="Title"
+                        required="required"
+                        value={formData.title}
+                        onChange={handleChange}
                     />
                     <input
-                    name="image"
-                    type="url"
-                    placeholder="image url"
-                    required="required"
-                    value={formData.image}
-                    onChange={handleChange}
+                        name="image"
+                        type="url"
+                        placeholder="image url"
+                        required="required"
+                        value={formData.image}
+                        onChange={handleChange}
                     />
-                    <button onClick={() => {props.handleClick(formData)}}>Add Item</button>
-                    
+                    <button onClick={() => {props.handleClick(formData)}}>Add Card</button>
                 </div>
             </div>
             {urlIsImage(formData.image) && <div className="cardPreview">
-                    <Card
-                        darkMode = {props.darkmode}
-                        item = {formData}
-                    />
-                </div>}
-        </newcard>
+                <Card
+                    darkMode = {props.darkmode}
+                    item = {formData}
+                />
+            </div>}
+        </div>
     )
 }
