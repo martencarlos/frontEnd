@@ -14,16 +14,17 @@
 
 html, body{
     margin: 0;
+    height: 100vh;
 }
 
 .root{
-    
+    height: 100%;
 }
 
 .website{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
     align-content: space-between;
     justify-content: space-between;
 }
