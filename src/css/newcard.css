@@ -1,22 +1,39 @@
-newcard{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 50px;
+@media (max-width: 670px) {
+    div.newcard{
+        flex-direction: column;
+        align-items: center;
+    }
+    div.cardPreview{
+
+        margin-left:0px;
+     
+    }
+    
 }
 
-newcard > h1{
-    width: 400px;
+.newcard{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.newcard--form{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    height: 200px;
 }
 
 .newcard--input{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    width: 300px;
-    
+    width: 250px;
 }
 
 .cardPreview{
-    margin-left:40px
+    display: flex;
+    height: 350px;
+    margin-left:40px;
+    flex-grow: 1;
 }

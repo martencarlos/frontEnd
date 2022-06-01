@@ -73,7 +73,7 @@ img.card--info-img{
     margin-right: auto;
  }
 
-  h2 {
+  h2.card--profile--text--h2 {
    color: #334454;
    font-size: 1rem;
    margin-bottom: 2px;

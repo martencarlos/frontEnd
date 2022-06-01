@@ -32,7 +32,7 @@ export default function Card(props){
                     alt="profile pic"
                 />
                 <div className="card--profile--text">
-                    <h2>{props.item.title}</h2>
+                    <h2 className="card--profile--text--h2">{props.item.title}</h2>
                     <p>by <b>{props.item.author.firstName + " " + props.item.author.lastName}</b></p>
                 </div>
             </div>
