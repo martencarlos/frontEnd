@@ -28,7 +28,7 @@ export default function Home(props){
             password: "",
             __v: 0,
             _id: "",
-            profile: ""
+            profile: ProfilePicture
         }
     )
 
@@ -45,10 +45,16 @@ export default function Home(props){
             if(!localStorage.getItem("profilePic")){
                 retrieveProfilePicture()
                 localStorage.setItem("firstName", cookieUser.name)
-                
+                setUserData(JSON.parse(getCookie("me")))
             }
+            // document.getElementById("profilePic").src=localStorage.getItem("profilePic")
+            // document.getElementById("username").src=localStorage.getItem("firstName")
             
-            document.getElementById("profilePic").src=localStorage.getItem("profilePic")
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profile: localStorage.getItem("profilePic"),
+                name: localStorage.getItem("firstName")
+            }))
         }
       }, [])
     
@@ -158,12 +164,12 @@ export default function Home(props){
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
             <div  className="wrap-img">
-                <img id="profilePic" className="sidebar-profilepicture" src={ProfilePicture} alt="profile pic" />
+                <img id="profilePic" className="sidebar-profilepicture" src={userData.profile} alt="profile pic" />
                 {!uploadProgress && <div className="wrap-text" onClick={changePicture}>change image</div>}
                 {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
             </div>
                 
-                <div className="sidebar-username">
+                <div id="username" className="sidebar-username">
                     {userData.name} 
                 </div>
                 
