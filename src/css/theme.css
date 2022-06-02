@@ -14,8 +14,6 @@
 
 html, body{
     margin: 0;
-    
-    
 }
 
 .root{
@@ -25,7 +23,7 @@ html, body{
 .website{
     display: flex;
     flex-direction: column;
-    height: -webkit-fill-available;
+    height: 100%;
     align-content: space-between;
     justify-content: space-between;
 }

@@ -2,7 +2,7 @@
 import "../../css/featurecards.css";
 import Card from "../../Components/Card";
 import React from "react"
-
+import axios from "axios";
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
