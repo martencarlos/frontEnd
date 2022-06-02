@@ -1,15 +1,11 @@
 
-import axios from "axios";
+
 
 export default function Secure(){
     
     function returnId(){
-        axios
-            .get(process.env.REACT_APP_SERVER+"/.well-known/acme-challenge/:id")
-            .then(function (response) {
-                console.log(response);
-                return(response)
-        });
+        console.log(process.env.REACT_APP_SSL_KEY)
+        return (process.env.REACT_APP_SSL_KEY)
     }
    
     return (
