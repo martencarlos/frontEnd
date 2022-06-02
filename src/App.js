@@ -18,7 +18,6 @@ import "./css/theme.css";
 
 export default function App(){
     console.log("Rendering App")
-    console.log("change")
     // Use States
     const [darkMode, setDarkMode] = React.useState(
         ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
