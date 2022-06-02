@@ -4,6 +4,7 @@ import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import {getCookie, setCookie} from "./Util/Cookie";
 
 import Navbar from "./Components/Navbar";
+import Secure from "./Routes/Public/Secure";
 import Home from "./Routes/Private/Home";
 import FeatureCards from "./Routes/Public/FeatureCards";
 import Login from "./Routes/Public/Login";
@@ -55,6 +56,9 @@ export default function App(){
                     toggleLogin={toggleLogin}
             />
             <Routes>
+                <Route path="/.well-known/acme-challenge/:id" element={
+                    <Secure />}>
+                </Route>
                 <Route path="/" element={
                     <FeatureCards darkMode = {darkMode}/>}>
                 </Route>
