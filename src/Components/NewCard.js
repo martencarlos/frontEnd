@@ -18,7 +18,7 @@ export default function NewCard(props){
                 downloads: 0
             },
             author:{
-                pic: props.userData.profile,
+                pic: props.userData.profilepic,
                 firstName: localStorage.getItem("firstName"),
                 lastName: ""
             }
@@ -31,7 +31,7 @@ export default function NewCard(props){
             author:{
                 firstName: props.userData.name,
                 lastName:"",
-                pic: props.userData.profile
+                pic: props.userData.profilepic
             }
         }))
       }, [props.userData])

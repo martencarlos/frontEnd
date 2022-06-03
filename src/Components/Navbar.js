@@ -5,12 +5,13 @@ import {getCookie} from "../Util/Cookie";
 import axios from "axios";
 import {useState, useEffect} from "react"
 
-import ProfilePicture from '../Images/profile.png';
+// import ProfilePicture from '../Images/profile.png';
 
 
 export default function Navbar(props){
     console.log("Rendering Navbar")
     var features = "Features"
+    const profilepicture = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.png?alt=media&token=2fd08e0b-1ca2-45c0-9e3d-bd73802c0e47"
     
     const navigate = useNavigate();
 
@@ -67,7 +68,7 @@ export default function Navbar(props){
             </div>}
             {getCookie("me") && <div className="sign-buttons">
                 <div className="tooltip">
-                    <img id="navProfilePic" className="nav-profilepicture" src={ProfilePicture} alt={JSON.parse(getCookie("me")).name} />
+                    <img id="navProfilePic" className="nav-profilepicture" src={profilepicture} alt={JSON.parse(getCookie("me")).name} />
                     <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                 </div>
                 <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
