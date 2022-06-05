@@ -134,7 +134,7 @@ export default function Home(props){
         var input = document.createElement('input');
         input.type = 'file';
         console.log("changing pic")
-        input.onchange = e => { 
+        input.onblur = e => { 
             // getting a hold of the file reference
             console.log("adding the pic")
             var file = e.target.files[0]; 
