@@ -136,8 +136,9 @@ export default function Home(props){
 
         input.onchange = e => { 
             // getting a hold of the file reference
+            console.log("adding the pic")
             var file = e.target.files[0]; 
-            
+            console.log("got pic" + file)
             //to send encoded info
             var form_data = new FormData();
             form_data.append("profile_image",file);
