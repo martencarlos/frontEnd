@@ -2,6 +2,7 @@
 import "../../css/home.css";
 import { useNavigate } from 'react-router-dom';
 // import ProfilePicture from '../../Images/profile.png';
+import Resizer from "react-image-file-resizer";
 
 import NewCard from "../../Components/NewCard";
 import {getCookie} from "../../Util/Cookie";
@@ -129,28 +130,68 @@ export default function Home(props){
         })
     }
 
+    // Resizer.imageFileResizer(
+    //     file, // Is the file of the image which will resized.
+    //     maxWidth, // Is the maxWidth of the resized new image.
+    //     maxHeight, // Is the maxHeight of the resized new image.
+    //     compressFormat, // Is the compressFormat of the resized new image.
+    //     quality, // Is the quality of the resized new image.
+    //     rotation, // Is the degree of clockwise rotation to apply to uploaded image.
+    //     responseUriFunc, // Is the callBack function of the resized new image URI.
+    //     outputType, // Is the output type of the resized new image.
+    //     minWidth, // Is the minWidth of the resized new image.
+    //     minHeight // Is the minHeight of the resized new image.
+    //   );
+
+    const resizeFile = (file) =>
+        new Promise((resolve) => {
+            Resizer.imageFileResizer(
+            file,
+            80,
+            80,
+            "JPEG",
+            100,
+            0,
+            (uri) => {
+                resolve(uri);
+            },
+            "base64"
+            );
+        });
+
     function changePicture(){
         
         var input = document.createElement('input');
-        document.body.appendChild(input);
-        input.addEventListener('change', updateValue);
+        document.body.appendChild(input); //required for iphone
+        input.addEventListener('change', updateValue); //required for iphone
         input.type = 'file';
         input.id ="input"
-        console.log("changing pic")
-        
-        console.log("clicking")
         input.click();
-        console.log("clicked")
     }
 
-    function updateValue(e) {
+    const dataURIToBlob = (dataURI) => {
+        const splitDataURI = dataURI.split(",");
+        const byteString =
+          splitDataURI[0].indexOf("base64") >= 0
+            ? atob(splitDataURI[1])
+            : decodeURI(splitDataURI[1]);
+        const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
+        const ia = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+        return new Blob([ia], { type: mimeString });
+      };
+   
+    const updateValue = async (e) =>{
         // getting a hold of the file reference
-        console.log("adding the pic")
-        var file = e.target.files[0]; 
-        console.log("got pic" + file)
+        var file = e.target.files[0];
+        const image = await resizeFile(file);
+        const newFile = dataURIToBlob(image);
+        console.log(file)
+        console.log(newFile)
+        
         //to send encoded info
         var form_data = new FormData();
-        form_data.append("profile_image",file);
+        form_data.append("profile_image",newFile);
         
         //Upload the file
         axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
