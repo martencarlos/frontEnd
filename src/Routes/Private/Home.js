@@ -155,7 +155,7 @@ export default function Home(props){
         //Upload the file
         axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Origin': '*',
                 'enc-type': 'multipart/form-data',
             },
             onUploadProgress: (event)=>{
