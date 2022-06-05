@@ -133,7 +133,7 @@ export default function Home(props){
         
         var input = document.createElement('input');
         input.type = 'file';
-
+        console.log("changing pic")
         input.onchange = e => { 
             // getting a hold of the file reference
             console.log("adding the pic")
@@ -180,8 +180,9 @@ export default function Home(props){
                 console.log(error);
               });
         }
-
+        console.log("clicking")
     input.click();
+    console.log("clicked")
     }
 
     function getProfileImageIntoLocalStorage(){
