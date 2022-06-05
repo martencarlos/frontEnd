@@ -78,7 +78,7 @@ export default function Register(props){
             url: process.env.REACT_APP_SERVER+'/registeruser',
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
             },
             data: JSON.stringify(user),

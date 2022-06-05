@@ -108,7 +108,7 @@ export default function Home(props){
             url: process.env.REACT_APP_SERVER+'/cards',
             method: 'POST',
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
             },
             data: JSON.stringify(newCard),
