@@ -132,6 +132,7 @@ export default function Home(props){
     function changePicture(){
         
         var input = document.createElement('input');
+        document.body.appendChild(input);
         input.type = 'file';
         console.log("changing pic")
         input.onblur = e => { 
@@ -166,7 +167,8 @@ export default function Home(props){
                     profilepic: response.data.url
                 }))
               }).finally(function(response){
-                    // getProfileImageIntoLocalStorage()
+                document.body.removeChild(input)    
+                // getProfileImageIntoLocalStorage()
                     // getProfileImageIntoLocalStorage()
                     // document.getElementById("profilePic").src=response
                     // document.getElementById("navProfilePic").src=response
