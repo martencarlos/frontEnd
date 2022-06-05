@@ -133,58 +133,62 @@ export default function Home(props){
         
         var input = document.createElement('input');
         document.body.appendChild(input);
+        input.addEventListener('change', updateValue);
         input.type = 'file';
         console.log("changing pic")
-        input.onblur = e => { 
-            // getting a hold of the file reference
-            console.log("adding the pic")
-            var file = e.target.files[0]; 
-            console.log("got pic" + file)
-            //to send encoded info
-            var form_data = new FormData();
-            form_data.append("profile_image",file);
-            
-            //Upload the file
-            axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'enc-type': 'multipart/form-data',
-                },
-                onUploadProgress: (event)=>{
-                    const totalUploaded = Math.floor((event.loaded / event.total) * 100)
-                    setUploadProgress(totalUploaded)
-                },
-                withCredentials: true, 
-                }) 
-              .then(function (response) {
-                setUploadProgress('')
-                console.log(response.data)
-                document.getElementById("profilePic").src=response.data.url
-                document.getElementById("navProfilePic").src=response.data.url
-                localStorage.setItem("profilePic", response.data.url)
-                setUserData(prevFormData => ({
-                    ...prevFormData,
-                    profilepic: response.data.url
-                }))
-              }).finally(function(response){
-                document.body.removeChild(input)    
-                // getProfileImageIntoLocalStorage()
-                    // getProfileImageIntoLocalStorage()
-                    // document.getElementById("profilePic").src=response
-                    // document.getElementById("navProfilePic").src=response
-                    // localStorage.setItem("profilePic", response)
-                    // setUserData(prevFormData => ({
-                    //     ...prevFormData,
-                    //     profilepic: response
-                    // }))
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-        }
+        
         console.log("clicking")
-    input.click();
-    console.log("clicked")
+        input.click();
+        console.log("clicked")
+    }
+
+    function updateValue(e) {
+        // getting a hold of the file reference
+        console.log("adding the pic")
+        var file = e.target.files[0]; 
+        console.log("got pic" + file)
+        //to send encoded info
+        var form_data = new FormData();
+        form_data.append("profile_image",file);
+        
+        //Upload the file
+        axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'enc-type': 'multipart/form-data',
+            },
+            onUploadProgress: (event)=>{
+                const totalUploaded = Math.floor((event.loaded / event.total) * 100)
+                setUploadProgress(totalUploaded)
+            },
+            withCredentials: true, 
+            }) 
+          .then(function (response) {
+            setUploadProgress('')
+            console.log(response.data)
+            document.getElementById("profilePic").src=response.data.url
+            document.getElementById("navProfilePic").src=response.data.url
+            localStorage.setItem("profilePic", response.data.url)
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profilepic: response.data.url
+            }))
+          }).finally(function(response){
+            const input = document.querySelector('input');
+            document.body.removeChild(input)    
+            // getProfileImageIntoLocalStorage()
+                // getProfileImageIntoLocalStorage()
+                // document.getElementById("profilePic").src=response
+                // document.getElementById("navProfilePic").src=response
+                // localStorage.setItem("profilePic", response)
+                // setUserData(prevFormData => ({
+                //     ...prevFormData,
+                //     profilepic: response
+                // }))
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     function getProfileImageIntoLocalStorage(){
