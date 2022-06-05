@@ -132,7 +132,7 @@ export default function Home(props){
     function changePicture(){
         
         var input = document.createElement('input');
-        document.body.appendChild(input);
+        // document.body.appendChild(input);
         input.addEventListener('change', updateValue);
         input.type = 'file';
         console.log("changing pic")
@@ -175,7 +175,7 @@ export default function Home(props){
             }))
           }).finally(function(response){
             const input = document.querySelector('input');
-            document.body.removeChild(input)    
+            // document.body.removeChild(input)    
             // getProfileImageIntoLocalStorage()
                 // getProfileImageIntoLocalStorage()
                 // document.getElementById("profilePic").src=response
