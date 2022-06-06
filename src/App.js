@@ -18,31 +18,37 @@ import "./css/theme.css";
 
 export default function App(){
     console.log("Rendering App")
-    // Use States
-    const [darkMode, setDarkMode] = React.useState(
-        ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
-        
+
+    // ***** USE STATES & USE EFFECTS *****
     
+    // LOGIN
     var [login, setLogin] = React.useState(
         ()=>getCookie("me") ? true : false
     )
-
-    // Toggles
-    function toggleDarkMode() {
-        setDarkMode(prevMode => !prevMode)
-        setCookie("dark",!darkMode, 1)
-    }
+    
     function toggleLogin() {
         setLogin(prevMode => !prevMode)
     }
 
-    // Checks - Remove darkmode from Body
-    if(darkMode){
-        document.getElementById("body").classList.add("dark");
-    }else{
-        document.getElementById("body").classList.remove("dark")
-    }
+    // DARK MODE
+    const [darkMode, setDarkMode] = React.useState(
+        ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
+    
+    // check if darkmode and update Body
+    useEffect(() => {
+        if(darkMode){
+            document.getElementById("body").classList.add("dark");
+        }else{
+            document.getElementById("body").classList.remove("dark")
+        }
+      }, [darkMode])
 
+    // Toggle darkmode function
+    function toggleDarkMode() {
+        setDarkMode(prevMode => !prevMode)
+        setCookie("dark",!darkMode, 1)
+    }
+    
     return (
         <BrowserRouter>
             <div className= {`website ${darkMode ? "dark": ""}`}>

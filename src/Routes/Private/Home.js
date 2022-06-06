@@ -21,17 +21,7 @@ export default function Home(props){
         ()=>JSON.parse(localStorage.getItem("cards")) || []
     )
     
-    const [userData, setUserData] = useState(
-        {
-            name: "", 
-            username: "",
-            email:"",
-            password: "",
-            __v: 0,
-            _id: "",
-            profilepic: defaultProfilePic,
-        }
-    )
+    const [userData, setUserData] = useState({})
 
     useEffect(() => {
         if(!props.login){
