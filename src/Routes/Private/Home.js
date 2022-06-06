@@ -67,32 +67,6 @@ export default function Home(props){
                 }))
             }
         
-            // if(!cookieUser.profilepic){
-            //     setUserData(prevFormData => ({
-            //         ...prevFormData,
-            //         profilepic: defaultProfilePic
-            //     }))
-            // }else{
-            //     setUserData(prevFormData => ({
-            //         ...prevFormData,
-            //         profilepic: localStorage.getItem("profilePic")
-            //     }))
-                
-            // }
-            
-            // if(cookieUser.profilepic){
-            //     retrieveProfilePicture()
-            //     localStorage.setItem("firstName", cookieUser.name)
-            //     setUserData(JSON.parse(getCookie("me")))
-            // }
-            // document.getElementById("profilePic").src=localStorage.getItem("profilePic")
-            // document.getElementById("username").src=localStorage.getItem("firstName")
-            
-            // setUserData(prevFormData => ({
-            //     ...prevFormData,
-            //     profile: localStorage.getItem("profilePic"),
-            //     name: localStorage.getItem("firstName")
-            // }))
         }
       }, [])
     
@@ -129,19 +103,6 @@ export default function Home(props){
             ]
         })
     }
-
-    // Resizer.imageFileResizer(
-    //     file, // Is the file of the image which will resized.
-    //     maxWidth, // Is the maxWidth of the resized new image.
-    //     maxHeight, // Is the maxHeight of the resized new image.
-    //     compressFormat, // Is the compressFormat of the resized new image.
-    //     quality, // Is the quality of the resized new image.
-    //     rotation, // Is the degree of clockwise rotation to apply to uploaded image.
-    //     responseUriFunc, // Is the callBack function of the resized new image URI.
-    //     outputType, // Is the output type of the resized new image.
-    //     minWidth, // Is the minWidth of the resized new image.
-    //     minHeight // Is the minHeight of the resized new image.
-    //   );
 
     const resizeFile = (file) =>
         new Promise((resolve) => {
@@ -263,13 +224,16 @@ export default function Home(props){
         });
     }
 
+    // <div  onClick={changePicture}>change image</div>}
     return (
         props.login &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
             <div  className="wrap-img">
-                <img id="profilePic" className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
-                {!uploadProgress && <div className="wrap-text" onClick={changePicture}>change image</div>}
+                <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
+                {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
+                        <i className="bi-pencil-square" role="img" aria-label="name"></i>
+                    </span>}
                 {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
             </div>
                 <div id="username" className="sidebar-username">
