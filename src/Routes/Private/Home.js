@@ -13,7 +13,7 @@ import {useEffect} from "react"
 export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
-    const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.png?alt=media&token=2fd08e0b-1ca2-45c0-9e3d-bd73802c0e47"
+    const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
     const [uploadProgress, setUploadProgress] = useState('')
     
 
@@ -208,7 +208,7 @@ export default function Home(props){
         axios(config).then(function (response) {
             // console.log("setting pic storage:"+response.data)
             // setUserData(JSON.parse(getCookie("me")))
-            console.log(response.data)
+            
             if(response.data){
                 document.getElementById("profilePic").src=response.data
                 document.getElementById("navProfilePic").src=response.data;
@@ -217,10 +217,13 @@ export default function Home(props){
                     ...prevFormData,
                     profilepic: response.data
                 }))
+            }else{
+                localStorage.setItem("profilePic", defaultProfilePic)
+                document.getElementById("navProfilePic").src=defaultProfilePic;
             }
         })
         .catch(function (error) {
-        console.log(error);
+            console.log("error retrieving image")
         });
     }
 
