@@ -104,6 +104,7 @@ label.nav-username{
 .nav-profilepicture{
     height: 30px;
     width: 30px;
+    object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
     margin-left: 10px;
