@@ -4,6 +4,9 @@ import "../css/newcard.css";
 import Card from "./Card";
 import {useState, useEffect} from "react"
 
+import {resizeFile, dataURIToBlob} from "../Util/ImageProcessing";
+import axios from "axios";
+
 
 export default function NewCard(props){
     console.log("Rendering NewCard")
@@ -24,6 +27,29 @@ export default function NewCard(props){
             }
         }
     )
+    const[formErrors,setFormErrors] = useState({
+        title:"",
+        image: "",
+    })
+    
+    const[success,setSuccess] = useState(false)
+
+    useEffect(() => {
+        console.log("entering success useEffect")
+        console.log(success)
+        if(success){
+            var successMessage = document.getElementById('cardAddedSuccessMessage');
+            successMessage.style.visibility = 'visible'
+            
+            setTimeout(function() {
+                // This will execute 5 seconds later
+                console.log("executing")
+                successMessage.style.visibility = 'hidden'
+            }, 2000);
+            setSuccess(true)
+        }
+        
+      }, [success])
 
     useEffect(() => {
         setFormData(prevFormData => ({
@@ -41,13 +67,90 @@ export default function NewCard(props){
     }
 
     function handleChange(event) {
-        
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
             [name]: value
         }))
+    }
+
+    const processImage = async (e) => {
+        var file = e.target.files[0];
+        if(file){
+            //Process Image
+            var image
+            var newFile
+            try {
+                image = await resizeFile(file,240,288);
+                newFile = dataURIToBlob(image);
+            } catch (error) {
+                alert("File not supported - please select an image \n" + error)
+                return;
+            }
+            
+            //create formData and append image
+            var form_data = new FormData();
+            form_data.append("cardCoverImage",newFile,file.name);
+
+            //Upload the file
+            axios.post(process.env.REACT_APP_SERVER+'/setCardCoverImage',form_data,{
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'enc-type': 'multipart/form-data',
+                },
+                onUploadProgress: (event)=>{
+                    // const totalUploaded = Math.floor((event.loaded / event.total) * 100)
+                    // setUploadProgress(totalUploaded)
+                },
+                withCredentials: true, 
+                }) 
+            .then(function (response) {
+                
+                if(response){
+                    setFormData(prevFormData => ({
+                        ...prevFormData,
+                        image: response.data.url
+                    }))
+                }
+            }).finally(function(response){
+            
+            })
+            .catch(function (error) {
+                console.log(error);
+            }
+            );
+        }else{
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                image: ''
+            }))
+        }
+    }
+
+    function validate(){
+        //event.preventDefault();
+        const currentErrors = validateForm()
+        setFormErrors(currentErrors)
+
+        if(Object.keys(currentErrors).length===0){
+            
+            props.handleClick(formData)
+            setSuccess(true)
+        }
+    }
+
+    function validateForm(){
         
+        const errors= {}
+        
+        if(!formData.title){
+            errors.title = "Title is required"
+        }
+        if(!formData.image){
+            errors.image = "Image is required"
+        }
+        
+        return errors
     }
 
     return (
@@ -63,18 +166,21 @@ export default function NewCard(props){
                         value={formData.title}
                         onChange={handleChange}
                     />
+                    {formErrors.title && <label className="error">{formErrors.title}</label>}
                     <input
                         name="image"
-                        type="url"
-                        placeholder="image url"
+                        type="file"
+                        id="chosenCardImage"
                         required="required"
-                        value={formData.image}
-                        onChange={handleChange}
+                        onChange={processImage}
                     />
-                    <button onClick={() => {props.handleClick(formData)}}>Add Card</button>
+                    {formErrors.image && <label className="error">{formErrors.image}</label>}
+                    <button onClick={validate}>Add Card</button>
+                    <p id="cardAddedSuccessMessage" className="newCard-success">Card added successfully !</p>
+                    {/* <button onClick={() => {props.handleClick(formData)}}>Add Card</button> */}
                 </div>
             </div>
-            {urlIsImage(formData.image) && <div className="cardPreview">
+            {formData.image && <div className="cardPreview">
                 <Card
                     darkMode = {props.darkmode}
                     item = {formData}
