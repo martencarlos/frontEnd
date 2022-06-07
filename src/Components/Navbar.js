@@ -1,5 +1,5 @@
 import "../css/navbar.css";
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../Util/Cookie";
 import {useState, useEffect} from "react"
@@ -7,7 +7,11 @@ import {useState, useEffect} from "react"
 export default function Navbar(props){
     console.log("Rendering Navbar")
     const navigate = useNavigate();
-
+    let activeStyle = {
+        fontweight: "bold",
+      };
+    
+      let activeClassName = "underline";
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
 
@@ -31,10 +35,10 @@ export default function Navbar(props){
             <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
 
             <ul className="nav-links">
-                <li><Link className="nav-link" to="/home">Home</Link></li>
-                <li><Link className="nav-link" to="/features">Features</Link></li>
-                <li><Link className="nav-link" to="/blog">Blog</Link></li>
-                <li><Link className="nav-link" to="/about">About</Link></li>
+                <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></li>
+                <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></li>
+                <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></li>
+                <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></li>
             </ul>
             {!props.login && <div className="sign-buttons">
                 <button className="nav-button" type="button" onClick={() => navigate('/login')}>Login</button>

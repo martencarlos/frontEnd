@@ -12,7 +12,6 @@ export default function Card(props){
                     alt="cover"
                 />
             <div className="card--info">
-                
                 <span>
                     <i className="bi-star" role="img"></i>
                         {props.item.stats.likes}

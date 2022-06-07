@@ -113,7 +113,8 @@ export default function NewCard(props){
                     }))
                 }
             }).finally(function(response){
-            
+                // const input = document.getElementById("input")
+                // document.body.removeChild(input)
             })
             .catch(function (error) {
                 console.log(error);
