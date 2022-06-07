@@ -43,34 +43,34 @@ nav{
     
     border: 1px dashed rgb(63, 63, 63);
     text-decoration: none;
-    border-radius: 6%;
+    border-radius: 6px;
     
 }
 
 .nav-link{
     text-decoration: none;
     color: inherit;
-    padding: 5px;
+    padding: 6px;
 }
 .nav-link:hover{
-    background-color: rgb(69, 69, 69);
+    box-shadow:10px 10px 30px 10px #3a3a3a inset;
     text-decoration: none;
-    border-radius: 10%;
+    border-radius: 6px;
     color: whitesmoke;
 }
 
 .nav-link-active{
     text-decoration: none;
     font-weight: bold;
-    background-color: rgb(104, 104, 104);
+    box-shadow:10px 10px 30px 10px #5e5e5e inset;
     color: inherit;
     color: whitesmoke;
-    padding: 5px;
-    border-radius: 10%;
+    padding: 6px;
+    border-radius: 6px;
 }
 .nav-link-active:hover{
     text-decoration: none;
-    background-color: rgb(69, 69, 69);
+    box-shadow:10px 10px 30px 10px #3a3a3a inset;
     color: whitesmoke;
 }
 
