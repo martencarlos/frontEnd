@@ -4,12 +4,10 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    z-index: 100;
+    position: relative;
     background-color: white;
   }
-  div.footer-brand{
-
-  }
+  
 }
 
 .footer-brand{
