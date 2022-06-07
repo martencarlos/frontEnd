@@ -4,6 +4,8 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    z-index: 100;
+    background-color: white;
   }
   div.footer-brand{
 
