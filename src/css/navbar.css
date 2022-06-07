@@ -56,6 +56,7 @@ nav{
     box-shadow:10px 10px 30px 10px #3a3a3a inset;
     text-decoration: none;
     border-radius: 6px;
+    padding: 6px;
     color: whitesmoke;
 }
 
@@ -70,6 +71,7 @@ nav{
 }
 .nav-link-active:hover{
     text-decoration: none;
+    padding: 6px;
     box-shadow:10px 10px 30px 10px #3a3a3a inset;
     color: whitesmoke;
 }
