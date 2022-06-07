@@ -56,7 +56,6 @@ export default function Home(props){
                 ...prevFormData,
                 profilepic: defaultProfilePic
             }))
-            console.log(!localStorage.getItem("profilePic"))
             if(!localStorage.getItem("profilePic")){
                 getProfileImageIntoLocalStorage()
             }else{
@@ -108,6 +107,7 @@ export default function Home(props){
         input.type = 'file';
         input.id ="input"
         input.click();
+        document.body.removeChild(input) 
     }
    
     const updateValue = async (e) =>{
@@ -151,22 +151,14 @@ export default function Home(props){
                 profilepic: response.data.url
             }))
           }).finally(function(response){
-            const input = document.getElementById("input")
-            document.body.removeChild(input)    
-            // getProfileImageIntoLocalStorage()
-                // getProfileImageIntoLocalStorage()
-                // document.getElementById("profilePic").src=response
-                // document.getElementById("navProfilePic").src=response
-                // localStorage.setItem("profilePic", response)
-                // setUserData(prevFormData => ({
-                //     ...prevFormData,
-                //     profilepic: response
-                // }))
+               
           })
           .catch(function (error) {
             // console.log(error);
             
-          });
+        });
+        console.log("removing child")
+        
     }
 
     function getProfileImageIntoLocalStorage(){

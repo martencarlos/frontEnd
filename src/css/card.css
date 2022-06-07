@@ -12,6 +12,11 @@
     box-shadow: 0 0 10px rgba(49, 49, 49, 0.315);
 }
 
+.card:hover .card--info{
+  opacity: 1;
+  transition: 0.5s;
+  visibility: visible;
+}
 .card:hover{
   box-shadow: 0 0 30px rgba(49, 49, 49, 0.315);
 }
@@ -33,10 +38,13 @@ img.card--info-img{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
     text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
     color: rgb(255, 255, 255);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
  }
+ 
 
  span { 
      margin-right: 10px;

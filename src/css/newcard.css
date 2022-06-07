@@ -14,7 +14,7 @@
 .newcard{
     display: flex;
     flex-direction: row;
-    margin: 20px;
+    margin: 10px;
 }
 
 p.newCard-success{
@@ -33,7 +33,6 @@ p.newCard-success{
     display: flex;
     row-gap: 10px;
     flex-direction: column;
-    height: 200px;
 }
 
 .newcard--input{

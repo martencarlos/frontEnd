@@ -57,19 +57,19 @@ div.home-main{
     position:absolute;
     visibility: hidden;
     opacity: 0;
-    background-color: black;
+    background-color: rgb(84, 84, 84);
     color: white;
     border-radius: 6px;
     padding: 3px;
     font-size: smaller;
     /* transition effect. not necessary */
-    transition: opacity .2s, visibility .2s;
+    transition: 0.5s
 }
 .upload-progress{
     display: flex;
     align-self: center;
     position:absolute;
-    background-color: black;
+    background-color: rgb(84, 84, 84);
     color: white;
     border-radius: 6px;
     padding: 3px;
@@ -78,5 +78,6 @@ div.home-main{
 
 .wrap-img:hover .wrap-text{
     visibility: visible;
+    transition: 0.5s;
     opacity: 1;
 }
