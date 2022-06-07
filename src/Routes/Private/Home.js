@@ -2,10 +2,11 @@
 import "../../css/home.css";
 import { useNavigate } from 'react-router-dom';
 // import ProfilePicture from '../../Images/profile.png';
-import Resizer from "react-image-file-resizer";
+
 
 import NewCard from "../../Components/NewCard";
 import {getCookie} from "../../Util/Cookie";
+import {resizeFile, dataURIToBlob} from "../../Util/ImageProcessing";
 import axios from "axios";
 import {useState, useEffect} from "react"
 
@@ -98,35 +99,7 @@ export default function Home(props){
         })
     }
 
-    //Image processing functions
-    const resizeFile = (file) =>
-        new Promise((resolve) => {
-            Resizer.imageFileResizer(
-            file,
-            80,
-            80,
-            "JPEG",
-            100,
-            0,
-            (uri) => {
-                resolve(uri);
-            },
-            "base64"
-            );
-        }
-    );
-    
-    const dataURIToBlob = (dataURI) => {
-        const splitDataURI = dataURI.split(",");
-        const byteString =
-          splitDataURI[0].indexOf("base64") >= 0
-            ? atob(splitDataURI[1])
-            : decodeURI(splitDataURI[1]);
-        const mimeString = splitDataURI[0].split(":")[1].split(";")[0];
-        const ia = new Uint8Array(byteString.length);
-        for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
-        return new Blob([ia], { type: mimeString });
-    };
+
 
     function changePicture(){
         var input = document.createElement('input');
@@ -141,15 +114,16 @@ export default function Home(props){
         // getting a hold of the file reference
         var file = e.target.files[0];
         var image
+        var newFile
         try {
             image = await resizeFile(file);
+            newFile = dataURIToBlob(image);
         } catch (error) {
             alert("File not supported - please select an image \n" + error)
             const input = document.getElementById("input")
-            document.body.removeChild(input)   
+            document.body.removeChild(input)
+            return;
         }
-        
-        const newFile = dataURIToBlob(image);
         
         //to send encoded info
         var form_data = new FormData();

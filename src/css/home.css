@@ -46,13 +46,14 @@ div.home-main{
 
 .wrap-img {
     display:flex;
+    flex-direction: column;
     align-self: center;
-    text-align: center;
     justify-content: center;
     position:relative;
     cursor: pointer;
 }
 .wrap-text{
+    align-self: center;
     position:absolute;
     visibility: hidden;
     opacity: 0;
@@ -60,19 +61,18 @@ div.home-main{
     color: white;
     border-radius: 6px;
     padding: 3px;
-    bottom: 30%;
     font-size: smaller;
     /* transition effect. not necessary */
     transition: opacity .2s, visibility .2s;
 }
 .upload-progress{
+    display: flex;
+    align-self: center;
     position:absolute;
     background-color: black;
     color: white;
     border-radius: 6px;
-    left: 30%;
     padding: 3px;
-    bottom: 30%;
     font-size: smaller;
 }
 
