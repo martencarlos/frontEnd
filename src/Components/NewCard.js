@@ -45,8 +45,9 @@ export default function NewCard(props){
                 // This will execute 5 seconds later
                 console.log("executing")
                 successMessage.style.visibility = 'hidden'
+                setSuccess(false)
             }, 2000);
-            setSuccess(true)
+            
         }
         
       }, [success])
@@ -134,9 +135,14 @@ export default function NewCard(props){
         setFormErrors(currentErrors)
 
         if(Object.keys(currentErrors).length===0){
-            
             props.handleClick(formData)
             setSuccess(true)
+            setFormData(prevFormData => ({
+                ...prevFormData,
+                image: '',
+                title:''
+            }))
+            document.getElementById('chosenCardImage').value= null
         }
     }
 
