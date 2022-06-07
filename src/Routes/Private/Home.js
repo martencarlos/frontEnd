@@ -116,7 +116,7 @@ export default function Home(props){
         var image
         var newFile
         try {
-            image = await resizeFile(file);
+            image = await resizeFile(file,80,80);
             newFile = dataURIToBlob(image);
         } catch (error) {
             alert("File not supported - please select an image \n" + error)

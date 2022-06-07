@@ -2,12 +2,12 @@ import Resizer from "react-image-file-resizer";
 
 //Image processing functions
 
-export const resizeFile = async (file)  =>
+export const resizeFile = async (file,width,height)  =>
     new Promise((resolve) => {
         Resizer.imageFileResizer(
         file,
-        80,
-        80,
+        width,
+        height,
         "JPEG",
         100,
         0,
