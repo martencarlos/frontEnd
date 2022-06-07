@@ -75,13 +75,17 @@ img.card--info-img{
 
   h2.card--profile--text--h2 {
    color: #334454;
+   white-space: nowrap;
    font-size: 1rem;
    margin-bottom: 2px;
    overflow: hidden;
    max-width: 150px;
   }
-  p {
+  p.author {
    color: #a1b2bc;
+   white-space: nowrap;
+   overflow: hidden;
+   max-width: 150px;
    font-size: 0.8rem;
    margin-top: 3px;
   }

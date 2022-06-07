@@ -82,23 +82,23 @@ label.nav-username{
 /* Tooltip container */
 .tooltip {
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   
   /* Tooltip text */
   .tooltip .tooltip-text {
+    align-self: center;
     visibility: hidden;
     white-space: nowrap;
     background-color: rgb(84, 84, 84);
     color: rgb(240, 240, 240);
-    text-align: center;
     padding: 2px 3px;
     border-radius: 6px;
    
     /* Position the tooltip text - see examples below! */
     position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -50px;
+    top: 120%;
   
   }
   

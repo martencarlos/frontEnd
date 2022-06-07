@@ -1,14 +1,14 @@
 
 import "../css/newcard.css";
-import React from "react"
-import Card from "./Card";
 
+import Card from "./Card";
+import {useState, useEffect} from "react"
 
 
 export default function NewCard(props){
     console.log("Rendering NewCard")
     
-    const [formData, setFormData] = React.useState(
+    const [formData, setFormData] = useState(
         {
             title: "", 
             image: "",
@@ -19,13 +19,13 @@ export default function NewCard(props){
             },
             author:{
                 pic: props.userData.profilepic,
-                firstName: localStorage.getItem("firstName"),
+                firstName: props.userData.name,
                 lastName: ""
             }
         }
     )
 
-    React.useEffect(() => {
+    useEffect(() => {
         setFormData(prevFormData => ({
             ...prevFormData,
             author:{

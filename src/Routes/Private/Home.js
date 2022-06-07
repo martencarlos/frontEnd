@@ -7,35 +7,45 @@ import Resizer from "react-image-file-resizer";
 import NewCard from "../../Components/NewCard";
 import {getCookie} from "../../Util/Cookie";
 import axios from "axios";
-import {useState} from "react"
-import {useEffect} from "react"
+import {useState, useEffect} from "react"
 
 export default function Home(props){
     console.log("Rendering Home")
     const navigate = useNavigate();
     const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
+    
+    // ***** USE STATES & USE EFFECTS *****
+    //Upload progress
     const [uploadProgress, setUploadProgress] = useState('')
     
-
+    //Cards
     var [cards, setCards] = useState(
         ()=>JSON.parse(localStorage.getItem("cards")) || []
     )
-    
+
+    //cards
+    useEffect(() => {
+        localStorage.setItem("cards", JSON.stringify(cards))
+    }, [cards])
+
+    //UserData
     const [userData, setUserData] = useState({})
 
+    useEffect(() => {
+    console.log("userdata changed")
+    // eslint-disable-next-line 
+    }, [userData])
+
+    //Login
     useEffect(() => {
         if(!props.login){
             navigate("/login")
         }
         // eslint-disable-next-line 
-      }, [props.login])
+    }, [props.login])
 
-      useEffect(() => {
-        console.log("userdata changed")
-        
-        // eslint-disable-next-line 
-      }, [userData])
-
+    
+    // UserData + profile picture
     useEffect(() => {
         console.log("homeuseeffect")
         if(getCookie("me")){
@@ -56,16 +66,10 @@ export default function Home(props){
                     profilepic: localStorage.getItem("profilePic")
                 }))
             }
-        
         }
-      }, [])
+    }, [])
     
-    //cards
-    useEffect(() => {
-        localStorage.setItem("cards", JSON.stringify(cards))
-    }, [cards])
-
-   
+    
     //Add new card
     function addCard(newCard) {
         
@@ -94,6 +98,7 @@ export default function Home(props){
         })
     }
 
+    //Image processing functions
     const resizeFile = (file) =>
         new Promise((resolve) => {
             Resizer.imageFileResizer(
@@ -108,18 +113,9 @@ export default function Home(props){
             },
             "base64"
             );
-        });
-
-    function changePicture(){
-        
-        var input = document.createElement('input');
-        document.body.appendChild(input); //required for iphone
-        input.addEventListener('change', updateValue); //required for iphone
-        input.type = 'file';
-        input.id ="input"
-        input.click();
-    }
-
+        }
+    );
+    
     const dataURIToBlob = (dataURI) => {
         const splitDataURI = dataURI.split(",");
         const byteString =
@@ -130,15 +126,30 @@ export default function Home(props){
         const ia = new Uint8Array(byteString.length);
         for (let i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
         return new Blob([ia], { type: mimeString });
-      };
+    };
+
+    function changePicture(){
+        var input = document.createElement('input');
+        document.body.appendChild(input); //required for iphone
+        input.addEventListener('change', updateValue); //required for iphone
+        input.type = 'file';
+        input.id ="input"
+        input.click();
+    }
    
     const updateValue = async (e) =>{
         // getting a hold of the file reference
         var file = e.target.files[0];
-        const image = await resizeFile(file);
+        var image
+        try {
+            image = await resizeFile(file);
+        } catch (error) {
+            alert("File not supported - please select an image \n" + error)
+            const input = document.getElementById("input")
+            document.body.removeChild(input)   
+        }
+        
         const newFile = dataURIToBlob(image);
-        console.log(file)
-        console.log(newFile)
         
         //to send encoded info
         var form_data = new FormData();
@@ -158,7 +169,6 @@ export default function Home(props){
             }) 
           .then(function (response) {
             setUploadProgress('')
-            console.log(response.data)
             document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
             localStorage.setItem("profilePic", response.data.url)
@@ -180,7 +190,8 @@ export default function Home(props){
                 // }))
           })
           .catch(function (error) {
-            console.log(error);
+            // console.log(error);
+            
           });
     }
 

@@ -33,7 +33,7 @@ export default function Card(props){
                 />
                 <div className="card--profile--text">
                     <h2 className="card--profile--text--h2">{props.item.title}</h2>
-                    <p>by <b>{props.item.author.firstName + " " + props.item.author.lastName}</b></p>
+                    <p className="author"> <b>{props.item.author.firstName + " " + props.item.author.lastName}</b></p>
                 </div>
             </div>
         </div>
