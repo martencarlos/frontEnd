@@ -50,12 +50,12 @@ nav{
 .nav-link{
     text-decoration: none;
     color: inherit;
-    padding: 0.5rem;
+    padding: 6px;
 }
 .nav-link:hover{
-    box-shadow:10px 10px 30px 10px #3a3a3a inset;
+    background-color:#2B283A;
     text-decoration: none;
-    border-radius: 1rem;
+    border-radius: 6px;
     
     color: whitesmoke;
 }
@@ -63,15 +63,15 @@ nav{
 .nav-link-active{
     text-decoration: none;
     font-weight: bold;
-    box-shadow:10px 10px 30px 10px #5e5e5e inset;
+    background-color:#3a3a3a;
     color: inherit;
     color: whitesmoke;
-    padding: 0.5rem;
-    border-radius: 1rem;
+    padding: 6px;
+    border-radius: 6px;
 }
 .nav-link-active:hover{
     text-decoration: none;
-    box-shadow:10px 10px 30px 10px #3a3a3a inset;
+    background-color:#2B283A;
     color: whitesmoke;
 }
 
