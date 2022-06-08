@@ -3,6 +3,7 @@ import "../../css/featurecards.css";
 import Card from "../../Components/Card";
 import React from "react"
 import axios from "axios";
+import {getCookie} from "../../Util/Cookie";
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
@@ -25,15 +26,45 @@ export default function FeatureCards(props){
         getData()
       }, [])
 
-      function deleteCard(e){
-        console.log("deleting card")
-        console.log(e.target.parentElement.parentElement.id)
+      async function deleteCard(e){
+        const card = e.target.parentElement.parentElement
+        
+        if(props.login && getCookie("me")){
+            const me =JSON.parse(getCookie("me"))
+            const deleteInfo={
+                userID: me._id,
+                cardID: card.id
+            }
+            
+            await fetch(process.env.REACT_APP_SERVER+`/deletecard`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+                credentials: 'include',
+                body: JSON.stringify(deleteInfo)
+              })
+              .then(function(response) {
+                // The response is a Response instance.
+                // You parse the data into a useable format using `.json()`
+                return response.json();
+              }).then(function(data) {
+                const {message} =data
+                console.log(message); 
+                if(message === "card deleted"){
+                    card.parentElement.removeChild(card)
+                }else{
+                    alert(message)
+                }
+              });
+        }else{
+            alert("please login to delete a card")
         }
+    }
 
     //Display cards
     function cardElements(darkmode){
         return cards.map(mycard => {
-            console.log(mycard)
             return <Card
                     key = {mycard._id}
                     darkMode = {darkmode}

@@ -30,10 +30,11 @@ export default function Home(props){
     }, [cards])
 
     //UserData
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState({author:{
+        authorid: ""
+    }})
 
     useEffect(() => {
-    console.log("userdata changed")
     // eslint-disable-next-line 
     }, [userData])
 
@@ -54,8 +55,12 @@ export default function Home(props){
             setUserData(cookieUser)
             setUserData(prevFormData => ({
                 ...prevFormData,
-                profilepic: defaultProfilePic
+                profilepic: defaultProfilePic,
+                author:{
+                    authorid: cookieUser._id
+                }
             }))
+            
             if(!localStorage.getItem("profilePic")){
                 getProfileImageIntoLocalStorage()
             }else{
@@ -97,8 +102,6 @@ export default function Home(props){
             ]
         })
     }
-
-
 
     function changePicture(){
         var input = document.createElement('input');

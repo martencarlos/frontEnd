@@ -6,6 +6,7 @@ import {useState, useEffect} from "react"
 
 import {resizeFile} from "../Util/ImageProcessing";
 import axios from "axios";
+import {getCookie} from "../Util/Cookie";
 
 
 export default function NewCard(props){
@@ -23,7 +24,8 @@ export default function NewCard(props){
             author:{
                 pic: props.userData.profilepic,
                 firstName: props.userData.name,
-                lastName: ""
+                lastName: "",
+                authorid: props.userData.author.authorid
             }
         }
     )
@@ -53,14 +55,17 @@ export default function NewCard(props){
       }, [success])
 
     useEffect(() => {
+        
         setFormData(prevFormData => ({
             ...prevFormData,
             author:{
                 firstName: props.userData.name,
                 lastName:"",
-                pic: props.userData.profilepic
+                pic: props.userData.profilepic,
+                authorid: props.userData.author.authorid
             }
         }))
+        
       }, [props.userData])
 
     function urlIsImage(url) {
@@ -133,6 +138,7 @@ export default function NewCard(props){
         setFormErrors(currentErrors)
 
         if(Object.keys(currentErrors).length===0){
+            
             props.handleClick(formData)
             setSuccess(true)
             setFormData(prevFormData => ({
