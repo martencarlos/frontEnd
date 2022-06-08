@@ -52,6 +52,7 @@ img.card--info-img{
  
  span.card--delete{
    display: flex;
+   text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
    position:absolute;
    visibility: hidden;
    opacity: 0;
