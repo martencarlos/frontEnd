@@ -6,10 +6,8 @@ import axios from "axios";
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
-
-    var [cards, setCards] = React.useState(
-        ()=>JSON.parse(localStorage.getItem("cards")) || []
-    )
+    
+    var [cards, setCards] = React.useState([])
     
     //Get the cards from Database - only once after render
     React.useEffect(() => {
@@ -27,14 +25,20 @@ export default function FeatureCards(props){
         getData()
       }, [])
 
-    
+      function deleteCard(e){
+        console.log("deleting card")
+        console.log(e.target.parentElement.parentElement.id)
+        }
+
     //Display cards
     function cardElements(darkmode){
         return cards.map(mycard => {
+            console.log(mycard)
             return <Card
                     key = {mycard._id}
                     darkMode = {darkmode}
                     item = {mycard}
+                    deleteCard={deleteCard}
                 />
             })
         }
