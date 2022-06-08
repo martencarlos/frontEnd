@@ -52,11 +52,13 @@ nav{
     color: inherit;
     padding: 6px;
 }
+
+
 .nav-link:hover{
     background-color:#2B283A;
     text-decoration: none;
     border-radius: 6px;
-    
+   
     color: whitesmoke;
 }
 
@@ -68,11 +70,13 @@ nav{
     color: whitesmoke;
     padding: 6px;
     border-radius: 6px;
+
 }
 .nav-link-active:hover{
     text-decoration: none;
     background-color:#2B283A;
     color: whitesmoke;
+ 
 }
 
 .nav-links{

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import NewCard from "../../Components/NewCard";
 import {getCookie} from "../../Util/Cookie";
-import {resizeFile, dataURIToBlob} from "../../Util/ImageProcessing";
+import {resizeFile} from "../../Util/ImageProcessing";
 import axios from "axios";
 import {useState, useEffect} from "react"
 
@@ -113,11 +113,9 @@ export default function Home(props){
     const updateValue = async (e) =>{
         // getting a hold of the file reference
         var file = e.target.files[0];
-        var image
-        var newFile
+        var blobImage
         try {
-            image = await resizeFile(file,80,80);
-            newFile = dataURIToBlob(image);
+            blobImage = await resizeFile(file,80,80);
         } catch (error) {
             alert("File not supported - please select an image \n" + error)
             const input = document.getElementById("input")
@@ -127,7 +125,7 @@ export default function Home(props){
         
         //to send encoded info
         var form_data = new FormData();
-        form_data.append("profile_image",newFile);
+        form_data.append("profile_image",blobImage);
         
         //Upload the file
         axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{

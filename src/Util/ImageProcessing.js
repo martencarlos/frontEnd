@@ -14,12 +14,14 @@ export const resizeFile = async (file,width,height)  =>
         (uri) => {
             resolve(uri);
         },
-        "base64"
+        "blob",
+        width,
+        height,
         );
     });
 
 
-export const dataURIToBlob =  (dataURI) => {
+export const base64ToBlob =  (dataURI) => {
     const splitDataURI = dataURI.split(",");
     const byteString =
         splitDataURI[0].indexOf("base64") >= 0
