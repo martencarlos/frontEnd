@@ -4,7 +4,7 @@ import "../css/newcard.css";
 import Card from "./Card";
 import {useState, useEffect} from "react"
 
-import {resizeFile, dataURIToBlob} from "../Util/ImageProcessing";
+import {resizeFile} from "../Util/ImageProcessing";
 import axios from "axios";
 
 
@@ -79,11 +79,9 @@ export default function NewCard(props){
         var file = e.target.files[0];
         if(file){
             //Process Image
-            var image
-            var newFile
+            var blobImage
             try {
-                image = await resizeFile(file,240,288);
-                newFile = dataURIToBlob(image);
+                blobImage = await resizeFile(file,240,288);
             } catch (error) {
                 alert("File not supported - please select an image \n" + error)
                 return;
@@ -91,7 +89,7 @@ export default function NewCard(props){
             
             //create formData and append image
             var form_data = new FormData();
-            form_data.append("cardCoverImage",newFile,file.name);
+            form_data.append("cardCoverImage",blobImage,file.name);
 
             //Upload the file
             axios.post(process.env.REACT_APP_SERVER+'/setCardCoverImage',form_data,{
