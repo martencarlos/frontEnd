@@ -11,21 +11,25 @@
     box-shadow: 5px 5px 10px  rgba(36, 36, 36, 0.315);
 }
 
-.card:hover .card--info{
+.card:hover .card--info {
   opacity: 1;
   transition: 0.5s;
   visibility: visible;
 }
+.card:hover .card--delete{
+  opacity: 1;
+  transition: 0.5s;
+  visibility: visible;
+}
+
 .card:hover{
   box-shadow: 10px 10px 15px rgba(36, 36, 36, 0.315);
 }
 
 img.card--info-img{
-    
     height: 100%;
     object-fit: cover;
     margin-bottom: 62px;
-    
  }
 
  .card--info {
@@ -46,13 +50,24 @@ img.card--info-img{
     transition: 0.5s;
  }
  
+ span.card--delete{
+   display: flex;
+   position:absolute;
+   visibility: hidden;
+   opacity: 0;
+   right: 0;
+   color: white;
+   padding: 6px;
+   
+ }
 
- span { 
+ span.card--stats { 
      margin-right: 10px;
      margin-left: 10px;
      display: flex;
      align-items: center;
     }
+
   i {margin-right: 10px;}
  
   img.card--profile--img {
@@ -91,6 +106,7 @@ img.card--info-img{
    overflow: hidden;
    max-width: 150px;
   }
+
   p.author {
    color: #a1b2bc;
    white-space: nowrap;
