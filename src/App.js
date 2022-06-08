@@ -62,7 +62,10 @@ export default function App(){
             <Routes>
              
                 <Route path="/" element={
-                    <FeatureCards darkMode = {darkMode}/>}>
+                    <FeatureCards 
+                        darkMode = {darkMode}
+                        login = {login}
+                    />}>
                 </Route>
                 <Route path="/home" element={
                     <Home 
