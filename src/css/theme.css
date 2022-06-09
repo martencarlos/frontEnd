@@ -17,6 +17,10 @@ img {
     user-select: none;
 }
 
+input {
+    -webkit-border-radius: 0;
+}
+
 html, body{
     margin: 0;
 }
