@@ -39,12 +39,12 @@ h1{
 
 i{
     margin:0px;
-    padding: 5px;
+    padding: 10px;
 }
 
-span.register-icon{
+/* span.register-icon{
     padding: 5px;
-}
+} */
 
 input{
     display: flex;
