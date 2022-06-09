@@ -58,7 +58,7 @@ export default function FeatureCards(props){
                 }
               });
         }else{
-            alert("please login to delete a card")
+            alert("Please login to delete a card")
         }
     }
 
