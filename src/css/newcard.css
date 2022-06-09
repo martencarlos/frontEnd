@@ -16,6 +16,10 @@ div.newcard{
     margin: 10px;
 }
 
+label.newCard-error{
+    color: red;
+}
+
 p.newCard-success{
     display: flex;
     justify-content: center;
@@ -39,6 +43,13 @@ p.newCard-success{
     flex-direction: column;
     row-gap: 10px;
     width: 250px;
+}
+
+.newCard-form-imageInput{
+    border: none;
+    padding:0px;
+    height: 25px;
+    display: block;
 }
 
 .cardPreview{

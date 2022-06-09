@@ -177,15 +177,16 @@ export default function NewCard(props){
                         value={formData.title}
                         onChange={handleChange}
                     />
-                    {formErrors.title && <label className="error">{formErrors.title}</label>}
+                    {formErrors.title && <label className="newCard-error">{formErrors.title}</label>}
                     <input
                         name="image"
                         type="file"
+                        className="newCard-form-imageInput"
                         id="chosenCardImage"
                         required="required"
                         onChange={processImage}
                     />
-                    {formErrors.image && <label className="error">{formErrors.image}</label>}
+                    {formErrors.image && <label className="newCard-error">{formErrors.image}</label>}
                     <button className="newCard-AddCard" onClick={validate}>Add Card</button>
                     <p id="cardAddedSuccessMessage" className="newCard-success">Card added successfully !</p>
                     {/* <button onClick={() => {props.handleClick(formData)}}>Add Card</button> */}
