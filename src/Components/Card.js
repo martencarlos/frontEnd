@@ -7,10 +7,10 @@ export default function Card(props){
     
     return (
         <div id={props.item._id}  className="card">
-            <span onClick= {props.deleteCard} className="card--delete">
+            {props.showDeleteButton && <span onClick= {props.deleteCard} className="card--delete">
                 <i className="bi-x-lg" role="img"></i>
-            </span>
-            <img className="card--info-img"
+            </span>}
+            <img  className="card--info-img"
                     src={props.item.image}
                     alt="cover"
             />
@@ -29,7 +29,7 @@ export default function Card(props){
                 </span>
             </div>
             <div className={`card--profile ${props.darkMode ? "dark": ""}`}>
-                <img className="card--profile--img"
+                <img  className="card--profile--img"
                     src={props.item.author.pic}
                     alt="profile pic"
                 />

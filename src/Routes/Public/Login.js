@@ -112,14 +112,14 @@ export default function Login(props){
         return errors
     }
 
+
     return (
         <div className={props.darkMode ? "dark" : ""}>
             <form className="login-form">
                 <h1>Login</h1>
                 <div className="login-form-inputs">
-                    
                     <div className="login-form-input-row">
-                        <span>
+                        <span className="login-icon">
                             <i className="bi-envelope-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="login-form-input-row-inputanderror">
@@ -133,12 +133,12 @@ export default function Login(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.email && <label className="error">{formErrors.email}</label>}
                         </div>
                     </div>
-
+                    {formErrors.email && <label className="error">{formErrors.email}</label>}
+                        
                     <div className="login-form-input-row">
-                        <span>
+                        <span className="login-icon">
                             <i className="bi-key-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="login-form-input-row-inputanderror">
@@ -153,10 +153,9 @@ export default function Login(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.password && <label className="error">{formErrors.password}</label>}
                         </div>
                     </div>
-                   
+                    {formErrors.password && <label className="error">{formErrors.password}</label>}
                     <button id="login" className="login" type="button" onClick={validate}>Login</button>
 
                 </div>

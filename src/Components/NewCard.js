@@ -186,7 +186,7 @@ export default function NewCard(props){
                         onChange={processImage}
                     />
                     {formErrors.image && <label className="error">{formErrors.image}</label>}
-                    <button onClick={validate}>Add Card</button>
+                    <button className="newCard-AddCard" onClick={validate}>Add Card</button>
                     <p id="cardAddedSuccessMessage" className="newCard-success">Card added successfully !</p>
                     {/* <button onClick={() => {props.handleClick(formData)}}>Add Card</button> */}
                 </div>
@@ -195,6 +195,7 @@ export default function NewCard(props){
                 <Card
                     darkMode = {props.darkmode}
                     item = {formData}
+                    showDeleteButton = {false}
                 />
             </div>}
         </div>

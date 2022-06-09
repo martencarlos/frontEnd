@@ -26,6 +26,9 @@ h1{
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-items: center;
+    background-color: #6f6f6f;
+    color: rgb(255, 255, 255);
 }
 
 .register-form-input-row-inputanderror{
@@ -35,12 +38,18 @@ h1{
 }
 
 i{
-    margin:5px;
+    margin:0px;
+    padding: 5px;
+}
+
+span.register-icon{
+    padding: 5px;
 }
 
 input{
     display: flex;
     flex-grow: 1;
+    height: 30px;
 }
 
 label.error{
@@ -49,5 +58,7 @@ label.error{
 
 button.register{
     margin-top: 1em;
-    height: 2.5em;
+    height: 2em;
+    font-size: large;
 }
+
