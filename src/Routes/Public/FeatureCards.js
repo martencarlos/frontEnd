@@ -70,6 +70,7 @@ export default function FeatureCards(props){
                     darkMode = {darkmode}
                     item = {mycard}
                     deleteCard={deleteCard}
+                    showDeleteButton = {true}
                 />
             })
         }

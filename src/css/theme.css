@@ -12,6 +12,11 @@
   border-radius: 10px;
 }
 
+img {  
+    -webkit-user-drag: none;  
+    user-select: none;
+}
+
 html, body{
     margin: 0;
 }

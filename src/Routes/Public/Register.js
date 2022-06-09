@@ -105,7 +105,7 @@ export default function Register(props){
                 <h1>Register</h1>
                 <div className="register-form-inputs">
                     <div className="register-form-input-row">
-                        <span  >
+                        <span className="register-icon">
                             <i className="bi-people-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
@@ -118,13 +118,13 @@ export default function Register(props){
                                 value={formData.name}
                                 onChange={handleChange}
                             />
-                            {formErrors.name && <label className="error">{formErrors.name}</label>}
+                            
                         </div>
                     </div>
-                    
+                    {formErrors.name && <label className="error">{formErrors.name}</label>}
 
                     <div className="register-form-input-row">
-                        <span>
+                        <span className="register-icon">
                             <i className="bi-person-badge-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
@@ -138,12 +138,11 @@ export default function Register(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.username && <label className="error">{formErrors.username}</label>}
                         </div>
                     </div>
-
+                    {formErrors.username && <label className="error">{formErrors.username}</label>}
                     <div className="register-form-input-row">
-                        <span>
+                        <span className="register-icon">
                             <i className="bi-envelope-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
@@ -157,11 +156,11 @@ export default function Register(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.email && <label className="error">{formErrors.email}</label>}
                         </div>
                     </div>
+                    {formErrors.email && <label className="error">{formErrors.email}</label>}
                     <div className="register-form-input-row">
-                        <span>
+                        <span className="register-icon">
                             <i className="bi-key-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
@@ -175,11 +174,11 @@ export default function Register(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.password && <label className="error">{formErrors.password}</label>}
                         </div>
                     </div>
+                    {formErrors.password && <label className="error">{formErrors.password}</label>}
                     <div className="register-form-input-row">
-                        <span>
+                        <span className="register-icon">
                             <i className="bi-key-fill" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
@@ -193,14 +192,12 @@ export default function Register(props){
                                 onChange={handleChange}
                                 
                             />
-                            {formErrors.password2 && <label className="error">{formErrors.password2}</label>}
                         </div>
                     </div>
+                    {formErrors.password2 && <label className="error">{formErrors.password2}</label>}
                     <button className="register" type="button" onClick={validate}>Register</button>
                 </div>
             </form>
         </div>
-
-        
     )
 }

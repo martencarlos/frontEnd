@@ -11,9 +11,8 @@
     
 }
 
-.newcard{
+div.newcard{
     display: flex;
-    flex-direction: row;
     margin: 10px;
 }
 
@@ -47,4 +46,8 @@ p.newCard-success{
     height: 350px;
     margin-left:40px;
     flex-grow: 1;
+}
+
+button.newCard-AddCard{
+    font-size: large;
 }
