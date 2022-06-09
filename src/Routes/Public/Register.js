@@ -106,7 +106,7 @@ export default function Register(props){
                 <div className="register-form-inputs">
                     <div className="register-form-input-row">
                         <span className="register-icon">
-                            <i className="bi-people-fill" role="img" aria-label="name"></i>
+                            <i className="bi-people-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
                             <input
@@ -125,7 +125,7 @@ export default function Register(props){
 
                     <div className="register-form-input-row">
                         <span className="register-icon">
-                            <i className="bi-person-badge-fill" role="img" aria-label="name"></i>
+                            <i className="bi-person-badge-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
                             <input
@@ -143,7 +143,7 @@ export default function Register(props){
                     {formErrors.username && <label className="error">{formErrors.username}</label>}
                     <div className="register-form-input-row">
                         <span className="register-icon">
-                            <i className="bi-envelope-fill" role="img" aria-label="name"></i>
+                            <i className="bi-envelope-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
                             <input
@@ -161,7 +161,7 @@ export default function Register(props){
                     {formErrors.email && <label className="error">{formErrors.email}</label>}
                     <div className="register-form-input-row">
                         <span className="register-icon">
-                            <i className="bi-key-fill" role="img" aria-label="name"></i>
+                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
                             <input
@@ -179,7 +179,7 @@ export default function Register(props){
                     {formErrors.password && <label className="error">{formErrors.password}</label>}
                     <div className="register-form-input-row">
                         <span className="register-icon">
-                            <i className="bi-key-fill" role="img" aria-label="name"></i>
+                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="register-form-input-row-inputanderror">
                             <input

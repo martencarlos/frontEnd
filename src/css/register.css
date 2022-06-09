@@ -37,7 +37,7 @@ h1{
     flex-grow: 1;
 }
 
-i{
+i.registerLoginForms{
     margin:0px;
     padding: 10px;
     background-color: #6f6f6f;

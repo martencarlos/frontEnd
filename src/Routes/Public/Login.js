@@ -120,7 +120,7 @@ export default function Login(props){
                 <div className="login-form-inputs">
                     <div className="login-form-input-row">
                         <span className="login-icon">
-                            <i className="bi-envelope-fill" role="img" aria-label="name"></i>
+                            <i className="bi-envelope-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="login-form-input-row-inputanderror">
                             <input
@@ -139,7 +139,7 @@ export default function Login(props){
                         
                     <div className="login-form-input-row">
                         <span className="login-icon">
-                            <i className="bi-key-fill" role="img" aria-label="name"></i>
+                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
                         </span>
                         <div className="login-form-input-row-inputanderror">
                             <input
