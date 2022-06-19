@@ -39,8 +39,14 @@ export default function FeatureCards(props){
     //Infinity Scroll
     useEffect(() => {
         function handleScroll() { 
-            var isAtBottom = document.documentElement.scrollHeight - document.documentElement.scrollTop <= document.documentElement.clientHeight; 
-            if (isAtBottom) { 
+            let documentHeight = document.body.scrollHeight;
+            let currentScroll = window.scrollY + window.innerHeight;
+            // When the user is [modifier]px from the bottom, fire the event.
+            let modifier = 50; 
+            if(currentScroll + modifier > documentHeight) {
+            
+            // var isAtBottom = document.documentElement.scrollHeight - document.documentElement.scrollTop <= document.documentElement.clientHeight; 
+            // if (isAtBottom) { 
                 postNumber = postNumber + postsPerPage;
                 // Last posts
                 if(postNumber>=cardsLength.current){
