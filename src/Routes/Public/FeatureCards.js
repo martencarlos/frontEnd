@@ -1,17 +1,27 @@
 
 import "../../css/featurecards.css";
 import Card from "../../Components/Card";
-import React from "react"
-import axios from "axios";
+import {useState, useEffect,useRef} from "react"
 import {getCookie} from "../../Util/Cookie";
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
     
-    var [cards, setCards] = React.useState([])
+    var postsPerPage = 8;
+    var postNumber = postsPerPage;
+
+    const cardsLength = useRef(0);
+
+    const [posts, setPosts] = useState([...Array(postsPerPage).keys()]); 
+    const [cards, setCards] = useState([])
     
+    // Assign the cardsLength
+    useEffect(function(){
+        cardsLength.current=cards.length
+    }, [cards])
+
     //Get the cards from Database - only once after render
-    React.useEffect(() => {
+    useEffect(() => {
         async function getData() {
             await fetch(process.env.REACT_APP_SERVER+`/cards`,{
                 method: 'GET',
@@ -26,7 +36,26 @@ export default function FeatureCards(props){
         getData()
       }, [])
 
-      async function deleteCard(e){
+    //Infinity Scroll
+    useEffect(() => {
+        function handleScroll() { 
+            var isAtBottom = document.documentElement.scrollHeight - document.documentElement.scrollTop <= document.documentElement.clientHeight; 
+            if (isAtBottom) { 
+                postNumber = postNumber + postsPerPage;
+                // Last posts
+                if(postNumber>=cardsLength.current){
+                    postNumber = cardsLength.current
+                    window.removeEventListener("scroll",handleScroll)
+                }
+                setPosts([...Array(postNumber).keys()]);
+            }
+        } 
+    
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [])
+      
+    async function deleteCard(e){
         const card = e.target.parentElement.parentElement
         
         if(props.login && getCookie("me")){
@@ -63,24 +92,36 @@ export default function FeatureCards(props){
     }
 
     //Display cards
-    function cardElements(darkmode){
-        return cards.map(mycard => {
-            return <Card
-                    key = {mycard._id}
-                    darkMode = {darkmode}
-                    item = {mycard}
-                    deleteCard={deleteCard}
-                    showDeleteButton = {true}
-                />
-            })
-        }
+    // function cardElements(darkmode){
+    //     return cards.map(mycard => {
+    //         return <Card
+    //                 key = {mycard._id}
+    //                 darkMode = {darkmode}
+    //                 item = {mycard}
+    //                 deleteCard={deleteCard}
+    //                 showDeleteButton = {true}
+    //             />
+    //         })
+    //     }
 
     return (
         <feature is="x3d" className={props.darkMode ? "dark" : ""}>
-            <h1>Feature Cards</h1>
-            <section className="cards-list">
-                {cardElements (props.darkMode)}
-            </section>
+            {/* <h1>My Cards</h1> */}
+            {/* <section className="cards-list"> */}
+                {/* {cardElements (props.darkMode)} */}
+            {/* </section> */}
+            <h1>All Cards</h1>
+            <div className="board">
+                {cards.length !==0 && posts.map((item, i) => ( 
+                    <Card
+                    key = {cards[i]._id}
+                    darkMode = {props.darkmode}
+                    item = {cards[i]}
+                    deleteCard={deleteCard}
+                    showDeleteButton = {true}
+                    />
+                ))}
+            </div>
         </feature>
     )
 }
