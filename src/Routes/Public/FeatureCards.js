@@ -8,16 +8,23 @@ export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
     
     var postsPerPage = 8;
-    var postNumber = postsPerPage;
+    var postNumber = 0;
 
     const cardsLength = useRef(0);
 
-    const [posts, setPosts] = useState([...Array(postsPerPage).keys()]); 
+    const [posts, setPosts] = useState([...Array(0).keys()]); 
     const [cards, setCards] = useState([])
     
     // Assign the cardsLength
     useEffect(function(){
         cardsLength.current=cards.length
+        postNumber = postNumber + postsPerPage;
+        // Last posts
+        if(postNumber>=cardsLength.current){
+            postNumber = cardsLength.current
+            // window.removeEventListener("scroll",handleScroll)
+        }
+        setPosts([...Array(postNumber).keys()]);
     }, [cards])
 
     //Get the cards from Database - only once after render
@@ -85,9 +92,15 @@ export default function FeatureCards(props){
                 return response.json();
               }).then(function(data) {
                 const {message} =data
-                console.log(message); 
                 if(message === "card deleted"){
-                    card.parentElement.removeChild(card)
+                    // var successMessage = document.getElementById('cardAddedSuccessMessage');
+                    card.classList.add("removed-item");
+                    
+                    setTimeout(function() {
+                        // This will execute 5 seconds later
+                        card.parentElement.removeChild(card)
+                    }, 400);
+                    
                 }else{
                     alert(message)
                 }
