@@ -41,17 +41,17 @@ html, body{
 /*** Dark Mode ***/
 
 body.dark{
-    background-color: #21222A;
+    background-color: #000000;
     color:white;
 }
 
 .website.dark {
-    background-color: #21222A;
+    background-color: #000000;
     color:white;
 }
 /* Navbar */
 nav.dark {
-    background-color: #21222A;
+    background-color: #000000;
     color:white;
 }
 
@@ -69,13 +69,13 @@ nav.dark .toggler--slider--circle {
 }
 
 div.dark{
-    background-color: #21222A;
+    background-color: #000000;
     color: white;    
 }
 
 /* FeatureCards */
 feature.dark {
-    background-color: #21222A;
+    background-color: #000000;
     color: white;    
 }
 
@@ -85,13 +85,13 @@ feature.dark {
 
 /* Home */
 div.sidebar.dark{
-    background-color: #21222A!important;
+    background-color: #000000!important;
     color: white;  
 }
 
 /* Footer */
 footer.dark {
-    background-color: #21222A;
+    background-color: #000000;
     color: white;    
 }
 
