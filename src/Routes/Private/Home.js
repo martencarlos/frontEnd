@@ -200,6 +200,7 @@ export default function Home(props){
         props.login &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
+            <div className="space"></div>
             <div  className="wrap-img">
                 <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
                 {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
