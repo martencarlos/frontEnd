@@ -23,6 +23,9 @@ div.sidebar{
     width: 200px;
 }
 
+div.space{
+    height: 20px;
+}
 
 div.sidebar-username{
     margin-top: 5px;
