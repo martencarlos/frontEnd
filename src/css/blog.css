@@ -1,0 +1,16 @@
+img{
+    height:300px;
+    border-radius: 3%;
+}
+
+div.post{
+    display: block;
+    margin-left: auto;
+    padding-left: 50px;
+    margin-right: auto;
+    width: 600px;
+}
+
+figure{
+    text-align: center;
+}
