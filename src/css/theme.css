@@ -22,6 +22,10 @@ input {
     outline: none;
 }
 
+html{
+    overflow-y: scroll;
+}
+
 html, body{
     margin: 0;
 }
