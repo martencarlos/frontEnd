@@ -36,7 +36,7 @@ export default function Blog(props){
 
     return (
         <div  className={props.darkMode ? "dark" : ""}>
-            <div className="post" dangerouslySetInnerHTML={{__html: posts}} />
+            <div className={`post ${props.darkMode ? "dark": ""}`} dangerouslySetInnerHTML={{__html: posts}} />
             
         </div>
 
