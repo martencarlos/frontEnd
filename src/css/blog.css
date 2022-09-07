@@ -9,23 +9,16 @@
     }
     
     div.post figure{
-        display: flex !important;
-        flex-direction: column;
         width: 300px !important;
         margin:0px !important;
         border-radius: 3%;
         justify-content: center;
     }
     div.post img{
-        display: flex;
-        
         width: 300px !important;
         margin:0px !important;
-        border-radius: 3%;
     }
-    div.post p{
-        display: flex;
-    }
+    
 
 }
 
@@ -34,18 +27,37 @@ div.post.dark a{
 }
 
 div.post img{
-    width:500px;
-    border-radius: 3%;
+    display: flex;
+    width:550px;
+    border-radius: 1%;
 }
 
-div.post{
-    display: block;
-    margin-left: auto;
-    padding-left: 50px;
-    margin-right: auto;
-    width: 600px;
+div.blog{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+div.posts{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 300px;
+    height: 100%;
+    margin: 20px;
+}
+
+
+
+div.mainArticle{
+    display: flex;
+    justify-content: start;
+    width: 100%;
 }
 
 div.post figure{
+    display:flex;
+    flex-direction: column;
     text-align: center;
+    margin:0px;
 }

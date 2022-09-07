@@ -1,0 +1,36 @@
+
+ div.article{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 50px;
+ }
+ 
+ div.article .title{
+    font-weight: bold;
+    display: flex;
+    font-size: larger;
+    
+}
+
+div.article .post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+div.article .published{
+    display: flex;
+    font-size: small;
+}
+
+div.article p{
+    display: flex;
+}
+
+div.article img{
+    
+    max-width: 100%;
+}
+
