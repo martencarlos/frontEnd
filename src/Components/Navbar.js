@@ -97,7 +97,7 @@ export default function Navbar(props){
                 </span>
                 
             </nav>
-            <div id="hamb-menu" className="hamb-menu">
+            <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
                 <div className="nav-links-hamb">
                         <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></li>
                         <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></li>

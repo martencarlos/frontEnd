@@ -76,6 +76,10 @@ body.dark .toggler--slider--circle {
     background-color: black;
 }
 
+div.hamb-menu.dark{
+    background-color: rgb(20, 20, 20);
+}
+
 div.dark{
     background-color: #000000;
     color: white;    
