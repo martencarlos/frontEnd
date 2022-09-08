@@ -51,7 +51,7 @@ export default function App(){
     
     return (
         <BrowserRouter>
-            <div className= {`website ${darkMode ? "dark": ""}`}>
+            <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
                     siteTitle= "WebFrame"
                     login = {login}

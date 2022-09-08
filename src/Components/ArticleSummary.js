@@ -11,8 +11,6 @@ export default function ArticleSummary(props){
         props.item.summary = props.item.summary.substring(0,120)+ " …";
 
     }
-        
-    
 
     return (
         <div>
@@ -23,8 +21,8 @@ export default function ArticleSummary(props){
                     <div  className="published"> {props.item.published.substring(0,16)}</div> 
                     <div  className="summary"> {props.item.summary}</div>
                 </div>
-                <div className="separator"></div>
             </div>
+            <div className="separator"></div>
         </div>
     )
 }
