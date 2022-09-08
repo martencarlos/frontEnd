@@ -66,6 +66,7 @@ export default function Home(props){
             }else{
                 document.getElementById("profilePic").src=localStorage.getItem("profilePic")
                 document.getElementById("navProfilePic").src=localStorage.getItem("profilePic")
+                document.getElementById("navProfilePic2").src=localStorage.getItem("profilePic")
                 setUserData(prevFormData => ({
                     ...prevFormData,
                     profilepic: localStorage.getItem("profilePic")
@@ -146,6 +147,7 @@ export default function Home(props){
             setUploadProgress('')
             document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
+            document.getElementById("navProfilePic2").src=response.data.url
             localStorage.setItem("profilePic", response.data.url)
             setUserData(prevFormData => ({
                 ...prevFormData,
@@ -180,6 +182,7 @@ export default function Home(props){
             if(response.data){
                 document.getElementById("profilePic").src=response.data
                 document.getElementById("navProfilePic").src=response.data;
+                document.getElementById("navProfilePic2").src=response.data;
                 localStorage.setItem("profilePic", response.data)
                 setUserData(prevFormData => ({
                     ...prevFormData,
@@ -188,6 +191,7 @@ export default function Home(props){
             }else{
                 localStorage.setItem("profilePic", defaultProfilePic)
                 document.getElementById("navProfilePic").src=defaultProfilePic;
+                document.getElementById("navProfilePic2").src=defaultProfilePic;
             }
         })
         .catch(function (error) {
