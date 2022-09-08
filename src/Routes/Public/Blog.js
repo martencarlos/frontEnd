@@ -54,6 +54,7 @@ export default function Blog(props){
         <div className={`blog ${props.darkMode ? "dark": ""}`}>
             
             <div  className="posts" >
+                <div className="space"></div> 
                 {posts.map((post, i) => (
                     <Summary
                         key = {i}
@@ -61,6 +62,7 @@ export default function Blog(props){
                         item = {post}
                         openArticle = {openArticle}
                     />
+                
                 ))}
             </div>
             

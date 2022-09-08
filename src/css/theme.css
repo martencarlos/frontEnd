@@ -40,6 +40,7 @@ html, body{
     height: 100%;
     align-content: space-between;
     justify-content: space-between;
+    min-width: 375px;
 }
 
 /*** Dark Mode ***/
@@ -62,16 +63,16 @@ nav.dark {
     color:white;
 }
 
-nav.dark .toggler--slider {
+body.dark .toggler--slider {
     border-color: white;
     background-color: #F5F5F5;
 }
 
-nav.dark .toggler--slider {
+body.dark .toggler--slider {
     justify-content: flex-end;
 }
 
-nav.dark .toggler--slider--circle {
+body.dark .toggler--slider--circle {
     background-color: black;
 }
 
