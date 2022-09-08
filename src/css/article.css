@@ -1,7 +1,11 @@
-
+@media (max-width: 700px) {
+    div.article{
+        margin: 30px !important;
+    }
+}
+ 
  div.article{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     margin: 50px;
  }
@@ -30,7 +34,10 @@ div.article p{
 }
 
 div.article img{
+    width: 100%;
+    min-width: 400px;
+    max-width: 600px;
+    height: auto;
     
-    max-width: 100%;
 }
 
