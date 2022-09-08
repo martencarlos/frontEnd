@@ -21,6 +21,7 @@ export default function Navbar(props){
         if(getCookie("me")){
             setUserData(JSON.parse(getCookie("me")))
             document.getElementById("navProfilePic").src=localStorage.getItem("profilePic")
+            document.getElementById("navProfilePic2").src=localStorage.getItem("profilePic")
         }
       }, [props.login])
 
@@ -115,7 +116,7 @@ export default function Navbar(props){
                 </div>}
                 {getCookie("me") && <div className="sign-buttons-hamb">
                     <div className="tooltip">
-                        <img id="navProfilePic" className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
+                        <img id="navProfilePic2" className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
                         <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                     </div>
                     <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>

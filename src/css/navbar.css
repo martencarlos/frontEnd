@@ -25,9 +25,16 @@
     }
 }
 
+@media (min-width: 700px) {
+    div.hamb-menu{
+        display: none !important;
+    }
+}
+
 span.hamb-menu {
     display: none;
     padding:10px;
+    cursor: pointer;
     
 }
 
@@ -54,7 +61,6 @@ div.nav-links-hamb{
 
 div.sign-buttons-hamb{
     display:flex;
-    
     justify-content: space-between;
     align-items: center;
     
