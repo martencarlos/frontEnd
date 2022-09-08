@@ -1,21 +1,26 @@
 
 @media (max-width: 700px) {
     
+    div.blog{
+        flex-direction: column;
+    }
+
+    div.posts{
+        width: auto !important;
+    }
+
     div.post{
         display: flex !important;
         flex-direction: column;
-        width: 300px !important;
-        padding-left: 20px !important;
     }
     
     div.post figure{
-        width: 300px !important;
+        
         margin:0px !important;
         border-radius: 3%;
         justify-content: center;
     }
     div.post img{
-        width: 300px !important;
         margin:0px !important;
     }
     
@@ -28,13 +33,14 @@ div.post.dark a{
 
 div.post img{
     display: flex;
-    width:550px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
     border-radius: 1%;
 }
 
 div.blog{
     display: flex;
-    flex-direction: row;
     width: 100%;
 }
 
