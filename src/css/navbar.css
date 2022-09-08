@@ -27,20 +27,26 @@
 
 span.hamb-menu {
     display: none;
-    padding:5px;
+    padding:10px;
     
 }
+
+span.hamb-menu i.bi{
+    font-size: x-large;
+}
+
 
 div.hamb-menu{
     display: none;
     justify-content: space-between;
     padding: 10px;
-    background-color: #8f8f8f;
+    background-color: #b8b8b8;
 }
 
 div.nav-links-hamb{
     display:flex;
     flex-direction: column;
+    row-gap: 10px;
     justify-content: space-between;
     list-style-type: none;
     color: inherit;
@@ -214,6 +220,7 @@ li{
     background-color: white;
     border-radius: 50%;
 }
+
 
 
 

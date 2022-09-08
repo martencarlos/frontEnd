@@ -28,6 +28,8 @@ export default function Navbar(props){
       useEffect(() => {
         var x = document.getElementById("website");
         x.addEventListener("click", closeHambMenu);
+
+        return () => document.removeEventListener('click', closeHambMenu);
       }, [])
 
     //Logout if cookie expired
@@ -35,20 +37,24 @@ export default function Navbar(props){
         props.toggleLogin()
     }
     
-    function closeHambMenu(){
+    function closeHambMenu(e){
         var x = document.getElementById("hamb-menu");
-        if (x.style.display === "flex") {
+        console.log(e.target.id)
+        if (e.target.id !=="hamb-zone" && x.style.display === "flex") {
             x.style.display = "none";
         }
+        
     }
 
     function hambMenuClick(){
         var x = document.getElementById("hamb-menu");
+        
         if (x.style.display === "flex") {
             x.style.display = "none";
         } else {
             x.style.display = "flex";
         }
+        
     }
 
     return (
@@ -85,8 +91,8 @@ export default function Navbar(props){
                     </div>
                 </div>}
 
-                <span className="hamb-menu" onClick={hambMenuClick}>
-                    <i className="bi bi-list" role="img" aria-label="menu"></i>
+                <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
+                    <i id="hamb-zone" className="bi bi-list" role="img" aria-label="menu"></i>
                 </span>
                 
             </nav>
@@ -125,3 +131,4 @@ export default function Navbar(props){
         </div>
     )
 }
+
