@@ -11,7 +11,7 @@ import Logout from "./Routes/Private/Logout";
 import Register from "./Routes/Public/Register";
 import Projects from "./Routes/Public/Projects";
 import InfinityCards from "./Routes/Public/FeatureCards";
-import Features from "./Routes/Public/Features";
+import Features from "./Routes/Public/Features/Features";
 import Blog from "./Routes/Public/Blog";
 import About from "./Routes/Public/About";
 import Footer from "./Components/Footer";
