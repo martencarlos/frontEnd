@@ -1,16 +1,14 @@
 
 import "../../css/projects.css";
 
-import { useNavigate } from 'react-router-dom';
-
 import SectionHeader from "../../Components/SectionHeader/SectionHeader";
 import Hero from "../../Components/Hero/Hero";
 
-import { sectionHeader, infinityCards, blogIntegration } from "../../data/projects"
+import { sectionHeader, infinityCards, blogIntegration } from "../../data/projects_data"
 
 export default function Projects(props){
     console.log("Rendering Projects")
-    const navigate = useNavigate();
+  
     return (
 
         <div className={props.darkMode ? "dark" : ""}>
@@ -46,6 +44,12 @@ export default function Projects(props){
                 link={true}
                 linkText = {blogIntegration.linkText}
             />
+            
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
         </div>
 
         

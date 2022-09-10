@@ -1,1 +1,15 @@
  
+
+
+div.landingPage{
+    display: flex;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    background-color: darkslategrey;
+    color: rgb(239, 239, 239);
+}
+
+div.landingPage div.hero{
+    width: 75%;
+}
