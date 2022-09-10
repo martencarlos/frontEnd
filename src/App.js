@@ -5,11 +5,12 @@ import {getCookie, setCookie} from "./Util/Cookie";
 
 import Navbar from "./Components/Navbar";
 import Home from "./Routes/Private/Home";
-import FeatureCards from "./Routes/Public/FeatureCards";
+import Main from "./Routes/Public/Main/Main";
 import Login from "./Routes/Public/Login";
 import Logout from "./Routes/Private/Logout";
 import Register from "./Routes/Public/Register";
 import Projects from "./Routes/Public/Projects";
+import InfinityCards from "./Routes/Public/FeatureCards";
 import Features from "./Routes/Public/Features";
 import Blog from "./Routes/Public/Blog";
 import About from "./Routes/Public/About";
@@ -63,9 +64,8 @@ export default function App(){
             <Routes>
              
                 <Route path="/" element={
-                    <FeatureCards 
+                    <Main 
                         darkMode = {darkMode}
-                        login = {login}
                     />}>
                 </Route>
                 <Route path="/home" element={
@@ -89,8 +89,14 @@ export default function App(){
                 <Route path="/register" element={
                     <Register darkMode = {darkMode}/>}>
                 </Route>
-                <Route path="/projects" element={
+                <Route path="projects" element={
                     <Projects darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="projects/infinitycards" element={
+                    <InfinityCards 
+                        darkMode = {darkMode} 
+                        login = {login}
+                    />}>
                 </Route>
                 <Route path="/features" element={
                     <Features darkMode = {darkMode}/>}>

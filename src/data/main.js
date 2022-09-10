@@ -1,12 +1,13 @@
 
 
-const sectionHeader = 
-    {
-        title: "Live projects",
-        text: 
-                `Collection of all sandboxed live projects used in Webframe’s Web Application. The website is completely modular and new features are added progressively in the form of Sandboxed projects.
 
-                In this section you can find the full collection of past projects with live demos.`
+const landingHero = 
+    {
+        title: "What is Webframe?",
+        text: 
+                `Webframe is the construction frame for any website. It offers all the basic tools in order to build your Web Application with full flexibility.
+
+                This is your first and only stop to start building your fully modularized & customizable Website.`
     }
 ;
 
@@ -32,4 +33,4 @@ const blogIntegration =
     }
 ;
 
-export {sectionHeader, infinityCards, blogIntegration};
+export {landingHero};
