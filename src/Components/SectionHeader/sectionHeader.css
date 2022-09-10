@@ -1,0 +1,37 @@
+
+/* sectionHeader */
+
+@media (max-width: 600px) {
+
+    div.sectionHeader {
+        width: 90% !important;
+    }
+}
+
+div.sectionHeader {
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    white-space: pre-line;
+    width: 70%;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.sectionHeader .title{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: bolder;
+    font-size: x-large;
+    margin: 40px;
+}
+
+div.sectionHeader .text{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+

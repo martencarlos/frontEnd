@@ -9,6 +9,7 @@ import FeatureCards from "./Routes/Public/FeatureCards";
 import Login from "./Routes/Public/Login";
 import Logout from "./Routes/Private/Logout";
 import Register from "./Routes/Public/Register";
+import Projects from "./Routes/Public/Projects";
 import Features from "./Routes/Public/Features";
 import Blog from "./Routes/Public/Blog";
 import About from "./Routes/Public/About";
@@ -87,6 +88,9 @@ export default function App(){
                 </Route>
                 <Route path="/register" element={
                     <Register darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="/projects" element={
+                    <Projects darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/features" element={
                     <Features darkMode = {darkMode}/>}>
