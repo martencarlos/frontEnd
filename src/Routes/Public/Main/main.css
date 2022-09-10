@@ -1,15 +1,25 @@
  
+ @media (max-width: 800px) {
 
+    div.landingPage{
+        width: 96.5vw !important;
+    }
+}
 
 div.landingPage{
     display: flex;
     align-items: center;
     height: 90vh;
-    width: 100vw;
+    width: 98.7vw;
     background-color: darkslategrey;
     color: rgb(239, 239, 239);
 }
 
+div.hero .dark{
+    background-color: darkslategrey;
+}
+
 div.landingPage div.hero{
     width: 75%;
+    background-color: darkslategrey !important;
 }

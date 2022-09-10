@@ -15,6 +15,5 @@ export default function Features(props){
                 text = {featuresSection.text}
             />
         </div>
-
     )
 }

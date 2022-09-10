@@ -3,6 +3,7 @@ import "./main.css";
 
 import Hero from "../../../Components/Hero/Hero";
 import Projects from "../../../Routes/Public/Projects";
+import About from "../../../Routes/Public/About/About";
 
 import {  landingHero } from "../../../data/main_data"
 
@@ -23,6 +24,10 @@ export default function Main(props){
             </div>
 
             <Projects
+                darkMode = {props.darkMode}
+            />
+
+            <About
                 darkMode = {props.darkMode}
             />
             
