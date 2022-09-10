@@ -13,7 +13,7 @@ import Projects from "./Routes/Public/Projects";
 import InfinityCards from "./Routes/Public/FeatureCards";
 import Features from "./Routes/Public/Features/Features";
 import Blog from "./Routes/Public/Blog";
-import About from "./Routes/Public/About";
+import About from "./Routes/Public/About/About";
 import Footer from "./Components/Footer";
 
 import "./css/theme.css";
@@ -97,6 +97,9 @@ export default function App(){
                         darkMode = {darkMode} 
                         login = {login}
                     />}>
+                </Route>
+                <Route path="projects/blog" element={
+                    <Blog darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/features" element={
                     <Features darkMode = {darkMode}/>}>

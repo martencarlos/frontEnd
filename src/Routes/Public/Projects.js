@@ -42,16 +42,13 @@ export default function Projects(props){
                 title = {blogIntegration.title}
                 text = {blogIntegration.text}
                 link={true}
+                linkPath = "/projects/blog"
                 linkText = {blogIntegration.linkText}
             />
             
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
 
         </div>
-
-        
     )
 }
