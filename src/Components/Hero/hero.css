@@ -1,19 +1,24 @@
 
-/* heroRight */
+/* hero */
 
 @media (max-width: 800px) {
 
-    div.heroRight {
+    div.hero {
         flex-direction: column;
     }
-    div.heroRight img{
+    div.hero img{
         margin-right: 0px !important;
+        margin-left: 0px !important;
         margin-bottom: 20px;
+        order:1;
+    }
+    div.text-area{
+        order: 2;
     }
 }
 
 
-div.heroRight {
+div.hero {
     display:  flex;
     justify-content: center;
     align-items: center;
@@ -24,12 +29,13 @@ div.heroRight {
     
 }
 
-div.heroRight img{
+div.hero img{
     width: 100%;
     height: auto;
     min-width: 250px;
     max-width: 400px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 div.text-area{
@@ -38,6 +44,7 @@ div.text-area{
     flex-direction: column;
     justify-content: center;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 div.text-area .title{
@@ -52,6 +59,7 @@ div.text-area .title{
 div.text-area .text{
     display: flex;
     flex-wrap: wrap;
+    white-space: pre-line;
     min-width: 250px;
     margin: 10px;
 }
