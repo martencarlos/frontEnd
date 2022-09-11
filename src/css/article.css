@@ -35,10 +35,17 @@ div.article p{
 
 div.article img{
     width: 100%;
-    min-width: 350px;
+   
     max-width: 600px;
     height: auto;
     
 }
 
+div.article div.post figure{
+ margin:0px;
+}
+
+div.article div.post figure figcaption {
+    text-align: center;
+   }
 

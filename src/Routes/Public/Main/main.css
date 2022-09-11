@@ -14,7 +14,7 @@ div.landingPage{
     display: flex;
     align-items: center;
     height: 90vh;
-
+    overflow: hidden;
     background-color: darkslategrey;
     color: rgb(239, 239, 239);
 }

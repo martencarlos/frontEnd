@@ -1,6 +1,6 @@
 /* navbar */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
     nav{
         padding-left: 1em !important;
         padding-right: 1em !important;
@@ -11,8 +11,10 @@
     }
     
     div.sign-buttons{
-        display: none;
-        width: 200px;
+        flex:1;
+        justify-content: end;
+        /* display: none;
+        width: 200px; */
     }
 
     span.hamb-menu{
@@ -139,6 +141,7 @@ div.navbar .nav-brand:hover{
 
 .nav-button{
     height: 30px;
+    margin:3px;
     width: 65px;
     cursor: pointer;
 }
