@@ -12,7 +12,6 @@ export default function Home(props){
 
     console.log("Rendering home")
     const navigate = useNavigate();
-    const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
     
     //UserData
     const [userData, setUserData] = useState({})
@@ -22,19 +21,25 @@ export default function Home(props){
 
     //Login
     useEffect(() => {
+        console.log("home useEffect")
         if(!props.login){
             navigate("/login");
         }else{
             if(getCookie("me")){
-                const cookieUser = JSON.parse(getCookie("me"))
+                var cookieUser = JSON.parse(getCookie("me"));
+                if(document.getElementById("navProfilePic2").src)
+                    cookieUser.profilePic = document.getElementById("navProfilePic2").src
+                else
+                cookieUser.profilePic =localStorage.getItem("profilePic")
                 setUserData(cookieUser)
-                // if(!localStorage.getItem("profilePic")){
-                //     getProfileImageIntoLocalStorage()
-                // }
             }
         }
         // eslint-disable-next-line 
-    }, [props.login])
+    }, [])
+
+    useEffect(() => {
+        
+    }, [userData])
 
     function getProfileImageIntoLocalStorage(){
         console.log("retrieving pic")
@@ -57,6 +62,7 @@ export default function Home(props){
             }else{
                 // localStorage.setItem("profilePic", defaultProfilePic)
                 // document.getElementById("navProfilePic").src=defaultProfilePic;
+                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
                 document.getElementById("navProfilePic2").src=defaultProfilePic;
             }
         })
@@ -131,7 +137,7 @@ export default function Home(props){
            <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
                 <div className="space"></div>
                 <div  className="wrap-img">
-                    <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
+                    <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
                     {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
                             <i className="bi-pencil-square" role="img" aria-label="name"></i>
                         </span>}
