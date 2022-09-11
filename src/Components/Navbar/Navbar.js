@@ -1,7 +1,7 @@
-import "../css/navbar.css";
+import "./navbar.css";
 import {Link, NavLink} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import {getCookie} from "../Util/Cookie";
+import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
 
 export default function Navbar(props){
@@ -60,7 +60,7 @@ export default function Navbar(props){
 
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
-        <div>
+        <div className="navbar">
             <nav className={props.darkMode ? "dark": ""}>
                 <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
 

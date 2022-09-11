@@ -1,17 +1,18 @@
+/* navbar */
+
 @media (max-width: 700px) {
     nav{
         padding-left: 1em !important;
         padding-right: 1em !important;
     }
+    
     ul.nav-links{
         display: none;
     }
+    
     div.sign-buttons{
         display: none;
         width: 200px;
-    }
-    a.nav-brand{
-        
     }
 
     span.hamb-menu{
@@ -41,7 +42,6 @@ span.hamb-menu i.bi{
     font-size: x-large;
 }
 
-
 div.hamb-menu{
     display: none;
     justify-content: space-between;
@@ -49,7 +49,7 @@ div.hamb-menu{
     background-color: #e0e0e0;
 }
 
-div.nav-links-hamb{
+ div.nav-links-hamb{
     display:flex;
     flex-direction: column;
     row-gap: 10px;
@@ -58,14 +58,11 @@ div.nav-links-hamb{
     color: inherit;
 }
 
-div.sign-buttons-hamb{
+ div.sign-buttons-hamb{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    
 }
-
-
 
 nav{
     display: flex;
@@ -79,21 +76,21 @@ nav{
     padding-right: 4em;
 }
 
-.nav-brand{
+div.navbar .nav-brand{
     font-weight:bold;
     font-size: 26px;
     color: inherit;
     text-decoration: none;
-    padding: 0.2rem;
-    border: 1px solid transparent;
+    padding: 0.5rem;
+
+    transition: all .3s ease-in-out;
+    /* border: 1px solid transparent; */
 }
 
-.nav-brand:hover{
-    
-    border: 1px dashed rgb(63, 63, 63);
-    text-decoration: none;
+div.navbar .nav-brand:hover{
+    box-shadow: rgba(0, 0, 0, 0.495) 0px 14px 33px;
+    transform: translate3d(0px, -1px, 0px);
     border-radius: 6px;
-    
 }
 
 .nav-link{
