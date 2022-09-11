@@ -4,6 +4,11 @@
     div.landingPage{
         width: 96.5vw !important;
     }
+
+    div.main div.features-row{
+        flex-direction: column;
+     }
+
 }
 
 div.landingPage{
@@ -23,3 +28,18 @@ div.landingPage div.hero{
     width: 75%;
     background-color: darkslategrey !important;
 }
+
+div.main div.features-row{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
+
+ div.main .link{
+    display: flex;
+    justify-content: center;
+ }
+
+ 

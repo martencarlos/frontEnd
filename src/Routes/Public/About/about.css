@@ -1,0 +1,18 @@
+
+/* about */
+
+@media (max-width: 800px) {
+
+    div.team-row{
+        flex-direction: column;
+     }
+}
+
+
+div.team-row{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }

@@ -4,14 +4,17 @@
 @media (max-width: 800px) {
 
     div.card {
-        
+        width: initial !important;
     }
    
-    div.text-area{
-        
-    }
-}
+    div.card img{
+        display: flex;
+        /* justify-content: center; */
 
+        min-width: 300px !important;
+  
+     }
+}
 
 div.card {
     display:  flex;
@@ -19,7 +22,7 @@ div.card {
     justify-content: center;
     align-items: center;
 
-
+    width: 33.3%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -27,6 +30,18 @@ div.card {
 div.card i{
     font-size: 4em;
 }
+
+div.card img{
+    display: flex;
+    /* justify-content: center; */
+    width: 100%;
+    height: auto;
+    min-width: 100px;
+    max-width: 200px;
+    margin-right: 10px;
+    margin-left: 10px;
+ }
+
 
 div.text-area{
     display: flex;

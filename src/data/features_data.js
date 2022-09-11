@@ -3,7 +3,7 @@
 
 const featuresSection = 
     {
-        title: "Features",
+        title: "All Features",
         text: 
                 `This framework is built in React and the Server in NodeJs. 
 
@@ -42,4 +42,37 @@ const featureCard3 =
     }
 ;
 
-export {featuresSection, featureCard1, featureCard2, featureCard3};
+const featureCard4 = 
+    {
+        icon: "bi-people",
+        title: "User Management",
+        text: 
+                `Register new users safely. Passwords are hidden and encrypted. Possibility to login and logout. Also able to be kept logged in between sessions.
+                `
+    }
+;
+
+const featureCard5 = 
+    {
+        icon: "bi-moon-fill",
+        title: "Dark Mode",
+        text: 
+                `Dark Mode implemented throughout the website. All components adapt and show the best dark theme depending on component loaded.
+                `
+    }
+;
+
+const featureCard6 = 
+    {
+        icon: "bi-boxes",
+        title: "Modular",
+        text: 
+                `The website is completely modular. All its components are independent of each other. 
+
+                New modules are included as projects and integrated into this web application to show real use cases                
+                `
+    }
+;
+export {featuresSection, 
+    featureCard1, featureCard2, featureCard3,
+    featureCard4, featureCard5, featureCard6};
