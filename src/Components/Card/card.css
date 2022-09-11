@@ -1,0 +1,64 @@
+
+/* card */
+
+@media (max-width: 800px) {
+
+    div.card {
+        
+    }
+   
+    div.text-area{
+        
+    }
+}
+
+
+div.card {
+    display:  flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.card i{
+    font-size: 4em;
+}
+
+div.text-area{
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div.text-area .title{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    height: 50%;
+    
+}
+
+div.text-area .text{
+    display: flex;
+    flex-wrap: wrap;
+    white-space: pre-line;
+    min-width: 100px;
+    margin: 10px;
+    height: 50%;
+}
+
+div.text-area .link{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
