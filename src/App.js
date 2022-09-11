@@ -14,7 +14,7 @@ import InfinityCards from "./Routes/Public/FeatureCards";
 import Features from "./Routes/Public/Features/Features";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
-import Footer from "./Components/Footer";
+import Footer from "./Components/Footer/Footer";
 
 import "./css/theme.css";
 
