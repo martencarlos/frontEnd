@@ -1,6 +1,6 @@
 
 import "../../css/featurecards.css";
-import Card from "../../Components/ImageCard/ImageCard";
+import ImageCard from "../../Components/ImageCard/ImageCard";
 import {useState, useEffect,useRef} from "react"
 import {getCookie} from "../../Util/Cookie";
 
@@ -132,11 +132,11 @@ export default function FeatureCards(props){
             <h1>All Cards</h1>
             <div className="board">
                 {cards.length !==0 && posts.map((item, i) => ( 
-                    <Card
+                    <ImageCard
                     key = {cards[i]._id}
                     darkMode = {props.darkmode}
                     item = {cards[i]}
-                    deleteCard={deleteCard}
+                    deleteimageCard={deleteCard}
                     showDeleteButton = {true}
                     />
                 ))}
