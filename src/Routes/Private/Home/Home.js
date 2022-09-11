@@ -27,8 +27,8 @@ export default function Home(props){
         }else{
             if(getCookie("me")){
                 var cookieUser = JSON.parse(getCookie("me"));
-                if(document.getElementById("navProfilePic2").src)
-                    cookieUser.profilePic = document.getElementById("navProfilePic2").src
+                if(document.getElementById("navProfilePic").src)
+                    cookieUser.profilePic = document.getElementById("navProfilePic").src
                 else
                 cookieUser.profilePic =localStorage.getItem("profilePic")
                 setUserData(cookieUser)
@@ -57,13 +57,13 @@ export default function Home(props){
             if(response.data){
                 document.getElementById("profilePic").src=response.data
                 // document.getElementById("navProfilePic").src=response.data;
-                document.getElementById("navProfilePic2").src=response.data;
+                // document.getElementById("navProfilePic2").src=response.data;
                 // localStorage.setItem("profilePic", response.data)
             }else{
                 // localStorage.setItem("profilePic", defaultProfilePic)
                 // document.getElementById("navProfilePic").src=defaultProfilePic;
                 const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
-                document.getElementById("navProfilePic2").src=defaultProfilePic;
+                // document.getElementById("navProfilePic2").src=defaultProfilePic;
             }
         })
         .catch(function (error) {
@@ -114,7 +114,7 @@ export default function Home(props){
             setUploadProgress('')
             document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
-            document.getElementById("navProfilePic2").src=response.data.url
+            // document.getElementById("navProfilePic2").src=response.data.url
             localStorage.setItem("profilePic", response.data.url)
             setUserData(prevFormData => ({
                 ...prevFormData,
