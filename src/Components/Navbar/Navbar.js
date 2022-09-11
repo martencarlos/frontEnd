@@ -127,7 +127,7 @@ export default function Navbar(props){
                 </div>}
 
                 <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
-                    <i id="hamb-zone" className="bi bi-list" role="img" aria-label="menu"></i>
+                    <i id="hamb-zone" className="bi bi-list"  role="img" aria-label="menu"></i>
                 </span>
                 
             </nav>
@@ -140,15 +140,16 @@ export default function Navbar(props){
                         <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></li>
                 </div>
 
-                {!props.login && <div className="sign-buttons-hamb">
+                {/* {!props.login && <div className="sign-buttons-hamb">
                     <button className="nav-button" type="button" onClick={() => navigate('/login')}>Login</button>
-                    <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button>
+                    <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button> */}
+                    
                     <div className="toggler" >
                         <div className="toggler--slider" onClick={props.toggleDarkMode} >
                             <div className="toggler--slider--circle"></div>
                         </div>
                     </div>
-                </div>}
+                {/* </div>}
                 {getCookie("me") && <div className="sign-buttons-hamb">
                     <div className="tooltip">
                         <img id="navProfilePic2" src={userData.profilePic} className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
@@ -160,7 +161,7 @@ export default function Navbar(props){
                             <div className="toggler--slider--circle"></div>
                         </div>
                     </div>
-                </div>}
+                </div>} */}
 
             </div>
 
