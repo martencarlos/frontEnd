@@ -1,7 +1,7 @@
 
 
 
-.card {
+div.imageCard {
     display: flex;
     flex: none;
     flex-direction: column;
@@ -11,28 +11,28 @@
     box-shadow: 5px 5px 10px  rgba(36, 36, 36, 0.315);
 }
 
-.card:hover .card--info {
+div.imageCard:hover .imageCard--info {
   opacity: 1;
   transition: 0.5s;
   visibility: visible;
 }
-.card:hover .card--delete{
+.imageCard:hover .imageCard--delete{
   opacity: 1;
   transition: 0.5s;
   visibility: visible;
 }
 
-.card:hover{
+.imageCard:hover{
   box-shadow: 10px 10px 15px rgba(36, 36, 36, 0.315);
 }
 
-img.card--info-img{
+img.imageCard--info-img{
     height: 100%;
     object-fit: cover;
     margin-bottom: 62px;
  }
 
- .card--info {
+ .imageCard--info {
     position: absolute;
     right: 0;
     left: 0;
@@ -50,7 +50,7 @@ img.card--info-img{
     transition: 0.5s;
  }
  
- span.card--delete{
+ span.imageCard--delete{
    display: flex;
    /* text-shadow: -1px 0 black, 0 1px black, 2px 0 black, 0 -1px black; */
    position:absolute;
@@ -66,14 +66,14 @@ img.card--info-img{
    
  }
 
- span.card--stats { 
+ span.imageCard--stats { 
      margin-right: 10px;
      margin-left: 10px;
      display: flex;
      align-items: center;
     }
  
-  img.card--profile--img {
+  img.imageCard--profile--img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -82,7 +82,7 @@ img.card--info-img{
     margin-right: 15px;
   }
 
-  .card--profile {
+  .imageCard--profile {
     background-color: #f4f7ff;
     
     display: flex;
@@ -97,11 +97,11 @@ img.card--info-img{
     
  }
 
- .card--profile--text{
+ .imageCard--profile--text{
     margin-right: auto;
  }
 
-  h2.card--profile--text--h2 {
+  h2.imageCard--profile--text--h2 {
    color: #334454;
    white-space: nowrap;
    font-size: 1rem;
@@ -110,7 +110,7 @@ img.card--info-img{
    max-width: 150px;
   }
 
-  p.author {
+  p.imageCard--profile--author {
    color: #a1b2bc;
    white-space: nowrap;
    overflow: hidden;
@@ -118,8 +118,7 @@ img.card--info-img{
    font-size: 0.8rem;
    margin-top: 3px;
   }
-  p b {
-   font-style: italic;
-  }
+
+  
  
 

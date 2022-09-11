@@ -1,0 +1,35 @@
+
+@media (max-width: 700px) {
+    
+    div.blog{
+        flex-direction: column;
+    }
+
+    div.blog-posts{
+        width: auto !important;
+    }
+   
+}
+
+
+div.blog{
+    display: flex;
+    width: 100%;
+}
+
+div.blog-posts{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 300px;
+    height: 100%;
+    margin: 20px;
+}
+
+
+div.blog-mainArticle{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+

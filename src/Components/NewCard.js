@@ -1,7 +1,7 @@
 
 import "../css/newcard.css";
 
-import Card from "./Card";
+import Card from "./ImageCard/ImageCard";
 import {useState, useEffect} from "react"
 
 import {resizeFile} from "../Util/ImageProcessing";

@@ -1,7 +1,7 @@
 
-import "../../css/blog.css";
-import Summary from "../../Components/ArticleSummary";
-import Article from "../../Components/Article";
+import "./blog.css";
+import Summary from "../../../Components/ArticleSummary";
+import Article from "../../../Components/Article";
 
 import { useState,useEffect,useRef} from "react"
 
@@ -53,8 +53,8 @@ export default function Blog(props){
     return (
         <div className={`blog ${props.darkMode ? "dark": ""}`}>
             
-            <div  className="posts" >
-                <div className="space"></div> 
+            <div  className="blog-posts" >
+                <br></br> 
                 {posts.map((post, i) => (
                     <Summary
                         key = {i}
@@ -67,7 +67,7 @@ export default function Blog(props){
             </div>
             
             {mainArticle && 
-            <div  className="mainArticle">
+            <div  className="blog-mainArticle">
                 <Article
                         darkMode = {props.darkmode}
                         item = {mainArticle}
@@ -75,7 +75,5 @@ export default function Blog(props){
             </div>
             }
             </div>
-
-        
     )
 }

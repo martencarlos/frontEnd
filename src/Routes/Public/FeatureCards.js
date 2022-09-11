@@ -1,6 +1,6 @@
 
 import "../../css/featurecards.css";
-import Card from "../../Components/Card";
+import Card from "../../Components/ImageCard/ImageCard";
 import {useState, useEffect,useRef} from "react"
 import {getCookie} from "../../Util/Cookie";
 

@@ -1,2 +1,22 @@
+/* features */
 
+@media (max-width: 800px) {
 
+    div.features div.features-row{
+        flex-direction: column;
+     }
+}
+
+ div.features{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+ }
+
+ div.features div.features-row{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ }
