@@ -1,0 +1,83 @@
+@media (max-width: 640px) {
+    
+    
+  }
+
+
+
+div.home{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+div.sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    height:100%;
+    width: 200px;
+}
+
+div.space{
+    height: 20px;
+}
+
+div.sidebar-username{
+    margin-top: 5px;
+    margin-bottom:5px;
+    align-self: center;
+    text-align: center;
+}
+
+img.sidebar-profilepicture{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+    object-fit: cover;
+    align-self: center;
+}
+
+div.home-main{
+    width: 100%;
+}
+
+
+.wrap-img {
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    position:relative;
+    cursor: pointer;
+}
+.wrap-text{
+    align-self: center;
+    position:absolute;
+    visibility: hidden;
+    opacity: 0;
+    background-color: rgb(84, 84, 84);
+    color: white;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: smaller;
+    /* transition effect. not necessary */
+    transition: 0.5s
+}
+.upload-progress{
+    display: flex;
+    align-self: center;
+    position:absolute;
+    background-color: rgb(84, 84, 84);
+    color: white;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: smaller;
+}
+
+.wrap-img:hover .wrap-text{
+    visibility: visible;
+    transition: 0.5s;
+    opacity: 1;
+}

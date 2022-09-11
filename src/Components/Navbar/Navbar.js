@@ -3,15 +3,12 @@ import {Link, NavLink} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
+import axios from "axios";
 
 export default function Navbar(props){
     console.log("Rendering Navbar")
     const navigate = useNavigate();
-    let activeStyle = {
-        fontweight: "bold",
-      };
     
-      let activeClassName = "underline";
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
 
@@ -19,34 +16,42 @@ export default function Navbar(props){
     useEffect(() => {
         console.log("navbar useEffect")
         if(getCookie("me")){
-            setUserData(JSON.parse(getCookie("me")))
-            document.getElementById("navProfilePic").src=localStorage.getItem("profilePic")
-            document.getElementById("navProfilePic2").src=localStorage.getItem("profilePic")
+            if(!localStorage.getItem("profilePic")){
+                    getProfileImageIntoLocalStorage()
+            }else{
+                setUserData(prevFormData => ({
+                    ...prevFormData,
+                    profilePic: localStorage.profilePic
+                }))
+            }
         }
-      }, [props.login])
+    }, [props.login])
 
+ 
 
-      useEffect(() => {
-        var x = document.getElementById("website");
-        x.addEventListener("click", closeHambMenu);
+    //close hamburguer menu if clicked outside the menu
+    useEffect(() => {
+    var x = document.getElementById("website");
+    x.addEventListener("click", closeHambMenu);
 
-        return () => document.removeEventListener('click', closeHambMenu);
-      }, [])
+    return () => document.removeEventListener('click', closeHambMenu);
+    }, [])
+
+    //close hamburguer event listener function
+    function closeHambMenu(e){
+        var x = document.getElementById("hamb-menu");
+        
+        if (e.target.id !=="hamb-zone" && x.style.display === "flex") {
+            x.style.display = "none";
+        }
+    }
 
     //Logout if cookie expired
     if(getCookie("me")==="" && props.login){
         props.toggleLogin()
     }
     
-    function closeHambMenu(e){
-        var x = document.getElementById("hamb-menu");
-        console.log(e.target.id)
-        if (e.target.id !=="hamb-zone" && x.style.display === "flex") {
-            x.style.display = "none";
-        }
-        
-    }
-
+    //open & close hamburguer by clicking the icon 
     function hambMenuClick(){
         var x = document.getElementById("hamb-menu");
         
@@ -55,7 +60,35 @@ export default function Navbar(props){
         } else {
             x.style.display = "flex";
         }
-        
+    }
+
+    function getProfileImageIntoLocalStorage(){
+        console.log("retrieving pic")
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/getProfileImage',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: getCookie("me"),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+        };
+        axios(config).then(function (response) {
+            
+            if(response.data){
+                localStorage.setItem("profilePic", response.data)
+            }else{
+                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
+                localStorage.setItem("profilePic", defaultProfilePic)
+            }
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profilePic: localStorage.profilePic
+            }))
+        })
+        .catch(function (error) {
+            console.log("error retrieving image")
+        });
     }
 
     return (
@@ -65,7 +98,7 @@ export default function Navbar(props){
                 <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
 
                 <ul className="nav-links">
-                    <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></li>
+                    {props.login && <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></li>}
                     <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></li>
                     <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></li>
                     <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></li>
@@ -82,7 +115,7 @@ export default function Navbar(props){
                 </div>}
                 {getCookie("me") && <div className="sign-buttons">
                     <div className="tooltip">
-                        <img id="navProfilePic" className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
+                        <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
                         <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                     </div>
                     <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
@@ -118,7 +151,7 @@ export default function Navbar(props){
                 </div>}
                 {getCookie("me") && <div className="sign-buttons-hamb">
                     <div className="tooltip">
-                        <img id="navProfilePic2" className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
+                        <img id="navProfilePic2" src={userData.profilePic} className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
                         <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                     </div>
                     <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>

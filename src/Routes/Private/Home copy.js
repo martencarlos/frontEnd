@@ -12,6 +12,7 @@ import {useState, useEffect} from "react"
 
 export default function Home(props){
     console.log("Rendering Home")
+
     const navigate = useNavigate();
     const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
     
@@ -204,14 +205,14 @@ export default function Home(props){
         props.login &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
             <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
-            <div className="space"></div>
-            <div  className="wrap-img">
-                <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
-                {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
-                        <i className="bi-pencil-square" role="img" aria-label="name"></i>
-                    </span>}
-                {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
-            </div>
+                <div className="space"></div>
+                <div  className="wrap-img">
+                    <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilepic} alt="profile pic" />
+                    {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
+                            <i className="bi-pencil-square" role="img" aria-label="name"></i>
+                        </span>}
+                    {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
+                </div>
                 <div id="username" className="sidebar-username">
                     {userData.name} 
                 </div>
