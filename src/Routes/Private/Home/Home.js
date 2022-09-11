@@ -113,7 +113,7 @@ export default function Home(props){
           .then(function (response) {
             setUploadProgress('')
             document.getElementById("profilePic").src=response.data.url
-            // document.getElementById("navProfilePic").src=response.data.url
+            document.getElementById("navProfilePic").src=response.data.url
             document.getElementById("navProfilePic2").src=response.data.url
             localStorage.setItem("profilePic", response.data.url)
             setUserData(prevFormData => ({
