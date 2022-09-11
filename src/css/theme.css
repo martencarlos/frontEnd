@@ -23,11 +23,12 @@ input {
 }
 
 html{
-    overflow-y: scroll;
+    
 }
 
 html, body{
     margin: 0;
+    
 }
 
 .root{
