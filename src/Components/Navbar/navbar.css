@@ -83,12 +83,12 @@ div.navbar .nav-brand{
     text-decoration: none;
     padding: 0.5rem;
 
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
     /* border: 1px solid transparent; */
 }
 
 div.navbar .nav-brand:hover{
-    box-shadow: rgba(0, 0, 0, 0.495) 0px 14px 33px;
+    box-shadow: rgba(0, 0, 0, 0.308) 0px 8px 13px;
     transform: translate3d(0px, -1px, 0px);
     border-radius: 6px;
 }
