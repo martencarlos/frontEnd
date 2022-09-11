@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import {getCookie, setCookie} from "./Util/Cookie";
 
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Routes/Private/Home";
 import Main from "./Routes/Public/Main/Main";
 import Login from "./Routes/Public/Login";
