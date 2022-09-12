@@ -41,6 +41,7 @@ input {
     --divider-color:#BDBDBD;
 
     --primary-light-darker: #ced1e5;
+    --primary-bg:rgb(131, 150, 234);
 }
 
 html{
