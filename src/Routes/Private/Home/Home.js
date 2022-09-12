@@ -15,7 +15,7 @@ export default function Home(props){
     const navigate = useNavigate();
 
     // //Add a card functionality
-    // import NewCard from "../../../Components/NewCard";
+    // import NewCard from "../../../Components/NewCard/NewCard";
     // var [cards, setCards] = useState(
     //     ()=>JSON.parse(localStorage.getItem("cards")) || []
     // )

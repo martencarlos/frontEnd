@@ -15,13 +15,13 @@ export default function UploadImage(){
     },[images])
 
     function onImageChange(e){
-        setImages([... e.target.files])
+        setImages([...e.target.files])
     }
 
     return(
         <div className="imageUpload">
             <input type="file" multiple accept="image/*" onChange={onImageChange}/>
-            {imagesURLs.map(imageSrc => <img className="userImagePreview" src={imageSrc}/>)}
+            {imagesURLs.map(imageSrc => <img alt="" className="userImagePreview" src={imageSrc}/>)}
         </div>
     )
 }
