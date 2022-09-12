@@ -10,7 +10,7 @@ import Login from "./Routes/Public/Login/Login";
 import Logout from "./Routes/Private/Logout";
 import Register from "./Routes/Public/Register/Register";
 import Projects from "./Routes/Public/Projects/Projects";
-import InfinityCards from "./Routes/Public/FeatureCards";
+import InfinityCards from "./Routes/Public/InfinityCards/InfinityCards";
 import Features from "./Routes/Public/Features/Features";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";

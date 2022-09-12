@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 import NewCard from "../../Components/NewCard";
-import {getCookie} from "../../Util/Cookie";
-import {resizeFile} from "../../Util/ImageProcessing";
+import {getCookie} from "../Cookie";
+import {resizeFile} from "../ImageProcessing";
 import axios from "axios";
 import {useState, useEffect} from "react"
 

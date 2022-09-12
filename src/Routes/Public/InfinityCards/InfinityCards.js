@@ -1,8 +1,9 @@
 
-import "../../css/featurecards.css";
-import ImageCard from "../../Components/ImageCard/ImageCard";
+import "./infinityCards.css";
+
+import ImageCard from "../../../Components/ImageCard/ImageCard";
 import {useState, useEffect,useRef} from "react"
-import {getCookie} from "../../Util/Cookie";
+import {getCookie} from "../../../Util/Cookie";
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
