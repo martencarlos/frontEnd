@@ -50,6 +50,7 @@ span.hamb-menu i.bi{
 
 div.hamb-menu{
     display: none;
+    z-index: 100;
     margin: 6px;
     position: absolute;
     width: -webkit-fill-available;
