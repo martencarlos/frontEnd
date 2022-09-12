@@ -4,6 +4,8 @@ import {useState} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import Button from '@mui/material/Button'
+
 export default function Register(props){
     console.log("rendering Register")
     const navigate = useNavigate();
@@ -195,7 +197,7 @@ export default function Register(props){
                         </div>
                     </div>
                     {formErrors.password2 && <label className="error">{formErrors.password2}</label>}
-                    <button className="register" type="button" onClick={validate}>Register</button>
+                    <Button variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
                 </div>
             </form>
         </div>

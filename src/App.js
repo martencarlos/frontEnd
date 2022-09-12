@@ -22,22 +22,24 @@ import {ThemeProvider, createTheme } from '@mui/material/styles';
 export default function App(){
     console.log("Rendering App")
 
+    var style = getComputedStyle(document.body)
     
+
     const theme = createTheme({
-    palette: {
-        primary: {
-            light: '#6573c3',
-            main: '#3f51b5',
-            dark: '#2c387e',
-            contrastText: '#fff',
+        palette: {
+            primary: {
+                light: style.getPropertyValue('--primary-light').trim() ,
+                main: style.getPropertyValue('--primary-color').trim(),
+                dark: style.getPropertyValue('--primary-dark').trim() ,
+                contrastText: '#fff',
+            },
+            secondary: {
+                light: style.getPropertyValue('--secondary-light').trim() ,
+                main: style.getPropertyValue('--secondary-color').trim() ,
+                dark: style.getPropertyValue('--secondary-dark').trim() ,
+                contrastText: '#000',
+            },
         },
-        secondary: {
-            light: '#67b7f7',
-            main: '#42a5f5',
-            dark: '#2e73ab',
-            contrastText: '#000',
-        },
-    },
     });
 
 

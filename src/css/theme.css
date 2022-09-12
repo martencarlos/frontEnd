@@ -26,7 +26,19 @@ input {
 /* Colors */
 
 :root {
-    --my-variable-name: #999999;
+    --accent-color:#536DFE;
+
+    --primary-light: #C5CAE9;
+    --primary-color: #3F51B5;
+    --primary-dark: #303F9F;
+
+    --secondary-light: #6573c3;
+    --secondary-color: #27a527;
+    --secondary-dark: #2c387e;
+
+    --primary-text: #212121;
+    --secondary-text: #757575;
+    --divider-color:#BDBDBD;
 }
 
 html{

@@ -5,6 +5,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setCookie} from "../../../Util/Cookie";
 
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+
 export default function Login(props){
     console.log("Rendering Login")
 
@@ -20,22 +25,6 @@ export default function Login(props){
         email:"",
         password: "",
     })
-
-    useEffect(() => {
-        // Get the input field
-        var input = document.getElementById("pass");
-
-        // Execute a function when the user presses a key on the keyboard
-        input.addEventListener("keypress", function(event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("login").click();
-        }
-        });
-      }, [])
 
     function handleChange(event) {
         const {name, value} = event.target
@@ -84,16 +73,15 @@ export default function Login(props){
             });
     }
 
-    function validate(){
-        //event.preventDefault();
+    function validate(e){
+        e.preventDefault();
         const currentErrors = validateForm()
-        setFormErrors(currentErrors)
-
         
         if(Object.keys(currentErrors).length===0){
              login()
+        }else{
+            setFormErrors(currentErrors)
         }
-        
     }
 
     function validateForm(){
@@ -115,53 +103,72 @@ export default function Login(props){
 
     return (
         <div className={props.darkMode ? "dark" : ""}>
+        
             <form className="login-form">
-                <h1>Login</h1>
+                <Typography variant="h2" gutterBottom>Login</Typography>
+                
                 <div className="login-form-inputs">
                     <div className="login-form-input-row">
-                        <span className="login-icon">
-                            <i className="bi-envelope-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
+
                         <div className="login-form-input-row-inputanderror">
-                            <input
+                        
+                            {!formErrors.email && <TextField
+                                required
                                 name="email"
-                                type="email"
-                                placeholder="email"
-                                autoComplete="section-blue email"
-                                required="required"
-                                value={formData.email}
+                                id="standard-required"
+                                label="Email"
+                                defaultValue={formData.email}
+                                variant="standard"
                                 onChange={handleChange}
-                                
-                            />
+                            />}
+
+                            {formErrors.email && <TextField
+                                error
+                                name="email"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.email}
+                                helperText={formErrors.email}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+                
                         </div>
                     </div>
-                    {formErrors.email && <label className="error">{formErrors.email}</label>}
+
                         
                     <div className="login-form-input-row">
-                        <span className="login-icon">
-                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
+
                         <div className="login-form-input-row-inputanderror">
-                            <input
+                            
+                            {!formErrors.password && <TextField
+                                required
                                 name="password"
-                                id="pass"
+                                id="standard-password-input"
+                                label="Password"
                                 type="password"
-                                placeholder="password"
-                                autoComplete="section-red new-password"
-                                required="required"
-                                value={formData.password}
+                                autoComplete="current-password"
+                                variant="standard"
                                 onChange={handleChange}
-                                
-                            />
+                            />}
+
+                            {formErrors.password && <TextField
+                                error
+                                name="password"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.password}
+                                helperText={formErrors.password}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}     
+
                         </div>
                     </div>
-                    {formErrors.password && <label className="error">{formErrors.password}</label>}
-                    <button id="login" className="login" type="button" onClick={validate}>Login</button>
 
+                    <Button variant="contained" id="login" className="login" type="button" onClick={validate}>Login</Button>
                 </div>
             </form>
         </div>
-
-        
     )
 }
