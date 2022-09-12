@@ -15,7 +15,7 @@ div.landingPage{
     align-items: center;
     height: 90vh;
     overflow: hidden;
-    background-color: var(--primary-color);
+    background-color: var(--primary-dark);
     color: rgb(239, 239, 239);
 }
 
