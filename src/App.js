@@ -17,9 +17,29 @@ import About from "./Routes/Public/About/About";
 import Footer from "./Components/Footer/Footer";
 
 import "./css/theme.css";
+import {ThemeProvider, createTheme } from '@mui/material/styles';
 
 export default function App(){
     console.log("Rendering App")
+
+    
+    const theme = createTheme({
+    palette: {
+        primary: {
+            light: '#6573c3',
+            main: '#3f51b5',
+            dark: '#2c387e',
+            contrastText: '#fff',
+        },
+        secondary: {
+            light: '#67b7f7',
+            main: '#42a5f5',
+            dark: '#2e73ab',
+            contrastText: '#000',
+        },
+    },
+    });
+
 
     // ***** USE STATES & USE EFFECTS *****
     
@@ -53,6 +73,7 @@ export default function App(){
     
     return (
         <BrowserRouter>
+        <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
                     siteTitle= "WebFrame"
@@ -113,6 +134,7 @@ export default function App(){
             </Routes>
             <Footer darkMode = {darkMode} />
             </div>
+            </ThemeProvider>
         </BrowserRouter>
     )
 }

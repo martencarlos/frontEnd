@@ -152,10 +152,15 @@ div.navbar .nav-brand:hover{
 }
 
 .nav-button{
-    height: 30px;
-    margin:3px;
-    width: 65px;
-    cursor: pointer;
+          /* height: 30px; */
+    width: 78px;
+    min-width: auto !important;
+    /* cursor: pointer; */
+    /* font-weight: bold !important; */
+    padding-right: 20px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    padding-left: 20px !important;
 }
 
 label.nav-username{

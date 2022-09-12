@@ -1,9 +1,9 @@
 
+/* webkit */
 
 .cards-list::-webkit-scrollbar {
     height: 0.7em;
 }
-
 .cards-list::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(209, 209, 209, 0.3);
 }
@@ -23,13 +23,18 @@ input {
     outline: none;
 }
 
+/* Colors */
+
+:root {
+    --my-variable-name: #999999;
+}
+
 html{
     
 }
 
 html, body{
     margin: 0;
-    
 }
 
 .root{
