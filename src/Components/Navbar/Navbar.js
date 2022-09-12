@@ -5,6 +5,8 @@ import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
 import axios from "axios";
 
+import Button from '@mui/material/Button'
+
 export default function Navbar(props){
     console.log("Rendering Navbar")
     const navigate = useNavigate();
@@ -105,8 +107,8 @@ export default function Navbar(props){
                     <li><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></li>
                 </ul>
                 {!props.login && <div className="sign-buttons">
-                    <button className="nav-button" type="button" onClick={() => navigate('/login')}>Login</button>
-                    <button className="nav-button" type="button" onClick={() => navigate('/register')}>Register</button>
+                <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/login')}>Login</Button>
+                <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                     <div className="toggler" >
                         <div className="toggler--slider" onClick={props.toggleDarkMode} >
                             <div className="toggler--slider--circle"></div>
@@ -118,7 +120,7 @@ export default function Navbar(props){
                         <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
                         <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
                     </div>
-                    <button className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</button>
+                    <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                     <div className="toggler" >
                         <div className="toggler--slider" onClick={props.toggleDarkMode} >
                             <div className="toggler--slider--circle"></div>
