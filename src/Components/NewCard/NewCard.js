@@ -1,12 +1,12 @@
 
-import "../css/newcard.css";
+import "./newcard.css";
 
-import Card from "./ImageCard/ImageCard";
+import Card from "../ImageCard/ImageCard";
 import {useState, useEffect} from "react"
 
-import {resizeFile} from "../Util/ImageProcessing";
+import {resizeFile} from "../../Util/ImageProcessing";
 import axios from "axios";
-import {getCookie} from "../Util/Cookie";
+import {getCookie} from "../../Util/Cookie";
 
 
 export default function NewCard(props){

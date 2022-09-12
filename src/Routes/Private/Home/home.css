@@ -39,6 +39,8 @@ img.sidebar-profilepicture{
     align-self: center;
 }
 
+
+
 div.home-main{
     width: 100%;
 }
@@ -52,19 +54,33 @@ div.home-main{
     position:relative;
     cursor: pointer;
 }
+
 .wrap-text{
-    align-self: center;
-    position:absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+    text-align: center;
+    position: absolute;
     visibility: hidden;
     opacity: 0;
     background-color: rgb(84, 84, 84);
     color: white;
-    border-radius: 6px;
-    padding: 3px;
     font-size: smaller;
-    /* transition effect. not necessary */
-    transition: 0.5s
+    transition: 0.3s;
 }
+
+.bi-pencil-square{
+    width: auto;
+    font-size: large;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0%;
+    margin: 0px;
+}
+
 .upload-progress{
     display: flex;
     align-self: center;
@@ -78,6 +94,6 @@ div.home-main{
 
 .wrap-img:hover .wrap-text{
     visibility: visible;
-    transition: 0.5s;
-    opacity: 1;
+    transition: 0.3s;
+    opacity: 0.8;
 }
