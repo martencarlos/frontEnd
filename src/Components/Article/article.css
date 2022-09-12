@@ -33,9 +33,7 @@ div.article .published{
     font-size: small;
 }
 
-div.article p{
-    display: flex;
-}
+
 
 div.article img{
     width: 100%;
