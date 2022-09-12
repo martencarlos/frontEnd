@@ -42,6 +42,7 @@ export default function Blog(props){
     
     //open article by using event.currentTarget id
     function openArticle(e){
+        window.scrollTo(0, 0);
         console.log(posts.find(x => x.id === e.currentTarget.id))
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
     }
@@ -62,14 +63,16 @@ export default function Blog(props){
                 <div className="blog-posts-title"> Latest updates</div>
                 <br></br>
                 {posts.map((post, i) => (
-                    <div>
+                    <div key = {i}>
+                        
                         <Summary
-                        key = {i}
-                        darkMode = {props.darkmode}
-                        item = {post}
-                        openArticle = {openArticle}
-                        />
+                            darkMode = {props.darkmode}
+                            item = {post}
+                            openArticle = {openArticle}
+                            />
+                        
                         <div className="separator"></div>
+
                     </div>
                 ))}
 
