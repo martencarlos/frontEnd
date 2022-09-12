@@ -1,8 +1,9 @@
+
+
 .cards-list::-webkit-scrollbar {
-    
     height: 0.7em;
-    
 }
+
 .cards-list::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(209, 209, 209, 0.3);
 }
