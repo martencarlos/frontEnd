@@ -1,5 +1,5 @@
 
-import "../css/uploadImage.css";
+import "./uploadImage.css";
 
 import { useState, useEffect } from "react";
 
