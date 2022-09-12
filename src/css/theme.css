@@ -28,7 +28,7 @@ input {
 :root {
     --accent-color:#536DFE;
 
-    --primary-light: #C5CAE9;
+    --primary-light: #e5e6ef;
     --primary-color: #3F51B5;
     --primary-dark: #303F9F;
 
@@ -39,6 +39,8 @@ input {
     --primary-text: #212121;
     --secondary-text: #757575;
     --divider-color:#BDBDBD;
+
+    --primary-light-darker: #ced1e5;
 }
 
 html{

@@ -109,29 +109,30 @@ div.navbar .nav-brand:hover{
 
 .nav-link{
     text-decoration: none;
-    color: inherit;
-    padding: 6px;
+    color: var(--primary-color);
+    padding: 5px;
+}
+
+Button.bt-nav-link{
+    padding: 0px;
+    
 }
 
 .nav-link:hover{
-    background-color:#2B283A;
     text-decoration: none;
-    border-radius: 6px;
-    color: whitesmoke;
 }
 
 .nav-link-active{
     text-decoration: none;
-    background-color:#3a3a3a;
-    color: inherit;
-    color: whitesmoke;
-    padding: 6px;
-    border-radius: 6px;
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+    padding: 5px;
+    border-radius: 4px;
+    width: 100%;
 }
 .nav-link-active:hover{
     text-decoration: none;
-    background-color:#2B283A;
-    color: whitesmoke;
+    background-color: var(--primary-light-darker);
  
 }
 
