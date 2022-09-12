@@ -8,7 +8,6 @@ import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
 
 
-
 export default function Home(props){
 
     console.log("Rendering home")
@@ -190,8 +189,9 @@ export default function Home(props){
             </div>
 
             <div className="home-main">
-                
-                
+                {/* <div className="home-main-panel">
+                    Settings
+                </div> */}
                 
                 
                 
