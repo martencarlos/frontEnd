@@ -23,10 +23,11 @@ export default function App(){
     console.log("Rendering App")
 
     var style = getComputedStyle(document.body)
-    
+
 
     const theme = createTheme({
         palette: {
+            
             primary: {
                 light: style.getPropertyValue('--primary-light').trim() ,
                 main: style.getPropertyValue('--primary-color').trim(),
@@ -39,6 +40,10 @@ export default function App(){
                 dark: style.getPropertyValue('--secondary-dark').trim() ,
                 contrastText: '#000',
             },
+            text: {
+                primary: style.getPropertyValue('--primary-text').trim(),
+                secondary: style.getPropertyValue('--secondary-text').trim(),
+            }
         },
     });
 
