@@ -9,12 +9,13 @@
     flex-direction: column;
     margin: 50px;
  }
+
+ 
  
  div.article .title{
     font-weight: bold;
     display: flex;
-    font-size: larger;
-    
+    font-size: x-large;
 }
 
 div.article .post{
@@ -26,6 +27,8 @@ div.article .post{
 
 div.article .published{
     display: flex;
+    margin-top: 10px;
+    color: rgb(63, 95, 192);
     font-size: small;
 }
 
