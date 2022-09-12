@@ -15,7 +15,7 @@ div.landingPage{
     align-items: center;
     height: 90vh;
     overflow: hidden;
-    background-color: darkslategrey;
+    background-color: var(--primary-color);
     color: rgb(239, 239, 239);
 }
 
@@ -25,7 +25,7 @@ div.hero .dark{
 
 div.landingPage div.hero{
     width: 75%;
-    background-color: darkslategrey !important;
+    
 }
 
 div.main div.features-row{

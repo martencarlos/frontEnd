@@ -86,32 +86,7 @@ export default function Home(props){
     }, [userData])
 
     //Profile Image functions
-    function getProfileImageIntoLocalStorage(){
-        console.log("retrieving pic")
-        const config = {
-            url: process.env.REACT_APP_SERVER+'/getProfileImage',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            data: getCookie("me"),
-            withCredentials: true, // Now this is was the missing piece in the client side 
-        };
-        axios(config).then(function (response) {
-            
-            if(response.data){
-                document.getElementById("profilePic").src=response.data
-            }else{
-                // localStorage.setItem("profilePic", defaultProfilePic)
-                // document.getElementById("navProfilePic").src=defaultProfilePic;
-                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
-                // document.getElementById("navProfilePic2").src=defaultProfilePic;
-            }
-        })
-        .catch(function (error) {
-            console.log("error retrieving image")
-        });
-    }
+    
     function changePicture(){
         var input = document.createElement('input');
         document.body.appendChild(input); //required for iphone

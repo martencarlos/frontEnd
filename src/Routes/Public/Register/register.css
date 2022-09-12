@@ -40,7 +40,8 @@ h1{
 
 i.registerLoginForms{
     margin:0px;
-    padding: 10px;
+    margin-right: 10px;
+    padding: 12px;
     background-color: #6f6f6f;
     border-radius: 2px;
 }
