@@ -3,18 +3,63 @@ import "./home.css";
 
 import {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-
 import {getCookie} from "../../../Util/Cookie";
 import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
+
+
 
 export default function Home(props){
 
     console.log("Rendering home")
     const navigate = useNavigate();
+
+    // //Add a card functionality
+    // import NewCard from "../../../Components/NewCard";
+    // var [cards, setCards] = useState(
+    //     ()=>JSON.parse(localStorage.getItem("cards")) || []
+    // )
+
+    // //cards
+    // useEffect(() => {
+    //     localStorage.setItem("cards", JSON.stringify(cards))
+    // }, [cards])
     
+       // //Add new card
+    // function addCard(newCard) {
+        
+    //     const config = {
+    //         url: process.env.REACT_APP_SERVER+'/cards',
+    //         method: 'POST',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Content-Type': 'application/json',
+    //         },
+    //         data: JSON.stringify(newCard),
+    //     };
+    //     axios(config) 
+    //     .then(function (response) {
+            
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+
+    //     setCards(prevCards => {
+    //         return [
+    //             ...prevCards,
+    //             newCard
+    //         ]
+    //     })
+    // }
+
+
+
     //UserData
-    const [userData, setUserData] = useState({})
+    
+    const [userData, setUserData] = useState({author:{
+        authorid: ""
+    }})
 
     //Upload progress
     const [uploadProgress, setUploadProgress] = useState('')
@@ -41,6 +86,7 @@ export default function Home(props){
         
     }, [userData])
 
+    //Profile Image functions
     function getProfileImageIntoLocalStorage(){
         console.log("retrieving pic")
         const config = {
@@ -56,9 +102,6 @@ export default function Home(props){
             
             if(response.data){
                 document.getElementById("profilePic").src=response.data
-                // document.getElementById("navProfilePic").src=response.data;
-                // document.getElementById("navProfilePic2").src=response.data;
-                // localStorage.setItem("profilePic", response.data)
             }else{
                 // localStorage.setItem("profilePic", defaultProfilePic)
                 // document.getElementById("navProfilePic").src=defaultProfilePic;
@@ -70,7 +113,6 @@ export default function Home(props){
             console.log("error retrieving image")
         });
     }
-
     function changePicture(){
         var input = document.createElement('input');
         document.body.appendChild(input); //required for iphone
@@ -80,7 +122,6 @@ export default function Home(props){
         input.click();
         document.body.removeChild(input) 
     }
-
     const updateValue = async (e) =>{
         // getting a hold of the file reference
         var file = e.target.files[0];
@@ -146,6 +187,20 @@ export default function Home(props){
                 <div id="username" className="sidebar-username">
                     {userData.name} 
                 </div>
+            </div>
+
+            <div className="home-main">
+                
+                
+                
+                
+                
+                
+                {/* <NewCard 
+                    darkMode = {props.darkMode}
+                    handleClick = {addCard}
+                    userData ={userData}
+                /> */}
             </div>
 
         </div>

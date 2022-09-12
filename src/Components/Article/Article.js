@@ -6,8 +6,6 @@ import "./article.css";
 export default function Article(props){
     console.log("Rendering Article")
     
-    
-
     console.log();
     return (
         props.item.published && 

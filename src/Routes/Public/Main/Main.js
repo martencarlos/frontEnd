@@ -2,7 +2,7 @@
 import "./main.css";
 
 import Hero from "../../../Components/Hero/Hero";
-import Projects from "../../../Routes/Public/Projects";
+import Projects from "../Projects/Projects";
 import About from "../../../Routes/Public/About/About";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";

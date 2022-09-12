@@ -1,10 +1,10 @@
 
-import "../../css/projects.css";
+import "./projects.css";
 
-import SectionHeader from "../../Components/SectionHeader/SectionHeader";
-import Hero from "../../Components/Hero/Hero";
+import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
+import Hero from "../../../Components/Hero/Hero";
 
-import { sectionHeader, infinityCards, blogIntegration } from "../../data/projects_data"
+import { sectionHeader, infinityCards, blogIntegration } from "../../../data/projects_data"
 
 export default function Projects(props){
     console.log("Rendering Projects")
