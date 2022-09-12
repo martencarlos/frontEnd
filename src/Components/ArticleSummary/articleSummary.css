@@ -9,7 +9,7 @@
 div.summaryCard{
     display: flex;
     flex-direction: column;
-    max-width: 300px;
+
     min-width: 100px;
     padding: 10px;
     cursor: pointer;

@@ -1,9 +1,9 @@
 
-import "../../css/login.css";
+import "./login.css";
 import {useState,useEffect} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {setCookie} from "../../Util/Cookie";
+import {setCookie} from "../../../Util/Cookie";
 
 export default function Login(props){
     console.log("Rendering Login")

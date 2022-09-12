@@ -11,7 +11,7 @@ import {getCookie} from "../Util/Cookie";
 
 export default function NewCard(props){
     console.log("Rendering NewCard")
-    
+    console.log(props.userData._id)
     const [formData, setFormData] = useState(
         {
             title: "", 
@@ -22,10 +22,10 @@ export default function NewCard(props){
                 downloads: 0
             },
             author:{
-                pic: props.userData.profilepic,
+                pic: props.userData.profilePic,
                 firstName: props.userData.name,
                 lastName: "",
-                authorid: props.userData.author.authorid
+                authorid: props.userData._id
             }
         }
     )
@@ -61,8 +61,8 @@ export default function NewCard(props){
             author:{
                 firstName: props.userData.name,
                 lastName:"",
-                pic: props.userData.profilepic,
-                authorid: props.userData.author.authorid
+                pic: props.userData.profilePic,
+                authorid: props.userData._id
             }
         }))
         
