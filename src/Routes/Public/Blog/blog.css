@@ -7,7 +7,16 @@
 
     div.blog-posts{
         width: auto !important;
+        min-width:unset !important;
+        max-width: unset !important;
     }
+
+    div.blog-mainArticle{
+        display: flex;
+        justify-content: start;
+        width: 100% !important;
+    }
+    
    
 }
 
@@ -17,19 +26,32 @@ div.blog{
     width: 100%;
 }
 
+div.separator{
+    border-bottom: 1px solid;
+    margin: 20px;
+}
+
 div.blog-posts{
     display: flex;
     flex-direction: column;
-    row-gap: 20px;
-    width: 300px;
+    align-items: center;
+    width: 30%;
+    min-width: 100px;
     height: 100%;
     margin: 20px;
+}
+
+div.blog-posts-title{
+    display: flex;
+    align-self: self-start;
+    font-size: large;
+    font-weight: bold;
 }
 
 
 div.blog-mainArticle{
     display: flex;
-    justify-content: start;
-    width: 100%;
+    justify-content: center;
+    flex: 1;
 }
 

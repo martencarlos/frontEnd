@@ -1,0 +1,55 @@
+
+@media (max-width: 700px) {
+    div.summaryCard{
+        max-width: unset !important;
+    }
+}
+
+
+div.summaryCard{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    min-width: 100px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid transparent
+    
+}
+
+div.summaryCard:hover{
+    /* border-radius: 1%; */
+    border: 1px solid rgb(163, 163, 163); 
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+div.summaryCard .textArea{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+div.summaryCard img{
+    min-width: 200px;
+    border-radius: 3px;
+    width: 100%;
+    height: auto;
+}
+
+div.summaryCard .title{
+    font-weight: bold;
+    
+}
+
+div.summaryCard .published{
+    margin-top:5px;
+    color: rgb(63, 95, 192);
+    font-size:small;
+    
+}
+
+div.summaryCard .summary{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
