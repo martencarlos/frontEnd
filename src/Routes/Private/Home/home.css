@@ -30,7 +30,7 @@ div.home div.home-main-panel{
 div.home div.sidebar{
     display: flex;
     flex-direction: column;
-    background-color: rgb(220, 220, 220);
+    background-color: var(--primary-light);
     height:100%;
     width: 20%;
 }
@@ -75,7 +75,7 @@ div.home img.sidebar-profilepicture{
     position: absolute;
     visibility: hidden;
     opacity: 0;
-    background-color: rgb(84, 84, 84);
+    background-color:var(--secondary-text) ;
     color: white;
     font-size: smaller;
     transition: 0.3s;
@@ -96,7 +96,7 @@ div.home img.sidebar-profilepicture{
     display: flex;
     align-self: center;
     position:absolute;
-    background-color: rgb(84, 84, 84);
+    background-color: var(--secondary-text);
     color: white;
     border-radius: 6px;
     padding: 3px;
