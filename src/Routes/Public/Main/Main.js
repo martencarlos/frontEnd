@@ -7,6 +7,7 @@ import About from "../../../Routes/Public/About/About";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
 
+import Link from '@mui/material/Link';
 
 import {  landingHero } from "../../../data/main_data"
 import { featuresSection, featureCard1, featureCard2, featureCard3,} from "../../../data/features_data"
@@ -63,7 +64,7 @@ export default function Main(props){
             </div>
 
             <div className="link">
-                <a href= "/features">All features</a>
+                <Link href="/features" underline="always">All features</Link>
             </div>
 
             <br></br>

@@ -3,6 +3,7 @@ import "./hero.css";
 
 
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 export default function Hero(props){
     console.log("Rendering Hero component")
@@ -13,11 +14,14 @@ export default function Hero(props){
             <div className="text-area">
                 <Typography variant="h4" className="title">{props.title}</Typography>
                 <Typography variant="body1" gutterBottom className="text">{props.text}</Typography>
-                {props.link && <a href={props.linkPath} className="link">{props.linkText}</a>}
+                {props.link &&
+                <Link href={props.linkPath} className="link" underline="always">{props.linkText}</Link>
+                }
             </div>
             {props.direction === "left" && <img src= {props.imgSrc} alt=""></img>
             }
         </div>
     )
 }
+
 
