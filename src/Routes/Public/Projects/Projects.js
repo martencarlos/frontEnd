@@ -4,6 +4,7 @@ import "./projects.css";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Hero from "../../../Components/Hero/Hero";
 
+
 import { sectionHeader, infinityCards, blogIntegration } from "../../../data/projects_data"
 
 export default function Projects(props){
@@ -32,6 +33,8 @@ export default function Projects(props){
                 linkText = {infinityCards.linkText}
             />
             
+            <br></br>
+            <br></br>
             <br></br>
             <br></br>
         

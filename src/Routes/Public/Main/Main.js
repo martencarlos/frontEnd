@@ -7,8 +7,8 @@ import About from "../../../Routes/Public/About/About";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
 
-import {  landingHero } from "../../../data/main_data"
 
+import {  landingHero } from "../../../data/main_data"
 import { featuresSection, featureCard1, featureCard2, featureCard3,} from "../../../data/features_data"
 
 export default function Main(props){

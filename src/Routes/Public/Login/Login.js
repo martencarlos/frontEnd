@@ -111,6 +111,7 @@ export default function Login(props){
                         <div className="login-form-input-row-inputanderror">
                         
                             {!formErrors.email && <TextField
+                                className="input"
                                 required
                                 name="email"
                                 id="standard-required"

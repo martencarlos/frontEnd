@@ -69,15 +69,15 @@ export default function Navbar(props){
 
                 <ul className="nav-links">
                     {props.login && 
-                        <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
                     }
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
+                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
+                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
+                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
+                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
                 </ul>
                 {!props.login && <div className="sign-buttons">
-                    <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/login')}>Login</Button>
+                    <Button variant="outlined" className= {`nav-button ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
                     <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         <div className="toggler" >
                             <div className="toggler--slider" onClick={props.toggleDarkMode} >
@@ -90,8 +90,8 @@ export default function Navbar(props){
                 {props.login && props.userData.profilePic && 
                     <div className="sign-buttons">
                         <div className="tooltip">
-                            <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={JSON.parse(getCookie("me")).name} />
-                            <span className="tooltip-text">{JSON.parse(getCookie("me")).name}</span> 
+                            <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={userData.name} />
+                            <span className="tooltip-text">{userData.name}</span> 
                         </div>
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         <div className="toggler" >

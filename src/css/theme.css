@@ -85,6 +85,47 @@ nav.dark {
     color:white;
 }
 
+div.navbar .bt-nav-link.dark .nav-link{
+    color: var(--primary-light)
+}
+div.dark .bt-nav-link.dark .nav-link-active{
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+}
+div.navbar .bt-nav-link.dark:hover{
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+div.navbar div.sign-buttons .nav-button.dark{
+    color: var(--primary-light);
+    /* border-color: var(--primary-light); */
+    
+}
+
+/* input dark mode */
+
+div.dark .MuiInputBase-root {
+    background-color: var(--primary-light);
+    padding-left:10px;
+}
+
+div.dark label.MuiFormLabel-root{
+    color: rgb(0, 0, 0);
+    padding-left:10px;
+    z-index: 23123;
+}
+div.dark .MuiInputLabel-shrink{
+    color: var(--primary-light) !important;
+    padding-left:0px !important;
+}
+
+div.hamb-menu.dark{
+    background-color: rgb(20, 20, 20);
+}
+
+/* Toggler */
+
 body.dark .toggler--slider {
     border-color: white;
     background-color: #F5F5F5;
@@ -98,8 +139,8 @@ body.dark .toggler--slider--circle {
     background-color: black;
 }
 
-div.hamb-menu.dark{
-    background-color: rgb(20, 20, 20);
+div.dark .background{
+    background-color: black;
 }
 
 div.dark{
@@ -107,7 +148,7 @@ div.dark{
     color: white;    
 }
 
-/* FeatureCards */
+/* Infinity Cards */
 feature.dark {
     background-color: #000000;
     color: white;    

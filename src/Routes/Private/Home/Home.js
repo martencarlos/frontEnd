@@ -93,7 +93,7 @@ export default function Home(props){
     // }, [props.login])
 
     // useEffect(() => {
-        
+    //     console.log("user data use effect triggered to update profile picture")
     // }, [userData])
 
     //Profile Image functions
@@ -138,15 +138,16 @@ export default function Home(props){
             }) 
           .then(function (response) {
             setUploadProgress('')
-            // document.getElementById("profilePic").src=response.data.url
+            document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
             // localStorage.setItem("profilePic", response.data.url)
             // var user = JSON.parse(JSON.stringify(userData));
+            
+            // setUserData(prevFormData => ({
+            //     ...prevFormData,
+            //     profilePic: response.data.url
+            // }))
             // props.updateUserData(user)
-            setUserData(prevFormData => ({
-                ...prevFormData,
-                profilePic: response.data.url
-            }))
           }).finally(function(response){
                
           })

@@ -41,11 +41,11 @@ div.blog-posts{
     margin: 20px;
 }
 
-div.blog-posts-title{
+.blog-posts-title{
     display: flex;
-    align-self: self-start;
-    font-size: large;
-    font-weight: bold;
+    align-self: self-start ;
+    /* font-size: large; */
+    /* font-weight: bold; */
 }
 
 

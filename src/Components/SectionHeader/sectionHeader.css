@@ -23,8 +23,8 @@ div.sectionHeader .title{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    font-weight: bolder;
-    font-size: x-large;
+    /* font-weight: bolder; */
+    /* font-size: x-large; */
     margin: 40px;
 }
 
