@@ -117,10 +117,16 @@ div.navbar .nav-brand:hover{
 Button.bt-nav-link{
     padding: 0px;
     
+    
 }
+Button.bt-nav-link:hover{
+    background: var(--primary-light);
+}
+
 
 .nav-link:hover{
     text-decoration: none;
+    
 }
 
 .nav-link-active{
