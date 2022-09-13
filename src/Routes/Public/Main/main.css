@@ -15,17 +15,25 @@ div.landingPage{
     align-items: center;
     height: 90vh;
     overflow: hidden;
-    background-color: var(--primary-dark);
+    
     color: rgb(239, 239, 239);
 }
 
+div.landingPage .background{
+    position: absolute;
+    background-color: var(--primary-dark);
+    height: 90vh;
+    width: 100%;
+    z-index:-1;
+    -webkit-filter: blur(5px);
+    filter: blur(2px);
+}
 div.hero .dark{
     background-color: darkslategrey;
 }
 
 div.landingPage div.hero{
     width: 75%;
-    
 }
 
 div.main div.features-row{

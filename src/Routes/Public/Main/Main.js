@@ -25,6 +25,7 @@ export default function Main(props){
                     text = {landingHero.text}
                     link={false}
                 />
+                <div className="background"></div>
             </div>
 
             <Projects
