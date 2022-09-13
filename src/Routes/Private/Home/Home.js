@@ -56,30 +56,41 @@ export default function Home(props){
 
     //UserData
     
-    const [userData, setUserData] = useState({author:{
-        authorid: ""
-    }})
+    const [userData, setUserData] = useState({})
 
     //Upload progress
     const [uploadProgress, setUploadProgress] = useState('')
 
     //Login
     useEffect(() => {
-        console.log("home useEffect")
-        if(!props.login){
+
+        if(!props.login)
             navigate("/login");
-        }else{
-            if(getCookie("me")){
-                // var cookieUser = JSON.parse(getCookie("me"));
-                // if(document.getElementById("navProfilePic").src)
-                //     cookieUser.profilePic = document.getElementById("navProfilePic").src
-                // else
-                // cookieUser.profilePic = localStorage.getItem("profilePic")
-                // setUserData(cookieUser)
-            }
+
+        console.log("home useEffect")
+        setUserData(props.userData)
+
+        return () => {
+            setUserData({})
         }
-        // eslint-disable-next-line 
-    }, [props.login])
+    }, [props.userData])
+
+    // useEffect(() => {
+    //     console.log("home useEffect")
+    //     if(!props.login){
+    //         navigate("/login");
+    //     }else{
+    //         if(getCookie("me")){
+    //             // var cookieUser = JSON.parse(getCookie("me"));
+    //             // if(document.getElementById("navProfilePic").src)
+    //             //     cookieUser.profilePic = document.getElementById("navProfilePic").src
+    //             // else
+    //             // cookieUser.profilePic = localStorage.getItem("profilePic")
+    //             // setUserData(cookieUser)
+    //         }
+    //     }
+    //     // eslint-disable-next-line 
+    // }, [props.login])
 
     useEffect(() => {
         
@@ -147,7 +158,7 @@ export default function Home(props){
     }
 
     return (
-        props.login &&
+        props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
            <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
                 <div className="space"></div>
