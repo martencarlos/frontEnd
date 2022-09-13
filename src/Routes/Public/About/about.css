@@ -9,6 +9,11 @@
 }
 
 
+div.about div.card img{
+    border-radius: 10px;
+}
+
+
 div.team-row{
     display: flex;
     width: 70%;
