@@ -31,7 +31,7 @@ div.hero {
 }
 
 div.hero img{
-    width: 55%;
+    width: 50%;
     height: auto;
     min-width: 250px;
     max-width: 400px;
@@ -51,11 +51,12 @@ div.text-area{
 div.text-area .title{
     display: flex;
     flex-wrap: wrap;
-    font-weight: bolder;
-    font-size: larger;
+    /* font-weight: bolder; */
+    /* font-size: larger; */
     margin: 10px;
     
 }
+
 
 div.text-area .text{
     display: flex;

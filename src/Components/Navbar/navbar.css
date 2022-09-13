@@ -50,7 +50,7 @@ span.hamb-menu i.bi{
 
 div.hamb-menu{
     display: none;
-    z-index: 100;
+    z-index: 1;
     margin: 6px;
     position: absolute;
     width: -webkit-fill-available;
@@ -190,6 +190,7 @@ label.nav-username{
   /* Tooltip text */
   .tooltip .tooltip-text {
     align-self: center;
+    z-index:2;
     visibility: hidden;
     opacity: 0;
     transition: 0.5s;

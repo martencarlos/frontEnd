@@ -10,7 +10,7 @@
     margin: 50px;
  }
 
- 
+
  
  div.article .title{
     font-weight: bold;
@@ -22,15 +22,14 @@ div.article .post{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
 }
 
 div.article .published{
     display: flex;
     margin-top: 10px;
-     margin-bottom: 20px;
+    margin-bottom: 20px;
     color: rgb(63, 95, 192);
-    font-size: small;
+    /* font-size: small; */
 }
 
 

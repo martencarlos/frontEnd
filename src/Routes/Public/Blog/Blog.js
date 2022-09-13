@@ -7,6 +7,8 @@ import { useState,useEffect, useRef} from "react"
 
 import * as rssParser from 'react-native-parser-rss';
 
+import Typography from '@mui/material/Typography';
+
 export default function Blog(props){
     console.log("Rendering Blog")
     
@@ -60,7 +62,7 @@ export default function Blog(props){
             
             <div  className="blog-posts" >
                 <br></br>
-                <div className="blog-posts-title"> Latest updates</div>
+                <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                 <br></br>
                 {posts.map((post, i) => (
                     <div key = {i}>
