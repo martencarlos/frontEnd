@@ -47,8 +47,10 @@ div.home div.sidebar-username{
 }
 
 div.home img.sidebar-profilepicture{
-    width: 80px;
-    height: 80px;
+   
+    height: auto;
+    width: 100%;
+    max-width:100px;
     border-radius: 50%;
     margin: 10px;
     object-fit: cover;
@@ -67,24 +69,24 @@ div.home img.sidebar-profilepicture{
 }
 
 .wrap-text{
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 83%;
+    max-width: 100px;
     border-radius: 50%;
-    margin: 10px;
     text-align: center;
     position: absolute;
     visibility: hidden;
     opacity: 0;
-    background-color:var(--secondary-text) ;
+    background-color: var(--secondary-text);
     color: white;
     font-size: smaller;
     transition: 0.3s;
 }
 
 .bi-pencil-square{
-    width: auto;
+    width: 100%;
     font-size: large;
-    height: 80px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

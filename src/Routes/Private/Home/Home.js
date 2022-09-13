@@ -92,9 +92,9 @@ export default function Home(props){
     //     // eslint-disable-next-line 
     // }, [props.login])
 
-    useEffect(() => {
+    // useEffect(() => {
         
-    }, [userData])
+    // }, [userData])
 
     //Profile Image functions
     
