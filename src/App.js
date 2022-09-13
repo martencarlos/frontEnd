@@ -70,6 +70,9 @@ export default function App(){
         }
 
         if(getCookie("me")){
+            var cookieUser = JSON.parse(getCookie("me"))
+            
+            setUserData(cookieUser)
             if(!localStorage.getItem("profilePic")){
                 getProfileImageIntoLocalStorage()
             }else{
@@ -158,6 +161,7 @@ export default function App(){
                 <Route path="/home" element={
                     <Home 
                         darkMode = {darkMode}
+                        userData = {userData}
                         login = {login}
                     />}>
                 </Route>

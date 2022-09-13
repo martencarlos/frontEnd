@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
 
-
 import Button from '@mui/material/Button'
 
 export default function Navbar(props){
@@ -106,7 +105,7 @@ export default function Navbar(props){
                 <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
                     <i id="hamb-zone" className="bi bi-list"  role="img" aria-label="menu"></i>
                 </span>
-                
+                 
             </nav>
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
                 <div className="nav-links-hamb">
