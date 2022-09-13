@@ -92,6 +92,7 @@ nav{
 
 div.navbar .nav-brand{
     font-weight:bold;
+    color: var(--primary-color) !important;
     font-size: 26px;
     color: inherit;
     text-decoration: none;
@@ -109,7 +110,7 @@ div.navbar .nav-brand:hover{
 
 .nav-link{
     text-decoration: none;
-    color: var(--primary-color);
+    color: #3c4267;
     padding: 5px;
 }
 

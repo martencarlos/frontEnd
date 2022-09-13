@@ -85,6 +85,11 @@ nav.dark {
     color:white;
 }
 
+div.dark div.navbar .nav-brand:hover{
+    color:var(--primary-light) !important;
+    border-radius: 6px;
+}
+
 div.navbar .bt-nav-link.dark .nav-link{
     color: var(--primary-light)
 }

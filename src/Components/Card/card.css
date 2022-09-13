@@ -29,7 +29,10 @@ div.card {
 
 div.card i{
     font-size: 4em;
+    color: var(--primary-color);
 }
+
+
 
 div.card img{
     display: flex;
@@ -41,7 +44,6 @@ div.card img{
     margin-right: 10px;
     margin-left: 10px;
  }
-
 
 div.text-area{
     display: flex;
@@ -59,8 +61,11 @@ div.text-area .title{
     justify-content: center;
     margin: 10px;
     height: 50%;
+    font-weight: 500;
     
 }
+
+
 
 div.text-area .text{
     display: flex;
