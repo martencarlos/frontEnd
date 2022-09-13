@@ -138,13 +138,14 @@ export default function Home(props){
             }) 
           .then(function (response) {
             setUploadProgress('')
-            document.getElementById("profilePic").src=response.data.url
+            // document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
-            // document.getElementById("navProfilePic2").src=response.data.url
-            localStorage.setItem("profilePic", response.data.url)
+            // localStorage.setItem("profilePic", response.data.url)
+            // var user = JSON.parse(JSON.stringify(userData));
+            // props.updateUserData(user)
             setUserData(prevFormData => ({
                 ...prevFormData,
-                profilepic: response.data.url
+                profilePic: response.data.url
             }))
           }).finally(function(response){
                
@@ -160,14 +161,18 @@ export default function Home(props){
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
+           
+           {/* Sidebar */}
            <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
                 <div className="space"></div>
                 <div  className="wrap-img">
                     <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
-                    {!uploadProgress && <span className="wrap-text" onClick={changePicture}>
+                    {!uploadProgress && 
+                        <span className="wrap-text" onClick={changePicture}>
                             <i className="bi-pencil-square" role="img" aria-label="name"></i>
                         </span>}
-                    {uploadProgress && <div className="upload-progress" >{uploadProgress+'%'}</div>}
+                    {uploadProgress && 
+                        <div className="upload-progress">{uploadProgress+'%'}</div>}
                 </div>
                 <div id="username" className="sidebar-username">
                     {userData.name} 
@@ -175,9 +180,11 @@ export default function Home(props){
             </div>
 
             <div className="home-main">
+                
+                In development
                 {/* <div className="home-main-panel">
                     Settings
-                </div> */}
+                </div>  */}
                 
                 
                 
