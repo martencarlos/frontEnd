@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import {getCookie, setCookie} from "./Util/Cookie";
+import axios from "axios";
 
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Routes/Private/Home/Home";
@@ -24,7 +25,7 @@ export default function App(){
 
     var style = getComputedStyle(document.body)
 
-
+    // COLOR THEME PALETTE
     const theme = createTheme({
         palette: {
             
@@ -47,10 +48,7 @@ export default function App(){
         },
     });
 
-
-    // ***** USE STATES & USE EFFECTS *****
-    
-    // LOGIN
+     // LOGIN
     var [login, setLogin] = React.useState(
         ()=>getCookie("me") ? true : false
     )
@@ -58,6 +56,62 @@ export default function App(){
     function toggleLogin() {
         setLogin(prevMode => !prevMode)
     }
+
+    // User information (including profile picture url link)
+    const [userData, setUserData] = useState({})
+
+    //Set user data after login
+    useEffect(() => {
+        console.log("App useEffect - login")
+
+        //after logout clear userData
+        if(userData.profilePic){
+            setUserData({})
+        }
+
+        if(getCookie("me")){
+            if(!localStorage.getItem("profilePic")){
+                getProfileImageIntoLocalStorage()
+            }else{
+                setUserData(prevFormData => ({
+                    ...prevFormData,
+                    profilePic: localStorage.profilePic
+                }))
+            }
+        }
+        
+    }, [login])
+
+    function getProfileImageIntoLocalStorage(){
+        console.log("retrieving pic and setting into localstorage")
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/getProfileImage',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: getCookie("me"),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+        };
+        axios(config).then(function (response) {
+            
+            console.log("Actually setting local storage")
+            if(response.data){
+                localStorage.setItem("profilePic", response.data)
+            }else{
+                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
+                localStorage.setItem("profilePic", defaultProfilePic)
+            }
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profilePic: localStorage.profilePic
+            }))
+        })
+        .catch(function (error) {
+            console.log("error retrieving image")
+        });
+    }
+    
 
     // DARK MODE
     const [darkMode, setDarkMode] = React.useState(
@@ -77,13 +131,18 @@ export default function App(){
         setDarkMode(prevMode => !prevMode)
         setCookie("dark",!darkMode, 1)
     }
-    
+
+    console.log("local storage info:")
+    console.log(localStorage.getItem("profilePic"))
+    console.log("User data passed to children")
+    console.log(userData)
     return (
         <BrowserRouter>
         <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
                     siteTitle= "WebFrame"
+                    userData = {userData}
                     login = {login}
                     darkMode = {darkMode} 
                     toggleDarkMode={toggleDarkMode}

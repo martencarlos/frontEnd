@@ -7,12 +7,14 @@ export default function Logout(props){
     console.log("Rendering Logout")
     const navigate = useNavigate();
 
+    
     useEffect(() => {
         props.toggleLogin()
         localStorage.removeItem("profilePic")
         localStorage.removeItem("firstName")
         localStorage.removeItem("cards")
         navigate("/login")
+        console.log("actual clear of localstorage")
       }, [])
 
     delCookie("me")

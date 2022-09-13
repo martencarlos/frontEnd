@@ -1,10 +1,13 @@
 
+
 import "./register.css";
 import {useState} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 export default function Register(props){
     console.log("rendering Register")
@@ -36,9 +39,10 @@ export default function Register(props){
     }
 
     function validateForm(){
-        
+        console.log(formData)
+
         const errors= {}
-        
+
         if(!formData.name){
             errors.name = "Full Name is required"
         }
@@ -54,7 +58,7 @@ export default function Register(props){
         }
         if(!formData.password){
             errors.password = "Password is required"
-        }else if(formData.password !== formData.password2){
+        } else if(formData.password !== formData.password2){
             errors.password2 = "Passwords do not match"
         }
         
@@ -67,13 +71,13 @@ export default function Register(props){
         setFormErrors(currentErrors)
         if(Object.keys(currentErrors).length===0){
              
-             registerUser()
+             registerUser(currentErrors)
         }
     }
 
     //Register User
-    function registerUser() {
-        var user = { ...formData };
+    function registerUser(currentErrors) {
+        var user = JSON.parse(JSON.stringify(formData));
         delete user.password2;
 
         const config = {
@@ -90,7 +94,9 @@ export default function Register(props){
                 const {email,username, success} = response.data;
                 
                 if(!success){
-                    let newErrors = {...formErrors,email,username};
+                    
+                    let newErrors = {...currentErrors,email,username};
+                    
                     setFormErrors(newErrors);
                 }else{
                     navigate('/login') 
@@ -104,14 +110,33 @@ export default function Register(props){
     return (
         <div className={props.darkMode ? "dark" : ""}>
             <form className="register-form">
-                <h1>Register</h1>
+                <Typography variant="h2" gutterBottom>Register</Typography>
                 <div className="register-form-inputs">
                     <div className="register-form-input-row">
-                        <span className="register-icon">
-                            <i className="bi-people-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
                         <div className="register-form-input-row-inputanderror">
-                            <input
+                            
+                            {!formErrors.name && <TextField
+                                required
+                                name="name"
+                                id="standard-required"
+                                label="name"
+                                defaultValue={formData.name}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {formErrors.name && <TextField
+                                error
+                                name="name"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.name}
+                                helperText={formErrors.name}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {/* <input
                                 name="name"
                                 type="name"
                                 placeholder="Full Name"
@@ -119,18 +144,37 @@ export default function Register(props){
                                 required="required"
                                 value={formData.name}
                                 onChange={handleChange}
-                            />
+                            /> */}
                             
                         </div>
                     </div>
-                    {formErrors.name && <label className="error">{formErrors.name}</label>}
+                    
 
                     <div className="register-form-input-row">
-                        <span className="register-icon">
-                            <i className="bi-person-badge-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
+                        
                         <div className="register-form-input-row-inputanderror">
-                            <input
+                            
+                            {!formErrors.username && <TextField
+                                required
+                                name="username"
+                                id="standard-required"
+                                label="username"
+                                defaultValue={formData.username}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {formErrors.username && <TextField
+                                error
+                                name="username"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.username}
+                                helperText={formErrors.username}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+                            {/* <input
                                 name="username"
                                 type="nickname"
                                 placeholder="username"
@@ -139,16 +183,33 @@ export default function Register(props){
                                 value={formData.username}
                                 onChange={handleChange}
                                 
-                            />
+                            /> */}
                         </div>
                     </div>
-                    {formErrors.username && <label className="error">{formErrors.username}</label>}
+                    
                     <div className="register-form-input-row">
-                        <span className="register-icon">
-                            <i className="bi-envelope-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
                         <div className="register-form-input-row-inputanderror">
-                            <input
+                            {!formErrors.email && <TextField
+                                required
+                                name="email"
+                                id="standard-required"
+                                label="Email"
+                                defaultValue={formData.email}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {formErrors.email && <TextField
+                                error
+                                name="email"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.email}
+                                helperText={formErrors.email}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+                            {/* <input
                                 name="email"
                                 type="email"
                                 placeholder="email"
@@ -157,16 +218,36 @@ export default function Register(props){
                                 value={formData.email}
                                 onChange={handleChange}
                                 
-                            />
+                            /> */}
                         </div>
                     </div>
-                    {formErrors.email && <label className="error">{formErrors.email}</label>}
                     <div className="register-form-input-row">
-                        <span className="register-icon">
-                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
+                        
                         <div className="register-form-input-row-inputanderror">
-                            <input
+                            
+                            {!formErrors.password && <TextField
+                                required
+                                name="password"
+                                id="standard-password-input"
+                                label="Password"
+                                type="password"
+                                defaultValue={formData.password}
+                                autoComplete="current-password"
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {formErrors.password && <TextField
+                                error
+                                name="password"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                defaultValue={formData.password}
+                                helperText={formErrors.password}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}     
+                            {/* <input
                                 name="password"
                                 type="password"
                                 placeholder="password"
@@ -175,16 +256,36 @@ export default function Register(props){
                                 value={formData.password}
                                 onChange={handleChange}
                                 
-                            />
+                            /> */}
                         </div>
                     </div>
-                    {formErrors.password && <label className="error">{formErrors.password}</label>}
                     <div className="register-form-input-row">
-                        <span className="register-icon">
-                            <i className="bi-key-fill registerLoginForms" role="img" aria-label="name"></i>
-                        </span>
                         <div className="register-form-input-row-inputanderror">
-                            <input
+                            
+                            {!formErrors.password2 && <TextField
+                                required
+                                name="password2"
+                                id="standard-password-input"
+                                label="re-enter password"
+                                type="password"
+                                defaultValue={formData.password2}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}
+
+                            {formErrors.password2 && <TextField
+                                error
+                                name="password2"
+                                id="standard-error-helper-text"
+                                label="Error"
+                                type="password"
+                                defaultValue={formData.password2}
+                                helperText={formErrors.password2}
+                                variant="standard"
+                                onChange={handleChange}
+                            />}   
+                            
+                            {/* <input
                                 name="password2"
                                 type="password"
                                 placeholder="re-enter password"
@@ -192,11 +293,9 @@ export default function Register(props){
                                 required="required"
                                 value={formData.password2}
                                 onChange={handleChange}
-                                
-                            />
+                            /> */}
                         </div>
                     </div>
-                    {formErrors.password2 && <label className="error">{formErrors.password2}</label>}
                     <Button variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
                 </div>
             </form>

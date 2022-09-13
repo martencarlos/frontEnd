@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import {setCookie} from "../../../Util/Cookie";
 
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 
@@ -106,7 +105,6 @@ export default function Login(props){
         
             <form className="login-form">
                 <Typography variant="h2" gutterBottom>Login</Typography>
-                
                 <div className="login-form-inputs">
                     <div className="login-form-input-row">
 
@@ -147,6 +145,7 @@ export default function Login(props){
                                 id="standard-password-input"
                                 label="Password"
                                 type="password"
+                                defaultValue={formData.password}
                                 autoComplete="current-password"
                                 variant="standard"
                                 onChange={handleChange}

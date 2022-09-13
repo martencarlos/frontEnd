@@ -70,16 +70,16 @@ export default function Home(props){
             navigate("/login");
         }else{
             if(getCookie("me")){
-                var cookieUser = JSON.parse(getCookie("me"));
-                if(document.getElementById("navProfilePic").src)
-                    cookieUser.profilePic = document.getElementById("navProfilePic").src
-                else
-                cookieUser.profilePic =localStorage.getItem("profilePic")
-                setUserData(cookieUser)
+                // var cookieUser = JSON.parse(getCookie("me"));
+                // if(document.getElementById("navProfilePic").src)
+                //     cookieUser.profilePic = document.getElementById("navProfilePic").src
+                // else
+                // cookieUser.profilePic = localStorage.getItem("profilePic")
+                // setUserData(cookieUser)
             }
         }
         // eslint-disable-next-line 
-    }, [])
+    }, [props.login])
 
     useEffect(() => {
         
