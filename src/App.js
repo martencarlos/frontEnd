@@ -24,31 +24,45 @@ import MuiAlert from '@mui/material/Alert';
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 
-const Alert = React.forwardRef(function Alert(props, ref) {
-    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-  });
+// const Alert = React.forwardRef(function Alert(props, ref) {
+//     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+//   });
 
 export default function App(){
     console.log("Rendering App")
     
     var style = getComputedStyle(document.body)
 
-    // Snackbar!
-    const [open, setOpen] = React.useState(false);
-    const handleClick = () => {
-        setOpen(true);
-    }
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-        return;
-        }
-        setOpen(false);
-    }
+    // // Snackbar!
+    // const [open, setOpen] = React.useState(false);
+    
+    // const handleClick = () => {
+    //     setOpen(true);
+    // }
+    // const handleClose = (event, reason) => {
+    //     if (reason === 'clickaway') {
+    //     return;
+    //     }
+    //     setOpen(false);
+    // }
 
-    window.onload = function() {
-        handleClick()
-        console.log("window loaded")
-    }
+    // useEffect(() => {
+    //     const onPageLoad = () => {
+    //         handleClick()
+    //         console.log("window loaded")
+    //     };
+    
+    //     // Check if the page has already loaded
+    //     if (document.readyState === "complete") {
+    //       onPageLoad();
+    //     } else {
+    //       window.addEventListener("load", onPageLoad);
+    //       // Remove the event listener when component unmounts
+    //       return () => window.removeEventListener("load", onPageLoad);
+    //     }
+    //   }, []);
+
+    
 
     // COLOR THEME PALETTE
     const theme = createTheme({
@@ -239,11 +253,11 @@ export default function App(){
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
-            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+            {/* <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                     Website fully loaded!
                 </Alert>
-            </Snackbar>
+            </Snackbar> */}
         </BrowserRouter>
     )
 }
