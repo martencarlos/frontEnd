@@ -5,6 +5,7 @@ import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
 
 import Button from '@mui/material/Button'
+import Tooltip from '@mui/material/Tooltip';
 
 export default function Navbar(props){
     console.log("Rendering Navbar")
@@ -89,10 +90,12 @@ export default function Navbar(props){
 
                 {props.login && props.userData.profilePic && 
                     <div className="sign-buttons">
-                        <div className="tooltip">
+                        <Tooltip sx={{ bgcolor: 'primary.main' }} disableFocusListener title={userData.name} arrow leaveDelay={200}>
+                        {/* <div className="tooltip"> */}
                             <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={userData.name} />
-                            <span className="tooltip-text">{userData.name}</span> 
-                        </div>
+                            {/* <span className="tooltip-text">{userData.name}</span> 
+                        </div> */}
+                        </Tooltip>
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         <div className="toggler" >
                             <div className="toggler--slider" onClick={props.toggleDarkMode} >
