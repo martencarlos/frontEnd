@@ -45,7 +45,7 @@ input {
 }
 
 html{
-    
+    overflow-y: scroll;
 }
 
 html, body{
