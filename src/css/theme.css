@@ -95,6 +95,8 @@ div.dark div.navbar .nav-brand{
     border-radius: 6px;
 }
 
+
+
 body.dark div.nav-links-hamb li button a {
     color: var(--primary-light-darker)
 }

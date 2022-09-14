@@ -17,13 +17,38 @@ import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
 import Footer from "./Components/Footer/Footer";
 
+
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
 export default function App(){
     console.log("Rendering App")
-
+    
     var style = getComputedStyle(document.body)
+
+    // Snackbar!
+    const [open, setOpen] = React.useState(false);
+    const handleClick = () => {
+        setOpen(true);
+    }
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+        setOpen(false);
+    }
+
+    window.onload = function() {
+        handleClick()
+        console.log("window loaded")
+    }
 
     // COLOR THEME PALETTE
     const theme = createTheme({
@@ -143,6 +168,7 @@ export default function App(){
     console.log(localStorage.getItem("profilePic"))
     console.log("User data passed to children")
     console.log(userData)
+
     return (
         <BrowserRouter>
         <ThemeProvider theme={theme}>
@@ -210,6 +236,11 @@ export default function App(){
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
+            <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    Website fully loaded!
+                </Alert>
+            </Snackbar>
         </BrowserRouter>
     )
 }

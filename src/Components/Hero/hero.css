@@ -30,7 +30,7 @@ div.hero {
     
 }
 
-div.hero img{
+div.hero img {
     width: 50%;
     height: auto;
     min-width: 250px;
@@ -38,6 +38,8 @@ div.hero img{
     margin-right: 10px;
     margin-left: 10px;
 }
+
+
 
 div.text-area{
     display: flex;
@@ -71,4 +73,5 @@ div.text-area .link{
     flex-wrap: wrap;
     margin: 10px;
 }
+
 
