@@ -69,6 +69,8 @@ div.home img.sidebar-profilepicture{
 }
 
 .wrap-text{
+    display:flex;
+    align-self:center;
     width: 100%;
     height: 83%;
     max-width: 100px;
@@ -79,6 +81,7 @@ div.home img.sidebar-profilepicture{
     opacity: 0;
     background-color: var(--secondary-text);
     color: white;
+    margin:10px;
     font-size: smaller;
     transition: 0.3s;
 }
