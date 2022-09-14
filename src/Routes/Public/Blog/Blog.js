@@ -4,17 +4,18 @@ import Summary from "../../../Components/ArticleSummary/ArticleSummary";
 import Article from "../../../Components/Article/Article";
 import LinearProgress from '@mui/material/LinearProgress';
 
+
 import { useState,useEffect, useRef} from "react"
 
 
 import * as rssParser from 'react-native-parser-rss';
 
 import Typography from '@mui/material/Typography';
+import UpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Fab from '@mui/material/Fab';
 
 export default function Blog(props){
     console.log("Rendering Blog")
-
-    
     
     const [posts, setPosts] = useState([])
     const [mainArticle, setMainArticle] = useState({})
@@ -60,9 +61,14 @@ export default function Blog(props){
     
     //open article by using event.currentTarget id
     function openArticle(e){
-        window.scrollTo(0, 0);
-        console.log(posts.find(x => x.id === e.currentTarget.id))
+        scrollToTop()
+        
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
+    }
+
+    function scrollToTop(){
+        // window.scrollTo(0, 0);
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     return (
@@ -94,7 +100,16 @@ export default function Blog(props){
                 ))}
 
             </div>
+            
+            {progress>=25 && 
+                <Fab onClick={scrollToTop}
+                    color="primary" className="up-floating-icon"
+                    aria-label="add">
+                    <UpIcon color="primary.light"/>
+                </Fab>}
+
             <LinearProgress className="reading-progress" variant="determinate" value={progress} />
-        </div>
+            
+            </div>
     )
 }
