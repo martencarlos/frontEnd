@@ -4,6 +4,7 @@ import "./register.css";
 import {useState} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {setCookie} from "../../../Util/Cookie";
 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
@@ -94,16 +95,49 @@ export default function Register(props){
                 const {email,username, success} = response.data;
                 
                 if(!success){
-                    
                     let newErrors = {...currentErrors,email,username};
-                    
                     setFormErrors(newErrors);
                 }else{
-                    navigate('/login') 
+                    login(user)
                 }
             })
             .catch(function (error) {
             console.log(error);
+            });
+    }
+
+    function login(user){
+        
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/login',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(user),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+        };
+
+        axios(config) 
+            .then(function (response) {
+                
+                const {email,password, errors} = response.data;
+                
+                setCookie("me", JSON.stringify(response.data), 1/24)
+                
+                navigate({
+                    pathname: '/home',
+                    state: {  
+                        user: response.data,
+                        registered: true
+                    }
+                    })
+                    
+                props.toggleLogin()
+                
+            })
+            .catch(function (error) {
+                console.log(error);
             });
     }
 

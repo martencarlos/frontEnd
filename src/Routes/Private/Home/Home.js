@@ -69,6 +69,7 @@ export default function Home(props){
 
         console.log("home useEffect")
         setUserData(props.userData)
+        console.log(props)
 
         return () => {
             setUserData({})

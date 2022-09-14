@@ -209,7 +209,10 @@ export default function App(){
                     />}>
                 </Route>
                 <Route path="/register" element={
-                    <Register darkMode = {darkMode}/>}>
+                    <Register 
+                        darkMode = {darkMode}
+                        toggleLogin={toggleLogin}
+                    />}>  
                 </Route>
                 <Route path="projects" element={
                     <Projects darkMode = {darkMode}/>}>
