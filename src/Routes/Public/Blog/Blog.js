@@ -2,8 +2,10 @@
 import "./blog.css";
 import Summary from "../../../Components/ArticleSummary/ArticleSummary";
 import Article from "../../../Components/Article/Article";
+import LinearProgress from '@mui/material/LinearProgress';
 
 import { useState,useEffect, useRef} from "react"
+
 
 import * as rssParser from 'react-native-parser-rss';
 
@@ -11,9 +13,23 @@ import Typography from '@mui/material/Typography';
 
 export default function Blog(props){
     console.log("Rendering Blog")
+
+    
     
     const [posts, setPosts] = useState([])
     const [mainArticle, setMainArticle] = useState({})
+    const [progress, setProgress] = useState(0);
+
+    //Set percentage scroll progress bar
+    document.onscroll = function(){ 
+        var pos = getVerticalScrollPercentage(document.body)
+        setProgress(Math.round(pos))
+    }
+    
+    function getVerticalScrollPercentage( elm ){
+        var p = elm.parentNode
+        return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
+    }
 
     //Load articles from Medium
     useEffect(() => {
@@ -51,7 +67,6 @@ export default function Blog(props){
 
     return (
         <div className={`blog ${props.darkMode ? "dark": ""}`}>
-            
             {mainArticle && 
             <div  className="blog-mainArticle">
                 <Article
@@ -78,9 +93,8 @@ export default function Blog(props){
                     </div>
                 ))}
 
-                
             </div>
-
+            <LinearProgress className="reading-progress" variant="determinate" value={progress} />
         </div>
     )
 }

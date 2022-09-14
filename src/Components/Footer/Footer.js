@@ -1,6 +1,9 @@
 
 import "./footer.css";
 
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+
 export default function Footer(props){
     console.log("Rendering Footer")
     
@@ -8,19 +11,19 @@ export default function Footer(props){
 
     return (
         <footer className={props.darkMode ? "dark" : ""}>
-            <div className="footer-brand">
+            <Typography variant="body1" gutterBottom className="footer-brand">
                 © {year} Webframe Inc
-            </div>
+            </Typography>
 
             <ul className="footer-links">
                 <li className="nav-item">
-                    <a href="#" className="">Features</a>
+                    <Link underline="hover" href="/features" >Features</Link>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="">Blog</a>
+                    <Link underline="hover" href="/blog">Blog</Link>
                 </li>
                 <li className="nav-item">
-                    <a href="#" className="">About</a>
+                    <Link underline="hover" href="/about" >About</Link>
                 </li>
             </ul>
         </footer>
