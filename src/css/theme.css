@@ -86,8 +86,25 @@ nav.dark {
 }
 
 div.dark div.navbar .nav-brand:hover{
+    color:var(--primary-color) !important;
+    border-radius: 6px;
+}
+
+div.dark div.navbar .nav-brand{
     color:var(--primary-light) !important;
     border-radius: 6px;
+}
+
+body.dark div.nav-links-hamb li button a {
+    color: var(--primary-light-darker)
+}
+
+body.dark div.nav-links-hamb li button a:hover {
+    color: var(--primary-dark);
+}
+
+body.dark div.nav-links-hamb  a.nav-link-active {
+    color: var(--primary-dark)
 }
 
 div.navbar .bt-nav-link.dark .nav-link{
