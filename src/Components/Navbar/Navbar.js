@@ -14,7 +14,7 @@ export default function Navbar(props){
     const [userData, setUserData] = useState({})
 
     //Initialize Navbar
-    
+
     useEffect(() => {
         console.log("navbar useEffect")
         setUserData(props.userData)

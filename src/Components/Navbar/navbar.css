@@ -25,7 +25,6 @@
         display: none;
     }
     
-
     li{
         padding-left: 10px;
         padding-right: 10px;
@@ -71,6 +70,12 @@ div.hamb-menu{
     list-style-type: none;
     color: inherit;
 }
+
+div.nav-links-hamb li .bt-nav-link:hover {
+    background-color:var(--primary-light-darker)
+}
+
+
 
  div.sign-buttons-hamb{
     display:flex;
