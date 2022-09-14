@@ -71,6 +71,7 @@ export default function Blog(props){
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
+
     return (
         <div className={`blog ${props.darkMode ? "dark": ""}`}>
             {mainArticle && 
@@ -101,7 +102,7 @@ export default function Blog(props){
 
             </div>
             
-            {progress>=25 && 
+            {progress>=50 && 
                 <Fab onClick={scrollToTop}
                     color="primary" className="up-floating-icon"
                     aria-label="add">
