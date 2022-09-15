@@ -1,8 +1,9 @@
 /* navbar */
 
 @media (max-width: 800px) {
-    nav{
-        
+    .nav-button{
+        height:35px;
+        width:75px !important;
     }
     
     ul.nav-links{
@@ -14,10 +15,6 @@
         justify-content: end;
         /* display: none;
         width: 200px; */
-    }
-
-    span.hamb-menu{
-        display: flex !important;
     }
 
     nav .toggler{
@@ -32,6 +29,9 @@
 
 @media (min-width: 800px) {
     div.hamb-menu{
+        display: none !important;
+    }
+    div.navbar .hamb-menu-icon{
         display: none !important;
     }
 }
@@ -92,12 +92,15 @@ div.nav-links-hamb li .bt-nav-link:hover {
     background-color:var(--primary-light-darker)
 }
 
-
-
  div.sign-buttons-hamb{
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+
+div.navbar .hamb-menu-icon{
+    font-size: 40px;
+    padding-left: 5px;
 }
 
 div.navbar{
@@ -182,17 +185,14 @@ Button.bt-nav-link:hover{
     display: flex;
     justify-content: space-between;
     height: 40px;
-    
+    align-items: center;
     flex-direction: row;
     align-content: center;
 }
 
 .nav-button{
-          /* height: 30px; */
     width: 78px;
     min-width: auto !important;
-    /* cursor: pointer; */
-    /* font-weight: bold !important; */
     padding-right: 20px !important;
     margin-left: 5px !important;
     margin-right: 5px !important;
@@ -260,26 +260,7 @@ li{
     margin:0px !important;
 }
 
-.toggler--slider {
-    width: 25px;
-    height: 13px;
-    background-color: #2B283A;
-    border-radius: 2rem;
-    margin-inline: 7px;
-    cursor: pointer;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid black;
-    box-sizing: content-box;
-}
 
-.toggler--slider--circle {
-    height: 13px;
-    width: 13px;
-    background-color: white;
-    border-radius: 50%;
-}
 
 
 

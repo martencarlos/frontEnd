@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 
 // Darkmode switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -177,9 +178,10 @@ export default function Navbar(props){
                     </div>
                 }
 
-                <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
+                <MenuRoundedIcon id="hamb-zone" className="hamb-menu-icon" onClick={hambMenuClick}/>
+                {/* <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
                     <i id="hamb-zone" className="bi bi-list"  role="img" aria-label="menu"></i>
-                </span>
+                </span> */}
                  
             </nav>
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
