@@ -24,7 +24,10 @@ export default function Navbar(props){
         var x = document.getElementById("website");
         x.addEventListener("click", closeHambMenu);
 
-        return () => document.removeEventListener('click', closeHambMenu);
+        return () => {
+            document.removeEventListener('click', closeHambMenu);
+            setUserData({})
+        }
     }, [props.userData])
 
     //close hamburguer event listener function
