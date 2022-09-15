@@ -96,9 +96,9 @@ export default function App(){
         setLogin(prevMode => !prevMode)
     }
 
-    // function updateUserData(newUserData) {
-    //     setUserData(newUserData)
-    // }
+    function updateUserData(newUserData) {
+        setUserData(newUserData)
+    }
 
     // User information (including profile picture url link)
     const [userData, setUserData] = useState({})
@@ -207,7 +207,7 @@ export default function App(){
                         darkMode = {darkMode}
                         userData = {userData}
                         login = {login}
-                        // updateUserData= {updateUserData}
+                        updateUserData= {updateUserData}
                     />}>
                 </Route>
                 <Route path="/login" element={
