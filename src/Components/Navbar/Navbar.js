@@ -66,7 +66,6 @@ export default function Navbar(props){
     
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
-
     const [checked, setChecked] = useState(false);
 
     //Initialize Navbar
@@ -128,10 +127,11 @@ export default function Navbar(props){
     // console.log("userData:")
     // console.log(userData)
 
-    const switchHandler = (event) => {
-        setChecked(event.target.checked);
-      };
+    // const switchHandler = (event) => {
+    //     setChecked(event.target.checked);
+    // };
 
+  
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
         <div className="navbar">
@@ -153,9 +153,9 @@ export default function Navbar(props){
                         <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onChange={switchHandler} onClick= {props.toggleDarkMode}/>}
-                            
+                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                         />
+                        {/* onChange={switchHandler} */}
 
                     </div>
                 }
@@ -172,7 +172,7 @@ export default function Navbar(props){
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch sx={{ m: 1 }} color='primary' onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                         />
                     </div>
                 }
@@ -194,7 +194,7 @@ export default function Navbar(props){
                 </div>
 
                 <FormControlLabel className="toggler"
-                    control={<MaterialUISwitch sx={{ m: 1 }} color='primary' onClick= {props.toggleDarkMode}/>}
+                    control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                 />
             </div>
         </div>
