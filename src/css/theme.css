@@ -66,6 +66,9 @@ body{
 }
 
 /*** Dark Mode ***/
+body.dark{
+    background-color: #000000;
+}
 
 div.dark div.sectionHeader .title {
     color: var(--secondary-light);
@@ -142,7 +145,7 @@ div.navbar div.sign-buttons .nav-button.dark{
 /* input dark mode */
 
 div.dark .MuiInputBase-root {
-    background-color: var(--primary-light);
+    background-color: white;
     padding-left:10px;
 }
 

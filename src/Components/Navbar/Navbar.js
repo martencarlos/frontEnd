@@ -12,6 +12,7 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
+// Darkmode switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -66,6 +67,8 @@ export default function Navbar(props){
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
 
+    const [checked, setChecked] = useState(false);
+
     //Initialize Navbar
 
     useEffect(() => {
@@ -81,6 +84,14 @@ export default function Navbar(props){
             setUserData({})
         }
     }, [props.userData])
+
+    useEffect(() => {
+        
+        if(props.darkMode){
+            setChecked(true)
+        }
+            
+    }, [props.darkMode])
 
     //close hamburguer event listener function
     function closeHambMenu(e){
@@ -117,6 +128,10 @@ export default function Navbar(props){
     // console.log("userData:")
     // console.log(userData)
 
+    const switchHandler = (event) => {
+        setChecked(event.target.checked);
+      };
+
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
         <div className="navbar">
@@ -138,14 +153,9 @@ export default function Navbar(props){
                         <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch sx={{ m: 1 }} color='primary' onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onChange={switchHandler} onClick= {props.toggleDarkMode}/>}
                             
                         />
-                        {/* <div className="toggler" >
-                            <div className="toggler--slider" onClick={props.toggleDarkMode} >
-                                <div className="toggler--slider--circle"></div>
-                            </div>
-                        </div> */}
 
                     </div>
                 }

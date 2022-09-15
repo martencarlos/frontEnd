@@ -49,7 +49,6 @@ export default function NewCard(props){
                 successMessage.style.visibility = 'hidden'
                 setSuccess(false)
             }, 2000);
-            
         }
         
       }, [success])
