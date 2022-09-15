@@ -25,7 +25,7 @@ div.landingPage{
     height: 100vh;
     overflow: hidden;
     justify-content: center;
-    color: var(--accent-color);
+    color: var(--secondary-light);
     padding-bottom: 30px;
     
 }

@@ -47,7 +47,7 @@
 }
 
 .MuiSwitch-thumb{
-    background-color: var(--secondary-color) !important;
+    background-color: var(--accent-color) !important;
 }
 
 .MuiSwitch-thum:hover{
@@ -181,6 +181,7 @@ Button.bt-nav-link:hover{
 .sign-buttons{
     display: flex;
     justify-content: space-between;
+    height: 40px;
     
     flex-direction: row;
     align-content: center;
