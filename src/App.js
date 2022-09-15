@@ -28,8 +28,11 @@ import {ThemeProvider, createTheme } from '@mui/material/styles';
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 //   });
 
+
 export default function App(){
     console.log("Rendering App")
+    
+  
     
     var style = getComputedStyle(document.body)
 
@@ -67,7 +70,7 @@ export default function App(){
     // COLOR THEME PALETTE
     const theme = createTheme({
         palette: {
-            
+           
             primary: {
                 light: style.getPropertyValue('--primary-light').trim() ,
                 main: style.getPropertyValue('--primary-color').trim(),
