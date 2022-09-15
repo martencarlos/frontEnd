@@ -1,4 +1,4 @@
-
+/* eslint-disable */ 
 import "./home.css";
 
 import {useState, useEffect} from "react";
@@ -63,18 +63,25 @@ export default function Home(props){
 
     //Login
     useEffect(() => {
-
+        console.log("home props useEffect")
         if(!props.login)
             navigate("/login");
+        
+    }, [props.login, navigate])
 
-        console.log("home useEffect")
-        setUserData(props.userData)
+    useEffect(() => {
+        console.log("home userData useEffect")
+        console.log("props")
         console.log(props)
+        if(props.userData.profilePic){
+            setUserData(props.userData)
+        }
 
         return () => {
             setUserData({})
         }
-    }, [props.userData])
+        
+    }, [props.userData.profilePic]);
 
     // useEffect(() => {
     //     console.log("home useEffect")
@@ -108,6 +115,7 @@ export default function Home(props){
         input.click();
         document.body.removeChild(input) 
     }
+
     const updateValue = async (e) =>{
         // getting a hold of the file reference
         var file = e.target.files[0];
@@ -141,14 +149,14 @@ export default function Home(props){
             setUploadProgress('')
             document.getElementById("profilePic").src=response.data.url
             document.getElementById("navProfilePic").src=response.data.url
-            // localStorage.setItem("profilePic", response.data.url)
-            // var user = JSON.parse(JSON.stringify(userData));
+            localStorage.setItem("profilePic", response.data.url)
+            var user = JSON.parse(JSON.stringify(userData));
             
-            // setUserData(prevFormData => ({
-            //     ...prevFormData,
-            //     profilePic: response.data.url
-            // }))
-            // props.updateUserData(user)
+            setUserData(prevFormData => ({
+                ...prevFormData,
+                profilePic: response.data.url
+            }))
+            props.updateUserData(user)
           }).finally(function(response){
                
           })
