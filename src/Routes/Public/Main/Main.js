@@ -29,38 +29,41 @@ export default function Main(props){
                 <div className="background"></div>
             </div>
 
-            <Projects
+            <Projects className= "projects"
                 darkMode = {props.darkMode}
             />
 
-            <SectionHeader 
-                darkMode = {props.darkMode}
-                title = "Features"
-                text = {featuresSection.text}
-            />
+            <div className= "main-features">
 
-            <div className="features-row">
-                <Card 
+                <SectionHeader 
                     darkMode = {props.darkMode}
-                    imgType="icon"
-                    icon = {featureCard1.icon}
-                    title = {featureCard1.title}
-                    text = {featureCard1.text}
+                    title = "Features"
+                    text = {featuresSection.text}
                 />
-                <Card 
-                    darkMode = {props.darkMode}
-                    imgType="icon"
-                    icon = {featureCard2.icon}
-                    title = {featureCard2.title}
-                    text = {featureCard2.text}
-                />
-                <Card 
-                    darkMode = {props.darkMode}
-                    imgType="icon"
-                    icon = {featureCard3.icon}
-                    title = {featureCard3.title}
-                    text = {featureCard3.text}
-                />
+
+                <div className="features-row">
+                    <Card 
+                        darkMode = {props.darkMode}
+                        imgType="icon"
+                        icon = {featureCard1.icon}
+                        title = {featureCard1.title}
+                        text = {featureCard1.text}
+                    />
+                    <Card 
+                        darkMode = {props.darkMode}
+                        imgType="icon"
+                        icon = {featureCard2.icon}
+                        title = {featureCard2.title}
+                        text = {featureCard2.text}
+                    />
+                    <Card 
+                        darkMode = {props.darkMode}
+                        imgType="icon"
+                        icon = {featureCard3.icon}
+                        title = {featureCard3.title}
+                        text = {featureCard3.text}
+                    />
+                </div>
             </div>
 
             <div className="link">

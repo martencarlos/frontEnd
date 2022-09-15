@@ -35,9 +35,9 @@ export default function Article(props){
                     <Typography variant="body1" gutterBottom className={`post ${props.darkMode ? "dark": ""}`} dangerouslySetInnerHTML={{__html: props.item.content.substring(0, props.item.content.length - 133)}} />
                     {progress>=15 && 
                         <Fab onClick={props.scrollToTop}
-                            color="primary" className="up-floating-icon"
+                            color="secondary" className="up-floating-icon"
                             aria-label="add">
-                            <UpIcon color="primary.light"/>
+                            <UpIcon />
                         </Fab>
                     } 
                 </div>

@@ -13,8 +13,7 @@ div.sectionHeader {
     flex-direction: column;
     justify-content: center;
     white-space: pre-line;
-    width: 70%;
-    margin:auto;
+    width: 85%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -22,14 +21,16 @@ div.sectionHeader {
 div.sectionHeader .title{
     display: flex;
     justify-content: center;
+    color: var(--primary-text);
     flex-wrap: wrap;
-    /* font-weight: bolder; */
-    /* font-size: x-large; */
+    font-weight: bolder;
     margin: 40px;
 }
 
 div.sectionHeader .text{
     display: flex;
+    justify-content: center;
+    text-align: justify;
     flex-wrap: wrap;
     margin: 20px;
 }

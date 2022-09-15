@@ -1,9 +1,8 @@
 /* navbar */
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     nav{
-        padding-left: 1em !important;
-        padding-right: 1em !important;
+        
     }
     
     ul.nav-links{
@@ -31,11 +30,12 @@
     }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 800px) {
     div.hamb-menu{
         display: none !important;
     }
 }
+
 
 .MuiTooltip-tooltip{
     background-color: var(--primary-dark) !important;
@@ -44,6 +44,14 @@
 
 .MuiTooltip-arrow{
     color: var(--primary-dark) !important;
+}
+
+.MuiSwitch-thumb{
+    background-color: var(--secondary-color) !important;
+}
+
+.MuiSwitch-thum:hover{
+    background-color: var(--secondary-dark) !important;
 }
 
 span.hamb-menu {
@@ -92,23 +100,27 @@ div.nav-links-hamb li .bt-nav-link:hover {
     align-items: center;
 }
 
+div.navbar{
+    
+}
+
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
     color: #2B283A;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    padding-left: 4em;
-    padding-right: 4em;
+    padding-left: 20px;
+    padding-right: 20px;
+
 }
 
 div.navbar .nav-brand{
-    font-weight:bold;
-    color: var(--primary-color) !important;
-    font-size: 26px;
-    color: inherit;
+    
+    color: var(--secondary-color);
+    font-weight:bolder !important;
+    font-size: 30px;
     text-decoration: none;
     padding: 0.5rem;
 
@@ -124,7 +136,7 @@ div.navbar .nav-brand:hover{
 
 .nav-link{
     text-decoration: none;
-    color: #3c4267;
+    color: var(--primary-text);
     padding: 5px;
 }
 
@@ -145,7 +157,7 @@ Button.bt-nav-link:hover{
 
 .nav-link-active{
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--primary-dark);
     background-color: var(--primary-light);
     padding: 5px;
     border-radius: 4px;
@@ -153,7 +165,8 @@ Button.bt-nav-link:hover{
 }
 .nav-link-active:hover{
     text-decoration: none;
-    background-color: var(--primary-light-darker);
+    background-color: var(--primary-color);
+    color:white;
  
 }
 
@@ -168,7 +181,7 @@ Button.bt-nav-link:hover{
 .sign-buttons{
     display: flex;
     justify-content: space-between;
-    width: 180px;
+    
     flex-direction: row;
     align-content: center;
 }
@@ -191,8 +204,9 @@ label.nav-username{
 }
 
 .nav-profilepicture{
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
+    align-self: center;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
@@ -242,8 +256,7 @@ li{
 }
 
 .toggler {
-    display: flex;
-    align-items: center;
+    margin:0px !important;
 }
 
 .toggler--slider {

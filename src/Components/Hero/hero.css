@@ -7,14 +7,22 @@
         flex-direction: column;
     }
     div.hero img{
+        order:1;
         width: 100% !important;
         margin-right: 0px !important;
         margin-left: 0px !important;
-        margin-bottom: 20px;
-        order:1;
+        margin-top: 10px ;
+        margin-bottom: 10px ;
+       
+        
     }
-    div.text-area{
+    div.hero div.text-area{
         order: 2;
+        width: 100% !important;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+        margin-top: 10px ;
+        margin-bottom: 10px ;
     }
 }
 
@@ -23,10 +31,9 @@ div.hero {
     display:  flex;
     justify-content: center;
     align-items: center;
-    width: 70%;
-    margin:auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+   
+   
+  
     
 }
 
@@ -71,6 +78,7 @@ div.text-area .text{
 div.text-area .link{
     display: flex;
     flex-wrap: wrap;
+    color: var(--primary-dark);
     margin: 10px;
 }
 

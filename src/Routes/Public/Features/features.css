@@ -7,11 +7,11 @@
      }
 }
 
- div.features{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
- }
+div.features{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+}
 
  div.features div.features-row{
     display: flex;

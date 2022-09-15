@@ -13,6 +13,7 @@ export default function About(props){
     return (
 
         <div className= {`about ${props.darkMode ? "dark": ""}`}>
+            
            <SectionHeader 
                 darkMode = {props.darkMode}
                 title = {aboutSection.title}

@@ -30,7 +30,7 @@ div.article .published{
     display: flex;
     margin-top: 10px;
     margin-bottom: 20px;
-    color: rgb(63, 95, 192);
+    color: var(--primary-color)
     /* font-size: small; */
 }
 
@@ -68,7 +68,6 @@ div.blog .reading-progress{
 
 div.blog .up-floating-icon{
     position: sticky;
-    transition: 5s;
     bottom: 70px;
     left:77%;
 }
