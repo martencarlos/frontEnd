@@ -122,7 +122,7 @@ export default function Home(props){
         var file = e.target.files[0];
         var blobImage
         try {
-            blobImage = await resizeFile(file,80,80);
+            blobImage = await resizeFile(file,400,400);
         } catch (error) {
             alert("File not supported - please select an image \n" + error)
             const input = document.getElementById("input")

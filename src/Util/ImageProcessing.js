@@ -15,8 +15,8 @@ export const resizeFile = async (file,width,height)  =>
             resolve(uri);
         },
         "blob",
-        width,
-        height,
+        width-100,
+        height-100,
         );
     });
 
