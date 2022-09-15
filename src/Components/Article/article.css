@@ -12,12 +12,9 @@
  }
 
 
-
- 
- div.article .title{
-    font-weight: bold;
-    display: flex;
-    font-size: x-large;
+ div.article .article-title{
+    color: var(--primary-text);
+    font-weight: 600;
 }
 
 div.article .post{

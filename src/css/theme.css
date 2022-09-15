@@ -26,7 +26,7 @@ input {
 /* Colors */
 
 :root {
-    --accent-color:#FCF8E8;
+    --accent-color:#FFDE00;
 
     --primary-light: #dcecde;
     --primary-color: #94B49F;
@@ -50,7 +50,7 @@ html{
     overflow-y: scroll;
 }
 
-html, body{
+body{
     margin:0px;
 }
 
@@ -59,27 +59,42 @@ html, body{
 }
 
 .website{
-   
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /*** Dark Mode ***/
 
+div.dark div.sectionHeader .title {
+    color: var(--secondary-light);
+}
 
+div.dark div.text-area .title{
+    color: var(--secondary-light) !important;
+}
 
-body.dark{
-    background-color: #000000;
-    color:white;
+div.dark div.article .article-title{
+    color: var(--secondary-light) !important;
+}
+
+div.dark .blog-posts-title{
+    color: var(--secondary-light) !important;
+}
+
+div.dark div.text-area .link{
+    color: var(--primary-color) !important;
 }
 
 .website.dark {
     background-color: #000000;
-    color:white;
+    color: var(--secondary-light)
 }
 /* Navbar */
 nav.dark {
     background-color: #000000;
-    box-shadow: 0px 1px 4px rgba(249, 249, 249, 0.694);
-    color:white;
+    color: var(--secondary-light);
 }
 
 div.dark div.navbar .nav-brand:hover{
@@ -92,9 +107,7 @@ div.dark div.navbar .nav-brand{
     border-radius: 6px;
 }
 
-div.hero .dark{
-    background-color: darkslategrey;
-}
+
 
 body.dark div.nav-links-hamb li button a {
     color: var(--primary-light-darker)
