@@ -18,8 +18,8 @@ import About from "./Routes/Public/About/About";
 import Footer from "./Components/Footer/Footer";
 
 
-import Snackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+
+import { SnackbarProvider } from 'notistack';
 
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
@@ -235,10 +235,12 @@ export default function App(){
                     <Projects darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="projects/infinitycards" element={
-                    <InfinityCards 
-                        darkMode = {darkMode} 
-                        login = {login}
-                    />}>
+                    <SnackbarProvider maxSnack={5}>
+                        <InfinityCards 
+                            darkMode = {darkMode} 
+                            login = {login}
+                        />
+                    </SnackbarProvider>}>
                 </Route>
                 <Route path="projects/blog" element={
                     <Blog darkMode = {darkMode}/>}>
