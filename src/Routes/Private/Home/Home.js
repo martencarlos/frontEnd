@@ -1,4 +1,4 @@
-/* eslint-disable */ 
+ 
 import "./home.css";
 
 import {useState, useEffect} from "react";
@@ -79,9 +79,10 @@ export default function Home(props){
 
         return () => {
             setUserData({})
+            console.log("unloading home")
         }
         
-    }, [props.userData.profilePic]);
+    }, [props]);
 
     // useEffect(() => {
     //     console.log("home useEffect")
@@ -151,12 +152,12 @@ export default function Home(props){
             document.getElementById("navProfilePic").src=response.data.url
             localStorage.setItem("profilePic", response.data.url)
             var user = JSON.parse(JSON.stringify(userData));
-            
-            setUserData(prevFormData => ({
-                ...prevFormData,
-                profilePic: response.data.url
-            }))
             props.updateUserData(user)
+            // setUserData(prevFormData => ({
+            //     ...prevFormData,
+            //     profilePic: response.data.url
+            // }))
+            
           }).finally(function(response){
                
           })
