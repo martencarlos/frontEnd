@@ -11,6 +11,7 @@
  }
 
 
+
  
  div.article .title{
     font-weight: bold;
@@ -54,3 +55,16 @@ div.article div.post figure figcaption {
     text-align: center;
    }
 
+div.blog .reading-progress{
+    width: 100%;
+    height: 6px;
+    position: fixed;
+    top:0px;
+    z-index: 1;
+}
+
+div.blog .up-floating-icon{
+    position: sticky;
+    bottom: 70px;
+    left:77%;
+}

@@ -1,36 +1,44 @@
 
 import "./blog.css";
+
 import Summary from "../../../Components/ArticleSummary/ArticleSummary";
 import Article from "../../../Components/Article/Article";
-import LinearProgress from '@mui/material/LinearProgress';
-
+// import LinearProgress from '@mui/material/LinearProgress';
 
 import { useState,useEffect, useRef} from "react"
-
-
 import * as rssParser from 'react-native-parser-rss';
 
 import Typography from '@mui/material/Typography';
-import UpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Fab from '@mui/material/Fab';
+import Button from '@mui/material/Button';
+
 
 export default function Blog(props){
     console.log("Rendering Blog")
     
     const [posts, setPosts] = useState([])
     const [mainArticle, setMainArticle] = useState({})
-    const [progress, setProgress] = useState(0);
 
-    //Set percentage scroll progress bar
-    document.onscroll = function(){ 
-        var pos = getVerticalScrollPercentage(document.body)
-        setProgress(Math.round(pos))
-    }
+    const [numberOfArticles, setNumerOfArticles] = useState(3);
+    const loadMoreImages = () => {
+        
+        if(posts.length >= (numberOfArticles+3))
+            setNumerOfArticles(numberOfArticles + 3)
+        else if(posts.length > numberOfArticles){
+            setNumerOfArticles(posts.length)
+        }
+      };
+    // const [progress, setProgress] = useState(0);
+
+    // //Set percentage scroll progress bar
+    // document.onscroll = function(){ 
+    //     var pos = getVerticalScrollPercentage(document.body)
+    //     setProgress(Math.round(pos))
+    // }
     
-    function getVerticalScrollPercentage( elm ){
-        var p = elm.parentNode
-        return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
-    }
+    // function getVerticalScrollPercentage( elm ){
+    //     var p = elm.parentNode
+    //     return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
+    // }
 
     //Load articles from Medium
     useEffect(() => {
@@ -62,7 +70,6 @@ export default function Blog(props){
     //open article by using event.currentTarget id
     function openArticle(e){
         scrollToTop()
-        
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
     }
 
@@ -79,6 +86,8 @@ export default function Blog(props){
                 <Article
                         darkMode = {props.darkmode}
                         item = {mainArticle}
+                        scrollToTop = {scrollToTop}
+                        
                     />
             </div>}
             
@@ -86,9 +95,8 @@ export default function Blog(props){
                 <br></br>
                 <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                 <br></br>
-                {posts.map((post, i) => (
+                {posts.slice(0, numberOfArticles).map((post, i) => (
                     <div key = {i}>
-                        
                         <Summary
                             darkMode = {props.darkmode}
                             item = {post}
@@ -99,17 +107,19 @@ export default function Blog(props){
 
                     </div>
                 ))}
-
+                {numberOfArticles< posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
+                }
             </div>
             
-            {progress>=50 && 
+            {/* {progress>=50 && 
                 <Fab onClick={scrollToTop}
                     color="primary" className="up-floating-icon"
                     aria-label="add">
                     <UpIcon color="primary.light"/>
-                </Fab>}
+                </Fab>
+            } */}
 
-            <LinearProgress className="reading-progress" variant="determinate" value={progress} />
+            {/* <LinearProgress className="reading-progress" variant="determinate" value={progress} /> */}
             
             </div>
     )
