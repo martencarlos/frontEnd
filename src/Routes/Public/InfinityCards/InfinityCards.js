@@ -4,9 +4,13 @@ import "./infinityCards.css";
 import ImageCard from "../../../Components/ImageCard/ImageCard";
 import {useState, useEffect,useRef} from "react"
 import {getCookie} from "../../../Util/Cookie";
+import { useSnackbar } from 'notistack';
+
 
 export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
+
+    const { enqueueSnackbar } = useSnackbar();
     
     var postsPerPage = 8;
     var postNumber = 0;
@@ -15,6 +19,8 @@ export default function FeatureCards(props){
 
     const [posts, setPosts] = useState([...Array(0).keys()]); 
     const [cards, setCards] = useState([])
+
+   
     
     // Assign the cardsLength
     useEffect(function(){
@@ -103,13 +109,17 @@ export default function FeatureCards(props){
                     }, 400);
                     
                 }else{
-                    alert(message)
+                    const variant = 'error'
+                    enqueueSnackbar(message, { variant });
                 }
               });
         }else{
-            alert("Please login to delete a card")
+            const variant = 'error'
+            enqueueSnackbar("Please login to delete a card",{ variant });
         }
     }
+
+   
 
     //Display cards
     // function cardElements(darkmode){
