@@ -7,6 +7,7 @@
  div.article{
     display: flex;
     flex-direction: column;
+      max-width: 750px;
     margin: 50px;
  }
 
@@ -63,8 +64,12 @@ div.blog .reading-progress{
     z-index: 1;
 }
 
+
+
 div.blog .up-floating-icon{
     position: sticky;
+    transition: 5s;
     bottom: 70px;
     left:77%;
 }
+
