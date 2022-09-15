@@ -8,6 +8,11 @@
      }
 }
 
+div.about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 div.about div.card img{
     border-radius: 10px;
@@ -16,8 +21,8 @@ div.about div.card img{
 
 div.team-row{
     display: flex;
-    width: 70%;
-    margin: auto;
+    width: 85%;
     margin-top: 20px;
     margin-bottom: 20px;
  }
+

@@ -26,22 +26,24 @@ input {
 /* Colors */
 
 :root {
-    --accent-color:#536DFE;
+    --accent-color:#FCF8E8;
 
-    --primary-light: #e5e6ef;
-    --primary-color: #3F51B5;
-    --primary-dark: #303F9F;
+    --primary-light: #dcecde;
+    --primary-color: #94B49F;
+    --primary-dark: #577863;
 
-    --secondary-light: #6573c3;
-    --secondary-color: #27a527;
-    --secondary-dark: #2c387e;
+    --background-color: #ECB390; 
 
-    --primary-text: #212121;
+    --secondary-light: #FCF8E8;
+    --secondary-color: #ECB390; 
+    --secondary-dark: #d3753a; 
+
+    --primary-text: #6e6e6e;
+    --primary-text-light: #656565;
     --secondary-text: #757575;
     --divider-color:#BDBDBD;
 
     --primary-light-darker: #ced1e5;
-    --primary-bg:rgb(131, 150, 234);
 }
 
 html{
@@ -49,20 +51,15 @@ html{
 }
 
 html, body{
-    margin: 0;
+    margin:0px;
 }
 
 .root{
-    height: 100vh;
+    
 }
 
 .website{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-content: space-between;
-    justify-content: space-between;
-    min-width: 375px;
+   
 }
 
 /*** Dark Mode ***/
@@ -86,16 +83,18 @@ nav.dark {
 }
 
 div.dark div.navbar .nav-brand:hover{
-    color:var(--primary-color) !important;
+    color:var(--secondary-color) !important;
     border-radius: 6px;
 }
 
 div.dark div.navbar .nav-brand{
-    color:var(--primary-light) !important;
+    color:var(--secondary-light) !important;
     border-radius: 6px;
 }
 
-
+div.hero .dark{
+    background-color: darkslategrey;
+}
 
 body.dark div.nav-links-hamb li button a {
     color: var(--primary-light-darker)

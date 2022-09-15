@@ -42,6 +42,7 @@ div.blog-posts{
 
 .blog-posts-title{
     display: flex;
+    color:var(--primary-text);
     align-self: self-start ;
     /* font-size: large; */
     /* font-weight: bold; */
