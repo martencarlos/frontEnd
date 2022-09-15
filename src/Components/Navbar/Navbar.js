@@ -127,9 +127,9 @@ export default function Navbar(props){
     // console.log("userData:")
     // console.log(userData)
 
-    // const switchHandler = (event) => {
-    //     setChecked(event.target.checked);
-    // };
+    const switchHandler = (event) => {
+        setChecked(event.target.checked);
+    };
 
   
     return (
@@ -153,7 +153,7 @@ export default function Navbar(props){
                         <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                         />
                         {/* onChange={switchHandler} */}
 
@@ -172,7 +172,7 @@ export default function Navbar(props){
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                         />
                     </div>
                 }
@@ -194,7 +194,7 @@ export default function Navbar(props){
                 </div>
 
                 <FormControlLabel className="toggler"
-                    control={<MaterialUISwitch  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                    control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
                 />
             </div>
         </div>
