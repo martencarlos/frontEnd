@@ -150,7 +150,7 @@ export default function Navbar(props){
                 </ul>
                 {!props.login && 
                     <div className="sign-buttons">
-                        <Button variant="outlined" className= {`nav-button ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
+                        <Button variant="outlined" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
                         <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         
                         <FormControlLabel className="toggler"
