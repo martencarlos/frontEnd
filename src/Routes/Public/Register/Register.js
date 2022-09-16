@@ -1,7 +1,7 @@
 
 
 import "./register.css";
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setCookie} from "../../../Util/Cookie";
@@ -38,6 +38,22 @@ export default function Register(props){
             [name]: value
         }))
     }
+
+    useEffect(() => {
+        // Get the input field
+        var input = document.getElementById("registerForm");
+
+        // Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", function(event) {
+        // If the user presses the "Enter" key on the keyboard
+        if (event.key === "Enter") {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("register-button").click();
+        }
+        });
+      }, [])
 
     function validateForm(){
         console.log(formData)
@@ -134,7 +150,7 @@ export default function Register(props){
                     })
                     
                 props.toggleLogin()
-                
+              
             })
             .catch(function (error) {
                 console.log(error);
@@ -145,7 +161,7 @@ export default function Register(props){
         <div className={props.darkMode ? "dark" : ""}>
             <form className="register-form">
                 <Typography variant="h2" gutterBottom>Register</Typography>
-                <div className="register-form-inputs">
+                <div id="registerForm" className="register-form-inputs">
                     <div className="register-form-input-row">
                         <div className="register-form-input-row-inputanderror">
                             
@@ -330,7 +346,7 @@ export default function Register(props){
                             /> */}
                         </div>
                     </div>
-                    <Button variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
+                    <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
                 </div>
             </form>
         </div>
