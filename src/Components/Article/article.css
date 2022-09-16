@@ -33,12 +33,16 @@ div.article .published{
 
 
 
+div.article figure{
+  display: flex;
+    flex-direction: column;
+    margin: unset;
+     align-items: center;
+}
+
 div.article img{
     width: 100%;
-   
-    
     height: auto;
-    
 }
 
 div.article div.post figure{
@@ -54,12 +58,30 @@ div.article div.post figure figcaption {
    }
 
 div.blog .reading-progress{
-    width: 100%;
-    height: 10px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /*  width: 100%;
+    height: 10px; */
     position: fixed;
     top:0px;
-    z-index: 1;
+    z-index: 1; 
 }
+
+div.article pre{
+    width: 100%;
+    white-space: unset !important;
+}
+
+div.article iframe{
+    width: 100%;
+    height: auto;
+}
+
 
 
 
