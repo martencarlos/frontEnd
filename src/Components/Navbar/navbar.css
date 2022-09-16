@@ -2,11 +2,11 @@
 
 @media (max-width: 800px) {
     .nav-button{
-        height:35px;
+        height:45px;
         width:75px !important;
     }
     .nav-button-login{
-        height:35px;
+        height:45px;
         width:58px !important;
     }
     
@@ -115,7 +115,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 85px;
     color: #2B283A;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
