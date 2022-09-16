@@ -45,6 +45,12 @@ div.article img{
     height: auto;
 }
 
+div.article a{
+ color:var(--primary-dark);
+}
+
+
+
 div.article div.post figure{
  display:flex;
  flex-direction:column;
@@ -74,6 +80,10 @@ div.blog .reading-progress{
 
 div.article pre{
     width: 100%;
+     font-size: initial;
+ font-size: initial;
+    word-break: break-word;
+    white-space: unset !important;
     white-space: unset !important;
 }
 
