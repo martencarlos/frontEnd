@@ -82,6 +82,10 @@ div.dark div.article .article-title{
     color: var(--secondary-light) !important;
 }
 
+div.dark div.article a{
+ color:var(--primary-color);
+}
+
 div.dark .blog-posts-title{
     color: var(--secondary-light) !important;
 }
