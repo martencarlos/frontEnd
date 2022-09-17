@@ -39,11 +39,9 @@ footer {
   padding-right: 4em;
   bottom:0;
 }
-footer a {
-  text-decoration: none;
-  color: inherit;
-}
+
 a:hover {
   text-decoration: underline;
+  
 }
  

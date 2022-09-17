@@ -51,12 +51,13 @@
 }
 
 .MuiSwitch-thumb{
-    background-color: var(--accent-color) !important;
+    background-color: var(--primary-dark) !important;
 }
 
-.MuiSwitch-thum:hover{
-    background-color: var(--secondary-dark) !important;
+.MuiSwitch-thumb:hover{
+    background-color: var(--primary-light) !important;
 }
+
 
 span.hamb-menu {
     display: none;
