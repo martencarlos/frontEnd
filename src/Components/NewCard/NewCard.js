@@ -6,8 +6,6 @@ import {useState, useEffect} from "react"
 
 import {resizeFile} from "../../Util/ImageProcessing";
 import axios from "axios";
-import {getCookie} from "../../Util/Cookie";
-
 
 export default function NewCard(props){
     console.log("Rendering NewCard")

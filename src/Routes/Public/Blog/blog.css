@@ -13,7 +13,7 @@
 
     div.blog-mainArticle{
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         width: 100% !important;
     }
     

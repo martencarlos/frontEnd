@@ -14,7 +14,7 @@ export default function Hero(props){
             }
             <div className="text-area">
                 <Typography variant="h4" className="title">{props.title}</Typography>
-                <Typography variant="body1" gutterBottom className="text">{props.text}</Typography>
+                <Typography variant="body1"  className="text">{props.text}</Typography>
                 {props.link &&
                 <Link href={props.linkPath} className="link" underline="always">{props.linkText}</Link>
                 }
