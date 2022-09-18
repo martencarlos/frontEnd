@@ -142,7 +142,7 @@ export default function Register(props){
         axios(config) 
             .then(function (response) {
                 
-                const {email,password, errors} = response.data;
+                // const {email,password, errors} = response.data;
                 
                 setCookie("me", JSON.stringify(response.data), 1/24)
                 

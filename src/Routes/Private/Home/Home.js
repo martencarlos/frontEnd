@@ -3,7 +3,6 @@ import "./home.css";
 
 import {useState, useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
-import {getCookie} from "../../../Util/Cookie";
 import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
 

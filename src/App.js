@@ -129,7 +129,7 @@ export default function App(){
             }
         }
         
-    }, [login])
+    }, [login,userData.profilePic])
 
     function getProfileImageIntoLocalStorage(){
         console.log("retrieving pic and setting into localstorage")
