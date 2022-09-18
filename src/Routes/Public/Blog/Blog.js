@@ -3,9 +3,9 @@ import "./blog.css";
 
 import Summary from "../../../Components/ArticleSummary/ArticleSummary";
 import Article from "../../../Components/Article/Article";
-// import LinearProgress from '@mui/material/LinearProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
-import { useState,useEffect, useRef} from "react"
+import { useState,useEffect} from "react"
 import * as rssParser from 'react-native-parser-rss';
 
 import Typography from '@mui/material/Typography';
@@ -17,28 +17,17 @@ export default function Blog(props){
     
     const [posts, setPosts] = useState([])
     const [mainArticle, setMainArticle] = useState({})
+    const [loading, setLoading] = useState(true)
 
     const [numberOfArticles, setNumerOfArticles] = useState(3);
     const loadMoreImages = () => {
-        
         if(posts.length >= (numberOfArticles+3))
             setNumerOfArticles(numberOfArticles + 3)
         else if(posts.length > numberOfArticles){
             setNumerOfArticles(posts.length)
         }
       };
-    // const [progress, setProgress] = useState(0);
-
-    // //Set percentage scroll progress bar
-    // document.onscroll = function(){ 
-    //     var pos = getVerticalScrollPercentage(document.body)
-    //     setProgress(Math.round(pos))
-    // }
     
-    // function getVerticalScrollPercentage( elm ){
-    //     var p = elm.parentNode
-    //     return (elm.scrollTop || p.scrollTop) / (p.scrollHeight - p.clientHeight ) * 100
-    // }
 
     //Load articles from Medium
     useEffect(() => {
@@ -56,6 +45,7 @@ export default function Blog(props){
               .then((feed) => {
                   setPosts(feed.items);
                   setMainArticle(feed.items[0])
+                  setLoading(false)
                 });
         }
         getData()
@@ -80,47 +70,46 @@ export default function Blog(props){
 
 
     return (
-        <div className={`blog ${props.darkMode ? "dark": ""}`}>
-            {mainArticle && 
-            <div  className="blog-mainArticle">
-                <Article
-                        darkMode = {props.darkmode}
-                        item = {mainArticle}
-                        scrollToTop = {scrollToTop}
-                        
-                    />
-            </div>}
-            
-            <div  className="blog-posts" >
-                <br></br>
-                <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
-                <br></br>
-                {posts.slice(0, numberOfArticles).map((post, i) => (
-                    <div key = {i}>
-                        <Summary
-                            darkMode = {props.darkmode}
-                            item = {post}
-                            openArticle = {openArticle}
-                            />
-                        
-                        <div className="separator"></div>
+        <div className="blog-root">{
+            loading ? (
+                <CircularProgress size="5rem" className="loading-circle" />
 
+            ) : (
+        
+                <div className={`blog ${props.darkMode ? "dark": ""}`}>
+                    {mainArticle && 
+                        <div  className="blog-mainArticle">
+                            <Article
+                                    darkMode = {props.darkmode}
+                                    item = {mainArticle}
+                                    scrollToTop = {scrollToTop}
+                                    
+                                />
+                        </div>
+                    }
+
+                    <div  className="blog-posts" >
+                        <br></br>
+                        <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
+                        <br></br>
+                        {posts.slice(0, numberOfArticles).map((post, i) => (
+                            <div key = {i}>
+                                <Summary
+                                    darkMode = {props.darkmode}
+                                    item = {post}
+                                    openArticle = {openArticle}
+                                    />
+                                
+                                <div className="separator"></div>
+
+                            </div>
+                        ))}
+                        {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
+                        }
                     </div>
-                ))}
-                {numberOfArticles< posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
-                }
-            </div>
-            
-            {/* {progress>=50 && 
-                <Fab onClick={scrollToTop}
-                    color="primary" className="up-floating-icon"
-                    aria-label="add">
-                    <UpIcon color="primary.light"/>
-                </Fab>
-            } */}
+                </div>
+            )
+        }</div>
 
-            {/* <LinearProgress className="reading-progress" variant="determinate" value={progress} /> */}
-            
-            </div>
     )
 }

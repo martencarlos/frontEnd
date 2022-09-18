@@ -20,6 +20,20 @@
    
 }
 
+div.blog-root{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.loading-circle{
+    display: flex;
+    
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
 
 div.blog{
     display: flex;
