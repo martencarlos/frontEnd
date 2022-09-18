@@ -254,6 +254,9 @@ export default function App(){
                 <Route path="/about" element={
                     <About darkMode = {darkMode}/>}>
                 </Route>
+                <Route path="/*" element={
+                    <div>not found</div>}>
+                </Route>
             </Routes>
             <Footer darkMode = {darkMode} />
             </div>

@@ -12,6 +12,7 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import Drawer from '@mui/material/Drawer';
 
 // Darkmode switch
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -75,6 +76,9 @@ export default function Navbar(props){
         console.log("navbar useEffect")
         setUserData(props.userData)
         
+    }, [props.userData])
+
+    useEffect(() => {
         //close hamburguer menu if clicked outside the menu
         var x = document.getElementById("website");
         x.addEventListener("click", closeHambMenu);
@@ -83,7 +87,7 @@ export default function Navbar(props){
             document.removeEventListener('click', closeHambMenu);
             setUserData({})
         }
-    }, [props.userData])
+    }, [])
 
     useEffect(() => {
         
@@ -96,9 +100,15 @@ export default function Navbar(props){
     //close hamburguer event listener function
     function closeHambMenu(e){
         var x = document.getElementById("hamb-menu");
+        console.log(e.target.id)
+        console.log(e.target)   
         
-        if (e.target.id !=="hamb-zone" && x.style.display === "flex") {
-            x.style.display = "none";
+        if(x.style.display === "flex"){
+            console.log(x.style.display)
+            if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path"){
+                
+            }else
+                x.style.display = "none";
         }
     }
 
@@ -179,9 +189,6 @@ export default function Navbar(props){
                 }
 
                 <MenuRoundedIcon id="hamb-zone" className="hamb-menu-icon" onClick={hambMenuClick}/>
-                {/* <span id="hamb-zone" className="hamb-menu" onClick={hambMenuClick}>
-                    <i id="hamb-zone" className="bi bi-list"  role="img" aria-label="menu"></i>
-                </span> */}
                  
             </nav>
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
