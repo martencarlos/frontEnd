@@ -22,14 +22,13 @@ export default function Blog(props){
 
     const [numberOfArticles, setNumerOfArticles] = useState(3);
     const loadMoreImages = () => {
-        if(posts.length >= (numberOfArticles+3))
-            setNumerOfArticles(numberOfArticles + 3)
+        if(posts.length >= (numberOfArticles+2))
+            setNumerOfArticles(numberOfArticles + 2)
         else if(posts.length > numberOfArticles){
             setNumerOfArticles(posts.length)
         }
       };
     
-
     //Load articles from Medium
     useEffect(() => {
         console.log("Blog useEffect - load articles from medium")
@@ -60,8 +59,9 @@ export default function Blog(props){
     
     //open article by using event.currentTarget id
     function openArticle(e){
-        scrollToTop()
+        console.log(posts.find(x => x.id === e.currentTarget.id))
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
+        scrollToTop()
     }
 
     function scrollToTop(){
@@ -74,9 +74,7 @@ export default function Blog(props){
         <div className="blog-root">{
             loading ? (
                 <CircularProgress size="5rem" className="loading-circle" />
-
             ) : (
-        
                 <div className={`blog ${props.darkMode ? "dark": ""}`}>
                     {mainArticle && 
                         <div  className="blog-mainArticle">
@@ -94,6 +92,7 @@ export default function Blog(props){
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                         <br></br>
                         {posts.slice(0, numberOfArticles).map((post, i) => (
+                            (mainArticle.id !== post.id) &&
                             <div key = {i}>
                                 <Summary
                                     darkMode = {props.darkmode}

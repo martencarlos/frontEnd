@@ -102,8 +102,7 @@ export default function Navbar(props){
     //close hamburguer event listener function
     function closeHambMenu(e){
         var x = document.getElementById("hamb-menu");
-        console.log(e.target.id)
-        console.log(e.target)   
+          
         
         if(x.style.display === "flex"){
             console.log(x.style.display)
