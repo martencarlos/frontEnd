@@ -95,7 +95,11 @@ div.hamb-menu{
 }
 
 div.nav-links-hamb li .bt-nav-link:hover {
-    background-color:var(--primary-light-darker)
+    background-color:var(--primary-color);
+}
+
+div.nav-links-hamb a.nav-link:hover{
+    color: white;
 }
 
  div.sign-buttons-hamb{
