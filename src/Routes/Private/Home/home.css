@@ -9,12 +9,12 @@
 
 div.home{
     display: flex;
-    height: 100%;
+    flex: 1;
 }
-
+    
 div.home div.home-main{
     display: flex;
-        width: 100%;
+    width: 100%;
     justify-content: center;
     align-items: center;
     color: red;
@@ -33,7 +33,7 @@ div.home div.sidebar{
     display: flex;
     flex-direction: column;
     background-color: var(--primary-light);
-    height:100%;
+    
     
 }
 
