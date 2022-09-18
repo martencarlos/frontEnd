@@ -59,3 +59,15 @@ button.login{
     height: 2em;
     font-size: large;
 }
+
+.login-loading-circle{
+    display: flex;
+    
+    width: 100%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    margin-top: 18px;
+}

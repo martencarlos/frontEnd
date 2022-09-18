@@ -8,12 +8,14 @@ import {setCookie} from "../../../Util/Cookie";
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Login(props){
     console.log("Rendering Login")
 
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
             email:"",
             password: "",
@@ -51,6 +53,7 @@ export default function Login(props){
     }
 
     function login(){
+        setLoading(true)
         var user = { ...formData };
         const config = {
             url: process.env.REACT_APP_SERVER+'/login',
@@ -81,9 +84,12 @@ export default function Login(props){
                             user: response.data
                         }
                       })
-                      
+                    
                     props.toggleLogin()
+                    
                 }
+            }).finally(()=>{
+                setLoading(false)
             })
             .catch(function (error) {
             console.log(error);
@@ -175,6 +181,7 @@ export default function Login(props){
                                 name="password"
                                 id="standard-error-helper-text"
                                 label="Error"
+                                type="password"
                                 defaultValue={formData.password}
                                 helperText={formErrors.password}
                                 variant="standard"
@@ -183,8 +190,11 @@ export default function Login(props){
 
                         </div>
                     </div>
-
+                    {loading ? (
+                        <CircularProgress size="2rem" className="login-loading-circle" />
+                    ) : (
                     <Button variant="contained" id="login" className="login" type="button" onClick={validate}>Login</Button>
+                    )}
                 </div>
             </form>
         </div>

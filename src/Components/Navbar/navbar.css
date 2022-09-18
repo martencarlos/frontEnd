@@ -1,6 +1,6 @@
 /* navbar */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .nav-button{
         height:45px;
         width:75px !important;
@@ -31,7 +31,7 @@
     }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 850px) {
     div.hamb-menu{
         display: none !important;
     }
@@ -77,8 +77,8 @@ div.hamb-menu{
     align-items: center;
     width: -webkit-fill-available;
     border-radius: 10px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
     justify-content: space-between;
     padding-top: 15px;
     padding-bottom: 15px;

@@ -9,11 +9,13 @@ import {setCookie} from "../../../Util/Cookie";
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Register(props){
     console.log("rendering Register")
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState(
         {
             name: "", 
@@ -87,13 +89,13 @@ export default function Register(props){
         const currentErrors = validateForm()
         setFormErrors(currentErrors)
         if(Object.keys(currentErrors).length===0){
-             
              registerUser(currentErrors)
         }
     }
 
     //Register User
     function registerUser(currentErrors) {
+        setLoading(true)
         var user = JSON.parse(JSON.stringify(formData));
         delete user.password2;
 
@@ -113,9 +115,12 @@ export default function Register(props){
                 if(!success){
                     let newErrors = {...currentErrors,email,username};
                     setFormErrors(newErrors);
+                    setLoading(false)
                 }else{
                     login(user)
                 }
+            }).finally(()=>{
+                
             })
             .catch(function (error) {
             console.log(error);
@@ -151,6 +156,8 @@ export default function Register(props){
                     
                 props.toggleLogin()
               
+            }).finally(()=>{
+                setLoading(false)
             })
             .catch(function (error) {
                 console.log(error);
@@ -185,16 +192,6 @@ export default function Register(props){
                                 variant="standard"
                                 onChange={handleChange}
                             />}
-
-                            {/* <input
-                                name="name"
-                                type="name"
-                                placeholder="Full Name"
-                                autoComplete="section-blue name"
-                                required="required"
-                                value={formData.name}
-                                onChange={handleChange}
-                            /> */}
                             
                         </div>
                     </div>
@@ -224,16 +221,7 @@ export default function Register(props){
                                 variant="standard"
                                 onChange={handleChange}
                             />}
-                            {/* <input
-                                name="username"
-                                type="nickname"
-                                placeholder="username"
-                                autoComplete="section-blue nickname"
-                                required="required"
-                                value={formData.username}
-                                onChange={handleChange}
-                                
-                            /> */}
+                            
                         </div>
                     </div>
                     
@@ -259,16 +247,7 @@ export default function Register(props){
                                 variant="standard"
                                 onChange={handleChange}
                             />}
-                            {/* <input
-                                name="email"
-                                type="email"
-                                placeholder="email"
-                                autoComplete="section-blue email"
-                                required="required"
-                                value={formData.email}
-                                onChange={handleChange}
-                                
-                            /> */}
+
                         </div>
                     </div>
                     <div className="register-form-input-row">
@@ -292,21 +271,13 @@ export default function Register(props){
                                 name="password"
                                 id="standard-error-helper-text"
                                 label="Error"
+                                type="password"
                                 defaultValue={formData.password}
                                 helperText={formErrors.password}
                                 variant="standard"
                                 onChange={handleChange}
                             />}     
-                            {/* <input
-                                name="password"
-                                type="password"
-                                placeholder="password"
-                                autoComplete="section-red new-password"
-                                required="required"
-                                value={formData.password}
-                                onChange={handleChange}
-                                
-                            /> */}
+ 
                         </div>
                     </div>
                     <div className="register-form-input-row">
@@ -335,18 +306,13 @@ export default function Register(props){
                                 onChange={handleChange}
                             />}   
                             
-                            {/* <input
-                                name="password2"
-                                type="password"
-                                placeholder="re-enter password"
-                                autoComplete="section-red new-password"
-                                required="required"
-                                value={formData.password2}
-                                onChange={handleChange}
-                            /> */}
                         </div>
                     </div>
+                    {loading ? (
+                        <CircularProgress size="2rem" className="login-loading-circle" />
+                    ) : (
                     <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
+                    )}
                 </div>
             </form>
         </div>
