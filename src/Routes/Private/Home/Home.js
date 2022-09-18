@@ -61,18 +61,21 @@ export default function Home(props){
     //Upload progress
     const [uploadProgress, setUploadProgress] = useState('')
 
-    //Login
+    //redirect to login page if logged out
     useEffect(() => {
-        console.log("home props useEffect")
+        console.log("useEffect - check if logged in")
         if(!props.login)
             navigate("/login");
         
     }, [props.login, navigate])
 
+
     useEffect(() => {
         console.log("home userData useEffect")
-        console.log("props")
+        console.log("props received:")
         console.log(props)
+        if(props.userData.profilePic)
+            console.log(props.userData.profilePic)
         if(props.userData.profilePic){
             setUserData(props.userData)
         }
@@ -84,26 +87,6 @@ export default function Home(props){
         
     }, [props]);
 
-    // useEffect(() => {
-    //     console.log("home useEffect")
-    //     if(!props.login){
-    //         navigate("/login");
-    //     }else{
-    //         if(getCookie("me")){
-    //             // var cookieUser = JSON.parse(getCookie("me"));
-    //             // if(document.getElementById("navProfilePic").src)
-    //             //     cookieUser.profilePic = document.getElementById("navProfilePic").src
-    //             // else
-    //             // cookieUser.profilePic = localStorage.getItem("profilePic")
-    //             // setUserData(cookieUser)
-    //         }
-    //     }
-    //     // eslint-disable-next-line 
-    // }, [props.login])
-
-    // useEffect(() => {
-    //     console.log("user data use effect triggered to update profile picture")
-    // }, [userData])
 
     //Profile Image functions
     
@@ -148,15 +131,11 @@ export default function Home(props){
             }) 
           .then(function (response) {
             setUploadProgress('')
-            document.getElementById("profilePic").src=response.data.url
-            document.getElementById("navProfilePic").src=response.data.url
-            localStorage.setItem("profilePic", response.data.url)
             var user = JSON.parse(JSON.stringify(userData));
+            user.profilePic = response.data.url;
+            
+            localStorage.setItem("profilePic", response.data.url)
             props.updateUserData(user)
-            // setUserData(prevFormData => ({
-            //     ...prevFormData,
-            //     profilePic: response.data.url
-            // }))
             
           }).finally(function(response){
                

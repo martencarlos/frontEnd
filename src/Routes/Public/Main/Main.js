@@ -11,6 +11,7 @@ import Link from '@mui/material/Link';
 
 import {  landingHero } from "../../../data/main_data"
 import { featuresSection, featureCard1, featureCard2, featureCard3,} from "../../../data/features_data"
+import { blue } from "@mui/material/colors";
 
 export default function Main(props){
     console.log("Rendering Main")

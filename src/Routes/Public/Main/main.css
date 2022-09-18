@@ -67,10 +67,11 @@ div.main div.features-row{
     margin-bottom: 20px;
  }
 
- div.main .link{
+ div.main .link a{
     display: flex;
     justify-content: center;
     font-size: larger;
+    color: var(--primary-dark) ;
  }
 
  
