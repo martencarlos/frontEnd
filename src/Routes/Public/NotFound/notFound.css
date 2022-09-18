@@ -1,0 +1,21 @@
+
+/* 404 */
+
+@media (max-width: 800px) {
+
+    div.notFound {
+        
+     }
+}
+
+div.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.notFound img{
+    width:400px;
+    height: auto;
+}
+

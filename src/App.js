@@ -15,6 +15,7 @@ import InfinityCards from "./Routes/Public/InfinityCards/InfinityCards";
 import Features from "./Routes/Public/Features/Features";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
+import NotFound from "./Routes/Public/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 
 
@@ -255,17 +256,13 @@ export default function App(){
                     <About darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/*" element={
-                    <div>not found</div>}>
+                    <NotFound darkMode = {darkMode}/>}>
                 </Route>
             </Routes>
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
-            {/* <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    Website fully loaded!
-                </Alert>
-            </Snackbar> */}
+            
         </BrowserRouter>
     )
 }
