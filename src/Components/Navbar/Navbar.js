@@ -12,9 +12,8 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import Drawer from '@mui/material/Drawer';
 
-// Darkmode switch
+// Darkmode switch definition
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -68,18 +67,10 @@ export default function Navbar(props){
     
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
-    const [checked, setChecked] = useState(false);
+    const [switchChecked, setswitchChecked] = useState(false);
 
-    //Initialize Navbar
-
+    //close hamburguer menu if clicked outside the menu
     useEffect(() => {
-        console.log("navbar useEffect")
-        setUserData(props.userData)
-        
-    }, [props.userData])
-
-    useEffect(() => {
-        //close hamburguer menu if clicked outside the menu
         var x = document.getElementById("website");
         x.addEventListener("click", closeHambMenu);
 
@@ -90,12 +81,23 @@ export default function Navbar(props){
     }, [])
 
     useEffect(() => {
-        
         if(props.darkMode){
-            setChecked(true)
+            setswitchChecked(true)
         }
-            
     }, [props.darkMode])
+
+     // initialize user data
+     useEffect(() => {
+        console.log("navbar useEffect")
+        setUserData(props.userData)
+    }, [props.userData])
+
+    useEffect(() => {
+        //Logout if cookie expired
+        if(getCookie("me")==="" && props.login){
+            props.toggleLogin()
+        }
+    })
 
     //close hamburguer event listener function
     function closeHambMenu(e){
@@ -106,17 +108,11 @@ export default function Navbar(props){
         if(x.style.display === "flex"){
             console.log(x.style.display)
             if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path"){
-                
             }else
                 x.style.display = "none";
         }
     }
 
-    //Logout if cookie expired
-    if(getCookie("me")==="" && props.login){
-        props.toggleLogin()
-    }
-    
     //open & close hamburguer by clicking the icon 
     function hambMenuClick(){
         var x = document.getElementById("hamb-menu");
@@ -139,7 +135,7 @@ export default function Navbar(props){
     // console.log(userData)
 
     const switchHandler = (event) => {
-        setChecked(event.target.checked);
+        setswitchChecked(event.target.checked);
     };
 
   
@@ -164,7 +160,7 @@ export default function Navbar(props){
                         <Button variant="contained" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                         />
                         {/* onChange={switchHandler} */}
 
@@ -183,7 +179,7 @@ export default function Navbar(props){
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         
                         <FormControlLabel className="toggler"
-                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                            control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                         />
                     </div>
                 }
@@ -203,7 +199,7 @@ export default function Navbar(props){
                 </div>
 
                 <FormControlLabel className="toggler"
-                    control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={checked} onClick= {props.toggleDarkMode}/>}
+                    control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                 />
             </div>
         </div>
