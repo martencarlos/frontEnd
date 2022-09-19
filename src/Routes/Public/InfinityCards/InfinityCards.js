@@ -12,9 +12,6 @@ export default function FeatureCards(props){
 
     const { enqueueSnackbar } = useSnackbar();
     
-    var postsPerPage = 8;
-    var postNumber = 0;
-
     const cardsLength = useRef(0);
 
     const [posts, setPosts] = useState([...Array(0).keys()]); 
@@ -24,6 +21,8 @@ export default function FeatureCards(props){
     
     // Assign the cardsLength
     useEffect(function(){
+        var postsPerPage = 8;
+        var postNumber = 0;
         cardsLength.current=cards.length
         postNumber = postNumber + postsPerPage;
         // Last posts
@@ -52,6 +51,8 @@ export default function FeatureCards(props){
 
     //Infinity Scroll
     useEffect(() => {
+        var postsPerPage = 8;
+        var postNumber = 0;
         function handleScroll() { 
             let documentHeight = document.body.scrollHeight;
             let currentScroll = window.scrollY + window.innerHeight;

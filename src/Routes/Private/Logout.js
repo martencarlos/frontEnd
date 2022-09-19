@@ -15,7 +15,7 @@ export default function Logout(props){
         localStorage.removeItem("cards")
         navigate("/login")
         console.log("actual clear of localstorage")
-      }, [])
+      })
 
     delCookie("me")
     
