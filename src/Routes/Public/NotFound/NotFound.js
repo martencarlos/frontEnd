@@ -22,7 +22,7 @@ export default function NotFound(props){
         else
             setimg404Src("https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2F404%20-%20cat.png?alt=media&token=5dfbe803-bdf8-40ea-83a1-99987a9a3e02");
 
-    })
+    },[])
 
     return (
 
