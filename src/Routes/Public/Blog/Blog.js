@@ -59,7 +59,7 @@ export default function Blog(props){
     
     //open article by using event.currentTarget id
     function openArticle(e){
-        console.log(posts.find(x => x.id === e.currentTarget.id))
+        
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
         scrollToTop()
     }

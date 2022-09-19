@@ -23,8 +23,7 @@ div.card {
     align-items: center;
 
     width: 33.3%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px
 }
 
 div.card i{
