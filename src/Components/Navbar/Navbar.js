@@ -102,13 +102,18 @@ export default function Navbar(props){
     //close hamburguer event listener function
     function closeHambMenu(e){
         var x = document.getElementById("hamb-menu");
-          
         
         if(x.style.display === "flex"){
             console.log(x.style.display)
             if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path"){
-            }else
-                x.style.display = "none";
+            }else{
+                x.classList.add("closeMenu");
+                setTimeout(function() {
+                    x.style.display = "none";
+                    x.classList.remove("closeMenu");
+                }, 500);
+            }
+                
         }
     }
 
@@ -117,9 +122,15 @@ export default function Navbar(props){
         var x = document.getElementById("hamb-menu");
         
         if (x.style.display === "flex") {
-            x.style.display = "none";
+            x.classList.add("closeMenu");
+            setTimeout(function() {
+                x.style.display = "none";
+                x.classList.remove("closeMenu");
+            }, 500);
+            
         } else {
             x.style.display = "flex";
+            
         }
     }
 

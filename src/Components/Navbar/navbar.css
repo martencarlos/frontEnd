@@ -1,4 +1,15 @@
 /* navbar */
+/* The animation code */
+@keyframes openMenu {
+    from {top:0px}
+    to {top: 100px}
+  }
+
+  @keyframes closeMenu {
+    from {top:100px}
+    to {top: -200px}
+  }
+
 
 @media (max-width: 850px) {
     .nav-button{
@@ -69,6 +80,7 @@ span.hamb-menu i.bi{
     font-size: x-large;
 }
 
+/* Hamburger Menu flexed */
 div.hamb-menu{
     display: none;
     z-index: 1;
@@ -83,6 +95,14 @@ div.hamb-menu{
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: var(--primary-light);
+    animation-name: openMenu;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation-duration: 0.5s;
+}
+
+ .closeMenu{
+    animation-name: closeMenu !important;
+    
 }
 
  div.nav-links-hamb{
@@ -121,13 +141,15 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position:relative;
     height: 85px;
     color: #2B283A;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     padding-left: 20px;
     padding-right: 20px;
-
+    background-color:white;
+    z-index: 2;
 }
 
 div.navbar .nav-brand{
@@ -247,7 +269,7 @@ label.nav-username{
   /* Tooltip text */
   .tooltip .tooltip-text {
     align-self: center;
-    z-index:2;
+    z-index:3;
     visibility: hidden;
     opacity: 0;
     transition: 0.5s;
