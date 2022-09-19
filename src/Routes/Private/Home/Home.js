@@ -70,18 +70,13 @@ export default function Home(props){
 
 
     useEffect(() => {
-        console.log("home userData useEffect")
-        console.log("props received:")
-        console.log(props)
-        if(props.userData.profilePic)
-            console.log(props.userData.profilePic)
+
         if(props.userData.profilePic){
             setUserData(props.userData)
         }
 
         return () => {
             setUserData({})
-            console.log("unloading home")
         }
         
     }, [props]);
