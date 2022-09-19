@@ -4,8 +4,13 @@
 @media (max-width: 800px) {
 
     div.notFound {
-        
+        flex-direction: column;
      }
+
+     .notFound-textArea{
+        margin-top: 30px;
+        margin-left: 15px !important;
+    }
 }
 
 div.notFound {
@@ -14,8 +19,24 @@ div.notFound {
     justify-content: center;
 }
 
+.notFound-textArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.notFound-title{
+    font-weight: 900 !important;
+    color: var(--secondary-dark);
+    margin-bottom: 10px !important;
+}
+
 div.notFound img{
-    width:400px;
+    max-width:200px;
+    min-width: 100px;
     height: auto;
 }
+
 

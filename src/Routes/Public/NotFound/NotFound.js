@@ -1,17 +1,37 @@
 
 import "./notFound.css";
 
-const image404Url="https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2F404.png?alt=media&token=460e14fb-594c-4a86-b3ad-b695bf126bac";
+import Typography from '@mui/material/Typography';
+import '@fontsource/roboto/900.css';
+import { useEffect, useState } from "react";
+
+
+
+
 export default function NotFound(props){
 
     console.log("Rendering 404")
 
+    
+    const [img404Src, setimg404Src] = useState()
+
+    useEffect (() => {
+        var random = Math.floor(Math.random() * 2);
+        if(random===1)
+            setimg404Src("https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2F404%20-%20dog.png?alt=media&token=a048cd6c-9760-4715-81f4-e482ccd76898");
+        else
+            setimg404Src("https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2F404%20-%20cat.png?alt=media&token=5dfbe803-bdf8-40ea-83a1-99987a9a3e02");
+
+    })
+
     return (
 
         <div className= {`notFound ${props.darkMode ? "dark": ""}`}>
-            
-            <img src= {image404Url} alt="not found"></img>
-            
+            <img src= {img404Src} alt="not found"></img>
+            <div className="notFound-textArea">
+                <Typography className="notFound-title" variant="h1" gutterBottom>404</Typography>
+                <Typography className="notFound-text" variant="h5" gutterBottom>Page Not Found</Typography>
+            </div>
         </div>
     )
 }
