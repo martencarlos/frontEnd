@@ -200,7 +200,6 @@ export default function App(){
                     toggleLogin={toggleLogin}
             />
             <Routes>
-             
                 <Route path="/" element={
                     <Main 
                         darkMode = {darkMode}
@@ -249,8 +248,9 @@ export default function App(){
                 <Route path="/features" element={
                     <Features darkMode = {darkMode}/>}>
                 </Route>
-                <Route path="/blog" element={
-                    <Blog darkMode = {darkMode}/>}>
+                <Route path="/blog">
+                    <Route path="" element={<Blog darkMode = {darkMode}/>}/>
+                    <Route path=":id" element={<Blog darkMode = {darkMode}/>}/>
                 </Route>
                 <Route path="/about" element={
                     <About darkMode = {darkMode}/>}>
