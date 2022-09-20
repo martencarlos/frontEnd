@@ -39,4 +39,12 @@ div.notFound img{
     height: auto;
 }
 
+.doggy{
+    
+    display: flex;
+    width: 12px;
+    min-width: 10px !important;
+    position: relative;
+}
+
 
