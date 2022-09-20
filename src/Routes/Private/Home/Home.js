@@ -64,7 +64,7 @@ export default function Home(props){
     useEffect(() => {
         console.log("useEffect - check if logged in")
         if(!props.login)
-            navigate("/login");
+            navigate("/login",{ replace: true });
         
     }, [props.login, navigate])
 
