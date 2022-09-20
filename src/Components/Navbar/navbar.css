@@ -1,13 +1,13 @@
 /* navbar */
 /* The animation code */
 @keyframes openMenu {
-    from {top:0px}
+    from {top:-100px}
     to {top: 100px}
   }
 
   @keyframes closeMenu {
     from {top:100px}
-    to {top: -200px}
+    to {top: -110px}
   }
 
 

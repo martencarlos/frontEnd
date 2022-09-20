@@ -14,7 +14,7 @@ export default function NotFound(props){
 
     
     const [img404Src, setimg404Src] = useState()
-
+    const doggySrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2Fdoggy.gif?alt=media&token=b976fefc-ebc2-4837-9aa8-080624a7501d"
     useEffect (() => {
         var random = Math.floor(Math.random() * 2);
         if(random===1)
@@ -25,12 +25,13 @@ export default function NotFound(props){
     },[])
 
     return (
-
         <div className= {`notFound ${props.darkMode ? "dark": ""}`}>
+            
             <img src= {img404Src} alt="not found"></img>
             <div className="notFound-textArea">
                 <Typography className="notFound-title" variant="h1" gutterBottom>404</Typography>
                 <Typography className="notFound-text" variant="h5" gutterBottom>Page Not Found</Typography>
+                <img src= {doggySrc} className="doggy" alt="not found"></img>
             </div>
         </div>
     )
