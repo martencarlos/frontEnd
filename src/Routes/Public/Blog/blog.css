@@ -14,7 +14,7 @@
     div.blog-mainArticle{
         display: flex;
         justify-content: flex-start;
-        width: 100% !important;
+        width: 85% !important;
     }
     
    
@@ -55,6 +55,7 @@ div.blog-posts{
 
 .blog-posts-title{
     display: flex;
+    padding-left: 10px;
     color:var(--primary-text);
     align-self: self-start ;
     /* font-size: large; */
@@ -66,6 +67,8 @@ div.blog-posts{
 div.blog-mainArticle{
     display: flex;
     justify-content: center;
+    margin-left: 30px;
+    margin-right: 30px;
     width:70%;
 }
 
