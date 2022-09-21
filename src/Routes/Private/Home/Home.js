@@ -165,7 +165,7 @@ export default function Home(props){
             </div>
 
             <div className="home-main">
-                
+            {userData.createDate &&
                 <div className="home-main-panel">
                     
                     <Typography variant="h4" gutterBottom>{"Account information"} </Typography>
@@ -192,14 +192,14 @@ export default function Home(props){
                         <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
                     </div>
                     
-                </div> 
+                </div> }
                 
 
-                {/* <NewCard 
+                 {/* <NewCard 
                     darkMode = {props.darkMode}
                     handleClick = {addCard}
                     userData ={userData}
-                /> */}
+                />  */}
             </div>
 
         </div>
