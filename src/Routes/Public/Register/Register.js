@@ -124,17 +124,18 @@ export default function Register(props){
                     login(user)
                 }
             }).finally(()=>{
-                setLoading(false)
+                
             })
             .catch(function (error) {
             const variant = 'error'
+            setLoading(false)
             enqueueSnackbar(error.message,{ variant });
             console.log(error);
             });
     }
 
     function login(user){
-        setLoading(true)
+        
         const config = {
             url: process.env.REACT_APP_SERVER+'/login',
             method: 'POST',
@@ -150,16 +151,15 @@ export default function Register(props){
                 
                 // const {email,password, errors} = response.data;
                 setCookie("me", JSON.stringify(response.data), 1/24)
-                
+                  
+                props.toggleLogin()
                 navigate({
                     pathname: '/home',
                     state: {  
                         user: response.data,
                         registered: true
                     }
-                    })
-                    
-                props.toggleLogin()
+                })
               
             }).finally(()=>{
                 setLoading(false)
