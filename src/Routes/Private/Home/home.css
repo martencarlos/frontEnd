@@ -17,16 +17,22 @@ div.home div.home-main{
     width: 100%;
     justify-content: center;
     align-items: center;
-    color: red;
-    border: 1px solid red;
+    
+    
 }
 
 div.home div.home-main-panel{
     display: flex;
+    flex-direction: column;
     padding: 40px;
-    max-width: 500px;
-    height: 500px;
-    background-color: rgb(164, 164, 164);
+    background-color: var(--primary-light);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.account-row{
+    display: flex;
+    justify-content: space-between;
 }
 
 div.home div.sidebar{

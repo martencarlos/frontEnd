@@ -155,15 +155,18 @@ export default function Navbar(props){
             <nav className={props.darkMode ? "dark": ""}>
                 <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
 
-                <ul className="nav-links">
-                    {props.login && 
+                {props.login &&
+                    <ul className="nav-links">
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
-                    }
-                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
-                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
-                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
-                    <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
-                </ul>
+                    </ul>}
+                {!props.login &&     
+                    <ul className="nav-links">
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
+                    
+                    </ul>}
                 {!props.login && 
                     <div className="sign-buttons">
                         <Button variant="outlined" color="primary" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
@@ -196,15 +199,17 @@ export default function Navbar(props){
                  
             </nav>
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
-                <div className="nav-links-hamb">
-                    {props.login && 
-                        <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
-                    }
+                {props.login && 
+                <div className="nav-links-hamb">   
+                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
+                </div>}
+                {!props.login && 
+                <div className="nav-links-hamb"> 
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
-                </div>
+                </div>}
 
                 <FormControlLabel className="toggler"
                     control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}

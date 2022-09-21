@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
 
+import Typography from '@mui/material/Typography';
+
 
 export default function Home(props){
 
@@ -67,7 +69,6 @@ export default function Home(props){
             navigate("/login",{ replace: true });
         
     }, [props.login, navigate])
-
 
     useEffect(() => {
 
@@ -141,7 +142,7 @@ export default function Home(props){
         console.log("removing child")
         
     }
-
+    console.log(userData)
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
@@ -165,14 +166,35 @@ export default function Home(props){
 
             <div className="home-main">
                 
-                In development
-                {/* <div className="home-main-panel">
-                    Settings
-                </div>  */}
+                <div className="home-main-panel">
+                    
+                    <Typography variant="h4" gutterBottom>{"Account information"} </Typography>
+                    <br></br>
+                    <br></br>
+                    <div className="account-row">
+                        <Typography variant="body1" gutterBottom>{"Name:"} </Typography>
+                        <Typography variant="body1" gutterBottom>{userData.name} </Typography>
+                    </div>
+                    <div className="account-row">
+                        <Typography variant="body1" gutterBottom>{"Username:"} </Typography>
+                        <Typography variant="body1" gutterBottom>{userData.username} </Typography>
+                    </div>
+                    <div className="account-row">
+                        <Typography variant="body1" gutterBottom>{"Email:"} </Typography>
+                        <Typography variant="body1" gutterBottom>{userData.email} </Typography>
+                    </div>
+                    <div className="account-row">
+                        <Typography variant="body1" gutterBottom>{"Created date:"} </Typography>
+                        <Typography variant="body1" gutterBottom>{userData.createDate.substring(0, 10)} </Typography>
+                    </div>
+                    <div className="account-row">
+                        <Typography variant="body1" gutterBottom>{"Last update:"} </Typography>
+                        <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
+                    </div>
+                    
+                </div> 
                 
-                
-                
-                
+
                 {/* <NewCard 
                     darkMode = {props.darkMode}
                     handleClick = {addCard}
