@@ -168,27 +168,27 @@ export default function Home(props){
             {userData.createDate &&
                 <div className="home-main-panel">
                     
-                    <Typography variant="h4" gutterBottom>{"Account information"} </Typography>
+                    <Typography variant="h4" className="account-title" gutterBottom>{"Account information"} </Typography>
                     <br></br>
                     <br></br>
                     <div className="account-row">
-                        <Typography variant="body1" gutterBottom>{"Name:"} </Typography>
+                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Name:"} </Typography>
                         <Typography variant="body1" gutterBottom>{userData.name} </Typography>
                     </div>
                     <div className="account-row">
-                        <Typography variant="body1" gutterBottom>{"Username:"} </Typography>
+                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Username:"} </Typography>
                         <Typography variant="body1" gutterBottom>{userData.username} </Typography>
                     </div>
                     <div className="account-row">
-                        <Typography variant="body1" gutterBottom>{"Email:"} </Typography>
+                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Email:"} </Typography>
                         <Typography variant="body1" gutterBottom>{userData.email} </Typography>
                     </div>
                     <div className="account-row">
-                        <Typography variant="body1" gutterBottom>{"Created date:"} </Typography>
+                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Created date:"} </Typography>
                         <Typography variant="body1" gutterBottom>{userData.createDate.substring(0, 10)} </Typography>
                     </div>
                     <div className="account-row">
-                        <Typography variant="body1" gutterBottom>{"Last update:"} </Typography>
+                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Last update:"} </Typography>
                         <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
                     </div>
                     
