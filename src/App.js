@@ -189,6 +189,7 @@ export default function App(){
 
     return (
         <BrowserRouter>
+        <SnackbarProvider maxSnack={3}>
         <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
@@ -200,6 +201,7 @@ export default function App(){
                     toggleLogin={toggleLogin}
             />
             <Routes>
+                
                 <Route path="/" element={
                     <Main 
                         darkMode = {darkMode}
@@ -214,10 +216,12 @@ export default function App(){
                     />}>
                 </Route>
                 <Route path="/login" element={
+                    
                     <Login 
                         darkMode = {darkMode}
                         toggleLogin={toggleLogin}
-                        />}>
+                        />
+                }>
                 </Route>
                 <Route path="/logout" element={
                     <Logout 
@@ -235,12 +239,12 @@ export default function App(){
                     <Projects darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="projects/infinitycards" element={
-                    <SnackbarProvider maxSnack={5}>
+                    
                         <InfinityCards 
                             darkMode = {darkMode} 
                             login = {login}
                         />
-                    </SnackbarProvider>}>
+                    }>
                 </Route>
                 <Route path="projects/blog" element={
                     <Blog darkMode = {darkMode}/>}>
@@ -258,11 +262,12 @@ export default function App(){
                 <Route path="/*" element={
                     <NotFound darkMode = {darkMode}/>}>
                 </Route>
+                
             </Routes>
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
-            
+            </SnackbarProvider>
         </BrowserRouter>
     )
 }

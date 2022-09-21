@@ -9,11 +9,13 @@ import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSnackbar } from 'notistack';
 
 export default function Login(props){
     console.log("Rendering Login")
 
     const navigate = useNavigate();
+    const { enqueueSnackbar } = useSnackbar();
 
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
@@ -55,6 +57,7 @@ export default function Login(props){
     function login(){
         setLoading(true)
         var user = { ...formData };
+        user.email=String(user.email).toLowerCase()
         const config = {
             url: process.env.REACT_APP_SERVER+'/login',
             method: 'POST',
@@ -92,7 +95,9 @@ export default function Login(props){
                 setLoading(false)
             })
             .catch(function (error) {
-            console.log(error);
+                const variant = 'error'
+                enqueueSnackbar(error.message,{ variant });
+                console.log(error);
             });
     }
 

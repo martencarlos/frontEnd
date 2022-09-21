@@ -11,6 +11,7 @@ import * as rssParser from 'react-native-parser-rss';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useSnackbar } from 'notistack';
 
 
 export default function Blog(props){
@@ -18,7 +19,8 @@ export default function Blog(props){
 
     const {id} = useParams();
     const navigate=useNavigate();
-    
+    const { enqueueSnackbar } = useSnackbar();
+
     const [posts, setPosts] = useState([])
     const [mainArticle, setMainArticle] = useState({})
     const [loading, setLoading] = useState(true)
@@ -52,8 +54,14 @@ export default function Blog(props){
                     }else{
                         setPosts(feed.items);
                         setMainArticle(feed.items[0])
-                        setLoading(false)
+                        
                     }
+                }).catch(function(error) {
+                    const variant = 'error'
+                    enqueueSnackbar(error.message,{ variant });
+                    
+                }).finally(function(){
+                    setLoading(false)
                 });
         }
         getData()
@@ -92,7 +100,6 @@ export default function Blog(props){
             ) : (
                 <div className={`blog ${props.darkMode ? "dark": ""}`}>
                     
-                    
                     {id && 
                         <div  className="blog-mainArticle">
                             <Article
@@ -102,7 +109,7 @@ export default function Blog(props){
                             />
                         </div>
                     }
-
+                    {id && 
                     <div  className="blog-posts" >
                         <br></br>
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
@@ -123,6 +130,7 @@ export default function Blog(props){
                         {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
                         }
                     </div>
+                    }
                 </div>
             )
         }</div>
