@@ -239,7 +239,6 @@ export default function App(){
                     <Projects darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="projects/infinitycards" element={
-                    
                         <InfinityCards 
                             darkMode = {darkMode} 
                             login = {login}
