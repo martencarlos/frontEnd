@@ -179,11 +179,9 @@ export default function Navbar(props){
 
                 {props.login && props.userData.profilePic && 
                     <div className="sign-buttons">
-                        {userData.name && <Tooltip sx={{ bgcolor: 'primary.main' }}  disableFocusListener title={userData.name} arrow leaveDelay={200}>
-                            {/* <div className="tooltip"> */}
+                        {userData.name && 
+                            <Tooltip  sx={{ bgcolor: 'primary.main' }}   title={userData.name} arrow leaveDelay={200}>
                                 <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={userData.name} />
-                                {/* <span className="tooltip-text">{userData.name}</span> 
-                            </div> */}
                             </Tooltip>
                         }
                         <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
