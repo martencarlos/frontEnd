@@ -14,7 +14,7 @@
     div.blog-mainArticle{
         display: flex;
         justify-content: flex-start;
-        width: 85% !important;
+        width: unset !important;
     }
     
    

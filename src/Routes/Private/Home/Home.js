@@ -142,7 +142,7 @@ export default function Home(props){
         console.log("removing child")
         
     }
-    console.log(userData)
+    
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
