@@ -10,7 +10,7 @@ export default function Hero(props){
     return (
         <div className= {`hero ${props.darkMode ? "dark": ""}`}>
             {props.direction === "right" && 
-            <img loading="lazy" src= {props.imgSrc} alt="Hero"></img>
+            <img  src= {props.imgSrc} alt="Hero"></img>
             }
             <div className="text-area">
                 <Typography variant="h4" className="title">{props.title}</Typography>

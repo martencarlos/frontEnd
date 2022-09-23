@@ -26,7 +26,7 @@ export default function Projects(props){
                 <Hero
                         darkMode = {props.darkMode}
                         direction= "right"
-                        imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FInfinity%20Cards%20-%20feature%20image.png?alt=media&token=6c9627ab-d9a7-4d9a-9332-f0e3667eb7e9"
+                        imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FInfinity%20Cards%20-%20feature%20image.webp?alt=media&token=2d0fb718-e579-4961-af38-c439b6607d5d"
                         title = {infinityCards.title}
                         text = {infinityCards.text}
                         link={true}
@@ -43,7 +43,7 @@ export default function Projects(props){
                 <Hero
                     darkMode = {props.darkMode}
                     direction= "left"
-                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2Fblog%20Integration%20-%20feature%20image.png?alt=media&token=f66b2a94-627b-4f21-bf9f-d3a529fc6ee3"
+                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FBlog%20-%20feature%20image.webp?alt=media&token=03059140-e6a1-43d5-b7bb-9e4da7177aa2"
                     title = {blogIntegration.title}
                     text = {blogIntegration.text}
                     link={true}
