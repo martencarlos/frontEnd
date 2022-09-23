@@ -4,9 +4,19 @@
     div.blog{
         flex-direction: column;
     }
+    div.blog-skeleton{
+        flex-direction: column;
+    }
 
     div.blog-posts{
         width: auto !important;
+        min-width:unset !important;
+        max-width: unset !important;
+    }
+    div.blog-posts-skeleton{
+        width: auto !important;
+        margin-left: 40px !important;
+        margin-right: 40px !important;
         min-width:unset !important;
         max-width: unset !important;
     }
@@ -18,8 +28,11 @@
         margin-left: 5px !important;
         margin-right: 5px !important;
     }
-    
-   
+    div.blog-mainArticle-skeleton{
+        display: flex;
+        justify-content: flex-start;
+        width: unset !important;
+    }
 }
 
 div.blog-root{
@@ -29,42 +42,16 @@ div.blog-root{
     align-items: center;
 }
 
-.loading-circle{
-    display: flex;
-    
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-}
 
 div.blog{
     display: flex;
     width: 100%;
 }
-
-div.separator{
-    border-bottom: 1px solid;
-    margin: 20px;
-}
-
-div.blog-posts{
+div.blog-skeleton{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 30%;
-    margin: 20px;
+    height: 100%;
+    width: 100%;
 }
-
-.blog-posts-title{
-    display: flex;
-    padding-left: 10px;
-    color:var(--primary-text);
-    align-self: self-start ;
-    /* font-size: large; */
-    /* font-weight: bold; */
-}
-
-
 
 div.blog-mainArticle{
     display: flex;
@@ -74,5 +61,55 @@ div.blog-mainArticle{
     width:70%;
 }
 
+div.blog-mainArticle-skeleton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 50px;
+    max-width: 750px;
+    width:70%;
+}
+
+
+div.blog-posts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    margin: 20px;
+}
+
+div.blog-posts-skeleton{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 20px;
+}
+
+.blog-posts-title{
+    display: flex;
+    padding-left: 10px;
+    color:var(--primary-text);
+    align-self: self-start ;
+}
+
+div.separator{
+    border-bottom: 1px solid;
+    margin: 20px;
+}
+
+span.MuiSkeleton-root{
+    background-color: lightgray;
+}
+
+/* Deprecated - just for reference */
+
+/* .loading-circle{
+    display: flex;
+    
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+} */
 
 

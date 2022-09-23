@@ -11,6 +11,7 @@ import * as rssParser from 'react-native-parser-rss';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
+import Skeleton from '@mui/material/Skeleton';
 import { useSnackbar } from 'notistack';
 
 
@@ -92,11 +93,49 @@ export default function Blog(props){
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
-
     return (
         <div className="blog-root">{
             loading ? (
-                <CircularProgress size="5rem" className="loading-circle" />
+                <div className="blog-skeleton">
+                    <div  className="blog-mainArticle-skeleton">
+                        <Typography variant="h4" ><Skeleton/></Typography>
+                        <Typography variant="h4" sx={{ width: 300 }}> <Skeleton/></Typography>
+                        <Typography variant="h5" sx={{ width: 150 }} gutterBottom><Skeleton/></Typography> 
+                        <br></br>
+                        <br></br>
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                        <br></br>
+                        <Skeleton variant="rectangular" sx={{ height: 300 }} animation="wave"  />
+                        <br></br>
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>  
+                    </div>
+                    
+                    <div  className="blog-posts-skeleton" >
+                        <br></br>
+                        <Typography variant="h5" sx={{ width: 160 }} gutterBottom><Skeleton/></Typography>
+                        <br></br>
+                        <br></br>
+                        <Skeleton sx={{ height: 150}} animation="wave" variant="rectangular" />
+                        <Typography variant="body1"  gutterBottom><Skeleton/></Typography>  
+                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2" gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography> 
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography> 
+                        <br></br>
+                        <br></br>
+                        <Skeleton sx={{ height: 150}} animation="wave" variant="rectangular" />
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>  
+                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography> 
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography> 
+                    </div>
+                    {/* <CircularProgress size="5rem" className="loading-circle" /> */}
+                </div>
             ) : (
                 <div className={`blog ${props.darkMode ? "dark": ""}`}>
                     
