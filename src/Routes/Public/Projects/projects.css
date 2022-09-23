@@ -19,3 +19,12 @@ div.projects .blogIntegration{
     flex-direction: column;
     width: 85%;
 }
+
+div.projects div.text-area{
+    flex:auto !important;
+    width:50%;
+}
+
+div.projects div.text-area .text {
+    min-width: auto !important;
+}
