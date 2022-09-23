@@ -23,6 +23,8 @@ div.projects .blogIntegration{
 div.projects div.text-area{
     flex:auto !important;
     width:50%;
+    margin-left: 30px;
+    margin-right: 30px;
 }
 
 div.projects div.text-area .text {
