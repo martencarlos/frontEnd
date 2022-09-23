@@ -7,6 +7,9 @@
     div.home {
         flex-direction: column;
     }
+    div.space{
+        display: none;
+    }
     
 }
 

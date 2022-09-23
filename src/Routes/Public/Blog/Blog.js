@@ -138,7 +138,6 @@ export default function Blog(props){
                 </div>
             ) : (
                 <div className={`blog ${props.darkMode ? "dark": ""}`}>
-                    
                     {id && 
                         <div  className="blog-mainArticle">
                             <Article
