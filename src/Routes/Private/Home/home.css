@@ -2,7 +2,10 @@
 
 @media (max-width: 700px) {
     div.home div.sidebar{
-        display: none !important;
+        /* display: none !important; */
+    }
+    div.home {
+        flex-direction: column;
     }
     
 }
@@ -15,6 +18,7 @@ div.home{
     
 div.home div.home-main{
     display: flex;
+    flex: 1;
     width: 100%;
     justify-content: center;
     align-items: center;
