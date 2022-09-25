@@ -2,7 +2,12 @@
 @media (max-width: 800px) {
     div.main div.features-row{
         flex-direction: column;
+        width:auto !important;
     }
+
+    div.landingPage .text {
+        margin:0px !important;
+      }
 }
 
 @media (min-width: 900px) {
@@ -38,6 +43,8 @@ div.landingPage .title {
   color:var(--secondary-light) !important;
    font-size: xxx-large;
 }
+
+
 
 div.landingPage .background{
     position: absolute;

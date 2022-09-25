@@ -4,6 +4,7 @@
 
     div.features div.features-row{
         flex-direction: column;
+        width:100% !important;
      }
 }
 
