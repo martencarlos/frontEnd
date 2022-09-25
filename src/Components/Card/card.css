@@ -14,6 +14,9 @@
         min-width: 300px !important;
   
      }
+    div.text-area .text{
+    min-width: auto !important;
+    }
 }
 
 div.card {
