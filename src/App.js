@@ -13,6 +13,7 @@ import Register from "./Routes/Public/Register/Register";
 import Projects from "./Routes/Public/Projects/Projects";
 import InfinityCards from "./Routes/Public/InfinityCards/InfinityCards";
 import Features from "./Routes/Public/Features/Features";
+import WebScrap from "./Routes/Public/WebScrap/WebScrap";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
 import NotFound from "./Routes/Public/NotFound/NotFound";
@@ -247,6 +248,9 @@ export default function App(){
                 </Route>
                 <Route path="projects/blog" element={
                     <Blog darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="projects/webScrap" element={
+                    <WebScrap darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/features" element={
                     <Features darkMode = {darkMode}/>}>
