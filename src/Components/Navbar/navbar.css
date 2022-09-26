@@ -211,8 +211,17 @@ Button.bt-nav-link:hover{
     border-radius: 4px;
     color: var(--primary-text) !important;
 }
+div.dark .bt-nav-link-dropdown{
+
+    color: var(--secondary-light) !important;
+}
+
 .bt-nav-link-dropdown:hover{
     background-color: var(--primary-light)!important;
+}
+
+div.dark .bt-nav-link-dropdown:hover{
+    color: var(--primary-text) !important;
 }
 
 .nav-links{
