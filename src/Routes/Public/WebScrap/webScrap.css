@@ -1,0 +1,31 @@
+
+/* about */
+
+@media (max-width: 800px) {
+    div.webScrap {
+    }
+    
+}
+
+div.webScrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.webScrap-product{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.webScrap-loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+
+}
+

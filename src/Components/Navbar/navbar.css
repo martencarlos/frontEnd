@@ -199,11 +199,20 @@ Button.bt-nav-link:hover{
     border-radius: 4px;
     width: 100%;
 }
+
 .nav-link-active:hover{
     text-decoration: none;
     background-color: var(--primary-color);
     color:white;
- 
+}
+
+.bt-nav-link-dropdown{
+    padding: 5px !important;
+    border-radius: 4px;
+    color: var(--primary-text) !important;
+}
+.bt-nav-link-dropdown:hover{
+    background-color: var(--primary-light)!important;
 }
 
 .nav-links{

@@ -12,6 +12,9 @@ import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 // Darkmode switch definition
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -104,8 +107,8 @@ export default function Navbar(props){
         var x = document.getElementById("hamb-menu");
         
         if(x.style.display === "flex"){
-            console.log(x.style.display)
-            if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path"){
+            console.log(e.target.className)
+            if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path" || e.target.classList.contains("bt-nav-link-dropdown")){
             }else{
                 x.classList.add("closeMenu");
                 setTimeout(function() {
@@ -148,6 +151,15 @@ export default function Navbar(props){
         setswitchChecked(event.target.checked);
     };
 
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
   
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
@@ -161,12 +173,40 @@ export default function Navbar(props){
                     </ul>}
                 {!props.login &&     
                     <ul className="nav-links">
-                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
+                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
                     
                     </ul>}
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                        }}>
+                        <MenuItem onClick={() => {
+                            handleClose()
+                            navigate('/projects/infinitycards')
+                            }}>
+                            Infinity Cards
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose()
+                            navigate('/projects/blog')
+                            }}>
+                            Blog Integration
+                        </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose()
+                            navigate('/projects/webScrap')
+                            }}>
+                            Web scrap
+                        </MenuItem>
+                        
+                    </Menu>
                 {!props.login && 
                     <div className="sign-buttons">
                         <Button variant="outlined" color="primary" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
@@ -205,7 +245,8 @@ export default function Navbar(props){
                 </div>}
                 {!props.login && 
                 <div className="nav-links-hamb"> 
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li>
+                    {/* <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li> */}
+                    <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
                     <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
