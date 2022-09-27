@@ -62,7 +62,7 @@
 }
 
 .MuiSwitch-thumb{
-    background-color: var(--primary-dark) !important;
+    background-color: var(--primary-text) !important;
 }
 
 .MuiSwitch-thumb:hover{
