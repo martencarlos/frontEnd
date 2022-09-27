@@ -217,11 +217,12 @@ div.dark .bt-nav-link-dropdown{
 }
 
 .bt-nav-link-dropdown:hover{
-    background-color: var(--primary-color)!important;
+    background-color: var(--primary-light)!important;
 }
 
 div.dark .bt-nav-link-dropdown:hover{
-    color: var(--primary-text) !important;
+    color: var(--primary-light) !important;
+    background-color: var(--primary-color)!important;
 }
 
 .nav-links{
