@@ -9,6 +9,8 @@ import Hero from "../../../Components/Hero/Hero";
 
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import EuroSymbolSharpIcon from '@mui/icons-material/EuroSymbolSharp';
+import Chip from '@mui/material/Chip';
 
 
 export default function WebScrap(props){
@@ -40,7 +42,7 @@ export default function WebScrap(props){
             let cleanData = response.data
             cleanData= cleanData.filter(emptyValues)
             function emptyValues(value){
-                return value.price.length !==0
+                return value.price.length !==0 && value.title.length !==0
             }
             
             // Calculate the average price
@@ -76,8 +78,11 @@ export default function WebScrap(props){
             />
             <br></br>
             <br></br>
-            <Typography variant="h4" gutterBottom>{"Average price"} </Typography>
-            <Typography variant="h4" fontWeight={"bold"} gutterBottom>{avgPrice + " €"} </Typography>
+            <Typography variant="h4" gutterBottom>{"Average price: "} 
+                <Chip icon={<EuroSymbolSharpIcon />} color="primary" variant="filled" label={avgPrice} />
+            </Typography>
+            
+            
             <br></br>
             <br></br>
 
@@ -93,7 +98,7 @@ export default function WebScrap(props){
                         darkMode = {props.darkMode}
                         direction= {i%2 === 0 ? "left":"right"}
                         imgSrc= {article.imgSrc}
-                        title = {article.price}
+                        title = {"#"+article.pos+" - " + article.price}
                         text = {article.title}
                         link={true}
                         linkPath = {article.url}
