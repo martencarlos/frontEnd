@@ -189,18 +189,21 @@ export default function Navbar(props){
                         }}>
                         <MenuItem onClick={() => {
                             handleClose()
+                            hambMenuClick()
                             navigate('/projects/infinitycards')
                             }}>
                             Infinity Cards
                         </MenuItem>
                         <MenuItem onClick={() => {
                             handleClose()
+                            hambMenuClick()
                             navigate('/projects/blog')
                             }}>
                             Blog Integration
                         </MenuItem>
                         <MenuItem onClick={() => {
                             handleClose()
+                            hambMenuClick()
                             navigate('/projects/webScrap')
                             }}>
                             Web scrap
