@@ -92,6 +92,10 @@ div.article iframe{
         height: 280px;
 }
 
+div.wp-block-embed__wrapper{
+    display: flex;
+    width: 100%;
+}
 
 
 

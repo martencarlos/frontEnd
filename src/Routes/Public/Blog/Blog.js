@@ -14,6 +14,10 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Skeleton from '@mui/material/Skeleton';
 import { useSnackbar } from 'notistack';
 
+// const blogRootUrl="http://crowierose.wordpress.com/"
+const blogRootUrl="http://webframe247611193.wordpress.com/"
+
+
 
 export default function Blog(props){
     console.log("Rendering Blog")
@@ -27,6 +31,7 @@ export default function Blog(props){
     const [loading, setLoading] = useState(true)
 
     const [numberOfArticles, setNumerOfArticles] = useState(5);
+    
     const loadMoreImages = () => {
         if(posts.length >= (numberOfArticles+2))
             setNumerOfArticles(numberOfArticles + 2)
@@ -35,37 +40,13 @@ export default function Blog(props){
         }
       };
     
+
     //Load articles from Medium
     useEffect(() => {
-        console.log("Blog useEffect - load articles from medium")
+        console.log("Blog useEffect - load articles from medium or wordpress")
         
-        async function getData() {
-            await fetch(process.env.REACT_APP_SERVER+'/medium',{
-                method: 'GET',
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json',
-                }
-              })
-              .then((response) => response.text())
-              .then((responseData) => rssParser.parse(responseData))
-              .then((feed) => {
-                    if(id && !feed.items.find(x=>x.id === "https://medium.com/p/"+id)){
-                        navigate("/404", { replace: true });
-                    }else{
-                        setPosts(feed.items);
-                        setMainArticle(feed.items[0])
-                        
-                    }
-                }).catch(function(error) {
-                    const variant = 'error'
-                    enqueueSnackbar(error.message,{ variant });
-                    
-                }).finally(function(){
-                    setLoading(false)
-                });
-        }
-        getData()
+        
+        getWordpressFeed()
     }, [])
 
     useEffect(() => {
@@ -74,18 +55,83 @@ export default function Blog(props){
         }
     }, [posts])
 
+    //For Medium only
+    // useEffect(() => {
+    //     if (!id && mainArticle.id){
+    //         navigate("/blog/"+(mainArticle.id).substring(21), { replace: true });
+    //     }
+    // })
+
+    //For Wordpress only
     useEffect(() => {
         if (!id && mainArticle.id){
-            navigate("/blog/"+(mainArticle.id).substring(21), { replace: true });
+            navigate("/blog/"+(mainArticle.id).split('/?p=')[1], { replace: true });
         }
     })
+
+    async function getWordpressFeed() {
+        await fetch(process.env.REACT_APP_SERVER+'/wordpress',{
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }
+          })
+          .then((response) => response.text())
+          .then((responseData) => rssParser.parse(responseData))
+          .then((feed) => {
+                
+                
+                if(id && !feed.items.find(x=>x.id === blogRootUrl+"?p="+id)){
+                    navigate("/404", { replace: true });
+                }else{
+                    setPosts(feed.items);
+                    setMainArticle(feed.items[0])
+                    
+                }
+            }).catch(function(error) {
+                const variant = 'error'
+                enqueueSnackbar(error.message,{ variant });
+                
+            }).finally(function(){
+                setLoading(false)
+            });
+    }
+
+    async function getMediumFeed() {
+        await fetch(process.env.REACT_APP_SERVER+'/medium',{
+            method: 'GET',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }
+          })
+          .then((response) => response.text())
+          .then((responseData) => rssParser.parse(responseData))
+          .then((feed) => {
+                if(id && !feed.items.find(x=>x.id === "https://medium.com/p/"+id)){
+                    navigate("/404", { replace: true });
+                }else{
+                    setPosts(feed.items);
+                    setMainArticle(feed.items[0])
+                    
+                }
+            }).catch(function(error) {
+                const variant = 'error'
+                enqueueSnackbar(error.message,{ variant });
+                
+            }).finally(function(){
+                setLoading(false)
+            });
+    }
     
     //open article by using event.currentTarget id
     function openArticle(e){
         
         setMainArticle(posts.find(x => x.id === e.currentTarget.id))
         scrollToTop()
-        navigate("/blog/"+(e.currentTarget.id).substring(21))
+        navigate("/blog/"+(e.currentTarget.id).split('/?p=')[1])
+        //navigate("/blog/"+(e.currentTarget.id).substring(21)) for Medium only
     }
 
     function scrollToTop(){
@@ -142,7 +188,7 @@ export default function Blog(props){
                         <div  className="blog-mainArticle">
                             <Article
                                 darkMode = {props.darkmode}
-                                item = {posts.find(x => x.id === "https://medium.com/p/"+id)}
+                                item = {posts.find(x => x.id === blogRootUrl+"?p="+id)}
                                 scrollToTop = {scrollToTop}
                             />
                         </div>
@@ -153,7 +199,7 @@ export default function Blog(props){
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                         <br></br>
                         {posts.slice(0, numberOfArticles).map((post, i) => (
-                            (("https://medium.com/p/"+id) !== post.id) &&
+                            ((blogRootUrl+"?p="+id) !== post.id) &&
                             <div key = {i}>
                                 <Summary
                                     darkMode = {props.darkmode}
