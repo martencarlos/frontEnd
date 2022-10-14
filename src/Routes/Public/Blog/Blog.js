@@ -144,20 +144,22 @@ export default function Blog(props){
             loading ? (
                 <div className="blog-skeleton">
                     <div  className="blog-mainArticle-skeleton">
-                        <Typography variant="h4" ><Skeleton/></Typography>
-                        <Typography variant="h4" sx={{ width: 300 }}> <Skeleton/></Typography>
-                        <Typography variant="h5" sx={{ width: 150 }} gutterBottom><Skeleton/></Typography> 
-                        <br></br>
-                        <br></br>
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
-                        <br></br>
-                        <Skeleton variant="rectangular" sx={{ height: 300 }} animation="wave"  />
-                        <br></br>
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>
-                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>  
+                        <div className="blog-article-skeleton">
+                            <Typography variant="h4" ><Skeleton/></Typography>
+                            <Typography variant="h4" sx={{ width: 300 }}> <Skeleton/></Typography>
+                            <Typography variant="h5" sx={{ width: 150 }} gutterBottom><Skeleton/></Typography> 
+                            <br></br>
+                            <br></br>
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                            <br></br>
+                            <Skeleton variant="rectangular" sx={{ height: 300 }} animation="wave"  />
+                            <br></br>
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography>
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography>
+                            <Typography variant="body1" gutterBottom><Skeleton/></Typography> 
+                        </div>
                     </div>
                     
                     <div  className="blog-posts-skeleton" >
