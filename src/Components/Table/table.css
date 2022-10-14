@@ -1,0 +1,48 @@
+@media (max-width: 900px) {
+    div.table{
+        overflow-x: auto;
+        display: block;
+        width: 100% !important;
+    }
+}
+ 
+ div.table{
+    width: 60%;
+ }
+
+ table{    
+
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+ img.table-product-img{
+    max-width: 200px;
+    max-height: 100px;
+ }
+ 
+ div.table td.pos{
+    text-align: center;
+ }
+
+ div.table tr > td {
+    padding: 1em;
+
+    border: 1px rgb(228, 228, 228) solid;
+ }
+
+ div.table tr.header > th{
+    padding: 1em;
+    font-size: large;
+    border: 1px rgb(228, 228, 228) solid;
+    background-color: rgb(228, 228, 228);
+ }
+
+ div.dark div.table tr.header > th{
+    /* color: black; */
+    background-color: rgb(105, 105, 105);
+ }
+ 
+ 
+

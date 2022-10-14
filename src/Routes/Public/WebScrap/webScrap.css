@@ -1,8 +1,19 @@
 
 /* about */
 
-@media (max-width: 800px) {
-    div.webScrap {
+@media (max-width: 900px) {
+    
+    div.webScrap .filter-row{
+        flex-direction: column;
+        align-items: center !important;
+        width: 100% !important
+    }
+
+    div.webScrap .filter-full{
+        margin-top: 40px;
+        order: 1;
+        justify-content: center;
+        width: 100% !important
     }
     
 }
@@ -27,5 +38,21 @@ div.webScrap-product{
     align-items: center;
     height: 350px;
 
+}
+
+div.webScrap .filter-row{
+    display: flex;
+    width: 60%;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+div.webScrap .filter-label{
+    margin-right: 30px;
+}
+
+div.webScrap .filter-full{
+    display: flex;
+    align-items: baseline;
 }
 
