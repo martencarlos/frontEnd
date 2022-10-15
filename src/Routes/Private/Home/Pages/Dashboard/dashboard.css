@@ -1,10 +1,10 @@
-/* home */
+/* Dashboard */
 
 @media (max-width: 700px) {
-    div.home div.sidebar{
+    div.dashboard div.sidebar{
         /* display: none !important; */
     }
-    div.home {
+    div.dashboard {
         flex-direction: column;
     }
     div.space{
@@ -14,33 +14,14 @@
 }
 
 
-div.home{
+div.dashboard{
     display: flex;
     flex: 1;
 }
     
-div.home div.sidebar{
-    display: flex;
-    width: 200px;
-    flex-direction: column;
-    padding: 20px;
-    
-}
 
-div.home button.sidebar-button{
-    display: flex;
-    margin-left: 5px;
-    justify-content: start;
-    
-    
-}
 
-div.home div.sidebar-dataList{
-    display: flex;
-    margin-left: 25px;
-    
-}
-div.home div.home-main{
+div.dashboard div.dashboard-main{
     display: flex;
     flex: 5;
     justify-content: center;
@@ -49,7 +30,7 @@ div.home div.home-main{
     border-radius: 20px;
 }
 
-div.home div.home-main-panel{
+div.dashboard div.dashboard-main-panel{
     display: flex;
     flex-direction: column;
     padding-bottom: 15px;
@@ -67,7 +48,7 @@ div.home div.home-main-panel{
     
 }
 
-div.dark div.home-main-panel {
+div.dark div.dashboard-main-panel {
     color:var(--primary-text)
 }
 
@@ -79,18 +60,18 @@ div.dark div.home-main-panel {
 }
 
 
-div.home div.space{
+div.dashboard div.space{
     height: 20px;
 }
 
-div.home div.sidebar-username{
+div.dashboard div.sidebar-username{
     margin-top: 5px;
     margin-bottom:5px;
     align-self: center;
     text-align: center;
 }
 
-div.home img.sidebar-profilepicture{
+div.dashboard img.sidebar-profilepicture{
        display: flex;
     object-fit: cover;
     height: 80px;

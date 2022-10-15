@@ -2,17 +2,28 @@
 import "./home.css";
 
 import {useState, useEffect} from "react";
-import { useNavigate } from 'react-router-dom';
+import {Link, NavLink, useNavigate } from 'react-router-dom';
+import {} from 'react-router-dom';
 import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Users from "./Pages/Users/Users";
+import {BrowserRouter,Routes,Route,} from "react-router-dom";
 
 import Typography from '@mui/material/Typography';
-
+import Button from '@mui/material/Button';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Divider from '@mui/material/Divider';
+import StorageIcon from '@mui/icons-material/Storage';
+import PeopleIcon from '@mui/icons-material/People';
 
 export default function Home(props){
 
     console.log("Rendering home")
     const navigate = useNavigate();
+
 
     // //Add a card functionality
     // import NewCard from "../../../Components/NewCard/NewCard";
@@ -55,11 +66,8 @@ export default function Home(props){
 
 
 
-    //UserData
-    
+    //UserData & upload progress    
     const [userData, setUserData] = useState({})
-
-    //Upload progress
     const [uploadProgress, setUploadProgress] = useState('')
 
     //redirect to login page if logged out
@@ -70,6 +78,7 @@ export default function Home(props){
         
     }, [props.login, navigate])
 
+    // Set the user data from APP
     useEffect(() => {
 
         if(props.userData.profilePic){
@@ -84,7 +93,6 @@ export default function Home(props){
 
 
     //Profile Image functions
-    
     function changePicture(){
         var input = document.createElement('input');
         document.body.appendChild(input); //required for iphone
@@ -142,14 +150,46 @@ export default function Home(props){
         console.log("removing child")
         
     }
+
+    
+  
+    const [listStatus, setListStatus] = useState(false)
+    
+    function toggleList() {
+        setListStatus(prevMode => !prevMode)
+    }
+
+    function goToUsers() {
+        console.log("goToUsers")
+        // navigate("/home/users");
+    }
+
+    
     
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
            
            {/* Sidebar */}
-           <div className={`sidebar ${props.darkMode ? "dark": ""}`}>
-                <div className="space"></div>
+           <div className={"sidebar"}>
+                <br></br>
+                <Typography variant="body1"  gutterBottom> Dashboard </Typography>
+                <Button style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="secondary">Dashboard</Button>
+                <br></br>
+                <Divider variant="middle" />
+                <br></br>
+                <Typography variant="body1"  gutterBottom> Storages </Typography>
+                <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="secondary">Objects</Button>    
+                {listStatus && 
+                    <div className="sidebar-dataList">
+                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-button" startIcon={<PeopleIcon />}  color="secondary">Users1</Button>
+                    </div>
+                }
+                <br></br>
+                <Divider variant="middle" />
+                <br></br>
+                <Typography variant="body1"  gutterBottom> Data </Typography>
+                {/* <div className="space"></div>
                 <div  className="wrap-img">
                     <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
                     {!uploadProgress && 
@@ -161,47 +201,34 @@ export default function Home(props){
                 </div>
                 <div id="username" className="sidebar-username">
                     {userData.name} 
-                </div>
+                </div> */}
             </div>
 
-            <div className="home-main">
-            {userData.createDate &&
-                <div className="home-main-panel">
-                    
-                    <Typography variant="h4" className="account-title" gutterBottom>{"Account information"} </Typography>
-                    <br></br>
-                    <br></br>
-                    <div className="account-row">
-                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Name:"} </Typography>
-                        <Typography variant="body1" gutterBottom>{userData.name} </Typography>
-                    </div>
-                    <div className="account-row">
-                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Username:"} </Typography>
-                        <Typography variant="body1" gutterBottom>{userData.username} </Typography>
-                    </div>
-                    <div className="account-row">
-                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Email:"} </Typography>
-                        <Typography variant="body1" gutterBottom>{userData.email} </Typography>
-                    </div>
-                    <div className="account-row">
-                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Created date:"} </Typography>
-                        <Typography variant="body1" gutterBottom>{userData.createDate.substring(0, 10)} </Typography>
-                    </div>
-                    <div className="account-row">
-                        <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Last update:"} </Typography>
-                        <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
-                    </div>
-                    
-                </div> }
-                
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={
+                    <Dashboard 
+                        darkMode = {props.darkMode}
+                        userData = {userData}
+                        login = {props.login}
+                    />}>
+                    </Route>
+                    <Route path="/users" element={
+                    <Users 
+                        
+                    />}>
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+
 
                  {/* <NewCard 
                     darkMode = {props.darkMode}
                     handleClick = {addCard}
                     userData ={userData}
                 />  */}
-            </div>
-
         </div>
+
+        
     )
 }
