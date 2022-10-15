@@ -55,6 +55,11 @@ div.users div.MuiDataGrid-root{
     border: none;
 }
 
+div.users .clickable-icon{
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
 
     
 

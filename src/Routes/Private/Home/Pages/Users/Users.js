@@ -70,8 +70,8 @@ export default function Users(props){
         { field: 'actions', headerName: 'Actions', width: 80, renderCell: (params)=>{
             return (
                 <div className="datagrid-actions">
-                    <EditIcon/>
-                    <DeleteIcon/>
+                    <EditIcon className="clickable-icon"/>
+                    <DeleteIcon className="clickable-icon"/>
                 </div>
             )
         } }
