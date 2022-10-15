@@ -2,15 +2,14 @@
 
 @media (max-width: 700px) {
    
-   
-    
     
 }
 
 
-
 div.home div.dashboard{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     flex: 5;
     justify-content: center;
     align-items: center;
@@ -19,41 +18,37 @@ div.home div.dashboard{
     margin: 5px;
 }
 
-div.home div.dashboard-main-panel{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 15px;
-    background-color: var(--primary-light);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.account-title{
-    display: flex;
-    border-top-left-radius: 10px;
-    padding: 15px;
-    color: white;
-    background-color: var(--secondary-dark);
+div.dashboard div.widget{
+    width: 300px;
+    height:150px;
+    background-color: white;
+    border-radius: 30px;
+    padding-bottom:50px;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
     
 }
 
-div.dark div.dashboard-main-panel {
-    color:var(--primary-text)
-}
 
-.account-row{
+
+div.widget .widget-header{
     display: flex;
-    padding-left: 15px;
-    padding-right: 15px;
+    flex-direction: row;
     justify-content: space-between;
 }
 
-
-
-
-
-
-
-
-
+div.widget .widget-title{
+    display: flex;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-left: 20px;
+    
+}
+div.widget .widget-year{
+    display: flex;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-top: 20px;
+    margin-right: 20px;
+    
+}
 

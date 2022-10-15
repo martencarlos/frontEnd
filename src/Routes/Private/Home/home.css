@@ -2,17 +2,24 @@
 
 @media (max-width: 700px) {
     div.home div.sidebar{
-        /* display: none !important; */
+        display: none ;
     }
-    div.home {
+
+    /* div.home {
         flex-direction: column;
-    }
-    div.space{
-        display: none;
+    } */
+    div.home div.sidebar-toggle{
+        display: flex !important;
     }
     
+    
 }
+@media (min-width: 700px) {
+    div.home div.sidebar{
+        position: relative !important
+    }
 
+}
 
 div.home{
     display: flex;
@@ -20,26 +27,60 @@ div.home{
 }
     
 div.home div.sidebar{
-    display: flex;
+    /* display: flex; */
     width: 200px;
     flex-direction: column;
     padding: 20px;
+    background: white;
+    height: 100%;
+    z-index: 1;
+    height: fit-content;
+    border-radius: 30px;
     
+}
+
+div.home div.sidebar-toggle{
+    display: none;
+    z-index: 2;
+
+    padding: 10px;
+    margin: 10px;
+    height: fit-content;
+    cursor: pointer;
+}
+
+div.home .sidebar-section{
+    color: rgb(109, 109, 109);
 }
 
 div.home button.sidebar-button{
     display: flex;
-    margin-left: 5px;
+    margin-left: 20px;
     justify-content: start;
+    align-items: initial;
+    width: 90%;
 }
 
 div.home button.sidebar-nestedButton{
     display: flex;
-    margin-left: 10px;
+    margin-left: 20px;
     justify-content: start;
     flex:1;
+
+    animation: .2s ease-out slideDown;
+
 }
 
+@keyframes slideDown {
+    0% {
+       
+        transform: translateY(-20px);
+    } 
+    100% {
+        
+        transform: translateY(0);
+    }
+}
 
 
 div.home div.sidebar-dataList{
