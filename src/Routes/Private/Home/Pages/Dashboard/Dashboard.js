@@ -2,62 +2,98 @@
 import "./dashboard.css";
 
 import {useState, useEffect} from "react";
-import Typography from '@mui/material/Typography';
+import axios from "axios";
 
+import Typography from '@mui/material/Typography';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+const currentYear = new Date().getFullYear()
 
 export default function Dashboard(props){
 
     console.log("Rendering Dashboard")
-
-    //UserData & upload progress    
-    const [userData, setUserData] = useState({})
-
     
-    // Set the user data from APP
+
+    //UserData     
+    const [userAnalytics, setUserAnalytics] = useState()
+    
+
+    //Get all users from the database
     useEffect(() => {
+        console.log("useEffect - get users")
+        const fetchUsers = async () => {
+            await axios.get(`${process.env.REACT_APP_SERVER}/users`)
+              .then(function (res) {
+                    var graphData = []
+                    
+                    months.map(function (month, i) {
+                        
+                        let monthlyUsers = 0;
+                        
+                        res.data.filter((item) => {
+                            let date = new Date(Date.parse(item.createDate))
+                            if(date.getFullYear() === currentYear)
+                                if(date.getMonth()+1 === i+1)
+                                    monthlyUsers += 1
+                        });
 
-        if(props.userData.profilePic){
-            setUserData(props.userData)
-        }
-
-        return () => {
-            setUserData({})
-        }
+                        let obj = {}
+                        obj.users = monthlyUsers
+                        obj.month = month
+                        graphData.push(obj)
+                        
+                    })
+                    setUserAnalytics(graphData)
+                  
+                //   setLoading(false)
+  
+              })
+              .catch(function (error) {
+                  // handle error
+                  console.log(error);
+                //   setLoading(false)
+              })
+              .finally(function (response) {});
+          };
         
-    }, [props]);
+          if (true) fetchUsers();
+        
+    }, [])
 
 
     return (
-        props.login && props.userData.profilePic &&
+        
         <div className="dashboard">
-            {userData.createDate &&
-            <div className="dashboard-main-panel">
-                
-                <Typography variant="h4" className="account-title" gutterBottom>{"Account information"} </Typography>
-                <br></br>
-                <br></br>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Name:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.name} </Typography>
+            
+            <div className="widget" >
+                <div className="widget-header">
+                    <PeopleAltIcon className="widget-title"/>
+                    {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
+                    <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
                 </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Username:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.username} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Email:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.email} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Created date:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.createDate.substring(0, 10)} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Last update:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
-                </div>
-                
-            </div> }
+                <ResponsiveContainer width="100%" height="100%" >
+                    <LineChart
+                        data={userAnalytics}
+                        margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
+                        strokeWidth={2}
+                    >
+                    
+                        <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
+                        
+                        <Tooltip />
+                        
+                        <Line strokeWidth={3} type="monotone" dataKey="users" stroke="#8884d8" activeDot={{ r: 8 }} />
+                    
+                    </LineChart>
+                </ResponsiveContainer>
+            </div>
         </div>
                 
     )

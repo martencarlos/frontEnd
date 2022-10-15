@@ -8,6 +8,7 @@ import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Users from "./Pages/Users/Users";
+import Account from "./Pages/Account/Account";
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -17,6 +18,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Divider from '@mui/material/Divider';
 import StorageIcon from '@mui/icons-material/Storage';
 import PeopleIcon from '@mui/icons-material/People';
+import ViewSidebarIcon from '@mui/icons-material/ViewSidebar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Home(props){
 
@@ -152,7 +155,6 @@ export default function Home(props){
     }
 
     
-  
     const [listStatus, setListStatus] = useState(false)
     
     function toggleList() {
@@ -160,39 +162,60 @@ export default function Home(props){
     }
 
     function goToUsers() {
-        console.log("goToUsers")
         setPage ("Users")
     }
     function goToDashboard() {
-        
         setPage ("Dashboard")
     }
+    function goToAccount() {
+        setPage ("Account")
+    }
 
-    
+    function toggleSidebar() {
+        console.log("toggleSidebar")
+        
+        var x = document.getElementById("sidebar");
+        console.log(x.style.display)
+        if(x.style.display === ""){
+            x.style.display = "flex";
+            x.style.position = "absolute";
+        }
+            
+        else{
+            x.style.display = ""
+            x.style.position = "relative";
+        }
+            
+    }
     
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
            
            {/* Sidebar */}
-           <div className={"sidebar"}>
+           <div id="sidebar" className={"sidebar"}>
                 <br></br>
-                <Typography variant="body1"  gutterBottom> Dashboard </Typography>
-                <Button onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="secondary">Dashboard</Button>
+                <br></br>
+                <br></br>
+                <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
+                <Button onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="primary">Dashboard</Button>
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
-                <Typography variant="body1"  gutterBottom> Storage </Typography>
-                <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="secondary">Objects</Button>    
+                <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
+                <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
                 {listStatus && 
                     <div className="sidebar-dataList">
-                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="secondary">Users</Button>
+                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
                     </div>
                 }
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
-                <Typography variant="body1"  gutterBottom> {"Settings"} </Typography>
+                <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
+                <Button onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
+
+                
                 {/* <div className="space"></div>
                 <div  className="wrap-img">
                     <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
@@ -207,21 +230,22 @@ export default function Home(props){
                     {userData.name} 
                 </div> */}
             </div>
+            <div onClick={toggleSidebar} className="sidebar-toggle">
+                <ViewSidebarIcon color="secondary"  />
+            </div>
 
             { page === "Dashboard" &&
                     <Dashboard 
                         darkMode = {props.darkMode}
-                        userData = {userData}
                         login = {props.login}
                     />
             }
 
-            { page === "Users" &&
-                    <Users  
-                        darkMode = {props.darkMode}
-                        
-                    />
-            }
+            { page === "Users" && <Users/> }
+            { page === "Account" && <Account
+                userData = {userData}
+                login = {props.login}
+            /> }
 
 
                  {/* <NewCard 
