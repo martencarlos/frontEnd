@@ -29,7 +29,7 @@ export default function Dashboard(props){
 
     return (
         props.login && props.userData.profilePic &&
-        <div className="dashboard-main">
+        <div className="dashboard">
             {userData.createDate &&
             <div className="dashboard-main-panel">
                 

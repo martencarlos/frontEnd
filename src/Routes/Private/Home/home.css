@@ -31,57 +31,24 @@ div.home button.sidebar-button{
     display: flex;
     margin-left: 5px;
     justify-content: start;
-    
-    
 }
+
+div.home button.sidebar-nestedButton{
+    display: flex;
+    margin-left: 10px;
+    justify-content: start;
+    flex:1;
+}
+
+
 
 div.home div.sidebar-dataList{
     display: flex;
     margin-left: 25px;
     
 }
-div.home div.home-main{
-    display: flex;
-    flex: 5;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--primary-light);
-    border-radius: 20px;
-}
-
-div.home div.home-main-panel{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 15px;
-    background-color: var(--primary-light);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.account-title{
-    display: flex;
-    border-top-left-radius: 10px;
-    padding: 15px;
-    color: white;
-    background-color: var(--secondary-dark);
-    
-}
-
-div.dark div.home-main-panel {
-    color:var(--primary-text)
-}
-
-.account-row{
-    display: flex;
-    padding-left: 15px;
-    padding-right: 15px;
-    justify-content: space-between;
-}
 
 
-div.home div.space{
-    height: 20px;
-}
 
 div.home div.sidebar-username{
     margin-top: 5px;

@@ -1,36 +1,25 @@
 /* Dashboard */
 
 @media (max-width: 700px) {
-    div.dashboard div.sidebar{
-        /* display: none !important; */
-    }
-    div.dashboard {
-        flex-direction: column;
-    }
-    div.space{
-        display: none;
-    }
+   
+   
+    
     
 }
 
 
-div.dashboard{
-    display: flex;
-    flex: 1;
-}
-    
 
-
-div.dashboard div.dashboard-main{
+div.home div.dashboard{
     display: flex;
     flex: 5;
     justify-content: center;
     align-items: center;
     background-color: var(--primary-light);
     border-radius: 20px;
+    margin: 5px;
 }
 
-div.dashboard div.dashboard-main-panel{
+div.home div.dashboard-main-panel{
     display: flex;
     flex-direction: column;
     padding-bottom: 15px;
@@ -60,81 +49,11 @@ div.dark div.dashboard-main-panel {
 }
 
 
-div.dashboard div.space{
-    height: 20px;
-}
 
-div.dashboard div.sidebar-username{
-    margin-top: 5px;
-    margin-bottom:5px;
-    align-self: center;
-    text-align: center;
-}
 
-div.dashboard img.sidebar-profilepicture{
-       display: flex;
-    object-fit: cover;
-    height: 80px;
-    /* max-height: 250px; */
-    width: 80px;
-    border-radius: 50%;
-    margin: 15px;
-    object-fit: cover;
-    background-size: cover;
-    align-self: center;
-}
 
-.wrap-img {
-    display:flex;
-    flex-direction: column;
-    align-self: center;
-    justify-content: center;
-    position:relative;
-    cursor: pointer;
-}
 
-.wrap-text{
-    display:flex;
-    align-self:center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    text-align: center;
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    background-color: var(--secondary-text);
-    color: white;
-    margin:15px;
-    font-size: smaller;
-    transition: 0.3s;
-}
 
-.bi-pencil-square{
-    width: 100%;
-    font-size: large;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0%;
-    margin: 0px;
-}
 
-.upload-progress{
-    display: flex;
-    align-self: center;
-    position:absolute;
-    background-color: var(--secondary-text);
-    color: white;
-    border-radius: 6px;
-    padding: 3px;
-    font-size: smaller;
-}
 
-.wrap-img:hover .wrap-text{
-    visibility: visible;
-    transition: 0.3s;
-    opacity: 0.8;
-}
 
