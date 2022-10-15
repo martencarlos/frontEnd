@@ -2,13 +2,12 @@
 import "./home.css";
 
 import {useState, useEffect} from "react";
-import {Link, NavLink, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import {} from 'react-router-dom';
 import axios from "axios";
 import {resizeFile} from "../../../Util/ImageProcessing";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Users from "./Pages/Users/Users";
-import {BrowserRouter,Routes,Route,} from "react-router-dom";
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -68,6 +67,7 @@ export default function Home(props){
 
     //UserData & upload progress    
     const [userData, setUserData] = useState({})
+    const [page, setPage] = useState("Dashboard")
     const [uploadProgress, setUploadProgress] = useState('')
 
     //redirect to login page if logged out
@@ -161,7 +161,11 @@ export default function Home(props){
 
     function goToUsers() {
         console.log("goToUsers")
-        // navigate("/home/users");
+        setPage ("Users")
+    }
+    function goToDashboard() {
+        
+        setPage ("Dashboard")
     }
 
     
@@ -174,21 +178,21 @@ export default function Home(props){
            <div className={"sidebar"}>
                 <br></br>
                 <Typography variant="body1"  gutterBottom> Dashboard </Typography>
-                <Button style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="secondary">Dashboard</Button>
+                <Button onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="secondary">Dashboard</Button>
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
-                <Typography variant="body1"  gutterBottom> Storages </Typography>
+                <Typography variant="body1"  gutterBottom> Storage </Typography>
                 <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="secondary">Objects</Button>    
                 {listStatus && 
                     <div className="sidebar-dataList">
-                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-button" startIcon={<PeopleIcon />}  color="secondary">Users1</Button>
+                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="secondary">Users</Button>
                     </div>
                 }
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
-                <Typography variant="body1"  gutterBottom> Data </Typography>
+                <Typography variant="body1"  gutterBottom> {"Settings"} </Typography>
                 {/* <div className="space"></div>
                 <div  className="wrap-img">
                     <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
@@ -204,22 +208,20 @@ export default function Home(props){
                 </div> */}
             </div>
 
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={
+            { page === "Dashboard" &&
                     <Dashboard 
                         darkMode = {props.darkMode}
                         userData = {userData}
                         login = {props.login}
-                    />}>
-                    </Route>
-                    <Route path="/users" element={
-                    <Users 
+                    />
+            }
+
+            { page === "Users" &&
+                    <Users  
+                        darkMode = {props.darkMode}
                         
-                    />}>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+                    />
+            }
 
 
                  {/* <NewCard 

@@ -10,7 +10,28 @@
 
 div.users{
     display: flex;
-    flex: 1;
+    flex: 5;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-light);
+    border-radius: 20px;
+    margin: 5px;
 }
+
+div.users-pannel{
+    display: flex;
+    flex: 5;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+}
+
+div.users div.MuiDataGrid-root{
+    border: none;
+}
+
+
     
 
