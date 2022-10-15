@@ -165,6 +165,10 @@ export default function Account(props){
                     </div>
                     <br></br>
                     <div className="info-wrap">
+                        
+                        <Typography  variant="body1" >{"#ID"}</Typography>
+                        <Typography className="info" variant="body1" gutterBottom>{userData._id} </Typography>
+                        <br></br>
                         <div className="row" >
                             <Typography className="info-label" variant="body1" gutterBottom>{"Register Date:"}</Typography>
                             <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
