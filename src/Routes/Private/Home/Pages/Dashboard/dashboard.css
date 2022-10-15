@@ -18,6 +18,12 @@ div.home div.dashboard{
     margin: 5px;
 }
 
+div.dark div.home div.dashboard{
+
+    background-color: black;
+
+}
+
 div.dashboard div.widget{
     width: 300px;
     height:150px;

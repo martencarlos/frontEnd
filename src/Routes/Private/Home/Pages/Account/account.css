@@ -1,56 +1,162 @@
 /* Dashboard */
 
-@media (max-width: 700px) {
+@media (max-width: 780px) {
+   div.home div.row{
+     flex-direction: column;;
+   }
+
+   div.account div.account-info-card{
+    max-width: initial !important;
+   }
    
-   
-    
-    
 }
 
-
-
-div.home div.dashboard{
+div.home div.account{
     display: flex;
     flex: 5;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;;
     background-color: var(--primary-light);
     border-radius: 20px;
     margin: 5px;
 }
 
-div.home div.dashboard-main-panel{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 15px;
-    background-color: var(--primary-light);
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+div.dark div.home div.account{
+    background-color: black;
 }
 
-.account-title{
+div.account .page-title{
+    margin: 20px;
+    color: var(--secondary-color);
+}
+
+div.account div.row{
     display: flex;
-    border-top-left-radius: 10px;
-    padding: 15px;
-    color: white;
-    background-color: var(--secondary-dark);
     
 }
 
-div.dark div.dashboard-main-panel {
-    color:var(--primary-text)
-}
-
-.account-row{
+div.account div.account-main-card{
     display: flex;
-    padding-left: 15px;
-    padding-right: 15px;
-    justify-content: space-between;
+    flex: 3;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    max-width: 500px;
+    margin:20px;
+    padding: 30px;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+}
+
+div.dark div.account .MuiFormLabel-root{
+    color: black !important;
+    z-index: 0;
 }
 
 
 
+div.account div.account-info-card{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    max-width: 200px;
+    margin:20px;
+    padding: 20px;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+}
 
+div.account .info-wrap{
+    display: flex;
+    align-items: center;;
+    flex-direction: column;
+}
+
+div.dark div.account .info-wrap{
+    color: black;;
+}
+
+
+div.account .info-label{
+    font-weight: bold;
+    font-size: small;
+    white-space: nowrap;
+    margin: 10px;
+}
+
+div.account .info{
+    font-size: small;
+    margin: 10px;
+}
+
+
+/***************** AVATAR ******************/
+
+div.home img.avatar{
+       display: flex;
+    object-fit: cover;
+    height: 80px;
+    /* max-height: 250px; */
+    width: 80px;
+    border-radius: 50%;
+    margin: 15px;
+    object-fit: cover;
+    background-size: cover;
+    align-self: center;
+}
+
+div.home div.avatar-container {
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    position:relative;
+    cursor: pointer;
+}
+
+.wrap-text{
+    display:flex;
+    align-self:center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    background-color: var(--secondary-text);
+    color: white;
+    margin:15px;
+    font-size: smaller;
+    transition: 0.3s;
+}
+
+div.home div.avatar-container:hover .wrap-text{
+    visibility: visible;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.bi-pencil-square{
+    width: 100%;
+    font-size: large;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0%;
+    margin: 0px;
+}
+
+.upload-progress{
+    display: flex;
+    align-self: center;
+    position:absolute;
+    background-color: var(--secondary-text);
+    color: white;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: smaller;
+}
 
 
 

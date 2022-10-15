@@ -208,13 +208,42 @@ export default function App(){
                         darkMode = {darkMode}
                     />}>
                 </Route>
-                <Route path="/home" element={
-                    <Home 
-                        darkMode = {darkMode}
-                        userData = {userData}
-                        login = {login}
-                        updateUserData= {updateUserData}
-                    />}>
+
+                
+
+                <Route path="/home"> 
+                    <Route path="" element={
+                        <Home 
+                            darkMode = {darkMode}
+                            userData = {userData}
+                            login = {login}
+                            updateUserData= {updateUserData}
+                        />}
+                    />
+                    <Route path="dashboard" element={
+                        <Home 
+                            darkMode = {darkMode}
+                            userData = {userData}
+                            login = {login}
+                            updateUserData= {updateUserData}
+                        />}
+                    />
+                    <Route path="users" element={
+                        <Home 
+                            darkMode = {darkMode}
+                            userData = {userData}
+                            login = {login}
+                            updateUserData= {updateUserData}
+                        />}
+                    />
+                    <Route path="account" element={
+                        <Home 
+                            darkMode = {darkMode}
+                            userData = {userData}
+                            login = {login}
+                            updateUserData= {updateUserData}
+                        />}
+                    />
                 </Route>
                 <Route path="/login" element={
                     
