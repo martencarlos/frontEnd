@@ -38,6 +38,7 @@ footer {
   padding-left: 4em;
   padding-right: 4em;
   bottom:0;
+  z-index:2;
 }
 
 a:hover {

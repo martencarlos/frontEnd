@@ -48,6 +48,7 @@ div.users-pannel{
     align-items: center;
     background-color: white;
     border-radius: 20px;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
 }
 
 div.users div.MuiDataGrid-root{

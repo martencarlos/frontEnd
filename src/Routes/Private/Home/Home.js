@@ -2,10 +2,9 @@
 import "./home.css";
 
 import {useState, useEffect} from "react";
-import {useNavigate } from 'react-router-dom';
+import {useNavigate,useLocation } from 'react-router-dom';
 import {} from 'react-router-dom';
-import axios from "axios";
-import {resizeFile} from "../../../Util/ImageProcessing";
+
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Users from "./Pages/Users/Users";
 import Account from "./Pages/Account/Account";
@@ -25,8 +24,8 @@ export default function Home(props){
 
     console.log("Rendering home")
     const navigate = useNavigate();
-
-
+    const location = useLocation();
+    
     // //Add a card functionality
     // import NewCard from "../../../Components/NewCard/NewCard";
     // var [cards, setCards] = useState(
@@ -70,8 +69,8 @@ export default function Home(props){
 
     //UserData & upload progress    
     const [userData, setUserData] = useState({})
-    const [page, setPage] = useState("Dashboard")
-    const [uploadProgress, setUploadProgress] = useState('')
+    const [page, setPage] = useState("dashboard")
+    
 
     //redirect to login page if logged out
     useEffect(() => {
@@ -84,6 +83,11 @@ export default function Home(props){
     // Set the user data from APP
     useEffect(() => {
 
+        var n = location.pathname.lastIndexOf('/');
+        let path = location.pathname.substring(n + 1);
+        if(path !== "home")
+            setPage(path)
+
         if(props.userData.profilePic){
             setUserData(props.userData)
         }
@@ -91,70 +95,9 @@ export default function Home(props){
         return () => {
             setUserData({})
         }
-        
-    }, [props]);
 
+    }, [props, location.pathname]);
 
-    //Profile Image functions
-    function changePicture(){
-        var input = document.createElement('input');
-        document.body.appendChild(input); //required for iphone
-        input.addEventListener('change', updateValue); //required for iphone
-        input.type = 'file';
-        input.id ="input"
-        input.click();
-        document.body.removeChild(input) 
-    }
-
-    const updateValue = async (e) =>{
-        // getting a hold of the file reference
-        var file = e.target.files[0];
-        var blobImage
-        try {
-            blobImage = await resizeFile(file,400,400);
-        } catch (error) {
-            alert("File not supported - please select an image \n" + error)
-            const input = document.getElementById("input")
-            document.body.removeChild(input)
-            return;
-        }
-        
-        //to send encoded info
-        var form_data = new FormData();
-        form_data.append("profile_image",blobImage);
-        
-        //Upload the file
-        axios.post(process.env.REACT_APP_SERVER+'/setImageProfile',form_data,{
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'enc-type': 'multipart/form-data',
-            },
-            onUploadProgress: (event)=>{
-                const totalUploaded = Math.floor((event.loaded / event.total) * 100)
-                setUploadProgress(totalUploaded)
-            },
-            withCredentials: true, 
-            }) 
-          .then(function (response) {
-            setUploadProgress('')
-            var user = JSON.parse(JSON.stringify(userData));
-            user.profilePic = response.data.url;
-            
-            localStorage.setItem("profilePic", response.data.url)
-            props.updateUserData(user)
-            
-          }).finally(function(response){
-               
-          })
-          .catch(function (error) {
-            // console.log(error);
-            
-        });
-        console.log("removing child")
-        
-    }
-
-    
     const [listStatus, setListStatus] = useState(false)
     
     function toggleList() {
@@ -162,13 +105,15 @@ export default function Home(props){
     }
 
     function goToUsers() {
-        setPage ("Users")
+        
+        navigate('/home/users')
     }
     function goToDashboard() {
-        setPage ("Dashboard")
+        
+        navigate('/home/dashboard')
     }
     function goToAccount() {
-        setPage ("Account")
+        navigate('/home/account')
     }
 
     function toggleSidebar() {
@@ -188,6 +133,8 @@ export default function Home(props){
             
     }
     
+    console.log("Page: ")
+    console.log(page)
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
@@ -216,35 +163,23 @@ export default function Home(props){
                 <Button onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
 
                 
-                {/* <div className="space"></div>
-                <div  className="wrap-img">
-                    <img id="profilePic"  className="sidebar-profilepicture" src={userData.profilePic} alt="profile pic" />
-                    {!uploadProgress && 
-                        <span className="wrap-text" onClick={changePicture}>
-                            <i className="bi-pencil-square" role="img" aria-label="name"></i>
-                        </span>}
-                    {uploadProgress && 
-                        <div className="upload-progress">{uploadProgress+'%'}</div>}
-                </div>
-                <div id="username" className="sidebar-username">
-                    {userData.name} 
-                </div> */}
             </div>
             <div onClick={toggleSidebar} className="sidebar-toggle">
                 <ViewSidebarIcon color="secondary"  />
             </div>
 
-            { page === "Dashboard" &&
+            { page === "dashboard" &&
                     <Dashboard 
                         darkMode = {props.darkMode}
                         login = {props.login}
                     />
             }
 
-            { page === "Users" && <Users/> }
-            { page === "Account" && <Account
+            { page === "users" && <Users/> }
+            { page === "account" && <Account
                 userData = {userData}
                 login = {props.login}
+                updateUserData= {props.updateUserData}
             /> }
 
 

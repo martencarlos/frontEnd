@@ -84,7 +84,7 @@ export default function Users(props){
             <Typography className="page-title" variant="h4"  gutterBottom> All Users </Typography>
             <div className="users-pannel">
                 {users && 
-                <div style={{ height: 480, width: '100%' }}>
+                <div style={{ height: 452, width: '100%' }}>
                     <DataGrid
                     rows={users}
                     columns={columns}
