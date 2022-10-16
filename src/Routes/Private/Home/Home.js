@@ -41,11 +41,21 @@ export default function Home(props){
 
     // Set the user data from APP
     useEffect(() => {
-
+        
+        
         var n = location.pathname.lastIndexOf('/');
         let path = location.pathname.substring(n + 1);
-        if(path !== "home")
+        
+        
+        if(path !== "home"){
+            if(document.getElementById(path)){
+                var x = document.getElementById(path);
+                x.classList.add("active");
+            }
+            
             setPage(path)
+        }
+            
 
         if(props.userData.profilePic){
             setUserData(props.userData)
@@ -53,6 +63,10 @@ export default function Home(props){
 
         return () => {
             setUserData({})
+            if(document.getElementById(path)){
+                var x = document.getElementById(path);
+                x.classList.remove("active");
+            }
         }
 
     }, [props, location.pathname]);
@@ -64,15 +78,22 @@ export default function Home(props){
     }
 
     function goToUsers() {
-        
+        closeSideBarIfOpen()
         navigate('/home/users')
     }
     function goToDashboard() {
-        
+        closeSideBarIfOpen()
         navigate('/home/dashboard')
     }
     function goToAccount() {
+        closeSideBarIfOpen()
         navigate('/home/account')
+    }
+
+    function closeSideBarIfOpen() {
+        var x = document.getElementById("sidebar");
+        x.style.display = ""
+        x.style.position = "relative";
     }
 
     function toggleSidebar() {
@@ -104,7 +125,7 @@ export default function Home(props){
                 <br></br>
                 <br></br>
                 <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
-                <Button onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="primary">Dashboard</Button>
+                <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="primary">Dashboard</Button>
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
@@ -112,14 +133,14 @@ export default function Home(props){
                 <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
                 {listStatus && 
                     <div className="sidebar-dataList">
-                        <Button onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
+                        <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
                     </div>
                 }
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>
                 <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
-                <Button onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
+                <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
 
                 
             </div>

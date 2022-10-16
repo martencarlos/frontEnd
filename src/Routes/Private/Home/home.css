@@ -86,3 +86,8 @@ div.home div.sidebar-dataList{
     
 }
 
+.active{
+    
+    background-color: var(--primary-light) !important
+    
+}
