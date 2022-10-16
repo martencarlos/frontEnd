@@ -4,6 +4,7 @@
     div.home div.sidebar{
         display: none ;
         height: 100%;
+        border: 1px solid lightgrey;
     }
 
     div.home div.sidebar-toggle{
@@ -30,9 +31,9 @@ div.home div.sidebar{
     flex-direction: column;
     padding: 20px;
     background: white;
-    
+    margin: 5px;
     z-index: 1;
-    border-radius: 20px;
+    border-radius: 10px;
     
 }
 
