@@ -19,6 +19,10 @@ div.users{
     margin: 5px;
 }
 
+div.dark div.users{
+    background-color: black;
+}
+
 div.users .page-title{
     margin: 20px;
     color: var(--secondary-color);
