@@ -11,6 +11,7 @@ import InputBase from '@mui/material/InputBase';
 import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
@@ -150,7 +151,10 @@ export default function Account(props){
                     <BootstrapInput placeholder={userData.email} id="bootstrap-input" />
                     <br></br>
                     <br></br>
-                    <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
+                    <div className="main-card-actions">
+                        <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
+                        <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
+                    </div>
                 </div>
 
                 <div className="account-info-card">
@@ -184,28 +188,6 @@ export default function Account(props){
             </div>
             <br></br>
             <br></br>
-            
-                {/* <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Name:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.name} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Username:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.username} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Email:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.email} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Created date:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.createDate.substring(0, 10)} </Typography>
-                </div>
-                <div className="account-row">
-                    <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Last update:"} </Typography>
-                    <Typography variant="body1" gutterBottom>{userData.lastUpdate.substring(0, 10)} </Typography>
-                </div> */}
-                
             
         </div>
                 
