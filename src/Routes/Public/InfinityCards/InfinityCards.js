@@ -1,9 +1,14 @@
 
 import "./infinityCards.css";
 
-import ImageCard from "../../../Components/ImageCard/ImageCard";
+
 import {useState, useEffect,useRef} from "react"
+import axios from "axios";
+
 import {getCookie} from "../../../Util/Cookie";
+import NewCard from "../../../Components/NewCard/NewCard";
+import ImageCard from "../../../Components/ImageCard/ImageCard";
+
 import { useSnackbar } from 'notistack';
 
 
@@ -15,10 +20,11 @@ export default function FeatureCards(props){
     const cardsLength = useRef(0);
 
     const [posts, setPosts] = useState([...Array(0).keys()]); 
-    const [cards, setCards] = useState([])
-
-   
     
+    const [cards, setCards] = useState(
+        ()=>JSON.parse(localStorage.getItem("cards")) || []
+    )
+
     // Assign the cardsLength
     useEffect(function(){
         var postsPerPage = 8;
@@ -123,24 +129,53 @@ export default function FeatureCards(props){
         }
     }
 
-   
+        // //Add a card functionality
 
-    //Display cards
-    // function cardElements(darkmode){
-    //     return cards.map(mycard => {
-    //         return <Card
-    //                 key = {mycard._id}
-    //                 darkMode = {darkmode}
-    //                 item = {mycard}
-    //                 deleteCard={deleteCard}
-    //                 showDeleteButton = {true}
-    //             />
-    //         })
-    //     }
+    
+
+    //cards
+    useEffect(() => {
+        localStorage.setItem("cards", JSON.stringify(cards))
+    }, [cards])
+    
+       //Add new card
+    function addCard(newCard) {
+        
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/cards',
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify(newCard),
+        };
+        axios(config) 
+        .then(function (response) {
+            
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+        setCards(prevCards => {
+            return [
+                ...prevCards,
+                newCard
+            ]
+        })
+    }
+   
 
     return (
         <feature is="x3d" className={props.darkMode ? "dark" : ""}>
-            
+           {props.login && 
+            <NewCard 
+                darkMode = {props.darkMode}
+                handleClick = {addCard}
+                userData ={props.userData}
+            />  
+           }
             <h1>All Cards</h1>
             <div className="board">
                 {cards.length !==0 && posts.map((item, i) => ( 
