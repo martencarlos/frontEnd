@@ -170,6 +170,7 @@ export default function Navbar(props){
                 {props.login &&
                     <ul className="nav-links">
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
+                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
                     </ul>}
                 {!props.login &&     
                     <ul className="nav-links">

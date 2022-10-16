@@ -26,46 +26,6 @@ export default function Home(props){
     const navigate = useNavigate();
     const location = useLocation();
     
-    // //Add a card functionality
-    // import NewCard from "../../../Components/NewCard/NewCard";
-    // var [cards, setCards] = useState(
-    //     ()=>JSON.parse(localStorage.getItem("cards")) || []
-    // )
-
-    // //cards
-    // useEffect(() => {
-    //     localStorage.setItem("cards", JSON.stringify(cards))
-    // }, [cards])
-    
-       // //Add new card
-    // function addCard(newCard) {
-        
-    //     const config = {
-    //         url: process.env.REACT_APP_SERVER+'/cards',
-    //         method: 'POST',
-    //         headers: {
-    //             'Access-Control-Allow-Origin': '*',
-    //             'Content-Type': 'application/json',
-    //         },
-    //         data: JSON.stringify(newCard),
-    //     };
-    //     axios(config) 
-    //     .then(function (response) {
-            
-    //     })
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     });
-
-    //     setCards(prevCards => {
-    //         return [
-    //             ...prevCards,
-    //             newCard
-    //         ]
-    //     })
-    // }
-
-
     //UserData & upload progress    
     const [userData, setUserData] = useState({})
     const [page, setPage] = useState("dashboard")
@@ -182,11 +142,7 @@ export default function Home(props){
             /> }
 
 
-                 {/* <NewCard 
-                    darkMode = {props.darkMode}
-                    handleClick = {addCard}
-                    userData ={userData}
-                />  */}
+                 
         </div>
 
         
