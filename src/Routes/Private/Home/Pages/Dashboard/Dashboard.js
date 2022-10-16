@@ -1,7 +1,7 @@
  
 import "./dashboard.css";
 
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import axios from "axios";
 
 import Typography from '@mui/material/Typography';
@@ -18,8 +18,8 @@ export default function Dashboard(props){
 
     //UserData     
     const [userAnalytics, setUserAnalytics] = useState()
+    const totalUsers = useRef(0)
     
-
     //Get all users from the database
     useEffect(() => {
         console.log("useEffect - get users")
@@ -27,6 +27,7 @@ export default function Dashboard(props){
             await axios.get(`${process.env.REACT_APP_SERVER}/users`)
               .then(function (res) {
                     var graphData = []
+                    totalUsers.current = res.data.length
                     
                     months.map(function (month, i) {
                         
@@ -94,6 +95,16 @@ export default function Dashboard(props){
                     </LineChart>
                 </ResponsiveContainer>
             </div>
+            <div className="mini-widget" >
+                
+                <div className="mini-widget-header">
+                    <PeopleAltIcon className="mini-widget-icon"/>
+                    <Typography className="mini-widget-title" variant="body1" >Total Users</Typography>
+                </div>
+                <Typography className="mini-widget-data" variant="h2" >{totalUsers.current}</Typography>
+            </div>
+            
+
         </div>
                 
     )
