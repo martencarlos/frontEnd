@@ -137,7 +137,7 @@ export default function Account(props){
             
             <br></br>
             <br></br>
-            <Typography variant="h4" className="page-title" gutterBottom>{"Account information"} </Typography>
+            <Typography variant="h4" className="page-title" gutterBottom>{"Account Settings"} </Typography>
 
             <div className="row" >
                 <div className="account-main-card">

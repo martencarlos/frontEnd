@@ -78,7 +78,7 @@ export default function Users(props){
             return (
                 <div className="datagrid-actions">
                     <EditIcon onClick={editUser} className="clickable-icon"/>
-                    <DeleteIcon onClick={()=>deleteUserConfirmation(params.row.id)} className="clickable-icon"/>
+                    <DeleteIcon onClick={()=>deleteUserConfirmation(params.row.id)} color="error" className="clickable-icon"/>
                 </div>
             )
         } }
@@ -154,6 +154,7 @@ export default function Users(props){
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         Are you sure you want to delete the selected user?
                     </Typography>
+                    <br></br>
                     <br></br>
                     <div className="delete-confirmation-buttons">
                         <Button onClick={deleteUser} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
