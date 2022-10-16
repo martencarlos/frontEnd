@@ -75,7 +75,10 @@ export default function FeatureCards(props){
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [])
-      
+    
+
+//*************************** Functions *******************************************
+    
     async function deleteCard(e){
         const card = e.target.parentElement.parentElement
         
@@ -137,19 +140,16 @@ export default function FeatureCards(props){
 
     return (
         <feature is="x3d" className={props.darkMode ? "dark" : ""}>
-            {/* <h1>My Cards</h1> */}
-            {/* <section className="cards-list"> */}
-                {/* {cardElements (props.darkMode)} */}
-            {/* </section> */}
+            
             <h1>All Cards</h1>
             <div className="board">
                 {cards.length !==0 && posts.map((item, i) => ( 
                     <ImageCard
-                    key = {cards[i]._id}
-                    darkMode = {props.darkmode}
-                    item = {cards[i]}
-                    deleteimageCard={deleteCard}
-                    showDeleteButton = {true}
+                        key = {cards[i]._id}
+                        darkMode = {props.darkmode}
+                        item = {cards[i]}
+                        deleteimageCard={deleteCard}
+                        showDeleteButton = {true}
                     />
                 ))}
             </div>

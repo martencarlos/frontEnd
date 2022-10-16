@@ -6,7 +6,7 @@
    }
 
    div.account div.account-info-card{
-    max-width: initial !important;
+        width:100%;
    }
    
 }
