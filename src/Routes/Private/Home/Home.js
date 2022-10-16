@@ -125,7 +125,7 @@ export default function Home(props){
                 <br></br>
                 <br></br>
                 <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
-                <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} color="primary">Dashboard</Button>
+                <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} >Dashboard</Button>
                 <br></br>
                 <Divider variant="middle" />
                 <br></br>

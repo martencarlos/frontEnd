@@ -54,6 +54,7 @@ div.home button.sidebar-button{
     display: flex;
     margin-left: 20px;
     justify-content: start;
+    
     align-items: initial;
     width: 90%;
 }
@@ -62,6 +63,7 @@ div.home button.sidebar-nestedButton{
     display: flex;
     margin-left: 20px;
     justify-content: start;
+    color: var(--primary-text-light);
     flex:1;
 
     animation: .2s ease-out slideDown;

@@ -61,7 +61,7 @@ div.users div.MuiDataGrid-root{
 
 div.users .clickable-icon{
     cursor: pointer;
-    color: var(--secondary-color);
+    
 }
 
  .delete-confirmation{
