@@ -21,6 +21,7 @@ const blogRootUrl="http://webframe247611193.wordpress.com/"
 
 export default function Blog(props){
     console.log("Rendering Blog")
+    
 
     const {id} = useParams();
     const navigate=useNavigate();
@@ -44,9 +45,13 @@ export default function Blog(props){
     //Load articles from Medium
     useEffect(() => {
         console.log("Blog useEffect - load articles from medium or wordpress")
-        
+        document.title = "Webframe - Blog"
         
         getWordpressFeed()
+
+        return () => {
+            document.title = "Webframe"
+        }
     }, [])
 
     useEffect(() => {

@@ -39,6 +39,7 @@ export default function Users(props){
                         
                         obj.createDate = new Date(Date.parse(obj.createDate)).toLocaleDateString();
                         obj.lastUpdate = new Date(Date.parse(obj.lastUpdate)).toLocaleDateString();
+                        obj.lastLogin = new Date(Date.parse(obj.lastLogin)).toLocaleDateString();
                         obj['id'] = obj['_id']; // Assign new key
                         delete obj['_id']; // Delete old key
                         return obj;
@@ -74,6 +75,9 @@ export default function Users(props){
         { field: 'email', headerName: 'Email', width: 200 },
         { field: 'createDate', headerName: 'Create Date', width: 130 },
         { field: 'lastUpdate', headerName: 'Last Update', width: 130 },
+        { field: 'lastLogin', headerName: 'Last Login', width: 130 },
+        { field: 'logins', headerName: 'Total Logins', width: 110 },
+        { field: 'role', headerName: 'Role', width: 110 },
         { field: 'actions', headerName: 'Actions', width: 80, renderCell: (params)=>{
             return (
                 <div className="datagrid-actions">
@@ -115,7 +119,7 @@ export default function Users(props){
         axios(config) 
             .then(function (response) {
                 console.log(response.data);
-                if(response.data.message === "User deleted"){
+                if(response.data.message === "user deleted"){
                     setUsers(users.filter(user => user.id !== deleteUserId.current));
                 }
                 notificationMessage.current = response.data.message
