@@ -163,11 +163,12 @@ export default function Account(props){
                         {uploadProgress && 
                             <div className="upload-progress">{uploadProgress+'%'}</div>}
                     </div>
-                    <br></br>
+                    
                     <div className="info-wrap">
                         
-                        <Typography  variant="body1" >{"#ID"}</Typography>
+                        <Typography className="info-label" variant="body1" >{"#ID"}</Typography>
                         <Typography className="info" variant="body1" gutterBottom>{userData._id} </Typography>
+                        <br></br>
                         <br></br>
                         <div className="row" >
                             <Typography className="info-label" variant="body1" gutterBottom>{"Register Date:"}</Typography>
