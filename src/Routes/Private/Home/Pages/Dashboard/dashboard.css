@@ -1,6 +1,17 @@
 /* Dashboard */
 
 @media (max-width: 700px) {
+    div.home div.dashboard{
+        flex-direction:column;
+    }
+    
+    div.dashboard div.widget{
+        width:90% !important;
+    }
+
+    div.dashboard div.mini-widget{
+        width:90% !important;
+    }
    
     
 }
@@ -8,7 +19,6 @@
 
 div.home div.dashboard{
     display: flex;
-    flex-direction: column;
     flex: 5;
     justify-content: center;
     align-items: center;
@@ -23,6 +33,7 @@ div.dark div.home div.dashboard{
 
 }
 
+
 div.dashboard div.widget{
     width: 300px;
     height:150px;
@@ -33,22 +44,62 @@ div.dashboard div.widget{
     
 }
 
+div.dashboard div.mini-widget{
+    width: 200px;
+    height:200px;
+    margin: 30px;
+    background-color: white;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    
+}
 
+div.dashboard .mini-widget-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 22px;
+    align-items: center;
+}
 
-div.widget .widget-header{
+div.dashboard .mini-widget-icon{
+    display: flex;
+    color: var(--primary-color);
+    font-size: 50px;
+    margin: 5px;
+}
+
+div.dashboard .mini-widget-title{
+    display: flex;
+    font-weight: bold;
+    color: var(--primary-color);
+  
+}
+
+div.dashboard .mini-widget-data{
+    display: flex;
+    font-weight: bold;
+    color: var(--primary-color);
+    justify-content: center;
+  
+}
+
+div.dashboard .widget-header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-div.widget .widget-title{
+div.dashboard .widget-title{
     display: flex;
     color: var(--primary-color);
     margin-top: 20px;
     margin-left: 20px;
     
 }
-div.widget .widget-year{
+div.dashboard .widget-year{
     display: flex;
     font-weight: bold;
     color: var(--primary-color);
