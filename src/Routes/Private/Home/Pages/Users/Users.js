@@ -19,6 +19,7 @@ export default function Users(props){
     const selectedRows = useRef();
     // const [loading, setLoading] = useState(true)
     
+   
 
     //Get all users from the database
     useEffect(() => {
@@ -84,7 +85,7 @@ export default function Users(props){
             <Typography className="page-title" variant="h4"  gutterBottom> All Users </Typography>
             <div className="users-pannel">
                 {users && 
-                <div style={{ height: 452, width: '100%' }}>
+                <div style={{ height: 482, width: '100%' }}>
                     <DataGrid
                     rows={users}
                     columns={columns}

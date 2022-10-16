@@ -182,6 +182,8 @@ export default function Account(props){
                 </div>
                 
             </div>
+            <br></br>
+            <br></br>
             
                 {/* <div className="account-row">
                     <Typography variant="body1" fontWeight={"bold"} gutterBottom>{"Name:"} </Typography>
