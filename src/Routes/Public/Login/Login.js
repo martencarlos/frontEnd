@@ -134,6 +134,7 @@ export default function Login(props){
         
             <form className="login-form">
                 <Typography variant="h2" gutterBottom>Login</Typography>
+                <br></br>
                 <div id="loginForm" className="login-form-inputs">
                     <div className="login-form-input-row">
 
@@ -164,7 +165,7 @@ export default function Login(props){
                         </div>
                     </div>
 
-                        
+                    
                     <div className="login-form-input-row">
 
                         <div className="login-form-input-row-inputanderror">
@@ -195,6 +196,7 @@ export default function Login(props){
 
                         </div>
                     </div>
+                    <br></br>
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (

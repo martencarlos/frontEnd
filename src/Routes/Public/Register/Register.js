@@ -173,6 +173,7 @@ export default function Register(props){
         <div className={props.darkMode ? "dark" : ""}>
             <form className="register-form">
                 <Typography variant="h2" gutterBottom>Register</Typography>
+                <br></br>
                 <div id="registerForm" className="register-form-inputs">
                     <div className="register-form-input-row">
                         <div className="register-form-input-row-inputanderror">
@@ -313,6 +314,7 @@ export default function Register(props){
                             
                         </div>
                     </div>
+                    <br></br>
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (
