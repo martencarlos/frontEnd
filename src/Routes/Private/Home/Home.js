@@ -134,7 +134,9 @@ export default function Home(props){
                     />
             }
 
-            { page === "users" && <Users/> }
+            { page === "users" && <Users
+                userData = {userData}
+            /> }
             { page === "account" && <Account
                 userData = {userData}
                 login = {props.login}

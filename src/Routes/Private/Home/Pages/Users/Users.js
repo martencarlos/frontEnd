@@ -8,15 +8,21 @@ import Typography from '@mui/material/Typography';
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
-
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 export default function Users(props){
 
     console.log("Rendering Users")
 
     const [users, setUsers] = useState()
+    const [notification, setNotification] = useState(false)
+    
     const selectedRows = useRef();
+    const deleteUserId = useRef();
+    const notificationMessage = useRef();
     // const [loading, setLoading] = useState(true)
     
    
@@ -26,7 +32,7 @@ export default function Users(props){
         console.log("useEffect - get users")
         const fetchUsers = async () => {
             await axios.get(`${process.env.REACT_APP_SERVER}/users`)
-              .then(function (res) {
+            .then(function (res) {
                     
                     //change the '_id' key for 'id' to be able to display in data grid. + reformat dates
                     res.data = res.data.map(function(obj) {
@@ -40,17 +46,17 @@ export default function Users(props){
                     
                     setUsers(res.data);
                 //   setLoading(false)
-  
-              })
-              .catch(function (error) {
-                  // handle error
-                  console.log(error);
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
                 //   setLoading(false)
-              })
-              .finally(function (response) {});
-          };
+            })
+            .finally(function (response) {});
+        };
         
-          if (true) fetchUsers();
+        if (true) fetchUsers();
         
     }, [])
 
@@ -71,17 +77,90 @@ export default function Users(props){
         { field: 'actions', headerName: 'Actions', width: 80, renderCell: (params)=>{
             return (
                 <div className="datagrid-actions">
-                    <EditIcon className="clickable-icon"/>
-                    <DeleteIcon className="clickable-icon"/>
+                    <EditIcon onClick={editUser} className="clickable-icon"/>
+                    <DeleteIcon onClick={()=>deleteUserConfirmation(params.row.id)} className="clickable-icon"/>
                 </div>
             )
         } }
-      ];
+    ];
       
-      
+    function editUser(){
+        console.log("edit user")
+    }
+
+    function deleteUserConfirmation(id){
+        deleteUserId.current = id;
+        handleOpen()
+    }
+    function cancel(){
+        deleteUserId.current = 0;
+        handleClose()
+    }
+
+    function deleteUser(){
+        console.log("deleting user: "+deleteUserId.current)
+        
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/deleteUser',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {"deleteUserId": deleteUserId.current,
+                    "adminUserId": props.userData._id},
+            withCredentials: true, // Now this is was the missing piece in the client side 
+            
+        };
+
+        axios(config) 
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data.message === "User deleted"){
+                    setUsers(users.filter(user => user.id !== deleteUserId.current));
+                }
+                notificationMessage.current = response.data.message
+                setNotification(true)
+                
+                handleClose()
+            }).finally(()=>{
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    function handleCloseNotif(){
+            setNotification(false);
+    }
       
     return (
         <div className="users">
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div className="delete-confirmation">
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Confirmation
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Are you sure you want to delete the selected user?
+                    </Typography>
+                    <br></br>
+                    <div className="delete-confirmation-buttons">
+                        <Button onClick={deleteUser} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
+                        <Button onClick={cancel} variant="contained" color="text">Cancel</Button>
+                    </div>
+                </div>
+            </Modal>
             <Typography className="page-title" variant="h4"  gutterBottom> All Users </Typography>
             <div className="users-pannel">
                 {users && 
@@ -92,6 +171,7 @@ export default function Users(props){
                     pageSize={10}
                     rowsPerPageOptions={[10]}
                     density={"compact"}
+                    disableSelectionOnClick
                     checkboxSelection
                     onSelectionModelChange={(ids) => {
                         const selectedIDs = new Set(ids);
@@ -101,6 +181,12 @@ export default function Users(props){
                     />
                 </div>}
             </div>
+            <Snackbar open={notification} autoHideDuration={6000} onClose={handleCloseNotif} >
+                <Alert severity="info" sx={{ width: '100%' }}>
+                    {notificationMessage.current}
+                </Alert>
+            </Snackbar>
+            
       </div>
                 
     )

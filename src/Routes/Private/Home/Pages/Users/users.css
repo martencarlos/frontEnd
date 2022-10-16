@@ -64,6 +64,27 @@ div.users .clickable-icon{
     color: var(--secondary-color);
 }
 
+ .delete-confirmation{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+ .delete-confirmation-buttons{
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    align-items: center;
+}
 
     
 
