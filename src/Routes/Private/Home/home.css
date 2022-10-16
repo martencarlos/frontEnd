@@ -6,13 +6,9 @@
         height: 100%;
     }
 
-    /* div.home {
-        flex-direction: column;
-    } */
     div.home div.sidebar-toggle{
         display: flex !important;
     }
-    
     
 }
 @media (min-width: 700px) {
@@ -26,6 +22,7 @@ div.home{
     display: flex;
     flex: 1;
 }
+
     
 div.home div.sidebar{
     /* display: flex; */
