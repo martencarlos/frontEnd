@@ -6,9 +6,6 @@ import axios from "axios";
 import {resizeFile} from "../../../../../Util/ImageProcessing";
 
 import Typography from '@mui/material/Typography';
-import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
