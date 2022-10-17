@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
+
 export default function Users(props){
 
     console.log("Rendering Users")
@@ -166,7 +167,7 @@ export default function Users(props){
                     </div>
                 </div>
             </Modal>
-            <Typography className="page-title" variant="h4"  gutterBottom> All Users </Typography>
+            <Typography className="page-title" variant="h4"  gutterBottom> Manage Users </Typography>
             <div className="users-pannel">
                 {users && 
                 <div style={{ height: 482, width: '100%' }}>
