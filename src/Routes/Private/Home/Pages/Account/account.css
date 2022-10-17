@@ -18,6 +18,7 @@ div.home div.account{
     background-color: var(--primary-light);
     border-radius: 20px;
     margin: 5px;
+    min-width: 0;
 }
 
 div.dark div.home div.account{
@@ -70,7 +71,7 @@ div.dark div.account .MuiFormLabel-root{
 
 div.account div.account-info-card{
     display: flex;
-    flex: 1;
+    flex: 1 1 auto;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
