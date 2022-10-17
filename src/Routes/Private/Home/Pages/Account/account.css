@@ -34,6 +34,7 @@ div.account div.row{
     
 }
 
+
 div.account div.account-main-card{
     display: flex;
     flex: 3;
@@ -44,6 +45,14 @@ div.account div.account-main-card{
     padding: 30px;
     box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
 }
+
+div.account .account-form{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
 
 div.account div.main-card-actions{
     display: flex;
