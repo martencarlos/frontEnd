@@ -12,41 +12,42 @@ import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
+import TextField from '@mui/material/TextField';
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+// const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
-    '& .MuiInputBase-input': {
-      borderRadius: 4,
-      position: 'relative',
-      backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
-      border: '1px solid #ced4da',
-      fontSize: 16,
-      width: 'auto',
-      padding: '10px 12px',
-      transition: theme.transitions.create([
-        'border-color',
-        'background-color',
-        'box-shadow',
-      ]),
-      // Use the system font instead of the default Roboto font.
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      '&:focus': {
-        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-        borderColor: theme.palette.primary.main,
-      },
-    },
-  }));
+//     '& .MuiInputBase-input': {
+//       borderRadius: 4,
+//       position: 'relative',
+//       backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+//       border: '1px solid #ced4da',
+//       fontSize: 16,
+//       width: 'auto',
+//       padding: '10px 12px',
+//       transition: theme.transitions.create([
+//         'border-color',
+//         'background-color',
+//         'box-shadow',
+//       ]),
+//       // Use the system font instead of the default Roboto font.
+//       fontFamily: [
+//         '-apple-system',
+//         'BlinkMacSystemFont',
+//         '"Segoe UI"',
+//         'Roboto',
+//         '"Helvetica Neue"',
+//         'Arial',
+//         'sans-serif',
+//         '"Apple Color Emoji"',
+//         '"Segoe UI Emoji"',
+//         '"Segoe UI Symbol"',
+//       ].join(','),
+//       '&:focus': {
+//         boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+//         borderColor: theme.palette.primary.main,
+//       },
+//     },
+//   }));
 
 export default function Account(props){
 
@@ -129,8 +130,24 @@ export default function Account(props){
         
     }
 
-
+    const[formErrors,setFormErrors] = useState({
+            email:"",
+            password: "",
+    })
+    const [formData, setFormData] = useState({
+        email:"",
+        password: "",
+    })
     
+    function handleChange(event) {
+        const {name, value} = event.target
+        setFormData(prevFormData => ({
+            ...prevFormData,
+            [name]: value
+        }))
+    }
+
+
     return (
         props.login && props.userData.profilePic &&
         <div className="account">
@@ -141,7 +158,155 @@ export default function Account(props){
 
             <div className="row" >
                 <div className="account-main-card">
-                    <InputLabel shrink htmlFor="bootstrap-input">Full Name</InputLabel>
+                    <form className="account-form">
+                        <br></br>
+                        <div id="loginForm" className="login-form-inputs">
+                            <div className="login-form-input-row">
+
+                                <div className="login-form-input-row-inputanderror">
+                                
+                                    {!formErrors.fullName && userData.name && <TextField
+                                        className="input"
+                                        
+                                        name="fullName"
+                                        id="standard-required"
+                                        label="Full Name"
+                                        defaultValue={userData.name}
+                                        
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+
+                                    {formErrors.fullName && <TextField
+                                        error
+                                        name="fullName"
+                                        id="standard-error-helper-text"
+                                        label="Error"
+                                        defaultValue={formData.fullName}
+                                        helperText={formErrors.fullName}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+                        
+                                </div>
+                            </div>
+
+                            
+                            <div className="login-form-input-row">
+                                <div className="login-form-input-row-inputanderror">
+                                    {!formErrors.userName && userData.username && <TextField
+                                        
+                                        name="userName"
+                                        id="username-input"
+                                        label="UserName"
+                                        defaultValue={userData.username}
+                                        
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+
+                                    {formErrors.userName && <TextField
+                                        error
+                                        name="userName"
+                                        id="standard-error-helper-text"
+                                        label="Error"
+                                        defaultValue={userData.userName}
+                                        helperText={formErrors.userName}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}     
+                                </div>
+                            </div>
+
+                            <div className="login-form-input-row">
+                                <div className="login-form-input-row-inputanderror">
+                                    {!formErrors.email && userData.email &&<TextField
+                                        className="input"
+                                        name="email"
+                                        id="standard-required"
+                                        label="Email"
+                                        defaultValue={userData.email}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+
+                                    {formErrors.email && <TextField
+                                        error
+                                        name="email"
+                                        id="standard-error-helper-text"
+                                        label="Error"
+                                        defaultValue={formData.email}
+                                        helperText={formErrors.email}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+                                </div>
+                            </div>            
+                            <br></br>
+                            
+                            
+                            <div className="login-form-input-row">
+                                <div className="login-form-input-row-inputanderror"> 
+                                    {!formErrors.password && <TextField
+                                        name="password"
+                                        id="standard-password-input"
+                                        label="New Password"
+                                        type="password"
+                                        defaultValue={formData.password}
+                                        autoComplete="current-password"
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+
+                                    {formErrors.password && <TextField
+                                        error
+                                        name="password"
+                                        id="standard-error-helper-text"
+                                        label="Error"
+                                        type="password"
+                                        defaultValue={formData.password}
+                                        helperText={formErrors.password}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}     
+                                </div>
+                            </div>
+
+                            <div className="login-form-input-row">
+                                <div className="login-form-input-row-inputanderror"> 
+                                    {!formErrors.password2 && <TextField
+                                        name="password2"
+                                        id="standard-password-input"
+                                        label="Repeat New Password"
+                                        type="password"
+                                        defaultValue={formData.password2}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}
+
+                                    {formErrors.password2 && <TextField
+                                        error
+                                        name="password2"
+                                        id="standard-error-helper-text"
+                                        label="Error"
+                                        type="password"
+                                        defaultValue={formData.password2}
+                                        helperText={formErrors.password2}
+                                        variant="standard"
+                                        onChange={handleChange}
+                                    />}     
+                                </div>
+                            </div>
+                            <br></br>
+                            <br></br>
+                            <div className="main-card-actions">
+                                <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
+                                <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
+                            </div>
+                        </div>
+                    </form>
+
+                    {/* <InputLabel shrink htmlFor="bootstrap-input">Full Name</InputLabel>
                     <BootstrapInput placeholder={userData.name} id="bootstrap-input" />
                     <br></br>
                     <InputLabel shrink htmlFor="bootstrap-input">Username</InputLabel>
@@ -154,7 +319,7 @@ export default function Account(props){
                     <div className="main-card-actions">
                         <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
                         <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="account-info-card">

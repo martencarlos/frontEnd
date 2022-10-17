@@ -284,6 +284,8 @@ label.nav-username{
     display: flex;
     margin:10px !important;
     justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
     color: var(--primary-color)
 }
 
