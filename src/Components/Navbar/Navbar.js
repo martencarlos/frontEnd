@@ -7,7 +7,9 @@ import {useState, useEffect} from "react"
 
 import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip';
-
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Typography from '@mui/material/Typography';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -15,6 +17,8 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 // Darkmode switch definition
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -137,28 +141,34 @@ export default function Navbar(props){
         }
     }
 
-    // console.log("PROPS:")
-    // console.log("userData:")
-    // console.log(props.userData)
-    // console.log("login:")
-    // console.log(props.login)
-
-    // console.log("Navbar:")
-    // console.log("userData:")
-    // console.log(userData)
 
     const switchHandler = (event) => {
         setswitchChecked(event.target.checked);
     };
 
     const [anchorEl, setAnchorEl] = useState(null);
+    const [profileMenu, setProfileMenu] = useState(null);
+    
     const open = Boolean(anchorEl);
+    const openProfileMenu = Boolean(profileMenu);
+    
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    const clickProfileMenu = (event) => {
+        setProfileMenu(event.currentTarget);
+    };
+
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const closeProfileMenu = () => {
+        setProfileMenu(null);
+    };
+    
 
   
     return (
@@ -227,12 +237,53 @@ export default function Navbar(props){
                 {props.login && props.userData.profilePic && 
                     <div className="sign-buttons">
                         {userData.name && 
-                            <Tooltip  sx={{ bgcolor: 'primary.main' }}   title={userData.name} arrow leaveDelay={200}>
-                                <img id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={userData.name} />
-                            </Tooltip>
+                            // <Tooltip  sx={{ bgcolor: 'primary.main' }}   title={userData.name} arrow leaveDelay={200}>
+                                <img onClick={clickProfileMenu} id="navProfilePic" src={userData.profilePic} className="nav-profilepicture" alt={userData.name} />
+                            /* </Tooltip> */
                         }
-                        <Button variant="outlined" className="nav-button" type="button" onClick={() => navigate('/logout')}>Logout</Button>
                         
+                        
+                        <Menu
+                            id="profile-menu"
+                            anchorEl={profileMenu}
+                            open={openProfileMenu}
+                            onClose={closeProfileMenu}
+                            MenuListProps={{
+                            'aria-labelledby': 'profile-menu',
+                            }}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                              }}
+                              transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                              }}
+                            >
+                            <Typography className="profile-name" variant="subtitle1" gutterBottom>{userData.name}</Typography>
+                            
+                            <MenuItem className="profile-option" onClick={() => {
+                                closeProfileMenu()
+                                navigate('/home/account')
+                                }}>
+                                <ListItemIcon>
+                                    <ManageAccountsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText>Account</ListItemText>
+                            </MenuItem>
+                            <MenuItem className="profile-option" onClick={() => {
+                                closeProfileMenu()
+                                navigate('/logout')
+                                }}>
+                                <ListItemIcon>
+                                    <LogoutIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText>Logout</ListItemText>
+                            </MenuItem>
+                           
+                        </Menu>
+
+
                         <FormControlLabel className="toggler"
                             control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                         />
