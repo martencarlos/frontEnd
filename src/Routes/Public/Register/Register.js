@@ -34,6 +34,14 @@ export default function Register(props){
             password: "",
             password2: ""
     })
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
     
     function handleChange(event) {
         const {name, value} = event.target

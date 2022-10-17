@@ -16,14 +16,19 @@ export default function FeatureCards(props){
     console.log("Rendering Feature Cards")
 
     const { enqueueSnackbar } = useSnackbar();
-    
     const cardsLength = useRef(0);
-
     const [posts, setPosts] = useState([...Array(0).keys()]); 
-    
     const [cards, setCards] = useState(
         ()=>JSON.parse(localStorage.getItem("cards")) || []
     )
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
 
     // Assign the cardsLength
     useEffect(function(){

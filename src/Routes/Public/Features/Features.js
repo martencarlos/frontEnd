@@ -3,12 +3,22 @@ import "./features.css";
 
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
+import {useEffect} from "react"
 
 import { featuresSection, featureCard1, featureCard2, featureCard3,
                           featureCard4, featureCard5, featureCard6 } from "../../../data/features_data"
 
 export default function Features(props){
     console.log("Rendering Features")
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
+
     return (
         <div className= {`features ${props.darkMode ? "dark": ""}`}>
            

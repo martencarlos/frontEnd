@@ -42,16 +42,18 @@ export default function Blog(props){
       };
     
 
-    //Load articles from Medium
+    //Set title of page
     useEffect(() => {
-        console.log("Blog useEffect - load articles from medium or wordpress")
-        document.title = "Webframe - Blog"
-        
-        getWordpressFeed()
-
+        document.title = "Webframe - "+ props.title+"#"+id;
         return () => {
             document.title = "Webframe"
         }
+    }, [])
+
+    //Load articles from Medium
+    useEffect(() => {
+        console.log("Blog useEffect - load articles from medium or wordpress")
+        getWordpressFeed()
     }, [])
 
     useEffect(() => {

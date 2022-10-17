@@ -31,6 +31,14 @@ export default function Home(props){
     const [page, setPage] = useState("dashboard")
     
 
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
+
     //redirect to login page if logged out
     useEffect(() => {
         console.log("useEffect - check if logged in")
@@ -113,8 +121,7 @@ export default function Home(props){
             
     }
     
-    console.log("Page: ")
-    console.log(page)
+    
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
