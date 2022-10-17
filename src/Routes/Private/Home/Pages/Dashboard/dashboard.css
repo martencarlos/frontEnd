@@ -28,7 +28,7 @@ div.home div.dashboard{
     border-radius: 20px;
     margin: 5px;
     padding: 20px;
-    gap: 20px;
+    gap: 40px;
 }
 
 div.dark div.home div.dashboard{
@@ -63,7 +63,7 @@ div.dashboard div.widget{
     background-color: white;
     border-radius: 30px;
     padding-bottom:50px;
-    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     
 }
 
@@ -74,7 +74,7 @@ div.dashboard div.mini-widget{
     border-radius: 30px;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     
 }
 
@@ -85,7 +85,7 @@ div.dashboard .data-widget{
     align-items: center;
     background-color: white;
     border-radius: 20px;
-    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 div.dashboard div.MuiDataGrid-root{

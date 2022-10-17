@@ -1,7 +1,7 @@
  
 import "./account.css";
 
-import {useState, useEffect} from "react";
+import {useState, useEffect,useRef} from "react";
 import axios from "axios";
 import {resizeFile} from "../../../../../Util/ImageProcessing";
 
@@ -10,6 +10,8 @@ import Button from '@mui/material/Button';
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 // const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
@@ -120,7 +122,7 @@ export default function Account(props){
                
           })
           .catch(function (error) {
-            // console.log(error);
+            console.log(error);
             
         });
         console.log("removing child")
@@ -128,12 +130,18 @@ export default function Account(props){
     }
 
     const[formErrors,setFormErrors] = useState({
-            email:"",
-            password: "",
-    })
-    const [formData, setFormData] = useState({
+        name: "", 
+        username: "",
         email:"",
         password: "",
+        password2: ""
+    })
+    const [formData, setFormData] = useState({
+        name: "", 
+        username: "",
+        email:"",
+        password: "",
+        password2: ""
     })
     
     function handleChange(event) {
@@ -144,6 +152,97 @@ export default function Account(props){
         }))
     }
 
+    function validate(e){
+        e.preventDefault();
+        const currentErrors = validateForm()
+        setFormErrors(currentErrors)
+        
+        if(Object.keys(currentErrors).length===0){
+             console.log("Valid. Ready to update user")
+             updateUser()
+        }
+    }
+
+    function validateForm(){
+        
+        formData.id=userData._id;
+        if(!formData.name){
+            formData.name = userData.name
+        }
+        if(!formData.username){
+            formData.username = userData.username
+        }
+        if(!formData.email){
+            formData.email = userData.email
+        }
+        
+        console.log(formData)
+        console.log(userData)
+
+        const errors= {}
+        
+        if(!formData.name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)){
+            errors.name = "Name format is invalid"
+        }
+        if(formData.username.indexOf(' ') >= 0){
+            errors.username = "No white space allowed"
+        }
+        if(!String(formData.email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+            errors.email = "Email is invalid"
+        }
+        // if(formData.password !=="" && !formData.password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)){
+        //     errors.password="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+        // }
+
+        if(formData.password2 !== formData.password){
+            errors.password2 = "Passwords do not match"
+        }
+        
+        return errors
+    }
+
+    const [notification, setNotification] = useState(false)
+    const notificationMessage = useRef();
+
+    function handleCloseNotif(){
+        setNotification(false);
+}
+
+    function updateUser(){
+        console.log("updating user")
+        
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/updateUser',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: formData,
+            withCredentials: true, 
+        };
+
+        axios(config) 
+            .then(function (response) {
+                console.log(response.data);
+                if(JSON.stringify(response.data.errors) !== '{}'){
+                    setFormErrors(response.data.errors)
+                }
+                if(response.data.message === "User updated"){
+                    
+                    props.updateUserData(response.data.user)
+                }
+                notificationMessage.current = response.data.message
+                setNotification(true)
+                
+            }).finally(()=>{
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    
 
     return (
         props.login && props.userData.profilePic &&
@@ -157,30 +256,29 @@ export default function Account(props){
                 <div className="account-main-card">
                     <form className="account-form">
                         <br></br>
-                        <div id="loginForm" className="login-form-inputs">
-                            <div className="login-form-input-row">
+                        <div id="loginForm" className="account-form-inputs">
+                            <div className="account-form-input-row">
 
-                                <div className="login-form-input-row-inputanderror">
+                                <div className="account-form-input-row-inputanderror">
                                 
-                                    {!formErrors.fullName && userData.name && <TextField
-                                        className="input"
+                                    {!formErrors.name && userData.name && <TextField
                                         
-                                        name="fullName"
+                                        name="name"
                                         id="standard-required"
                                         label="Full Name"
-                                        defaultValue={userData.name}
+                                        defaultValue={formData.name? formData.name :userData.name}
                                         
                                         variant="standard"
                                         onChange={handleChange}
                                     />}
 
-                                    {formErrors.fullName && <TextField
+                                    {formErrors.name && <TextField
                                         error
-                                        name="fullName"
+                                        name="name"
                                         id="standard-error-helper-text"
                                         label="Error"
-                                        defaultValue={formData.fullName}
-                                        helperText={formErrors.fullName}
+                                        defaultValue={formData.name}
+                                        helperText={formErrors.name}
                                         variant="standard"
                                         onChange={handleChange}
                                     />}
@@ -189,36 +287,36 @@ export default function Account(props){
                             </div>
 
                             
-                            <div className="login-form-input-row">
-                                <div className="login-form-input-row-inputanderror">
-                                    {!formErrors.userName && userData.username && <TextField
+                            <div className="account-form-input-row">
+                                <div className="account-form-input-row-inputanderror">
+                                    {!formErrors.username && userData.username && <TextField
                                         
-                                        name="userName"
+                                        name="username"
                                         id="username-input"
                                         label="UserName"
-                                        defaultValue={userData.username}
+                                        defaultValue={formData.username? formData.username :userData.username}
                                         
                                         variant="standard"
                                         onChange={handleChange}
                                     />}
 
-                                    {formErrors.userName && <TextField
+                                    {formErrors.username && <TextField
                                         error
-                                        name="userName"
+                                        name="username"
                                         id="standard-error-helper-text"
                                         label="Error"
-                                        defaultValue={userData.userName}
-                                        helperText={formErrors.userName}
+                                        defaultValue={formData.username}
+                                        helperText={formErrors.username}
                                         variant="standard"
                                         onChange={handleChange}
                                     />}     
                                 </div>
                             </div>
 
-                            <div className="login-form-input-row">
-                                <div className="login-form-input-row-inputanderror">
+                            <div className="account-form-input-row">
+                                <div className="account-form-input-row-inputanderror">
                                     {!formErrors.email && userData.email &&<TextField
-                                        className="input"
+                                        
                                         name="email"
                                         id="standard-required"
                                         label="Email"
@@ -242,8 +340,8 @@ export default function Account(props){
                             <br></br>
                             
                             
-                            <div className="login-form-input-row">
-                                <div className="login-form-input-row-inputanderror"> 
+                            <div className="account-form-input-row">
+                                <div className="account-form-input-row-inputanderror"> 
                                     {!formErrors.password && <TextField
                                         name="password"
                                         id="standard-password-input"
@@ -269,8 +367,8 @@ export default function Account(props){
                                 </div>
                             </div>
 
-                            <div className="login-form-input-row">
-                                <div className="login-form-input-row-inputanderror"> 
+                            <div className="account-form-input-row">
+                                <div className="account-form-input-row-inputanderror"> 
                                     {!formErrors.password2 && <TextField
                                         name="password2"
                                         id="standard-password-input"
@@ -297,26 +395,11 @@ export default function Account(props){
                             <br></br>
                             <br></br>
                             <div className="main-card-actions">
-                                <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
+                                <Button onClick={validate} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
                                 <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
                             </div>
                         </div>
                     </form>
-
-                    {/* <InputLabel shrink htmlFor="bootstrap-input">Full Name</InputLabel>
-                    <BootstrapInput placeholder={userData.name} id="bootstrap-input" />
-                    <br></br>
-                    <InputLabel shrink htmlFor="bootstrap-input">Username</InputLabel>
-                    <BootstrapInput placeholder={userData.username} id="bootstrap-input" />
-                    <br></br>
-                    <InputLabel shrink htmlFor="bootstrap-input">Email</InputLabel>
-                    <BootstrapInput placeholder={userData.email} id="bootstrap-input" />
-                    <br></br>
-                    <br></br>
-                    <div className="main-card-actions">
-                        <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
-                        <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
-                    </div> */}
                 </div>
 
                 <div className="account-info-card">
@@ -332,17 +415,17 @@ export default function Account(props){
                     
                     <div className="info-wrap">
                         
-                        <Typography className="info-label" variant="body1" >{"#ID"}</Typography>
-                        <Typography className="info" variant="body1" gutterBottom>{userData._id} </Typography>
+                        <Typography className="info-label" variant="h6" >{"#ID"}</Typography>
+                        <Typography className="info" variant="h6" gutterBottom>{userData._id} </Typography>
                         <br></br>
                         <br></br>
                         <div className="row" >
-                            <Typography className="info-label" variant="body1" gutterBottom>{"Register Date:"}</Typography>
-                            <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
+                            <Typography className="info-label" variant="h6" gutterBottom>{"Register Date:"}</Typography>
+                            <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
                         </div>
                         <div className="row" >
-                            <Typography className="info-label" variant="body1" gutterBottom>{"Last Update:"}</Typography>
-                            <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
+                            <Typography className="info-label" variant="h6" gutterBottom>{"Last Update:"}</Typography>
+                            <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
                         </div>
                     </div>
                 </div>
@@ -350,7 +433,11 @@ export default function Account(props){
             </div>
             <br></br>
             <br></br>
-            
+            <Snackbar open={notification} autoHideDuration={6000} onClose={handleCloseNotif} >
+                <Alert severity="info" sx={{ width: '100%' }}>
+                    {notificationMessage.current}
+                </Alert>
+            </Snackbar>
         </div>
                 
     )

@@ -1,6 +1,6 @@
 /* Dashboard */
 
-@media (max-width: 780px) {
+@media (max-width: 980px) {
    div.home div.row{
      flex-direction: column;;
    }
@@ -44,7 +44,7 @@ div.account div.account-main-card{
     border-radius: 20px;
     margin:20px;
     padding: 30px;
-    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 div.account .account-form{
@@ -67,6 +67,26 @@ div.dark div.account .MuiFormLabel-root{
     z-index: 0;
 }
 
+div.account .account-form-inputs{
+    display: flex;
+    row-gap: 10px;
+    flex-direction: column;
+    
+}
+
+div.account .account-form-input-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.account .account-form-input-row-inputanderror{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 2px;
+}
+
 
 
 div.account div.account-info-card{
@@ -77,7 +97,7 @@ div.account div.account-info-card{
     border-radius: 20px;
     margin:20px;
     padding: 20px;
-    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 div.account .info-wrap{
@@ -93,14 +113,16 @@ div.dark div.account .info-wrap{
 
 div.account .info-label{
     font-weight: bold;
-    font-size: small;
     white-space: nowrap;
     margin: 5px;
 }
 
 div.account .info{
-    font-size: small;
+    display:flex;
+    justify-content:center;
     margin: 5px;
+    font-weight: 400;
+    color: var(--secondary-text);
 }
 
 
