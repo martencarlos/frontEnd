@@ -24,6 +24,15 @@ export default function Login(props){
         }
     )
 
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
+
     useEffect(() => {
         // Get the input field
         var input = document.getElementById("loginForm");

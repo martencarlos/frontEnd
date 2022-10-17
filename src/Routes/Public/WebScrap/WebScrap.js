@@ -22,6 +22,14 @@ export default function WebScrap(props){
     const [data, setData] = useState([{}])
     const [avgPrice, setAvgPrice] = useState(0)
     const [query, setQuery] = useState("");
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
     
     useEffect(() => {
         

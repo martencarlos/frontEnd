@@ -156,8 +156,6 @@ export default function App(){
         setCookie("dark",!darkMode, 1)
     }
 
-    console.log("local storage info:")
-    console.log(localStorage.getItem("profilePic"))
     console.log("User data passed to children")
     console.log(userData)
 
@@ -182,15 +180,18 @@ export default function App(){
                     />}>
                 </Route>
 
-                
-
+                {/* <Route path="/blog">
+                    <Route path="" element={<Blog title="Blog" darkMode = {darkMode}/>}/>
+                    <Route path=":id" element={<Blog title="Blog" darkMode = {darkMode}/>}/>
+                </Route>
+                 */}
                 <Route path="/home"> 
                     <Route path="" element={
                         <Home 
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            
+                            title= "Home"
                         />}
                     />
                     <Route path="dashboard" element={
@@ -198,7 +199,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            
+                            title= "Dashboard"
                         />}
                     />
                     <Route path="users" element={
@@ -206,7 +207,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            
+                            title= "Users"
                         />}
                     />
                     <Route path="account" element={
@@ -214,6 +215,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
+                            title= "Account"
                             updateUserData= {updateUserData}
                         />}
                     />
@@ -223,6 +225,7 @@ export default function App(){
                     <Login 
                         darkMode = {darkMode}
                         toggleLogin={toggleLogin}
+                        title= "Login"
                         />
                 }>
                 </Route>
@@ -236,6 +239,7 @@ export default function App(){
                     <Register 
                         darkMode = {darkMode}
                         toggleLogin={toggleLogin}
+                        title= "Register"
                     />}>  
                 </Route>
                 <Route path="projects" element={
@@ -246,24 +250,25 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
+                            title= "Infinity Cards"
                         />
                     }>
                 </Route>
                 <Route path="projects/blog" element={
-                    <Blog darkMode = {darkMode}/>}>
+                    <Blog  darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="projects/webScrap" element={
-                    <WebScrap darkMode = {darkMode}/>}>
+                    <WebScrap title="Webscrap" darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/features" element={
-                    <Features darkMode = {darkMode}/>}>
+                    <Features title="Features" darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/blog">
-                    <Route path="" element={<Blog darkMode = {darkMode}/>}/>
-                    <Route path=":id" element={<Blog darkMode = {darkMode}/>}/>
+                    <Route path="" element={<Blog title="Blog" darkMode = {darkMode}/>}/>
+                    <Route path=":id" element={<Blog title="Blog" darkMode = {darkMode}/>}/>
                 </Route>
                 <Route path="/about" element={
-                    <About darkMode = {darkMode}/>}>
+                    <About title="About" darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/*" element={
                     <NotFound darkMode = {darkMode}/>}>

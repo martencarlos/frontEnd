@@ -43,6 +43,16 @@ export default function Dashboard(props){
     const [users, setUsers] = useState()
     const totalLogins = useRef(0)
     
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
+
+
     //Get all users from the database
     useEffect(() => {
         console.log("useEffect - get users")
@@ -59,7 +69,6 @@ export default function Dashboard(props){
                         res.data.filter((item) => {
                             
                             if(i===0 && item.logins){
-                                console.log(item.logins)
                                 totalLogins.current +=  item.logins
                             }
                             let date = new Date(Date.parse(item.createDate))

@@ -26,7 +26,13 @@ export default function Users(props){
     const notificationMessage = useRef();
     // const [loading, setLoading] = useState(true)
     
-   
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [])
 
     //Get all users from the database
     useEffect(() => {
