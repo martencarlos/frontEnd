@@ -167,7 +167,23 @@ div.navbar div.sign-buttons .nav-button.dark{
 
 /* input dark mode */
 
-div.dark .MuiInputBase-root {
+div.dark .login-form {
+    background-color: #ffffff;
+    color: var(--primary-text);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(158, 158, 158, 0.692), 0 3px 6px rgba(146, 146, 146, 0.699);
+}
+
+div.dark .register-form {
+    background-color: #ffffff;
+    color: var(--primary-text);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(158, 158, 158, 0.692), 0 3px 6px rgba(146, 146, 146, 0.699);
+}
+
+/* div.dark .MuiInputBase-root {
     background-color: white;
     padding-left:10px;
 }
@@ -180,7 +196,7 @@ div.dark label.MuiFormLabel-root{
 div.dark .MuiInputLabel-shrink{
     color: var(--primary-light) !important;
     padding-left:0px !important;
-}
+} */
 
 div.hamb-menu.dark{
     background-color: rgb(20, 20, 20);

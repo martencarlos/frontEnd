@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
-import {getCookie, setCookie} from "./Util/Cookie";
+import {getCookie, setCookie, delCookie} from "./Util/Cookie";
 import axios from "axios";
 
 import Navbar from "./Components/Navbar/Navbar";
@@ -33,46 +33,17 @@ import {ThemeProvider, createTheme } from '@mui/material/styles';
 
 export default function App(){
     console.log("Rendering App")
+
+    // Random profile picture color when logged out
+    var root = document.querySelector(':root');
+    root.style.setProperty('--deg', Math.floor(Math.random() * 360)+'deg')
+
+    var style = getComputedStyle(document.body)
     
   
-    
-    var style = getComputedStyle(document.body)
-
-    // // Snackbar!
-    // const [open, setOpen] = React.useState(false);
-    
-    // const handleClick = () => {
-    //     setOpen(true);
-    // }
-    // const handleClose = (event, reason) => {
-    //     if (reason === 'clickaway') {
-    //     return;
-    //     }
-    //     setOpen(false);
-    // }
-
-    // useEffect(() => {
-    //     const onPageLoad = () => {
-    //         handleClick()
-    //         console.log("window loaded")
-    //     };
-    
-    //     // Check if the page has already loaded
-    //     if (document.readyState === "complete") {
-    //       onPageLoad();
-    //     } else {
-    //       window.addEventListener("load", onPageLoad);
-    //       // Remove the event listener when component unmounts
-    //       return () => window.removeEventListener("load", onPageLoad);
-    //     }
-    //   }, []);
-
-    
-
     // COLOR THEME PALETTE
     const theme = createTheme({
         palette: {
-           
             primary: {
                 light: style.getPropertyValue('--primary-light').trim() ,
                 main: style.getPropertyValue('--primary-color').trim(),
@@ -102,6 +73,8 @@ export default function App(){
     }
 
     function updateUserData(newUserData) {
+        delCookie("me")
+        setCookie("me", JSON.stringify(newUserData), { maxAge: 3600000, httpOnly: false })
         setUserData(newUserData)
     }
 
@@ -217,7 +190,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            updateUserData= {updateUserData}
+                            
                         />}
                     />
                     <Route path="dashboard" element={
@@ -225,7 +198,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            updateUserData= {updateUserData}
+                            
                         />}
                     />
                     <Route path="users" element={
@@ -233,7 +206,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
-                            updateUserData= {updateUserData}
+                            
                         />}
                     />
                     <Route path="account" element={

@@ -19,6 +19,7 @@ import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
+const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=a39b3f4a-9d54-4680-91fd-095a158a612c"
 
 // Darkmode switch definition
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -148,27 +149,32 @@ export default function Navbar(props){
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [profileMenu, setProfileMenu] = useState(null);
-    
+    const [logoutProfileMenu, setLogoutProfileMenu] = useState(null);
+
     const open = Boolean(anchorEl);
     const openProfileMenu = Boolean(profileMenu);
+    const openLogoutProfileMenu = Boolean(logoutProfileMenu);
     
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-
     const clickProfileMenu = (event) => {
         setProfileMenu(event.currentTarget);
     };
-
+    const clickLogoutProfileMenu = (event) => {
+        console.log("clickLogoutProfileMenu")
+        setLogoutProfileMenu(event.currentTarget);
+    };
 
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const closeProfileMenu = () => {
         setProfileMenu(null);
     };
-    
+    const closeLogoutProfileMenu = () => {
+        setLogoutProfileMenu(null);
+    };
 
   
     return (
@@ -223,13 +229,56 @@ export default function Navbar(props){
                     </Menu>
                 {!props.login && 
                     <div className="sign-buttons">
-                        <Button variant="outlined" color="primary" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
-                        <Button variant="contained" color="primary" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button>
+                        <img onClick={clickLogoutProfileMenu} id="navProfilePic" src={defaultProfilePic} className="nav-profilepicture-logout" alt={"default"} />
+                        {/* <Button variant="outlined" color="primary" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
+                        <Button variant="contained" color="primary" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button> */}
                         
+
+                        <Menu
+                            id="logout-profile-menu"
+                            anchorEl={logoutProfileMenu}
+                            open={openLogoutProfileMenu}
+                            onClose={closeLogoutProfileMenu}
+                            MenuListProps={{
+                            'aria-labelledby': 'logout-profile-menu',
+                            }}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'center',
+                              }}
+                              transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'center',
+                              }}
+                            >
+                            
+                            <Typography className="profile-name" variant="subtitle1" gutterBottom>{"Unknown User"}</Typography>
+                            
+                            <MenuItem className="profile-option" onClick={() => {
+                                closeLogoutProfileMenu()
+                                navigate('/Login')
+                                }}>
+                                <ListItemIcon>
+                                    <ManageAccountsIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText>Login</ListItemText>
+                            </MenuItem>
+                             
+                            <MenuItem className="profile-option" onClick={() => {
+                                closeLogoutProfileMenu()
+                                navigate('/Register')
+                                }}>
+                                <ListItemIcon>
+                                    <LogoutIcon fontSize="small" />
+                                </ListItemIcon>
+                                <ListItemText>Register</ListItemText>
+                            </MenuItem>
+                        </Menu>
+
                         <FormControlLabel className="toggler"
                             control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                         />
-                        {/* onChange={switchHandler} */}
+                        
 
                     </div>
                 }
@@ -260,6 +309,7 @@ export default function Navbar(props){
                                 horizontal: 'center',
                               }}
                             >
+                            
                             <Typography className="profile-name" variant="subtitle1" gutterBottom>{userData.name}</Typography>
                             
                             <MenuItem className="profile-option" onClick={() => {
@@ -271,6 +321,7 @@ export default function Navbar(props){
                                 </ListItemIcon>
                                 <ListItemText>Account</ListItemText>
                             </MenuItem>
+                             
                             <MenuItem className="profile-option" onClick={() => {
                                 closeProfileMenu()
                                 navigate('/logout')
@@ -282,6 +333,8 @@ export default function Navbar(props){
                             </MenuItem>
                            
                         </Menu>
+
+                        
 
 
                         <FormControlLabel className="toggler"
