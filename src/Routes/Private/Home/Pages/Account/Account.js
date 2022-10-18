@@ -263,21 +263,20 @@ export default function Account(props){
         console.log("deleting user: "+userData._id)
         
         const config = {
-            url: process.env.REACT_APP_SERVER+'/deleteUser',
+            url: process.env.REACT_APP_SERVER+'/deleteAccount',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            data: {"deleteUserId": userData._id,
-                    "adminUserId": props.userData._id},
-            withCredentials: true, // Now this is was the missing piece in the client side 
+            data: {"userId": userData._id},
+            withCredentials: true, 
             
         };
 
         axios(config) 
             .then(function (response) {
                 console.log(response.data);
-                if(response.data.message === "user deleted"){
+                if(response.data.message === "account deleted"){
                     navigate('/logout')
                 }
                 notificationMessage.current = response.data.message
