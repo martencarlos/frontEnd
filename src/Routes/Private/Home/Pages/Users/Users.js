@@ -185,11 +185,11 @@ export default function Users(props){
             :
             <div className="users-pannel">
                 {users && 
-                <div style={{ height: 482, width: '100%' }}>
+                <div style={{ height:110+36*users.length+'px', width: '100%' }}>
                     <DataGrid
                     rows={users}
                     columns={columns}
-                    pageSize={10}
+                    pageSize={users.length}
                     rowsPerPageOptions={[10]}
                     density={"compact"}
                     disableSelectionOnClick
