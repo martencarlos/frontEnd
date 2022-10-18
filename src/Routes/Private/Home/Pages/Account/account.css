@@ -1,15 +1,25 @@
-/* Dashboard */
+/* Account */
 
 @media (max-width: 980px) {
    div.home div.row{
      flex-direction: column;;
    }
 
-   div.account div.account-info-card{
-        
-   }
+    div.account div.main-card-actions{
+        flex-direction: column;
+    }
+
+    div.account .MuiButtonBase-root{
+        width:100%;
+    }
+    
+    div.account div.infocard-row {
+    justify-content:center !important;
+    }
    
 }
+
+
 
 div.home div.account{
     display: flex;
@@ -35,6 +45,14 @@ div.account div.row{
     gap: 20px;
     margin: 20px;
     justify-content: center;
+}
+
+div.account div.infocard-row{
+    display: flex;
+    gap: 20px;
+    margin: 5px;
+    width: 100%;
+    justify-content: end;
 }
 
 

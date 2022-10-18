@@ -493,11 +493,11 @@ export default function Account(props){
                         <Typography className="info" variant="h6" gutterBottom>{userData._id} </Typography>
                         <br></br>
                         <br></br>
-                        <div className="row" >
+                        <div className="infocard-row" >
                             <Typography className="info-label" variant="h6" gutterBottom>{"Register Date:"}</Typography>
                             <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
                         </div>
-                        <div className="row" >
+                        <div className="infocard-row" >
                             <Typography className="info-label" variant="h6" gutterBottom>{"Last Update:"}</Typography>
                             <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
                         </div>
