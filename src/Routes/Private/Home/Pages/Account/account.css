@@ -12,9 +12,9 @@
     div.account .MuiButtonBase-root{
         width:100%;
     }
-    
+
     div.account div.infocard-row {
-        justify-content:end !important;
+        justify-content:center !important;
     }
 
     div.account .info{
@@ -23,6 +23,12 @@
 
     div.account .info-label{
         font-size: inherit;
+    }
+}
+
+@media (max-width: 410px) {
+    div.account div.infocard-row {
+        justify-content:end !important;
     }
 }
 
