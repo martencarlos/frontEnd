@@ -79,7 +79,7 @@ div.users .clickable-icon{
     left: 50%;
     transform: translate(-50%, -50%);
   
-
+    white-space:pre-line;
     border: 1px solid var(--primary-color);
     box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
     background-color: white;

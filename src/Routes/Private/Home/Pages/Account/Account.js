@@ -12,6 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Modal from '@mui/material/Modal';
+import {useNavigate } from 'react-router-dom';
 
 // const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
@@ -55,6 +57,7 @@ export default function Account(props){
     //UserData & upload progress    
     const [userData, setUserData] = useState({})
     const [uploadProgress, setUploadProgress] = useState('')
+    const navigate = useNavigate();
 
     //Set title of page
     useEffect(() => {
@@ -249,12 +252,76 @@ export default function Account(props){
             });
     }
 
-    
+    function deleteUserConfirmation(){
+        handleOpen()
+    }
+    function cancel(){
+        handleClose()
+    }
+
+    function deleteUser(){
+        console.log("deleting user: "+userData._id)
+        
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/deleteUser',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: {"deleteUserId": userData._id,
+                    "adminUserId": props.userData._id},
+            withCredentials: true, // Now this is was the missing piece in the client side 
+            
+        };
+
+        axios(config) 
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data.message === "user deleted"){
+                    navigate('/logout')
+                }
+                notificationMessage.current = response.data.message
+                setNotification(true)
+                
+                handleClose()
+            }).finally(()=>{
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return (
         props.login && props.userData.profilePic &&
         <div className="account">
-            
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div className="delete-confirmation">
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                        Confirmation
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Are you sure you want to permanently delete your Webframe account? 
+                        Plase note that all your data will be lost.
+                    </Typography>
+                    <br></br>
+                    <br></br>
+                    <div className="delete-confirmation-buttons">
+                        <Button onClick={deleteUser} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
+                        <Button onClick={cancel} variant="contained" color="text">Cancel</Button>
+                    </div>
+                </div>
+            </Modal>
             <br></br>
             <br></br>
             <Typography variant="h4" className="page-title" gutterBottom>{"Account Settings"} </Typography>
@@ -263,7 +330,7 @@ export default function Account(props){
                 <div className="account-main-card">
                     <form className="account-form">
                         <br></br>
-                        <div id="loginForm" className="account-form-inputs">
+                        <div  className="account-form-inputs">
                             <div className="account-form-input-row">
 
                                 <div className="account-form-input-row-inputanderror">
@@ -403,7 +470,7 @@ export default function Account(props){
                             <br></br>
                             <div className="main-card-actions">
                                 <Button onClick={validate} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
-                                <Button style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
+                                <Button onClick={deleteUserConfirmation} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
                             </div>
                         </div>
                     </form>
