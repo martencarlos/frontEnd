@@ -128,28 +128,29 @@ export default function Home(props){
            
            {/* Sidebar */}
            <div id="sidebar" className={"sidebar"}>
-                <br></br>
-                <br></br>
-                <br></br>
-                <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
-                <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} >Dashboard</Button>
-                <br></br>
-                <Divider variant="middle" />
-                <br></br>
-                <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
-                <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
-                {listStatus && 
-                    <div className="sidebar-dataList">
-                        <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
-                    </div>
-                }
-                <br></br>
-                <Divider variant="middle" />
-                <br></br>
-                <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
-                <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
+                <div className="sidebar-sticky-content">
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
+                    <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} >Dashboard</Button>
+                    <br></br>
+                    <Divider variant="middle" />
+                    <br></br>
+                    <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
+                    <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
+                    {listStatus && 
+                        <div className="sidebar-dataList">
+                            <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
+                        </div>
+                    }
+                    <br></br>
+                    <Divider variant="middle" />
+                    <br></br>
+                    <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
+                    <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
 
-                
+                </div>
             </div>
             <div onClick={toggleSidebar} className="sidebar-toggle">
                 <ViewSidebarIcon fontSize="large" color="secondary"  />
