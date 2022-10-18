@@ -56,6 +56,13 @@ export default function Account(props){
     const [userData, setUserData] = useState({})
     const [uploadProgress, setUploadProgress] = useState('')
 
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [props.title])
     
     // Set the user data from APP
     useEffect(() => {

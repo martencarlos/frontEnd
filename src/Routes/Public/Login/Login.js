@@ -31,7 +31,7 @@ export default function Login(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
     useEffect(() => {
         // Get the input field

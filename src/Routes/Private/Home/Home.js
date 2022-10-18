@@ -37,7 +37,7 @@ export default function Home(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
     //redirect to login page if logged out
     useEffect(() => {

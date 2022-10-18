@@ -10,7 +10,6 @@ import * as rssParser from 'react-native-parser-rss';
 
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import CircularProgress from '@mui/material/CircularProgress';
 import Skeleton from '@mui/material/Skeleton';
 import { useSnackbar } from 'notistack';
 
@@ -48,7 +47,7 @@ export default function Blog(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title,id])
 
     //Load articles from Medium
     useEffect(() => {
@@ -153,8 +152,8 @@ export default function Blog(props){
                     <div  className="blog-mainArticle-skeleton">
                         <div className="blog-article-skeleton">
                             <Typography variant="h4" ><Skeleton/></Typography>
-                            <Typography variant="h4" sx={{ width: 300 }}> <Skeleton/></Typography>
-                            <Typography variant="h5" sx={{ width: 150 }} gutterBottom><Skeleton/></Typography> 
+                            <Typography variant="h4" sx={{ width: "70%" }}> <Skeleton/></Typography>
+                            <Typography variant="h5" sx={{ width: "35%%" }} gutterBottom><Skeleton/></Typography> 
                             <br></br>
                             <br></br>
                             <Typography variant="body1" gutterBottom><Skeleton/></Typography> 

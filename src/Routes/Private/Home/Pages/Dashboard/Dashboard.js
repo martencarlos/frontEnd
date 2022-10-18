@@ -50,7 +50,7 @@ export default function Dashboard(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
 
     //Get all users from the database

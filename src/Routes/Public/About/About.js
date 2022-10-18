@@ -1,6 +1,8 @@
 
 import "./about.css";
 
+import { useState,useEffect} from "react"
+
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
 
@@ -9,6 +11,14 @@ import { aboutSection,teamMember1, teamMember2, teamMember3 } from "../../../dat
 export default function About(props){
 
     console.log("Rendering About")
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - "+ props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [props.title])
 
     return (
 

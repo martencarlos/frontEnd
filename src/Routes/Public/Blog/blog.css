@@ -29,9 +29,11 @@
         margin-right: 5px !important;
     }
     div.blog-mainArticle-skeleton{
-        display: flex;
-        justify-content: flex-start;
-        width: unset !important;
+        width: auto !important;
+        margin-left: 40px !important;
+        margin-right: 40px !important;
+        min-width: unset !important;
+        max-width: unset !important;
     }
 }
 
