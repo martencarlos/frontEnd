@@ -152,7 +152,7 @@ export default function Home(props){
                 
             </div>
             <div onClick={toggleSidebar} className="sidebar-toggle">
-                <ViewSidebarIcon color="secondary"  />
+                <ViewSidebarIcon fontSize="large" color="secondary"  />
             </div>
 
             { page === "dashboard" &&

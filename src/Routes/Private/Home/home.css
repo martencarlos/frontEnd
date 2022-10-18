@@ -40,9 +40,11 @@ div.home div.sidebar{
 div.home div.sidebar-toggle{
     display: none;
     z-index: 2;
-
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
+    /* font-size: xx-large; */
+    margin-top: 20px;
+    height: -moz-fit-content;
     height: fit-content;
     cursor: pointer;
 }
