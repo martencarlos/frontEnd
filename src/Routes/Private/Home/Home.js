@@ -158,15 +158,18 @@ export default function Home(props){
             { page === "dashboard" &&
                     <Dashboard 
                         darkMode = {props.darkMode}
+                        title={props.title}
                         login = {props.login}
                     />
             }
 
             { page === "users" && <Users
+                title={props.title}
                 userData = {userData}
             /> }
             { page === "account" && <Account
                 userData = {userData}
+                title={props.title}
                 login = {props.login}
                 updateUserData= {props.updateUserData}
             /> }

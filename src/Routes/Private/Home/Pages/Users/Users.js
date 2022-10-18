@@ -12,6 +12,7 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import Skeleton from '@mui/material/Skeleton';
 
 
 export default function Users(props){
@@ -20,7 +21,8 @@ export default function Users(props){
 
     const [users, setUsers] = useState()
     const [notification, setNotification] = useState(false)
-    
+    const [loading, setLoading] = useState(true)
+
     const selectedRows = useRef();
     const deleteUserId = useRef();
     const notificationMessage = useRef();
@@ -53,13 +55,13 @@ export default function Users(props){
                     });
                     
                     setUsers(res.data);
-                //   setLoading(false)
+                    setLoading(false)
 
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
-                //   setLoading(false)
+                setLoading(false)
             })
             .finally(function (response) {});
         };
@@ -174,6 +176,12 @@ export default function Users(props){
                 </div>
             </Modal>
             <Typography className="page-title" variant="h4"  gutterBottom> Manage Users </Typography>
+            
+            {loading ? 
+                <div className="skeleton-users-pannel">
+                    <Skeleton variant="rectangular" width={'100%'} height={482} />
+                </div>
+            :
             <div className="users-pannel">
                 {users && 
                 <div style={{ height: 482, width: '100%' }}>
@@ -193,6 +201,7 @@ export default function Users(props){
                     />
                 </div>}
             </div>
+        }
             <Snackbar open={notification} autoHideDuration={6000} onClose={handleCloseNotif} >
                 <Alert severity="info" sx={{ width: '100%' }}>
                     {notificationMessage.current}

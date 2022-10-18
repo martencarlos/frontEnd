@@ -93,7 +93,7 @@ div.account .account-form-input-row-inputanderror{
 
 div.account div.account-info-card{
     display: flex;
-    flex: 1 1 auto;
+    flex: 1;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;

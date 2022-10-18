@@ -17,7 +17,6 @@ import { useSnackbar } from 'notistack';
 const blogRootUrl="http://webframe247611193.wordpress.com/"
 
 
-
 export default function Blog(props){
     console.log("Rendering Blog")
     
@@ -43,7 +42,7 @@ export default function Blog(props){
 
     //Set title of page
     useEffect(() => {
-        document.title = "Webframe - "+ props.title+"#"+id;
+        id ? document.title = "Webframe - "+ props.title+"#"+id : document.title= "Webframe";
         return () => {
             document.title = "Webframe"
         }
