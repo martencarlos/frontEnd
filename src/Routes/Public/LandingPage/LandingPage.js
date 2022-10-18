@@ -1,11 +1,11 @@
 
-import "./main.css";
+import "./landingPage.css";
 
 import { useEffect} from "react"
 
 import Hero from "../../../Components/Hero/Hero";
 import Projects from "../Projects/Projects";
-import About from "../../../Routes/Public/About/About";
+import About from "../About/About";
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
 

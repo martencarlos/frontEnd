@@ -26,7 +26,6 @@ export default function Users(props){
     const selectedRows = useRef();
     const deleteUserId = useRef();
     const notificationMessage = useRef();
-    // const [loading, setLoading] = useState(true)
     
     //Set title of page
     useEffect(() => {
@@ -175,6 +174,8 @@ export default function Users(props){
                     </div>
                 </div>
             </Modal>
+            <br></br>
+            <br></br>
             <Typography className="page-title" variant="h4"  gutterBottom> Manage Users </Typography>
             
             {loading ? 
