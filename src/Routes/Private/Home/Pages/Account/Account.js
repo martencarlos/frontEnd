@@ -307,7 +307,7 @@ export default function Account(props){
                 aria-describedby="modal-modal-description"
             >
                 <div className="delete-confirmation">
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Typography id="modal-modal-title" variant="body1" component="h2">
                         Confirmation
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
@@ -489,17 +489,17 @@ export default function Account(props){
                     
                     <div className="info-wrap">
                         
-                        <Typography className="info-label" variant="h6" >{"#ID"}</Typography>
-                        <Typography className="info" variant="h6" gutterBottom>{userData._id} </Typography>
+                        <Typography className="info-label" variant="body1" >{"#ID"}</Typography>
+                        <Typography className="info" variant="body1" gutterBottom>{userData._id} </Typography>
                         <br></br>
                         <br></br>
                         <div className="infocard-row" >
-                            <Typography className="info-label" variant="h6" gutterBottom>{"Register Date:"}</Typography>
-                            <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
+                            <Typography className="info-label" variant="body1" gutterBottom>{"Register Date:"}</Typography>
+                            <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
                         </div>
                         <div className="infocard-row" >
-                            <Typography className="info-label" variant="h6" gutterBottom>{"Last Update:"}</Typography>
-                            <Typography className="info" variant="h6" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
+                            <Typography className="info-label" variant="body1" gutterBottom>{"Last Update:"}</Typography>
+                            <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
                         </div>
                     </div>
                 </div>
