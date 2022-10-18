@@ -6,7 +6,7 @@ import axios from "axios";
 
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Routes/Private/Home/Home";
-import Main from "./Routes/Public/Main/Main";
+import LandingPage from "./Routes/Public/LandingPage/LandingPage";
 import Login from "./Routes/Public/Login/Login";
 import Logout from "./Routes/Private/Logout";
 import Register from "./Routes/Public/Register/Register";
@@ -175,7 +175,7 @@ export default function App(){
             <Routes>
                 
                 <Route path="/" element={
-                    <Main 
+                    <LandingPage 
                         title= "Landing Page"
                         darkMode = {darkMode}
                     />}>
