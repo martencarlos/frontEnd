@@ -48,14 +48,15 @@ div.home div.sidebar-toggle{
 }
 
 div.home .sidebar-section{
-    color: rgb(109, 109, 109);
+    color: var(--secondary-color);
+    font-weight: 500;
 }
 
 div.home button.sidebar-button{
     display: flex;
     margin-left: 20px;
     justify-content: start;
-    
+    color: var(--primary-text-light);
     align-items: initial;
     width: 90%;
 }

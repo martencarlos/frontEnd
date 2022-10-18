@@ -1,6 +1,8 @@
 
 import "./main.css";
 
+import { useEffect} from "react"
+
 import Hero from "../../../Components/Hero/Hero";
 import Projects from "../Projects/Projects";
 import About from "../../../Routes/Public/About/About";
@@ -15,6 +17,15 @@ import { featuresSection, featureCard1, featureCard2, featureCard3,} from "../..
 
 export default function Main(props){
     console.log("Rendering Main")
+
+    //Set title of page
+    useEffect(() => {
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [props.title])
+
     return (
         <div className= {`main ${props.darkMode ? "dark": ""}`}>
             

@@ -29,7 +29,7 @@ export default function WebScrap(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
     
     useEffect(() => {
         

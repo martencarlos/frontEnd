@@ -17,7 +17,7 @@ export default function Features(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
     return (
         <div className= {`features ${props.darkMode ? "dark": ""}`}>

@@ -176,6 +176,7 @@ export default function App(){
                 
                 <Route path="/" element={
                     <Main 
+                        title= "Landing Page"
                         darkMode = {darkMode}
                     />}>
                 </Route>

@@ -28,7 +28,7 @@ export default function FeatureCards(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
     // Assign the cardsLength
     useEffect(function(){

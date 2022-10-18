@@ -41,7 +41,7 @@ export default function Register(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
     
     function handleChange(event) {
         const {name, value} = event.target

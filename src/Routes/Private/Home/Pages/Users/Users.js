@@ -32,7 +32,7 @@ export default function Users(props){
         return () => {
             document.title = "Webframe"
         }
-    }, [])
+    }, [props.title])
 
     //Get all users from the database
     useEffect(() => {
