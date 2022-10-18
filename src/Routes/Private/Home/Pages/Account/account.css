@@ -14,9 +14,16 @@
     }
     
     div.account div.infocard-row {
-    justify-content:center !important;
+        justify-content:end !important;
     }
-   
+
+    div.account .info{
+        font-size: inherit;
+    }
+
+    div.account .info-label{
+        font-size: inherit;
+    }
 }
 
 
