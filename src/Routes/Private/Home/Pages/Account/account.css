@@ -13,17 +13,9 @@
         width:100%;
     }
 
-    div.account div.infocard-row {
-        justify-content:center !important;
-    }
+    
 
-    div.account .info{
-        font-size: inherit;
-    }
-
-    div.account .info-label{
-        font-size: inherit;
-    }
+    
 }
 
 @media (max-width: 410px) {
@@ -65,13 +57,13 @@ div.account div.infocard-row{
     gap: 20px;
     margin: 5px;
     width: 100%;
-    justify-content: end;
+    justify-content: center;
 }
 
 
 div.account div.account-main-card{
     display: flex;
-    flex: 3;
+    flex: 2;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
