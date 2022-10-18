@@ -55,6 +55,14 @@ div.users-pannel{
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+div.users .skeleton-users-pannel{
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
 div.users div.MuiDataGrid-root{
     border: none;
 }
