@@ -119,9 +119,8 @@ export default function Navbar(props){
                 setTimeout(function() {
                     x.style.display = "none";
                     x.classList.remove("closeMenu");
-                }, 500);
+                }, 400);
             }
-                
         }
     }
 
@@ -134,11 +133,12 @@ export default function Navbar(props){
             setTimeout(function() {
                 x.style.display = "none";
                 x.classList.remove("closeMenu");
-            }, 500);
+            }, 400);
             
         } else {
-            x.style.display = "flex";
             
+            x.style.animationName = "openMenu";
+            x.style.display = "flex";
         }
     }
 
@@ -361,7 +361,18 @@ export default function Navbar(props){
                 </div>}
 
                 <FormControlLabel className="toggler"
-                    control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
+                    control={<MaterialUISwitch onChange={switchHandler} sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {()=>{
+                        var x = document.getElementById("hamb-menu");
+                        x.style.animationName = "";
+
+                        x.classList.add("closeMenu");
+                        setTimeout(function() {
+                            x.style.display = "none";
+                            x.classList.remove("closeMenu");
+                            props.toggleDarkMode()
+                        }, 400);
+                        
+                    }}/>}
                 />
             </div>
         </div>

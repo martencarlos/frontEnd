@@ -95,7 +95,7 @@ div.hamb-menu{
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: var(--primary-light);
-    animation-name: openMenu;
+    /* animation-name: openMenu; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation-duration: 0.5s;
 }
