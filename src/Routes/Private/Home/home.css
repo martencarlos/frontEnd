@@ -10,6 +10,10 @@
     div.home div.sidebar-toggle{
         display: flex !important;
     }
+
+    div.home{
+        flex-direction:column;
+    }
     
 }
 @media (min-width: 700px) {
@@ -50,7 +54,6 @@ div.home div.sidebar-toggle{
     padding: 5px;
     margin: 10px;
     /* font-size: xx-large; */
-    margin-top: 20px;
     height: -moz-fit-content;
     height: fit-content;
     cursor: pointer;
