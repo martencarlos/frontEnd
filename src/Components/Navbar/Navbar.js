@@ -334,9 +334,6 @@ export default function Navbar(props){
                            
                         </Menu>
 
-                        
-
-
                         <FormControlLabel className="toggler"
                             control={<MaterialUISwitch onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {props.toggleDarkMode}/>}
                         />
