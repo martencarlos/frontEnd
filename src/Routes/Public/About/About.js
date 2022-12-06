@@ -32,6 +32,7 @@ export default function About(props){
             <br></br>
             <br></br>
             <a href="https://www.buymeacoffee.com/martencarlos"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=martencarlos&button_colour=f17e5b&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" /></a>
+            
             <br></br>
             <br></br>
             <div className="team-row">
