@@ -41,7 +41,6 @@ export default function WebScrap(props){
                 let cleanData = res.data
                 cleanData= cleanData.filter(emptyValues)
                 function emptyValues(value){
-             
                     return value.price.length !==0 && value.title.length !==0
                 }
 
@@ -85,11 +84,11 @@ export default function WebScrap(props){
             <br></br>
             <br></br>
             
-            
+            {/* onChange={(e) => setQuery(e.target.value.toLowerCase())} */}
             <div className="filter-row">
                 <div className="filter-full">
                     <Typography className="filter-label" variant="h5" gutterBottom> Filter: </Typography>
-                    <TextField id="search" label="search" variant="standard" onChange={(e) => setQuery(e.target.value.toLowerCase())}/>
+                    <TextField id="search" label="search" variant="standard" />
                 </div>
                 <Typography variant="h5" gutterBottom>{"Average price: "} 
                     <Chip icon={<EuroSymbolSharpIcon />} color="primary" variant="filled" label={avgPrice} />
