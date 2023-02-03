@@ -97,7 +97,8 @@ div.hamb-menu{
     background-color: var(--primary-light);
     /* animation-name: openMenu; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation-duration: 0.5s;
+    animation-duration: 0.2s;
+    animation-direction: alternate;
 }
 
  .closeMenu{
@@ -162,7 +163,7 @@ div.navbar .nav-brand{
     padding: 0.5rem;
     
 
-    transition: all .1s ease-in-out;
+    transition: all .2s ease-in-out;
     /* border: 1px solid transparent; */
 }
 
@@ -234,6 +235,7 @@ div.dark .bt-nav-link-dropdown:hover{
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    align-items: center;
     margin-right: auto;
 }
 
@@ -327,9 +329,30 @@ li{
 }
 
 .toggler {
-    margin:0px !important;
-    height:fit-content;
+    display: flex;
+    cursor: pointer;
+    animation: 0.5s ease-in-out 0s 1 appear;
 }
+
+.toggler :hover{
+    color: var(--primary-dark);
+    font-weight: 900;
+    border-radius: 50%;
+}
+
+.MuiSvgIcon-root{
+    margin:unset !important;
+    padding: 8px !important;
+}
+
+@keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
 
 
