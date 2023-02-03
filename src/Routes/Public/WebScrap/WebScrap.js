@@ -84,11 +84,10 @@ export default function WebScrap(props){
             <br></br>
             <br></br>
             
-            {/* onChange={(e) => setQuery(e.target.value.toLowerCase())} */}
             <div className="filter-row">
                 <div className="filter-full">
                     <Typography className="filter-label" variant="h5" gutterBottom> Filter: </Typography>
-                    <TextField id="search" label="search" variant="standard" />
+                    <TextField id="search" label="search" variant="standard" onChange={(e) => setQuery(e.target.value.toLowerCase())} />
                 </div>
                 <Typography variant="h5" gutterBottom>{"Average price: "} 
                     <Chip icon={<EuroSymbolSharpIcon />} color="primary" variant="filled" label={avgPrice} />
