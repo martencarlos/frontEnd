@@ -138,6 +138,7 @@ div.dashboard .mini-widget-data{
 
 div.dashboard .widget-header{
     display: flex;
+    align-items: center;
     flex-direction: row;
     justify-content: space-between;
 }
