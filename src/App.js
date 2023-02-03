@@ -19,8 +19,6 @@ import About from "./Routes/Public/About/About";
 import NotFound from "./Routes/Public/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 
-
-
 import { SnackbarProvider } from 'notistack';
 
 import "./css/theme.css";
