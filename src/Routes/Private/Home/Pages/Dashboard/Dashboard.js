@@ -115,6 +115,28 @@ export default function Dashboard(props){
         
         <div className="dashboard">
             <div className="widget-row">
+                <div className="widget" >
+                    <div className="widget-header">
+                        <LoginIcon className="widget-title"/>
+                        {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
+                        <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
+                    </div>
+                    { userAnalytics &&
+                        <ResponsiveContainer width="100%" height="100%" >
+                            <LineChart
+                                data={userAnalytics}
+                                margin={{top: 5,right: 30,left: 20,bottom: 5,}}
+                                strokeWidth={2}
+                                >
+                                <XAxis padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="month" />
+                                <Tooltip />
+                                <Line strokeWidth={2} type="monotone" dataKey="users" stroke="#f17e5b" activeDot={{ r: 8 }} />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    }
+                </div>
+            </div>
+            <div className="widget-row">
                 <div className="widget-half-row">
                     <div className="widget" >
                         <div className="widget-header">
