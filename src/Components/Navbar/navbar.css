@@ -340,7 +340,7 @@ li{
     border-radius: 50%;
 }
 
-.MuiSvgIcon-root{
+div.navbar .MuiSvgIcon-root{
     margin:unset !important;
     padding: 8px !important;
 }
