@@ -23,6 +23,7 @@ import { SnackbarProvider } from 'notistack';
 
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
+import { dark } from "@mui/material/styles/createPalette";
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -134,14 +135,14 @@ export default function App(){
         });
     }
     
-
     // DARK MODE
     const [darkMode, setDarkMode] = React.useState(
-        ()=>localStorage.getItem("dark-mode") ? localStorage.getItem("dark-mode") : false)
+        ()=>localStorage.getItem("dark-mode") ? JSON.parse(localStorage.getItem("dark-mode")) : false)
         // ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
     
     // check if darkmode and update Body
     useEffect(() => {
+        
         if(darkMode){
             document.getElementById("body").classList.add("dark");
         }else{

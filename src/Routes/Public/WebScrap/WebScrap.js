@@ -5,7 +5,7 @@ import {useState, useEffect} from "react"
 import axios from "axios"
 
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
-import Table from "../../../Components/Table/Table";
+import Product from "../../../Components/Product/Product";
 
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -102,7 +102,7 @@ export default function WebScrap(props){
             {!loading ? data.length!==0 ? 
 
                 <div className="table"> 
-                    {<Table data={data} />}
+                    {<Product data={data} />}
                 </div>
                 
                 :
