@@ -311,6 +311,8 @@ export default function Account(props){
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         Are you sure you want to permanently delete your Webframe account? 
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         Plase note that all your data will be lost.
                     </Typography>
                     <br></br>
