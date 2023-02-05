@@ -137,7 +137,8 @@ export default function App(){
 
     // DARK MODE
     const [darkMode, setDarkMode] = React.useState(
-        ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
+        ()=>localStorage.getItem("dark-mode") ? localStorage.getItem("dark-mode") : false)
+        // ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
     
     // check if darkmode and update Body
     useEffect(() => {
@@ -151,7 +152,8 @@ export default function App(){
     // Toggle darkmode function
     function toggleDarkMode() {
         setDarkMode(prevMode => !prevMode)
-        setCookie("dark",!darkMode, 1)
+        localStorage.setItem("dark-mode",!darkMode)
+        // setCookie("dark",!darkMode, 1)
     }
 
     console.log("User data passed to children")
