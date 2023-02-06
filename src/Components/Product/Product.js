@@ -9,15 +9,15 @@ export default function Product(props){
         <div className="product-table">
             
             {props.data.map((item) => (
-                <tr className="product-row" key={item.pos}>
-                    <td className="product-column">{item.pos}</td>
-                    <td className="product-column"><img className="table-product-img" fetchpriority="high" src= {item.imgSrc} alt="product"></img></td>
-                    <td className="product-title">{item.title}</td>
+                <div className="product-row" key={item.pos}>
+                    <div className="product-column">{item.pos}</div>
+                    <div className="product-column"><img className="table-product-img" fetchpriority="high" src= {item.imgSrc} alt="product"></img></div>
+                    <div className="product-title">{item.title}</div>
                     <div className="product-mobile-bundle"> 
-                        <td className="product-column">{item.price}</td>
-                        <td className="product-column"><Link href={item.url} className="link" underline="always">Amazon</Link></td>
+                        <div className="product-column">{item.price}</div>
+                        <div className="product-column"><Link href={item.url} className="link" underline="always">Amazon</Link></div>
                     </div>
-                </tr>
+                </div>
             ))}
       </div>
     )
