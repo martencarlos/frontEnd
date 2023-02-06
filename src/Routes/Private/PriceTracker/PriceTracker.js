@@ -217,7 +217,7 @@ export default function Pricetracker(props){
                     { myTrackers.map((tracker, i) => (
                         <div className="pricetracker-tracker" key = {i}>
                             <div className="pricetracker-mytrackers-row" id={tracker._id}>
-                                <a className="pricetracker-mytrackers-img-link" href={tracker.url}>
+                                <a className="pricetracker-mytrackers-img-link" href={tracker.url} target="_blank" rel="noopener noreferrer">
                                     <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
                                 </a>
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.productNumber}</Typography>
