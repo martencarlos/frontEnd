@@ -1,7 +1,25 @@
 /* Price Tracker */
 
 @media (max-width: 700px) {
-    
+    .pricetracker-fullpage{
+        flex-direction: column;
+    }
+
+    .pricetracker-inputcard{
+        order: 1;
+    }
+    .pricetracker-mytrackers{
+       order: 2;
+        margin-top: 60px !important;
+    }
+    .pricetracker-mytrackers-row{
+        justify-content: center !important;
+        gap: 20px;
+    }
+
+    .pricetracker-mytrackers-delete{
+        margin-left: 0 !important;
+    }
     
 }
 
