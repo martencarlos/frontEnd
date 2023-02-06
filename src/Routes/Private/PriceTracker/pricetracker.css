@@ -1,16 +1,30 @@
 /* Price Tracker */
 
-@media (max-width: 700px) {
+@media (min-width: 1200px) {
+    .pricetracker-inputcard{
+        width: 400px !important;
+    }
+}
+
+@media (max-width: 770px) {
     .pricetracker-fullpage{
         flex-direction: column;
     }
 
     .pricetracker-inputcard{
         order: 1;
+        position: relative !important;
+        
+        width: 80% !important;
+        margin: auto !important;
+        
     }
     .pricetracker-mytrackers{
        order: 2;
         margin-top: 60px !important;
+        margin-left: 0% !important; 
+        margin: auto !important;
+        width: 85% !important;
     }
     .pricetracker-mytrackers-row{
         justify-content: center !important;
@@ -20,26 +34,35 @@
     .pricetracker-mytrackers-delete{
         margin-left: 0 !important;
     }
+
+    .pricetracker-mytrackers-header{
+        margin-left: 30px !important;
+        
+    }
     
 }
 
 .pricetracker-fullpage{
     display: flex;
+    justify-content: center;
 }
 
 .pricetracker-inputcard{
     display: flex;
     flex-direction: column;
+    margin-left: -55%;
     row-gap: 20px;
-    margin: auto;
-    width:300px;
+    justify-content: center;
+    height: 65vh;
+    position: fixed;
+    width: 300px;
 }
 
 .pricetracker-mytrackers{
     display: flex;
     flex-direction: column;
-    margin: auto;
-    width:400px;
+    margin-left: 42%;
+    width: 400px;
 }
 
 .pricetracker-mytrackers-header{
@@ -84,5 +107,9 @@
 .pricetracker-mytrackers-delete :hover{
    
     color: rgb(255, 34, 34);
+}
+
+.pricetracker-inputcard-submit{
+    margin-top: 4px;
 }
 
