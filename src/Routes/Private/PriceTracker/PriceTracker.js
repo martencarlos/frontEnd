@@ -135,7 +135,11 @@ export default function Pricetracker(props){
                 if(response.data.message === "user tracker already exists"){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
-                }else{
+                }else if(response.data.message === "URL is not a product page"){
+                    variant = 'info'
+                    enqueueSnackbar(response.data.message,{ variant });
+                }
+                else{
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,

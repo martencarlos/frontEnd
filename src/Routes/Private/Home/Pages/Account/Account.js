@@ -471,7 +471,7 @@ export default function Account(props){
                             <br></br>
                             <div className="main-card-actions">
                                 <Button onClick={validate} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
-                                <Button onClick={deleteUserConfirmation} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="error">Delete</Button>
+                                <Button onClick={deleteUserConfirmation} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="primary">Delete</Button>
                             </div>
                         </div>
                     </form>
