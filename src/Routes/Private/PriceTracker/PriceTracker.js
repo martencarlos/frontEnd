@@ -203,7 +203,9 @@ export default function Pricetracker(props){
                     { myTrackers.map((tracker, i) => (
                         <div className="pricetracker-tracker" key = {i}>
                             <div className="pricetracker-mytrackers-row" id={tracker._id}>
-                                <img className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
+                                <a className="pricetracker-mytrackers-img-link" href={tracker.url}>
+                                    <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
+                                </a>
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.productNumber}</Typography>
                                 {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
