@@ -24,6 +24,8 @@ export default function Pricetracker(props){
     console.log("Rendering Price Tracker")
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
+    // const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
     //redirect to login page if logged out
     useEffect(() => {
@@ -53,7 +55,15 @@ export default function Pricetracker(props){
     }, [props])
 
     useEffect(() => {
-        console.log(myTrackers)
+        
+        let newArray = JSON.parse(JSON.stringify(myTrackers))
+        myTrackers.map((tracker, i) => (
+            tracker.productInfo.prices.map((price, j) => (
+                newArray[i].productInfo.prices[j].date = (new Date(price.date).getDate())+" "+ (months[new Date(price.date).getMonth()])
+            ))
+        ))
+        setPriceGraphData(newArray)
+        
     }, [myTrackers])
     
     
@@ -198,8 +208,8 @@ export default function Pricetracker(props){
             }
             {props.login &&
             <div className="pricetracker-fullpage">
-                 {myTrackers.length >0 &&<div className="pricetracker-mytrackers">
-                    <Typography  variant="h4" gutterBottom>My trackers</Typography>
+                 {myTrackers.length >0 && <div className="pricetracker-mytrackers">
+                    <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
                     { myTrackers.map((tracker, i) => (
                         <div className="pricetracker-tracker" key = {i}>
                             <div className="pricetracker-mytrackers-row" id={tracker._id}>
@@ -211,10 +221,10 @@ export default function Pricetracker(props){
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
                                 <DeleteIcon onClick={(e)=>deleteTracker(e)} color="error" className="pricetracker-mytrackers-delete"/>
                             </div>
-                            <div className="pricetracker-mytrackers-row">
+                            {priceGraphData.length>0 && <div className="pricetracker-mytrackers-row">
                                 <ResponsiveContainer width="100%" height="100%" >
                                     <LineChart
-                                        data={tracker.productInfo.prices}
+                                        data={priceGraphData[i].productInfo.prices}
                                         margin={{top: 5,right: 30,left: 20,bottom: 5,}}
                                         strokeWidth={2}
                                         >
@@ -223,7 +233,7 @@ export default function Pricetracker(props){
                                         <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
                                     </LineChart>
                                 </ResponsiveContainer>
-                            </div>
+                            </div>}
                         </div>
                     ))}
                     
