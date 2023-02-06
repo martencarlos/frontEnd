@@ -125,6 +125,12 @@ div.dashboard .mini-widget-title{
     display: flex;
     font-weight: bold;
     color: var(--primary-color);
+}
+
+#title {
+    display: flex;
+    font-weight: bold;
+    color: var(--secondary-color);
   
 }
 

@@ -9,7 +9,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LoginIcon from '@mui/icons-material/Login';
 import SellIcon from '@mui/icons-material/Sell';
 import { DataGrid } from '@mui/x-data-grid';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 const currentYear = new Date().getFullYear()
@@ -80,7 +80,7 @@ export default function Dashboard(props){
                                 monthlyTracker += 1
                     });
                     let obj = {}
-                    obj.users = monthlyTracker
+                    obj.trackers = monthlyTracker
                     obj.month = month
                     graphData.push(obj)
                 })
@@ -160,21 +160,21 @@ export default function Dashboard(props){
             <div className="widget-row">
                 <div className="widget" >
                     <div className="widget-header">
-                        <SellIcon className="widget-title"/>
+                        <SellIcon id="title" className="widget-title"/>
                         {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
-                        <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
+                        <Typography id="title" className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
                     </div>
                     { trackerAnalytics &&
                         <ResponsiveContainer width="100%" height="100%" >
-                            <LineChart
+                            <AreaChart
                                 data={trackerAnalytics}
                                 margin={{top: 5,right: 30,left: 20,bottom: 5,}}
                                 strokeWidth={2}
                                 >
                                 <XAxis padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="month" />
                                 <Tooltip />
-                                <Line strokeWidth={2} type="monotone" dataKey="users" stroke="#f17e5b" activeDot={{ r: 8 }} />
-                            </LineChart>
+                                <Area strokeWidth={1} type="monotone" dataKey="trackers" stroke="#f17e5b" fillOpacity={0.6} fill="#FF5733" activeDot={{ r: 6 }} />
+                            </AreaChart>
                         </ResponsiveContainer>
                     }
                 </div>
@@ -189,15 +189,21 @@ export default function Dashboard(props){
                         </div>
                         { userAnalytics &&
                             <ResponsiveContainer width="100%" height="100%" >
-                                <LineChart
+
+                                <BarChart width={150} height={40} data={userAnalytics} margin={{top: 5,right: 30,left: 20,bottom: 5,}}>
+                                    <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
+                                    <Bar dataKey="users" fill="#8884d8" />
+                                    <Tooltip />
+                                </BarChart>
+                                {/* <LineChart
                                     data={userAnalytics}
                                     margin={{top: 5,right: 30,left: 20,bottom: 5,}}
                                     strokeWidth={2}
                                     >
                                     <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
                                     <Tooltip />
-                                    <Line strokeWidth={3} type="monotone" dataKey="users" stroke="#8884d8" activeDot={{ r: 8 }} />
-                                </LineChart>
+                                    <Line strokeWidth={3} type="monotone" dataKey="users" stroke="#8884d8" activeDot={{ r: 6 }} />
+                                </LineChart> */}
                             </ResponsiveContainer>
                         }
                     </div>
