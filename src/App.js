@@ -24,6 +24,7 @@ import { SnackbarProvider } from 'notistack';
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 import { dark } from "@mui/material/styles/createPalette";
+import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -261,6 +262,15 @@ export default function App(){
                 </Route>
                 <Route path="projects/webScrap" element={
                     <WebScrap title="Webscrap" darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="projects/priceTracker" element={
+                    <PriceTracker 
+                        title="Price tracker" 
+                        darkMode = {darkMode}
+                        login = {login}
+                        userData = {userData}
+                    />
+                }>
                 </Route>
                 <Route path="/features" element={
                     <Features title="Features" darkMode = {darkMode}/>}>

@@ -26,6 +26,7 @@
       height: auto;
       
    }
+   
    div.product-table .product-title{
       overflow: hidden;
       text-overflow: ellipsis;

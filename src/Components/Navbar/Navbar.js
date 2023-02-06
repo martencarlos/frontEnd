@@ -230,6 +230,13 @@ export default function Navbar(props){
                             }}>
                             Web scrap
                         </MenuItem>
+                        <MenuItem onClick={() => {
+                            handleClose()
+                            hambMenuClick()
+                            navigate('/projects/priceTracker')
+                            }}>
+                            Price Tracker
+                        </MenuItem>
                         
                     </Menu>
                 {!props.login && 
