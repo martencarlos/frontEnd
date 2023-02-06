@@ -7,6 +7,7 @@ import axios from "axios";
 import Typography from '@mui/material/Typography';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LoginIcon from '@mui/icons-material/Login';
+import SellIcon from '@mui/icons-material/Sell';
 import { DataGrid } from '@mui/x-data-grid';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -37,6 +38,7 @@ export default function Dashboard(props){
 
     //UserData     
     const [userAnalytics, setUserAnalytics] = useState()
+    const [trackerAnalytics, setTrackerAnalytics] = useState()
     const totalUsers = useRef(0)
     const [users, setUsers] = useState()
     const totalLogins = useRef(0)
@@ -50,6 +52,47 @@ export default function Dashboard(props){
         }
     }, [props.title])
 
+    //get tracker info from db
+    useEffect(() => {
+        
+        async function fetchTrackers(){
+            await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
+                method: 'GET',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include'
+            }).then((response) => response.json())
+            .then((data) => {
+                setTrackerAnalytics(data)
+                var graphData = []
+                months.map(function (month, i) {
+                    let monthlyTracker =0
+                    data.filter((item) => {
+                            
+                        if(i===0 && item.logins){
+                            totalLogins.current +=  item.logins
+                        }
+                        let date = new Date(Date.parse(item.createDate))
+                        if(date.getFullYear() === currentYear)
+                            if(date.getMonth()+1 === i+1)
+                                monthlyTracker += 1
+                    });
+                    let obj = {}
+                    obj.users = monthlyTracker
+                    obj.month = month
+                    graphData.push(obj)
+                })
+                setTrackerAnalytics(graphData)
+            })
+        }
+        fetchTrackers()
+    }, [props.title])
+
+    useEffect(() => {
+        console.log(trackerAnalytics)
+    }, [trackerAnalytics])
 
     //Get all users from the database
     useEffect(() => {
@@ -117,14 +160,14 @@ export default function Dashboard(props){
             <div className="widget-row">
                 <div className="widget" >
                     <div className="widget-header">
-                        <LoginIcon className="widget-title"/>
+                        <SellIcon className="widget-title"/>
                         {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
                         <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
                     </div>
-                    { userAnalytics &&
+                    { trackerAnalytics &&
                         <ResponsiveContainer width="100%" height="100%" >
                             <LineChart
-                                data={userAnalytics}
+                                data={trackerAnalytics}
                                 margin={{top: 5,right: 30,left: 20,bottom: 5,}}
                                 strokeWidth={2}
                                 >
