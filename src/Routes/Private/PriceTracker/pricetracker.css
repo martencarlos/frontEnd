@@ -43,7 +43,8 @@
 }
 
 .pricetracker-tracker{
-
+    display: flex;
+    flex-direction: column;
 }
 
 .pricetracker-mytrackers-row{
