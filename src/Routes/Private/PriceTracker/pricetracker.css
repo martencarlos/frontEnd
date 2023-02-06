@@ -42,6 +42,11 @@
     width:400px;
 }
 
+.pricetracker-mytrackers-header{
+    margin-bottom: 30px !important;
+    
+}
+
 .pricetracker-tracker{
     display: flex;
     flex-direction: column;
