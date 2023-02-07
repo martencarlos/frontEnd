@@ -35,6 +35,26 @@ export default function Pricetracker(props){
         
     }, [props.login, navigate])
 
+    //Confirmation dialog
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const deletetrackerID = useRef();
+
+    function deleteUserConfirmation(e){
+        
+        //get tracker ID from Event
+        if(!e.target.parentNode.id)
+            deletetrackerID.current = e.target.parentNode.parentNode.id
+        else 
+            deletetrackerID.current = e.target.parentNode.id
+
+        handleOpen()
+    }
+    function cancel(){
+        handleClose()
+    }
+
     const [loading, setLoading] = useState(false)
     const [priceGraphData, setPriceGraphData] = useState()
     const [myTrackers, setMyTrackers] = useState([])
@@ -165,16 +185,10 @@ export default function Pricetracker(props){
         }
     }
 
-    function deleteTracker(e){
-        var trackerIDToDelete;
+    function deleteTracker(){
+        var trackerIDToDelete =deletetrackerID.current;
         setLoading(true)
 
-        //get tracker ID from Event
-        if(!e.target.parentNode.id)
-            trackerIDToDelete = e.target.parentNode.parentNode.id
-        else 
-            trackerIDToDelete = e.target.parentNode.id
-        
         // delete request to server to delete from DB
         const config = {
             url: process.env.REACT_APP_SERVER+'/deletetracker',
@@ -193,6 +207,7 @@ export default function Pricetracker(props){
                 
                  const variant = 'success'
                  enqueueSnackbar("tracker deleted",{ variant });
+                 
              }else{
                  const variant = 'error'
                  enqueueSnackbar(response.data,{ variant });
@@ -200,6 +215,7 @@ export default function Pricetracker(props){
 
         }).finally(()=>{
             setLoading(false)
+            handleClose()
         }).catch(function (error) {
             const variant = 'error'
             enqueueSnackbar(error.message,{ variant });
@@ -209,6 +225,30 @@ export default function Pricetracker(props){
    
     return (
         <div>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <div className="delete-confirmation">
+                    <Typography id="modal-modal-title" variant="body1" component="h2">
+                        Confirmation
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        Are you sure you want to delete this tracker? 
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        All the prices of this tracker will be lost
+                    </Typography>
+                    <br></br>
+                    <br></br>
+                    <div className="delete-confirmation-buttons">
+                        <Button onClick={deleteTracker} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
+                        <Button onClick={cancel} variant="contained" color="text">Cancel</Button>
+                    </div>
+                </div>
+            </Modal>
             {!props.login && 
                 <div>Login required</div>
             }
@@ -225,16 +265,16 @@ export default function Pricetracker(props){
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.productNumber}</Typography>
                                 {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
-                                <DeleteIcon onClick={(e)=>deleteTracker(e)} color="error" className="pricetracker-mytrackers-delete"/>
+                                <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/>
                             </div>
                             {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-row">
                                 <ResponsiveContainer width="100%" height="100%" >
                                     <LineChart
                                         data={priceGraphData[i].productInfo.prices}
-                                        margin={{top: 5,right: 30,left: 20,bottom: 5,}}
+                                        margin={{top: 20,right: 30,left: 20,bottom: 5,}}
                                         strokeWidth={2}
                                         >
-                                        <XAxis padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
+                                        <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
                                         <Tooltip />
                                         <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
                                     </LineChart>
