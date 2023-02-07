@@ -1,6 +1,6 @@
 
 import "./login.css";
-import {useState,useEffect} from "react"
+import {useState,useEffect,useRef} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {setCookie} from "../../../Util/Cookie";
@@ -19,6 +19,11 @@ export default function Login(props){
 
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
+    const keepLoggedIn = useRef(false);
+
+    const handleKeepLoggedIn = (event) => {
+        keepLoggedIn.current=!keepLoggedIn.current
+      };
 
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
@@ -70,6 +75,8 @@ export default function Login(props){
         setLoading(true)
         var user = { ...formData };
         user.email=String(user.email).toLowerCase()
+        user.keepLoggedIn=keepLoggedIn.current
+        
         const config = {
             url: process.env.REACT_APP_SERVER+'/login',
             method: 'POST',
@@ -115,6 +122,7 @@ export default function Login(props){
 
     function validate(e){
         e.preventDefault();
+        
         const currentErrors = validateForm()
         
         if(Object.keys(currentErrors).length===0){
@@ -212,7 +220,7 @@ export default function Login(props){
                     </div>
                     
             
-                    <FormControlLabel className="login-form-input-checkbox" control={<Checkbox />} label="keep me logged in" />
+                    <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label="keep me logged in" />
                     
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
