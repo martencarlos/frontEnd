@@ -227,7 +227,7 @@ export default function Pricetracker(props){
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
                                 <DeleteIcon onClick={(e)=>deleteTracker(e)} color="error" className="pricetracker-mytrackers-delete"/>
                             </div>
-                            {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length &&<div className="pricetracker-mytrackers-row">
+                            {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-row">
                                 <ResponsiveContainer width="100%" height="100%" >
                                     <LineChart
                                         data={priceGraphData[i].productInfo.prices}
