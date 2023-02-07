@@ -72,7 +72,13 @@
 }
 
 .pricetracker-tracker{
-    display: flex;
+        display: flex;
+    padding: 15px;
+    /* border: 1px solid #d8d9d8; */
+    background: white;
+    border-radius: 20px;
+    margin: 1px;
+    color: #000000;
     flex-direction: column;
 }
 
