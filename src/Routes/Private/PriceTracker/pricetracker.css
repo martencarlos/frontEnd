@@ -15,19 +15,23 @@
         order: 1;
         position: relative !important;
         
-        width: 80% !important;
-        margin: auto !important;
+        width: 85% !important;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
         
     }
     .pricetracker-mytrackers{
        order: 2;
         margin-top: 60px !important;
         margin-left: 0% !important; 
-        margin: auto !important;
+        margin-left: auto !important;
+        margin-right: auto;
         width: 85% !important;
     }
     .pricetracker-mytrackers-row{
-        justify-content: center !important;
+        
         gap: 20px;
     }
 
@@ -45,23 +49,20 @@
 .pricetracker-fullpage{
     display: flex;
     justify-content: center;
+    gap: 5%;
 }
 
 .pricetracker-inputcard{
     display: flex;
     flex-direction: column;
-    margin-left: -55%;
     row-gap: 20px;
     justify-content: center;
-    height: 65vh;
-    position: fixed;
     width: 300px;
 }
 
 .pricetracker-mytrackers{
     display: flex;
     flex-direction: column;
-    margin-left: 42%;
     width: 400px;
 }
 

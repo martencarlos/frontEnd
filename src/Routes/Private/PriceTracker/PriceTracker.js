@@ -65,6 +65,11 @@ export default function Pricetracker(props){
         setPriceGraphData(newArray)
         
     }, [myTrackers])
+
+    // useEffect(() => {
+    //     console.log("updated price graph data: ")
+    //     console.log(priceGraphData)
+    // }, [priceGraphData])
     
     
     //Set title of page
@@ -138,8 +143,7 @@ export default function Pricetracker(props){
                 }else if(response.data.message === "URL is not a product page"){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
-                }
-                else{
+                }else{
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,
@@ -147,10 +151,8 @@ export default function Pricetracker(props){
                         ]
                     })
                      variant = 'success'
-                     
                      enqueueSnackbar("user tracker added",{ variant });
                 }
-                
                 
             }).finally(()=>{
                 setLoading(false)
@@ -225,7 +227,7 @@ export default function Pricetracker(props){
                                 <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
                                 <DeleteIcon onClick={(e)=>deleteTracker(e)} color="error" className="pricetracker-mytrackers-delete"/>
                             </div>
-                            {priceGraphData.length>0 && <div className="pricetracker-mytrackers-row">
+                            {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length &&<div className="pricetracker-mytrackers-row">
                                 <ResponsiveContainer width="100%" height="100%" >
                                     <LineChart
                                         data={priceGraphData[i].productInfo.prices}
