@@ -250,7 +250,7 @@ export default function Pricetracker(props){
                 </div>
             </Modal>
             {!props.login && 
-                <div>Login required</div>
+                <div></div>
             }
             {props.login &&
             <div className="pricetracker-fullpage">

@@ -11,6 +11,9 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
 
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 export default function Login(props){
     console.log("Rendering Login")
 
@@ -170,6 +173,8 @@ export default function Login(props){
                                 variant="standard"
                                 onChange={handleChange}
                             />}
+
+                            
                 
                         </div>
                     </div>
@@ -205,7 +210,10 @@ export default function Login(props){
 
                         </div>
                     </div>
-                    <br></br>
+                    
+            
+                    <FormControlLabel className="login-form-input-checkbox" control={<Checkbox />} label="keep me logged in" />
+                    
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (
