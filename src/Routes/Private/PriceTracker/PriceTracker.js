@@ -155,7 +155,7 @@ export default function Pricetracker(props){
             const config = {
                 url: process.env.REACT_APP_SERVER+'/newtracker',
                 method: 'POST',
-                mode: 'no-cors',
+             
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,

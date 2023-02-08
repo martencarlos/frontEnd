@@ -115,7 +115,7 @@ export default function App(){
         const config = {
             url: process.env.REACT_APP_SERVER+'/getProfileImage',
             method: 'POST',
-            mode: 'no-cors',
+           
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': process.env.SERVER,

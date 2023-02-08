@@ -60,7 +60,6 @@ export default function Dashboard(props){
             const config = {
                 url: process.env.REACT_APP_SERVER+'/mytrackers',
                 method: 'GET',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
