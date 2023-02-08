@@ -296,7 +296,7 @@ export default function Pricetracker(props){
                                         >
                                         <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
                                         <Tooltip />
-                                        <Line label={{ position: 'top' }} strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
+                                        <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
                                     </LineChart>
                                 </ResponsiveContainer>
                             </div>}
