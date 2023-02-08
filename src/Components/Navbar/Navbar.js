@@ -6,13 +6,9 @@ import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
 
 import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Typography from '@mui/material/Typography';
-import Switch from '@mui/material/Switch';
-import { styled } from '@mui/material/styles';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -106,10 +102,10 @@ export default function Navbar(props){
 
     useEffect(() => {
         //Logout if cookie expired
-        console.log("navbar props: ")
-        console.log(props)
+        // console.log("navbar props: ")
+        // console.log(props)
         if(!getCookie("me") && props.login){
-            console.log("NAVBAR TOOOOOOOOOOOOOOOOOOGLE")
+            // console.log("NAVBAR TOOOOOOOOOOOOOOOOOOGLE")
             props.toggleLogin()
         }
     },[props])
