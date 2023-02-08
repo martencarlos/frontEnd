@@ -14,7 +14,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
