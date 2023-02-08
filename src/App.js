@@ -124,6 +124,9 @@ export default function App(){
         axios(config).then(function (response) {
             
             console.log("Actually setting local storage")
+            console.log("##################################")
+            console.log(response.data)
+            console.log("##################################")
             if(response.data){
                 localStorage.setItem("profilePic", response.data)
             }else{
