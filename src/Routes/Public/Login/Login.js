@@ -80,8 +80,10 @@ export default function Login(props){
         const config = {
             url: process.env.REACT_APP_SERVER+'/login',
             method: 'POST',
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': process.env.SERVER,
             },
             data: JSON.stringify(user),
             withCredentials: true, // Now this is was the missing piece in the client side 
