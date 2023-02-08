@@ -65,7 +65,7 @@ export default function App(){
 
      // LOGIN
     var [login, setLogin] = React.useState(
-        ()=>getCookie("me") && getCookie("user") ? true : false
+        ()=>getCookie("me")  ? true : false
     )
     
     function toggleLogin() {
