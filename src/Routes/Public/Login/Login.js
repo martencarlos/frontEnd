@@ -96,10 +96,11 @@ export default function Login(props){
                     let newErrors = {...formErrors,email,password};
                     setFormErrors(newErrors);
                 }else{
-                    let userInfo = JSON.stringify(response.data)
+                    console.log(response.data)
+                    let userInfo = JSON.parse(JSON.stringify(response.data))
                     userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
-                    
-                    setCookie("me", userInfo, 90001)
+                    console.log(userInfo)
+                    setCookie("me", JSON.stringify(userInfo), 90001)
                     
                     navigate({
                         pathname: '/home',
