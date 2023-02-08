@@ -239,20 +239,18 @@ export default function Account(props){
 
                 if(JSON.stringify(response.data.errors) !== '{}'){
                     setFormErrors(response.data.errors)
-                }
-                console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-                console.log(response.data)
-                if(response.data.message === "User updated"){
+                }else if(response.data.message === "User updated"){
                     
                     props.updateUserData(response.data.user)
                 }else if(response.data.error){
                     //Auth error
                     props.toggleLogin()
                     navigate("/login",{ replace: true });
-                }else{
-                    notificationMessage.current = response.data.message
-                    setNotification(true)
                 }
+                
+                notificationMessage.current = response.data.message
+                setNotification(true)
+                
                 
             }).finally(()=>{
                 
