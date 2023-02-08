@@ -62,7 +62,7 @@ export default function Dashboard(props){
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Origin': process.env.SERVER,
                 },
                 withCredentials: true, // Now this is was the missing piece in the client side 
             };
