@@ -55,13 +55,13 @@
     display: flex;
     justify-content: center;
     gap: 5%;
+    margin-top: 8%;
 }
 
 .pricetracker-inputcard{
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-    
     width: 300px;
 }
 

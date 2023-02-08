@@ -301,10 +301,11 @@ export default function Pricetracker(props){
                                 <ResponsiveContainer width="100%" height="100%" >
                                     <LineChart
                                         data={priceGraphData[i].productInfo.prices}
-                                        margin={{top: 20,right: 30,left: 20,bottom: 5,}}
+                                        margin={{top: 5,right: 6,left: -12,bottom: 5,}}
                                         strokeWidth={2}
                                         >
                                         <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
+                                        <YAxis type="number" domain={['dataMin-2', 'dataMax+2']} />
                                         <Tooltip />
                                         <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
                                     </LineChart>
