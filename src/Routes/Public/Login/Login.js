@@ -3,7 +3,7 @@ import "./login.css";
 import {useState,useEffect,useRef} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {setCookie} from "../../../Util/Cookie";
+import {getCookie, setCookie} from "../../../Util/Cookie";
 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
@@ -97,11 +97,13 @@ export default function Login(props){
                     setFormErrors(newErrors);
                 }else{
                     console.log(response.data)
-                    let userInfo = JSON.parse(JSON.stringify(response.data))
-                    userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
-                    console.log(userInfo)
-                    setCookie("me", JSON.stringify(userInfo), 90001)
+                    // let userInfo = JSON.parse(JSON.stringify(response.data))
+                    // userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
                     
+                    
+                    setCookie("me", JSON.stringify(response.data), 90001)
+                    console.log("MY COOOOKIEEEEEEEEEEEEEEEEEEEEEEEEEEEEE:")
+                    console.log(getCookie("me"))
                     navigate({
                         pathname: '/home',
                         state: {  
