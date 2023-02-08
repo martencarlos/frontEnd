@@ -109,6 +109,7 @@ export default function Navbar(props){
         console.log("navbar props: ")
         console.log(props)
         if(!getCookie("me") && props.login){
+            console.log("NAVBAR TOOOOOOOOOOOOOOOOOOGLE")
             props.toggleLogin()
         }
     },[props])
