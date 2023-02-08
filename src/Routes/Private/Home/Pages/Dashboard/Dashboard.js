@@ -99,9 +99,9 @@ export default function Dashboard(props){
         fetchTrackers()
     }, [props.title])
 
-    useEffect(() => {
-        console.log(trackerAnalytics)
-    }, [trackerAnalytics])
+    // useEffect(() => {
+    //     console.log(trackerAnalytics)
+    // }, [trackerAnalytics])
 
     //Get all users from the database
     useEffect(() => {

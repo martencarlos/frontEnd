@@ -308,8 +308,8 @@ export default function Account(props){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    console.log("account User data:")
-    console.log(userData)
+    // console.log("account User data:")
+    // console.log(userData)
     return (
         props.login && props.userData.profilePic &&
         <div className="account">

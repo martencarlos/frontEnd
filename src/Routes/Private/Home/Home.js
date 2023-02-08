@@ -42,8 +42,8 @@ export default function Home(props){
     //redirect to login page if logged out
     useEffect(() => {
         console.log("useEffect - check if logged in")
-        console.log("home props: ")
-        console.log(props)
+        // console.log("home props: ")
+        // console.log(props)
         if(!props.login)
             navigate("/login",{ replace: true });
         
