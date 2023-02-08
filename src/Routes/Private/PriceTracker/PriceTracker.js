@@ -274,6 +274,16 @@ export default function Pricetracker(props){
             }
             {props.login &&
             <div className="pricetracker-fullpage">
+                 <div className="pricetracker-inputcard">
+                    <Typography variant="h4" gutterBottom>New price tracker</Typography>
+                    <TextField placeholder="https://www.amazon.es/xxx" value={formData.url} onChange={handleChange}  required name="url" className="pricetracker-inputcard-url" id="product_url" label="Amazon product URL" variant="standard" />
+                    
+                    {loading ? 
+                        <CircularProgress size="2rem" className="login-loading-circle" />
+                        : 
+                        <Button variant="contained" id="addtraker" className="pricetracker-inputcard-submit" type="button" onClick={addTracker}>Add new tracker</Button>
+                    }
+                </div>
                  {myTrackers.length >0 && <div className="pricetracker-mytrackers">
                     <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
                     { myTrackers.map((tracker, i) => (
@@ -304,16 +314,7 @@ export default function Pricetracker(props){
                     ))}
                     
                 </div>}
-                <div className="pricetracker-inputcard">
-                    <Typography variant="h4" gutterBottom>New price tracker</Typography>
-                    <TextField placeholder="https://www.amazon.es/xxx" value={formData.url} onChange={handleChange}  required name="url" className="pricetracker-inputcard-url" id="product_url" label="Amazon product URL" variant="standard" />
-                    
-                    {loading ? 
-                        <CircularProgress size="2rem" className="login-loading-circle" />
-                        : 
-                        <Button variant="contained" id="addtraker" className="pricetracker-inputcard-submit" type="button" onClick={addTracker}>Add new tracker</Button>
-                    }
-                </div>
+                
             </div>
             }
         </div>
