@@ -218,6 +218,7 @@ export default function Account(props){
         setNotification(false);
 }
 
+
     function updateUser(){
         console.log("updating user")
         
@@ -226,6 +227,7 @@ export default function Account(props){
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': process.env.SERVER,
             },
             data: formData,
             withCredentials: true, 
@@ -238,6 +240,8 @@ export default function Account(props){
                 if(JSON.stringify(response.data.errors) !== '{}'){
                     setFormErrors(response.data.errors)
                 }
+                console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+                console.log(response.data)
                 if(response.data.message === "User updated"){
                     
                     props.updateUserData(response.data.user)
