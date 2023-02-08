@@ -82,7 +82,9 @@ export default function App(){
     //Set user data after login
     useEffect(() => {
         console.log("App useEffect - login")
-
+        console.log("*******************************")
+        console.log("USERDATA:")
+        console.log(userData)
         //after logout clear userData
         if(userData.profilePic){
             setUserData({})
@@ -90,8 +92,11 @@ export default function App(){
 
         if(getCookie("me")){
             var cookieUser = JSON.parse(getCookie("me"))
-            
+            console.log("PARSED COOKIE:")
+            console.log(cookieUser)
             setUserData(cookieUser)
+            console.log("LOCAL STORAGE PIC:")
+            console.log(localStorage.getItem("profilePic"))
             if(!localStorage.getItem("profilePic")){
                 getProfileImageIntoLocalStorage()
             }else{
@@ -101,6 +106,7 @@ export default function App(){
                 }))
             }
         }
+        console.log("*******************************")
         
     }, [login,userData.profilePic])
 

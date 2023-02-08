@@ -99,11 +99,8 @@ export default function Login(props){
                     console.log(response.data)
                     // let userInfo = JSON.parse(JSON.stringify(response.data))
                     // userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
-                    
-                    
+                
                     setCookie("me", JSON.stringify(response.data), 90001)
-                    console.log("MY COOOOKIEEEEEEEEEEEEEEEEEEEEEEEEEEEEE:")
-                    console.log(getCookie("me"))
                     navigate({
                         pathname: '/home',
                         state: {  
