@@ -57,27 +57,27 @@ export default function Dashboard(props){
     useEffect(() => {
         
         async function fetchTrackers(){
-            await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
+            const config = {
+                url: process.env.REACT_APP_SERVER+'/mytrackers',
                 method: 'GET',
                 mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,
-                    'Access-Control-Allow-Headers':'*',
                 },
-                credentials: 'include'
-            }).then((response) => response.json())
-            .then((data) => {
-                if(data.error){
+                withCredentials: true, // Now this is was the missing piece in the client side 
+            };
+            axios(config).then(function (response) {
+                if(response.data.error){
                     //Auth error
                     props.toggleLogin()
                     navigate("/login",{ replace: true });
                 }else{
-                    setTrackerAnalytics(data)
+                    setTrackerAnalytics(response.data)
                     var graphData = []
                     months.map(function (month, i) {
                         let monthlyTracker =0
-                        data.filter((item) => {
+                        response.data.filter((item) => {
                                 
                             if(i===0 && item.logins){
                                 totalLogins.current +=  item.logins
@@ -108,7 +108,18 @@ export default function Dashboard(props){
     useEffect(() => {
         console.log("useEffect - get users")
         const fetchUsers = async () => {
-            await axios.get(`${process.env.REACT_APP_SERVER}/users`)
+            const config = {
+                url: process.env.REACT_APP_SERVER+'/users',
+                method: 'GET',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': process.env.SERVER,
+                },
+                withCredentials: true, // Now this is was the missing piece in the client side 
+                
+            };
+            await axios(config)
               .then(function (res) {
                     var graphData = []
                     totalUsers.current = res.data.length
