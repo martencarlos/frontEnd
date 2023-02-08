@@ -83,7 +83,7 @@ export default function Login(props){
             mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': process.env.SERVER,
+                'Access-Control-Allow-Origin': '*',
             },
             data: JSON.stringify(user),
             withCredentials: true, // Now this is was the missing piece in the client side 
