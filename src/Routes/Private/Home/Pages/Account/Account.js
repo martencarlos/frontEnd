@@ -234,15 +234,21 @@ export default function Account(props){
         axios(config) 
             .then(function (response) {
                 console.log(response.data);
+
                 if(JSON.stringify(response.data.errors) !== '{}'){
                     setFormErrors(response.data.errors)
                 }
                 if(response.data.message === "User updated"){
                     
                     props.updateUserData(response.data.user)
+                }else if(response.data.error){
+                    //Auth error
+
+                    navigate("/login",{ replace: true });
+                }else{
+                    notificationMessage.current = response.data.message
+                    setNotification(true)
                 }
-                notificationMessage.current = response.data.message
-                setNotification(true)
                 
             }).finally(()=>{
                 
@@ -276,13 +282,17 @@ export default function Account(props){
         axios(config) 
             .then(function (response) {
                 console.log(response.data);
-                if(response.data.message === "account deleted"){
+                if(response.data.error){
+                    //Auth error
+                    navigate("/login",{ replace: true });
+                }else if(response.data.message === "account deleted"){
                     navigate('/logout')
+                }else{
+                    notificationMessage.current = response.data.message
+                    setNotification(true)
+                    handleClose()
                 }
-                notificationMessage.current = response.data.message
-                setNotification(true)
                 
-                handleClose()
             }).finally(()=>{
                 
             })
@@ -295,7 +305,8 @@ export default function Account(props){
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    console.log("account User data:")
+    console.log(userData)
     return (
         props.login && props.userData.profilePic &&
         <div className="account">
@@ -327,6 +338,7 @@ export default function Account(props){
             <br></br>
             <Typography variant="h4" className="page-title" gutterBottom>{"Account Settings"} </Typography>
 
+            {userData.name &&
             <div className="row" >
                 <div className="account-main-card">
                     <form className="account-form">
@@ -505,7 +517,7 @@ export default function Account(props){
                     </div>
                 </div>
                 
-            </div>
+            </div>}
             <br></br>
             <br></br>
             <Snackbar open={notification} autoHideDuration={6000} onClose={handleCloseNotif} >

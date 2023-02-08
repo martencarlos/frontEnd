@@ -21,6 +21,8 @@ import Alert from '@mui/material/Alert';
 export default function Pricetracker(props){
 
     console.log("Rendering Price Tracker")
+    
+    
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     // const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -31,7 +33,6 @@ export default function Pricetracker(props){
         console.log("useEffect - check if logged in")
         if(!props.login)
             navigate("/login",{ replace: true });
-        
     }, [props.login, navigate])
 
     //Confirmation dialog
@@ -55,7 +56,7 @@ export default function Pricetracker(props){
     }
 
     const [loading, setLoading] = useState(false)
-    const [priceGraphData, setPriceGraphData] = useState()
+    const [priceGraphData, setPriceGraphData] = useState([])
     const [myTrackers, setMyTrackers] = useState([])
     const [formData, setFormData] = useState({
         userID: "",
@@ -73,15 +74,17 @@ export default function Pricetracker(props){
         setFormData({userID: props.userData._id, url:""})
     }, [props])
 
+    //set price graph from My trackers
     useEffect(() => {
-        
-        let newArray = JSON.parse(JSON.stringify(myTrackers))
-        myTrackers.map((tracker, i) => (
-            tracker.productInfo.prices.map((price, j) => (
-                newArray[i].productInfo.prices[j].date = (new Date(price.date).getDate())+" "+ (months[new Date(price.date).getMonth()])
+        if(myTrackers.length >0){
+            let newArray = JSON.parse(JSON.stringify(myTrackers))
+            myTrackers.map((tracker, i) => (
+                tracker.productInfo.prices.map((price, j) => (
+                    newArray[i].productInfo.prices[j].date = (new Date(price.date).getDate())+" "+ (months[new Date(price.date).getMonth()])
+                ))
             ))
-        ))
-        setPriceGraphData(newArray)
+            setPriceGraphData(newArray)
+        }
         
     }, [myTrackers])
 
@@ -109,7 +112,10 @@ export default function Pricetracker(props){
             credentials: 'include'
         }).then((response) => response.json())
         .then((data) => {
-            setMyTrackers(data)
+            if(!data.error)
+                setMyTrackers(data)
+            else
+                navigate("/login",{ replace: true });
         }).finally(function(){
             
         });
@@ -162,7 +168,7 @@ export default function Pricetracker(props){
                 }else if(response.data.message === "URL is not a product page"){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
-                }else{
+                }else if(!response.data.error){
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,
@@ -171,6 +177,10 @@ export default function Pricetracker(props){
                     })
                      variant = 'success'
                      enqueueSnackbar("user tracker added",{ variant });
+                }else{
+                    if(response.data.error==="not authenticated")
+                        navigate("/login",{ replace: true });
+                    
                 }
                 
             }).finally(()=>{
@@ -207,9 +217,11 @@ export default function Pricetracker(props){
                  const variant = 'success'
                  enqueueSnackbar("tracker deleted",{ variant });
                  
+             }else if(response.data.error){
+                navigate("/login",{ replace: true });
              }else{
-                 const variant = 'error'
-                 enqueueSnackbar(response.data,{ variant });
+                const variant = 'error'
+                enqueueSnackbar("unexpected error",{ variant });
              }
 
         }).finally(()=>{
@@ -220,8 +232,9 @@ export default function Pricetracker(props){
             enqueueSnackbar(error.message,{ variant });
             console.log(error);
         });
+        
     }
-   
+    console.log(myTrackers)
     return (
         <div>
             <Modal

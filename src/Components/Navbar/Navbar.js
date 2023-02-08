@@ -106,7 +106,7 @@ export default function Navbar(props){
 
     useEffect(() => {
         //Logout if cookie expired
-        if(getCookie("me")==="" && props.login){
+        if((getCookie("me")==="" || !getCookie("user")) && props.login){
             props.toggleLogin()
         }
     })
