@@ -203,6 +203,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
+                            toggleLogin={toggleLogin}
                             title= "Dashboard"
                         />}
                     />
