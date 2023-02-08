@@ -5,6 +5,7 @@ import {useState, useEffect, useRef} from "react";
 import axios from "axios";
 
 import Typography from '@mui/material/Typography';
+import {useNavigate } from 'react-router-dom';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LoginIcon from '@mui/icons-material/Login';
 import SellIcon from '@mui/icons-material/Sell';
@@ -34,7 +35,7 @@ const columns = [
 export default function Dashboard(props){
 
     console.log("Rendering Dashboard")
-    
+    const navigate = useNavigate();
 
     //UserData     
     const [userAnalytics, setUserAnalytics] = useState()
@@ -65,6 +66,11 @@ export default function Dashboard(props){
                 credentials: 'include'
             }).then((response) => response.json())
             .then((data) => {
+                if(data.error){
+                    //Auth error
+                    props.toggleLogin()
+                    navigate("/login",{ replace: true });
+                }
                 setTrackerAnalytics(data)
                 var graphData = []
                 months.map(function (month, i) {
