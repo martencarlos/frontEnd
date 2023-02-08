@@ -163,6 +163,7 @@ export default function Home(props){
                         darkMode = {props.darkMode}
                         title={props.title}
                         login = {props.login}
+                        toggleLogin={props.toggleLogin}
                     />
             }
 
@@ -174,6 +175,7 @@ export default function Home(props){
                 userData = {userData}
                 title={props.title}
                 login = {props.login}
+                toggleLogin={props.toggleLogin}
                 updateUserData= {props.updateUserData}
             /> }
 

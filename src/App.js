@@ -211,6 +211,7 @@ export default function App(){
                         <Home 
                             darkMode = {darkMode}
                             userData = {userData}
+                            toggleLogin={toggleLogin}
                             login = {login}
                             title= "Users"
                         />}
