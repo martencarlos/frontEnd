@@ -106,10 +106,12 @@ export default function Navbar(props){
 
     useEffect(() => {
         //Logout if cookie expired
+        console.log("navbar props: ")
+        console.log(props)
         if((getCookie("me")==="" || !getCookie("user")) && props.login){
             props.toggleLogin()
         }
-    })
+    },[props])
 
     //close hamburguer event listener function
     function closeHambMenu(e){
