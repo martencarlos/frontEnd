@@ -30,7 +30,6 @@ import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 //   });
 
-
 export default function App(){
     console.log("Rendering App")
 
@@ -40,7 +39,6 @@ export default function App(){
 
     var style = getComputedStyle(document.body)
     
-  
     // COLOR THEME PALETTE
     const theme = createTheme({
         palette: {

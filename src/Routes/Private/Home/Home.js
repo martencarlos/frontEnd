@@ -178,11 +178,6 @@ export default function Home(props){
                 toggleLogin={props.toggleLogin}
                 updateUserData= {props.updateUserData}
             /> }
-
-
-                 
         </div>
-
-        
     )
 }

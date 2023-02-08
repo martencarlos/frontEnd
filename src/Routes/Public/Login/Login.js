@@ -87,11 +87,9 @@ export default function Login(props){
             withCredentials: true, // Now this is was the missing piece in the client side 
             
         };
-
         
         axios(config) 
             .then(function (response) {
-                
                 const {email,password, errors} = response.data;
                 
                 if(errors){
@@ -106,9 +104,7 @@ export default function Login(props){
                             user: response.data
                         }
                       })
-                    
                     props.toggleLogin()
-                    
                 }
             }).finally(()=>{
                 setLoading(false)
