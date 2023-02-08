@@ -63,6 +63,7 @@ export default function Dashboard(props){
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,
+                    'Access-Control-Allow-Headers':'*',
                 },
                 credentials: 'include'
             }).then((response) => response.json())
