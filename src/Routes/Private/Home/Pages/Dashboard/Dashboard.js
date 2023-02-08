@@ -59,9 +59,10 @@ export default function Dashboard(props){
         async function fetchTrackers(){
             await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
                 method: 'GET',
+                mode: 'no-cors',
                 headers: {
-                    'Access-Control-Allow-Origin': '*',
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': process.env.FRONTEND,
                 },
                 credentials: 'include'
             }).then((response) => response.json())
