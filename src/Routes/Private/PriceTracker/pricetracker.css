@@ -32,7 +32,7 @@
     }
     .pricetracker-mytrackers-row{
         
-        gap: 20px;
+        gap: 12px;
     }
 
     .pricetracker-mytrackers-delete{
@@ -43,6 +43,11 @@
         margin-left: 30px !important;
         
     }
+    
+    .pricetracker-tracker{
+        padding: 7px !important;
+    }
+    
     
 }
 
@@ -74,6 +79,7 @@
 .pricetracker-tracker{
         display: flex;
     padding: 15px;
+        overflow: hidden;
     /* border: 1px solid #d8d9d8; */
     background: white;
     border-radius: 20px;
