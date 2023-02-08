@@ -70,27 +70,29 @@ export default function Dashboard(props){
                     //Auth error
                     props.toggleLogin()
                     navigate("/login",{ replace: true });
+                }else{
+                    setTrackerAnalytics(data)
+                    var graphData = []
+                    months.map(function (month, i) {
+                        let monthlyTracker =0
+                        data.filter((item) => {
+                                
+                            if(i===0 && item.logins){
+                                totalLogins.current +=  item.logins
+                            }
+                            let date = new Date(Date.parse(item.createDate))
+                            if(date.getFullYear() === currentYear)
+                                if(date.getMonth()+1 === i+1)
+                                    monthlyTracker += 1
+                        });
+                        let obj = {}
+                        obj.trackers = monthlyTracker
+                        obj.month = month
+                        graphData.push(obj)
+                    })
+                    setTrackerAnalytics(graphData)
                 }
-                setTrackerAnalytics(data)
-                var graphData = []
-                months.map(function (month, i) {
-                    let monthlyTracker =0
-                    data.filter((item) => {
-                            
-                        if(i===0 && item.logins){
-                            totalLogins.current +=  item.logins
-                        }
-                        let date = new Date(Date.parse(item.createDate))
-                        if(date.getFullYear() === currentYear)
-                            if(date.getMonth()+1 === i+1)
-                                monthlyTracker += 1
-                    });
-                    let obj = {}
-                    obj.trackers = monthlyTracker
-                    obj.month = month
-                    graphData.push(obj)
-                })
-                setTrackerAnalytics(graphData)
+                
             })
         }
         fetchTrackers()
