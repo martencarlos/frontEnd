@@ -157,6 +157,7 @@ export default function Pricetracker(props){
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': process.env.SERVER,
                 },
                 data: JSON.stringify(newTracker),
                 withCredentials: true, // Now this is was the missing piece in the client side 
