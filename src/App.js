@@ -65,7 +65,7 @@ export default function App(){
 
      // LOGIN
     var [login, setLogin] = React.useState(
-        ()=>getCookie("me")  ? true : false
+        ()=>getCookie("me") ? true : false
     )
     
     function toggleLogin() {
@@ -194,6 +194,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
+                            toggleLogin={toggleLogin}
                             title= "Home"
                         />}
                     />
@@ -218,6 +219,7 @@ export default function App(){
                             darkMode = {darkMode}
                             userData = {userData}
                             login = {login}
+                            toggleLogin={toggleLogin}
                             title= "Account"
                             updateUserData= {updateUserData}
                         />}
@@ -268,6 +270,7 @@ export default function App(){
                         title="Price tracker" 
                         darkMode = {darkMode}
                         login = {login}
+                        toggleLogin={toggleLogin}
                         userData = {userData}
                     />
                 }>

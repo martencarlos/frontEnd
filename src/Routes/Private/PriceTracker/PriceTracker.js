@@ -114,8 +114,11 @@ export default function Pricetracker(props){
         .then((data) => {
             if(!data.error)
                 setMyTrackers(data)
-            else
+            else{
+                props.toggleLogin()
                 navigate("/login",{ replace: true });
+            }
+                
         }).finally(function(){
             
         });
@@ -178,9 +181,10 @@ export default function Pricetracker(props){
                      variant = 'success'
                      enqueueSnackbar("user tracker added",{ variant });
                 }else{
-                    if(response.data.error==="not authenticated")
+                    if(response.data.error==="not authenticated"){
+                        props.toggleLogin() 
                         navigate("/login",{ replace: true });
-                    
+                    }
                 }
                 
             }).finally(()=>{
@@ -218,7 +222,9 @@ export default function Pricetracker(props){
                  enqueueSnackbar("tracker deleted",{ variant });
                  
              }else if(response.data.error){
+                props.toggleLogin();
                 navigate("/login",{ replace: true });
+                
              }else{
                 const variant = 'error'
                 enqueueSnackbar("unexpected error",{ variant });
