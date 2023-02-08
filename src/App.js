@@ -74,7 +74,7 @@ export default function App(){
 
     function updateUserData(newUserData) {
         delCookie("me")
-        setCookie("me", JSON.stringify(newUserData), { maxAge: 3600000, httpOnly: false })
+        setCookie("me", JSON.stringify(newUserData), 90001)
         setUserData(newUserData)
     }
 

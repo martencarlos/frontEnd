@@ -98,7 +98,7 @@ export default function Login(props){
                     let newErrors = {...formErrors,email,password};
                     setFormErrors(newErrors);
                 }else{
-                    setCookie("me", JSON.stringify(response.data), 1/24)
+                    setCookie("me", JSON.stringify(response.data), 90001)
                     
                     navigate({
                         pathname: '/home',

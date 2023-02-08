@@ -158,7 +158,7 @@ export default function Register(props){
             .then(function (response) {
                 
                 // const {email,password, errors} = response.data;
-                setCookie("me", JSON.stringify(response.data), 1/24)
+                setCookie("me", JSON.stringify(response.data), 90001)
                   
                 props.toggleLogin()
                 navigate({
