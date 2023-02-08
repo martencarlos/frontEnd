@@ -63,7 +63,7 @@ export default function Dashboard(props){
                 mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': process.env.SERVER,
+                    'Access-Control-Allow-Origin': '*',
                 },
                 withCredentials: true, // Now this is was the missing piece in the client side 
             };
