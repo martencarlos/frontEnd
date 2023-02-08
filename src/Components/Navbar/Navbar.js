@@ -108,7 +108,7 @@ export default function Navbar(props){
         //Logout if cookie expired
         console.log("navbar props: ")
         console.log(props)
-        if(getCookie("me")==="" && props.login){
+        if(!getCookie("me") && props.login){
             props.toggleLogin()
         }
     },[props])
