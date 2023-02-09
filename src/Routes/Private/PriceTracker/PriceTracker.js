@@ -174,6 +174,9 @@ export default function Pricetracker(props){
                 }else if(response.data.message === "URL is not a product page"){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
+                }else if(response.data.message === "Product is out of stock - no price found"){
+                    variant = 'info'
+                    enqueueSnackbar(response.data.message,{ variant });
                 }else if(!response.data.error){
                     setMyTrackers(prevTrackers => {
                         return [
