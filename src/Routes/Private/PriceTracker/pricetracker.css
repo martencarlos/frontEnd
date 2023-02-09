@@ -217,8 +217,8 @@
 }
 
 /* delete confirmation dialog background */
-.MuiBackdrop-root{
-    backdrop-filter: blur(2px);
+#pricetracker-delete-dialog .MuiBackdrop-root{
+    backdrop-filter: blur(5px);
 }
 
 .pricetracker-mytrackers-delete :hover{

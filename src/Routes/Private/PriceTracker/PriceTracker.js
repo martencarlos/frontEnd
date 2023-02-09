@@ -286,6 +286,7 @@ export default function Pricetracker(props){
                 disableScrollLock={true}
                 open={open}
                 onClose={handleClose}
+                id="pricetracker-delete-dialog"
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
