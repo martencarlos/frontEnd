@@ -1,5 +1,5 @@
 
-import {delCookie} from "../../Util/Cookie";
+import {getCookie,delCookie} from "../../Util/Cookie";
 import { useNavigate } from "react-router-dom";
 import {useEffect} from "react"
 
@@ -16,7 +16,8 @@ export default function Logout(props){
         navigate("/login")
         console.log("actual clear of localstorage")
       })
-
+    console.log("logging out deleting cookie:")
+    console.log(getCookie("me"))
     delCookie("me")
     
     return (
