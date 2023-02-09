@@ -353,7 +353,7 @@ export default function Pricetracker(props){
                                     <ResponsiveContainer width="100%" height="100%" >
                                         <LineChart
                                             data={priceGraphData[i].productInfo.prices}
-                                            margin={{top: 0,right: 6,left: -12,bottom: 5,}}
+                                            margin={{top: 0,right: 6,left: -12,bottom: 0,}}
                                             strokeWidth={2}
                                             >
                                             <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
