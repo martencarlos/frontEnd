@@ -249,6 +249,7 @@ export default function Navbar(props){
                         
 
                         <Menu
+                            disableScrollLock={true}
                             id="logout-profile-menu"
                             anchorEl={logoutProfileMenu}
                             open={openLogoutProfileMenu}
@@ -315,6 +316,7 @@ export default function Navbar(props){
                         
                         
                         <Menu
+                            disableScrollLock={true}
                             id="profile-menu"
                             anchorEl={profileMenu}
                             open={openProfileMenu}

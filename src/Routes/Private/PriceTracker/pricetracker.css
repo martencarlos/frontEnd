@@ -13,7 +13,7 @@
         margin-bottom:0px !important
     }
 
-    .fixed{
+    .fixed-navbar{
         position: relative !important;
         width: unset !important; 
     }
@@ -41,6 +41,7 @@
         margin-top: 60px!important;
         order: 2;
         width: 95%!important;
+        margin-bottom: 0px !important
     }
     .pricetracker-mytrackers-info{
         
@@ -63,7 +64,7 @@
 }
 
 /* navbar fixed only on pricetracker page */
-.fixed{
+.fixed-navbar{
     /* background-color: rgb(244, 211, 211); */
     position: fixed;
     width: calc(100% - 40px);
@@ -79,7 +80,7 @@
     padding-right: 0px;
     background-color:unset !important;
     backdrop-filter: blur(30px);
-    
+    /* margin-top: 70px; */
 }
 .fixed-footer-brand{
     padding-left: 2em;
@@ -131,6 +132,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 50px;
+    margin-bottom: 70px;
     width: 45%;
 }
 

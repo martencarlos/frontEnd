@@ -74,7 +74,7 @@ export default function Pricetracker(props){
     //fixed navbar
     useEffect(() => {
         var x = document.getElementById("navbar");
-        x.classList.add("fixed");
+        x.classList.add("fixed-navbar");
         var y = document.getElementById("footer");
         y.classList.add("fixed-footer");
         var z = document.getElementById("footer-brand");
@@ -84,7 +84,7 @@ export default function Pricetracker(props){
         
         return () => {
             var x = document.getElementById("navbar");
-            x.classList.remove("fixed");
+            x.classList.remove("fixed-navbar");
             var y = document.getElementById("footer");
             y.classList.remove("fixed-footer");
             var z = document.getElementById("footer-brand");
