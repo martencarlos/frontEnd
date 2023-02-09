@@ -242,7 +242,7 @@ export default function Pricetracker(props){
         });
         
     }
-    console.log(myTrackers)
+    // console.log(myTrackers)
     return (
         <div>
             <Modal
