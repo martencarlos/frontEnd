@@ -116,6 +116,7 @@ export default function Pricetracker(props){
                 setMyTrackers(data)
             else{
                 //Auth error
+                console.log(data.error)
                 navigate("/logout",{ replace: true });
             }
                 
@@ -185,6 +186,7 @@ export default function Pricetracker(props){
                 }else{
                     if(response.data.error==="not authenticated"){
                         //auth error 
+                        console.log(response.data.error)
                         navigate("/logout",{ replace: true });
                     }
                 }
@@ -225,6 +227,7 @@ export default function Pricetracker(props){
                  
              }else if(response.data.error){
                 //auth error
+                console.log(response.data.error)
                 navigate("/logout",{ replace: true });
                 
              }else{
