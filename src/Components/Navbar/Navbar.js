@@ -116,8 +116,11 @@ export default function Navbar(props){
         
         if(x.style.display === "flex"){
             console.log(e.target.className)
-            if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || e.target.tagName === "path" || e.target.classList.contains("bt-nav-link-dropdown")){
-            }else{
+            console.log(e.target.className.baseVal)
+            if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || 
+            e.target.tagName === "path" || e.target.classList.contains("bt-nav-link-dropdown"))
+            {}else if(e.target.className.baseVal){}
+            else{
                 x.classList.add("closeMenu");
                 setTimeout(function() {
                     x.style.display = "none";
@@ -139,7 +142,6 @@ export default function Navbar(props){
             }, 170);
             
         } else {
-            
             x.style.animationName = "openMenu";
             x.style.display = "flex";
         }
@@ -183,8 +185,8 @@ export default function Navbar(props){
     var reRenderIfChanged =1;
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
-        <div className="navbar">
-            <nav className={props.darkMode ? "dark": ""}>
+        <div  className="navbar">
+            <nav id="navbar" className={props.darkMode ? "dark": ""}>
                 <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
 
                 {props.login &&
@@ -201,6 +203,7 @@ export default function Navbar(props){
                     
                     </ul>}
                     <Menu
+                        disableScrollLock={true}
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={open}

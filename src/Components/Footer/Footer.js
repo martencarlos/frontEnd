@@ -10,12 +10,12 @@ export default function Footer(props){
     const year= new Date().getFullYear()
 
     return (
-        <footer className={props.darkMode ? "dark" : ""}>
-            <Typography variant="body1" gutterBottom className="footer-brand">
+        <footer id="footer" className={props.darkMode ? "dark" : ""}>
+            <Typography id="footer-brand" variant="body1"  className="footer-brand">
                 © {year} Webframe Inc
             </Typography>
 
-            <ul className="footer-links">
+            <ul id="footer-links" className="footer-links">
                 <li className="nav-item">
                     <Link underline="hover" href="/features" >Features</Link>
                 </li>

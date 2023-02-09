@@ -17,6 +17,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import Modal from '@mui/material/Modal';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 
 export default function Pricetracker(props){
 
@@ -55,7 +56,8 @@ export default function Pricetracker(props){
         handleClose()
     }
 
-    const [loading, setLoading] = useState(false)
+    const [buttonLoading, setButtonLoading] = useState(false)
+    const [pageLoading, setPageLoading] = useState(true)
     const [priceGraphData, setPriceGraphData] = useState([])
     const [myTrackers, setMyTrackers] = useState([])
     const [formData, setFormData] = useState({
@@ -67,8 +69,30 @@ export default function Pricetracker(props){
     useEffect(() => {
         console.log("get all trackers")
         fetchTrackers()
-        
     }, [])
+
+    //fixed navbar
+    useEffect(() => {
+        var x = document.getElementById("navbar");
+        x.classList.add("fixed");
+        var y = document.getElementById("footer");
+        y.classList.add("fixed-footer");
+        var z = document.getElementById("footer-brand");
+        z.classList.add("fixed-footer-brand");
+        var zz = document.getElementById("footer-links");
+        zz.classList.add("fixed-footer-links");
+        
+        return () => {
+            var x = document.getElementById("navbar");
+            x.classList.remove("fixed");
+            var y = document.getElementById("footer");
+            y.classList.remove("fixed-footer");
+            var z = document.getElementById("footer-brand");
+            z.classList.remove("fixed-footer-brand");
+            var zz = document.getElementById("footer-links");
+            zz.classList.remove("fixed-footer-links");
+        }
+    }, [props.darkMode])
 
     useEffect(() => {
         setFormData({userID: props.userData._id, url:""})
@@ -84,6 +108,9 @@ export default function Pricetracker(props){
                 ))
             ))
             setPriceGraphData(newArray)
+            setPageLoading(false)
+        }else{
+            setPageLoading(false)
         }
         
     }, [myTrackers])
@@ -150,13 +177,13 @@ export default function Pricetracker(props){
 
     function addTracker(){
         if(isInputValid()){
-            setLoading(true)
+            setButtonLoading(true)
             var newTracker = { ...formData };
             
             const config = {
                 url: process.env.REACT_APP_SERVER+'/newtracker',
                 method: 'POST',
-             
+                timeout:5000,
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,
@@ -191,15 +218,21 @@ export default function Pricetracker(props){
                         //auth error 
                         console.log(response.data.error)
                         navigate("/logout",{ replace: true });
+                    }else{
+                        //too many requests
+                        console.log(response.data.message)
+                        variant = 'info'
+                        enqueueSnackbar(response.data.message,{ variant });
                     }
                 }
                 
             }).finally(()=>{
-                setLoading(false)
+                setButtonLoading(false)
             })
             .catch(function (error) {
+                setButtonLoading(false)
                 const variant = 'error'
-                enqueueSnackbar(error.message,{ variant });
+                enqueueSnackbar("request timeout - try again",{ variant });
                 console.log(error);
             });
         }
@@ -207,7 +240,7 @@ export default function Pricetracker(props){
 
     function deleteTracker(){
         var trackerIDToDelete =deletetrackerID.current;
-        setLoading(true)
+        setButtonLoading(true)
 
         // delete request to server to delete from DB
         const config = {
@@ -239,7 +272,7 @@ export default function Pricetracker(props){
              }
 
         }).finally(()=>{
-            setLoading(false)
+            setButtonLoading(false)
             handleClose()
         }).catch(function (error) {
             const variant = 'error'
@@ -250,7 +283,7 @@ export default function Pricetracker(props){
     }
     // console.log(myTrackers)
     return (
-        <div>
+        <div className="pricetracker-fullpage-wrapper">
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -278,50 +311,62 @@ export default function Pricetracker(props){
             {!props.login && 
                 <div></div>
             }
-            {props.login &&
+            {pageLoading &&
+            // <div className="pricetracker-fullpage-loading-wrapper">
+                <div className="pricetracker-fullpage-loading">
+                    <CircularProgress size="4rem" className="login-loading-circle" />
+                </div>
+            // </div>
+            }
+            {props.login && !pageLoading &&
             <div className="pricetracker-fullpage">
                  <div className="pricetracker-inputcard">
                     <Typography variant="h4" gutterBottom>New price tracker</Typography>
                     <TextField placeholder="https://www.amazon.es/xxx" value={formData.url} onChange={handleChange}  required name="url" className="pricetracker-inputcard-url" id="product_url" label="Amazon product URL" variant="standard" />
                     
-                    {loading ? 
+                    {buttonLoading ? 
                         <CircularProgress size="2rem" className="login-loading-circle" />
                         : 
                         <Button variant="contained" id="addtraker" className="pricetracker-inputcard-submit" type="button" onClick={addTracker}>Add new tracker</Button>
                     }
                 </div>
-                 {myTrackers.length >0 && <div className="pricetracker-mytrackers">
-                    <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
-                    { myTrackers.map((tracker, i) => (
-                        <div className="pricetracker-tracker" key = {i}>
-                            <div className="pricetracker-mytrackers-row" id={tracker._id}>
-                                <a className="pricetracker-mytrackers-img-link" href={tracker.url} target="_blank" rel="noopener noreferrer">
-                                    <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
-                                </a>
-                                <Typography  variant="body1" gutterBottom>{tracker.productInfo.productNumber}</Typography>
-                                {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
-                                <Typography  variant="body1" gutterBottom>{tracker.productInfo.price+"€"}</Typography>
-                                <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/>
+                 
+                <div className="pricetracker-mytrackers">
+                    {myTrackers.length >0 && 
+                    <div>
+                        <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
+                        { myTrackers.map((tracker, i) => 
+                        (
+                            <div className="pricetracker-tracker" key = {i}>
+                                <div className="pricetracker-mytrackers-info" id={tracker._id}>
+                                    <div className="pricetracker-mytrackers-img-wrapper">
+                                        <a className="pricetracker-mytrackers-img-link" href={tracker.url} target="_blank" rel="noopener noreferrer">
+                                            <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
+                                        </a>
+                                    </div>
+                                    <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
+                                    {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
+                                    <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"€"}</Typography>
+                                    <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/>
+                                </div>
+                                {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-graph">
+                                    <ResponsiveContainer width="100%" height="100%" >
+                                        <LineChart
+                                            data={priceGraphData[i].productInfo.prices}
+                                            margin={{top: 0,right: 6,left: -12,bottom: 5,}}
+                                            strokeWidth={2}
+                                            >
+                                            <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
+                                            <YAxis type="number" domain={['dataMin-2', 'dataMax+2']} />
+                                            <Tooltip />
+                                            <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
+                                        </LineChart>
+                                    </ResponsiveContainer>
+                                </div>}
                             </div>
-                            {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-row">
-                                <ResponsiveContainer width="100%" height="100%" >
-                                    <LineChart
-                                        data={priceGraphData[i].productInfo.prices}
-                                        margin={{top: 5,right: 6,left: -12,bottom: 5,}}
-                                        strokeWidth={2}
-                                        >
-                                        <XAxis   padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
-                                        <YAxis type="number" domain={['dataMin-2', 'dataMax+2']} />
-                                        <Tooltip />
-                                        <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 8 }} />
-                                    </LineChart>
-                                </ResponsiveContainer>
-                            </div>}
-                        </div>
-                    ))}
-                    
-                </div>}
-                
+                        ))}
+                    </div>}
+                </div>
             </div>
             }
         </div>

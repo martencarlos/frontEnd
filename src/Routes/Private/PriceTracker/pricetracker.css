@@ -1,38 +1,49 @@
 /* Price Tracker */
 
-@media (min-width: 1200px) {
-    .pricetracker-inputcard{
-        width: 400px !important;
-    }
-}
+
 
 @media (max-width: 770px) {
+
+    .pricetracker-fullpage-wrapper{
+        height: 100% !important;
+    }
     .pricetracker-fullpage{
         flex-direction: column;
+        margin-top: 0px !important;
+        margin-bottom:0px !important
+    }
+
+    .fixed{
+        position: relative !important;
+        width: unset !important; 
+    }
+    .fixed-footer{
+        position: relative !important;
+    }
+    .fixed-footer-brand{
+        padding-left: 0px !important;
+    }
+    .fixed-footer-links{
+        margin-left: 2em !important;
     }
 
     .pricetracker-inputcard{
+        margin: 50px auto;
         order: 1;
-        position: relative !important;
-        
+        margin-left: auto !important;
+        position: relative!important;
         width: 95%!important;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 50px;
-        margin-bottom: 50px;
         
     }
     .pricetracker-mytrackers{
-       order: 2;
-        margin-top: 60px !important;
-        margin-left: 0% !important; 
-        margin-left: auto !important;
+        margin-left: auto!important;
         margin-right: auto;
+        margin-top: 60px!important;
+        order: 2;
         width: 95%!important;
     }
-    .pricetracker-mytrackers-row{
+    .pricetracker-mytrackers-info{
         
-        gap: 12px;
     }
 
     .pricetracker-mytrackers-delete{
@@ -51,24 +62,76 @@
     
 }
 
+/* navbar fixed only on pricetracker page */
+.fixed{
+    /* background-color: rgb(244, 211, 211); */
+    position: fixed;
+    width: calc(100% - 40px);
+    backdrop-filter: blur(30px);
+    background-color: unset !important;
+    /* border-radius: 20px;
+    top: 5px; */
+}
+.fixed-footer{
+    position: fixed;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color:unset !important;
+    backdrop-filter: blur(30px);
+    
+}
+.fixed-footer-brand{
+    padding-left: 2em;
+}
+
+.fixed-footer-links{
+    padding-right: 2em !important;
+}
+
+.pricetracker-fullpage-wrapper{
+    height: 100vh;
+}
 .pricetracker-fullpage{
     display: flex;
-    justify-content: center;
     gap: 5%;
-    margin-top: 8%;
+    justify-content: end;
+    /* margin-right: 5%; */
+    /* justify-content: center; */
+    margin-top: 100px;
+    margin-bottom: 70px;
+}
+
+.pricetracker-fullpage-loading{
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.pricetracker-fullpage-loading-wrapper{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .pricetracker-inputcard{
     display: flex;
     flex-direction: column;
+    position: fixed;
+    left: 0px;
     row-gap: 20px;
-    width: 300px;
+    justify-content: center;
+    height: 74%;
+    margin-left: 50px;
+    /* margin-right: 1%; */
+    width: 40%;
 }
 
 .pricetracker-mytrackers{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    margin-right: 50px;
+    width: 45%;
 }
 
 .pricetracker-mytrackers-header{
@@ -88,9 +151,33 @@
     flex-direction: column;
 }
 
-.pricetracker-mytrackers-row{
+.pricetracker-mytrackers-info{
     display: flex;
     align-items: center;
+    
+    justify-content: space-between;
+}
+
+.pricetracker-mytrackers-title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5em ;
+    word-wrap: break-word;
+    max-height: 2.5em;
+    line-height: 1em;
+}
+
+.pricetracker-mytrackers-price{
+    padding-top: 0.5em ;
+    padding-bottom:0.5em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pricetracker-mytrackers-graph{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
     height: 100px;
     justify-content: space-between;
 }
@@ -101,6 +188,10 @@
     max-height: 100px;
     width: auto;
     height: auto;
+}
+
+.pricetracker-mytrackers-img-wrapper{
+    /* width: 100px; */
 }
 
 .pricetracker-mytrackers-img-link{
