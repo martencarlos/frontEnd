@@ -68,7 +68,7 @@
     /* background-color: rgb(244, 211, 211); */
     position: fixed;
     width: calc(100% - 40px);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px);
     background-color: unset !important;
     /* border-radius: 20px;
     top: 5px; */
@@ -79,7 +79,7 @@
     padding-left: 0px;
     padding-right: 0px;
     background-color:unset !important;
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(10px);
     /* margin-top: 70px; */
 }
 .fixed-footer-brand{
@@ -202,18 +202,23 @@
     justify-content: center;
 }
 
-.pricetracker-mytrackers-url{
+/* .pricetracker-mytrackers-url{
     width: 300px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
+} */
 
 .pricetracker-mytrackers-delete{
     display: flex;
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
+}
+
+/* delete confirmation dialog background */
+.MuiBackdrop-root{
+    backdrop-filter: blur(2px);
 }
 
 .pricetracker-mytrackers-delete :hover{

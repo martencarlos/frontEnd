@@ -15,9 +15,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import Modal from '@mui/material/Modal';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
-import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
 
 export default function Pricetracker(props){
 
@@ -56,7 +53,8 @@ export default function Pricetracker(props){
         handleClose()
     }
 
-    const [buttonLoading, setButtonLoading] = useState(false)
+    const [newTrackerLoading, setNewTrackerLoading] = useState(false)
+    const [deleteTrackerLoading, setDeleteTrackerLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(true)
     const [priceGraphData, setPriceGraphData] = useState([])
     const [myTrackers, setMyTrackers] = useState([])
@@ -177,7 +175,7 @@ export default function Pricetracker(props){
 
     function addTracker(){
         if(isInputValid()){
-            setButtonLoading(true)
+            setNewTrackerLoading(true)
             var newTracker = { ...formData };
             
             const config = {
@@ -227,10 +225,10 @@ export default function Pricetracker(props){
                 }
                 
             }).finally(()=>{
-                setButtonLoading(false)
+                setNewTrackerLoading(false)
             })
             .catch(function (error) {
-                setButtonLoading(false)
+                setNewTrackerLoading(false)
                 const variant = 'error'
                 enqueueSnackbar("request timeout - try again",{ variant });
                 console.log(error);
@@ -240,7 +238,7 @@ export default function Pricetracker(props){
 
     function deleteTracker(){
         var trackerIDToDelete =deletetrackerID.current;
-        setButtonLoading(true)
+        setDeleteTrackerLoading(true)
 
         // delete request to server to delete from DB
         const config = {
@@ -272,7 +270,7 @@ export default function Pricetracker(props){
              }
 
         }).finally(()=>{
-            setButtonLoading(false)
+            setDeleteTrackerLoading(false)
             handleClose()
         }).catch(function (error) {
             const variant = 'error'
@@ -303,10 +301,16 @@ export default function Pricetracker(props){
                     </Typography>
                     <br></br>
                     <br></br>
-                    <div className="delete-confirmation-buttons">
-                        <Button onClick={deleteTracker} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
-                        <Button onClick={cancel} variant="contained" color="text">Cancel</Button>
-                    </div>
+                    {deleteTrackerLoading ?
+                        <div Style={"transform: translate(0px, -15px);display:flex ; justify-content:center"}>
+                            <CircularProgress size="2rem" className="login-loading-circle" />
+                        </div>
+                        :
+                        <div className="delete-confirmation-buttons">
+                            <Button onClick={deleteTracker} variant="contained" startIcon={<DeleteIcon />} color="error">Delete</Button>
+                            <Button onClick={cancel} variant="contained" color="text">Cancel</Button>
+                        </div>
+                    }
                 </div>
             </Modal>
             {!props.login && 
@@ -325,7 +329,7 @@ export default function Pricetracker(props){
                     <Typography variant="h4" gutterBottom>New price tracker</Typography>
                     <TextField placeholder="https://www.amazon.es/xxx" value={formData.url} onChange={handleChange}  required name="url" className="pricetracker-inputcard-url" id="product_url" label="Amazon product URL" variant="standard" />
                     
-                    {buttonLoading ? 
+                    {newTrackerLoading ? 
                         <CircularProgress size="2rem" className="login-loading-circle" />
                         : 
                         <Button variant="contained" id="addtraker" className="pricetracker-inputcard-submit" type="button" onClick={addTracker}>Add new tracker</Button>
