@@ -244,8 +244,8 @@ export default function Account(props){
                     props.updateUserData(response.data.user)
                 }else if(response.data.error){
                     //Auth error
-                    props.toggleLogin()
-                    navigate("/login",{ replace: true });
+                    
+                    navigate("/logout",{ replace: true });
                 }
                 
                 notificationMessage.current = response.data.message
@@ -286,8 +286,8 @@ export default function Account(props){
                 console.log(response.data);
                 if(response.data.error){
                     //Auth error
-                    props.toggleLogin()
-                    navigate("/login",{ replace: true });
+                    
+                    navigate("/logout",{ replace: true });
                 }else if(response.data.message === "account deleted"){
                     navigate('/logout')
                 }else{

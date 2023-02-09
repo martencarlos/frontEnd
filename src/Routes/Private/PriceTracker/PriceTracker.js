@@ -115,8 +115,8 @@ export default function Pricetracker(props){
             if(!data.error)
                 setMyTrackers(data)
             else{
-                props.toggleLogin()
-                navigate("/login",{ replace: true });
+                //Auth error
+                navigate("/logout",{ replace: true });
             }
                 
         }).finally(function(){
@@ -184,8 +184,8 @@ export default function Pricetracker(props){
                      enqueueSnackbar("user tracker added",{ variant });
                 }else{
                     if(response.data.error==="not authenticated"){
-                        props.toggleLogin() 
-                        navigate("/login",{ replace: true });
+                        //auth error 
+                        navigate("/logout",{ replace: true });
                     }
                 }
                 
@@ -224,8 +224,8 @@ export default function Pricetracker(props){
                  enqueueSnackbar("tracker deleted",{ variant });
                  
              }else if(response.data.error){
-                props.toggleLogin();
-                navigate("/login",{ replace: true });
+                //auth error
+                navigate("/logout",{ replace: true });
                 
              }else{
                 const variant = 'error'
