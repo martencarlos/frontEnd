@@ -69,7 +69,7 @@ export default function Dashboard(props){
             axios(config).then(function (response) {
                 if(response.data.error){
                     //Auth error
-                    
+                    console.log(response.data.error)
                     navigate("/logout",{ replace: true });
                 }else{
                     setTrackerAnalytics(response.data)
