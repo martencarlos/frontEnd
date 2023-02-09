@@ -48,7 +48,7 @@
     }
 
     .pricetracker-mytrackers-delete{
-        margin-left: 0 !important;
+        /* margin-left: 0 !important; */
     }
 
     .pricetracker-mytrackers-header{
@@ -211,7 +211,8 @@
 
 .pricetracker-mytrackers-delete{
     display: flex;
-    margin-left: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     cursor: pointer;
 }
 
