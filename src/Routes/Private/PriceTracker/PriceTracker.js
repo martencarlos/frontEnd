@@ -285,6 +285,7 @@ export default function Pricetracker(props){
     return (
         <div className="pricetracker-fullpage-wrapper">
             <Modal
+                disableScrollLock={true}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
