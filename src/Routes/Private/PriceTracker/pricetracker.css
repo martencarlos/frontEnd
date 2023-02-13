@@ -37,7 +37,7 @@
     }
     .pricetracker-mytrackers{
         margin-left: auto!important;
-        margin-right: auto;
+        margin-right: auto !important;
         margin-top: 60px!important;
         order: 2;
         width: 95%!important;
@@ -143,12 +143,12 @@
 
 .pricetracker-tracker{
         display: flex;
-    padding: 15px;
+    padding: 10px;
         overflow: hidden;
     /* border: 1px solid #d8d9d8; */
     background: white;
     border-radius: 20px;
-    margin: 1px;
+    margin-bottom: 10px;
     color: #000000;
     flex-direction: column;
 }
@@ -183,6 +183,12 @@
     height: 100px;
     justify-content: space-between;
 }
+
+.pricetracker-mytrackers-graph .recharts-surface{
+    overflow: visible;
+}
+
+    
 
 .pricetracker-mytrackers-img{
     display: block;
