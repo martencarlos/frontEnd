@@ -138,7 +138,6 @@
 
 .pricetracker-mytrackers-header{
     margin-bottom: 30px !important;
-    
 }
 
 .pricetracker-tracker{
@@ -160,6 +159,10 @@
     justify-content: space-between;
 }
 
+.pricetracker-mytrackers-info-skeleton{
+    display: flex;
+}
+
 .pricetracker-mytrackers-title{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -169,11 +172,33 @@
     line-height: 1em;
 }
 
+.pricetracker-mytrackers-title-skeleton{
+    margin-left: 20px;
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.pricetracker-mytrackers-info-title-text-skeleton{
+    width: 100%;
+}
+
 .pricetracker-mytrackers-price{
     padding-top: 0.5em ;
     padding-bottom:0.5em;
     padding-left: 10px;
     padding-right: 10px;
+}
+.pricetracker-mytrackers-price-column-skeleton{
+    display: flex;
+    margin-left: 15px;
+    display: flex;
+    width: 10%;
+    align-items: center;
+}
+.pricetracker-mytrackers-price-skeleton{
+    width: 100%;
 }
 
 .pricetracker-mytrackers-graph{
@@ -198,6 +223,11 @@
     height: auto;
 }
 
+.pricetracker-mytrackers-info-img-skeleton{
+    min-width: 100px;
+    min-height: 80px;
+}
+
 .pricetracker-mytrackers-img-wrapper{
     /* width: 100px; */
 }
@@ -220,6 +250,19 @@
     margin-left: 20px;
     margin-right: 20px;
     cursor: pointer;
+}
+
+.pricetracker-mytrackers-delete-column-skeleton{
+    display: flex;
+    margin-left: 15px;
+    display: flex;
+    width: 5%;
+    align-items: center;
+}
+
+.pricetracker-mytrackers-delete-skeleton{
+    width: 100%;
+    height: 25px;
 }
 
 /* delete confirmation dialog background */

@@ -1,4 +1,4 @@
- 
+
 import "./pricetracker.css";
 
 import {useState, useEffect, useRef} from "react";
@@ -11,16 +11,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import Skeleton from '@mui/material/Skeleton';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
 import Modal from '@mui/material/Modal';
 
 export default function Pricetracker(props){
 
     console.log("Rendering Price Tracker")
-    
-    
+
+
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     // const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -40,11 +39,11 @@ export default function Pricetracker(props){
     const deletetrackerID = useRef();
 
     function deleteUserConfirmation(e){
-        
+
         //get tracker ID from Event
         if(!e.target.parentNode.id)
             deletetrackerID.current = e.target.parentNode.parentNode.id
-        else 
+        else
             deletetrackerID.current = e.target.parentNode.id
 
         handleOpen()
@@ -79,7 +78,7 @@ export default function Pricetracker(props){
         z.classList.add("fixed-footer-brand");
         var zz = document.getElementById("footer-links");
         zz.classList.add("fixed-footer-links");
-        
+
         return () => {
             var x = document.getElementById("navbar");
             x.classList.remove("fixed-navbar");
@@ -110,15 +109,15 @@ export default function Pricetracker(props){
         }else{
             setPageLoading(false)
         }
-        
+
     }, [myTrackers])
 
     // useEffect(() => {
     //     console.log("updated price graph data: ")
     //     console.log(priceGraphData)
     // }, [priceGraphData])
-    
-    
+
+
     //Set title of page
     useEffect(() => {
         document.title = "Webframe - " + props.title;
@@ -144,9 +143,9 @@ export default function Pricetracker(props){
                 console.log(data.error)
                 navigate("/logout",{ replace: true });
             }
-                
+
         }).finally(function(){
-            
+
         });
     }
 
@@ -171,13 +170,13 @@ export default function Pricetracker(props){
         }else
             return true
     }
-    
+
 
     function addTracker(){
         if(isInputValid()){
             setNewTrackerLoading(true)
             var newTracker = { ...formData };
-            
+
             const config = {
                 url: process.env.REACT_APP_SERVER+'/newtracker',
                 method: 'POST',
@@ -187,12 +186,12 @@ export default function Pricetracker(props){
                     'Access-Control-Allow-Origin': process.env.SERVER,
                 },
                 data: JSON.stringify(newTracker),
-                withCredentials: true, // Now this is was the missing piece in the client side 
+                withCredentials: true, // Now this is was the missing piece in the client side
             };
 
             axios(config).then(function (response) {
                 var variant;
-                
+
                 if(response.data.message === "user tracker already exists"){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
@@ -213,7 +212,7 @@ export default function Pricetracker(props){
                      enqueueSnackbar("user tracker added",{ variant });
                 }else{
                     if(response.data.error==="not authenticated"){
-                        //auth error 
+                        //auth error
                         console.log(response.data.error)
                         navigate("/logout",{ replace: true });
                     }else{
@@ -223,7 +222,7 @@ export default function Pricetracker(props){
                         enqueueSnackbar(response.data.message,{ variant });
                     }
                 }
-                
+
             }).finally(()=>{
                 setNewTrackerLoading(false)
             })
@@ -248,22 +247,22 @@ export default function Pricetracker(props){
                 'Content-Type': 'application/json',
             },
             data: JSON.stringify({id:trackerIDToDelete}),
-            withCredentials: true, // Now this is was the missing piece in the client side 
+            withCredentials: true, // Now this is was the missing piece in the client side
         };
 
         axios(config).then(function (response) {
             console.log(response.data)
              if(response.data === "deleted"){
                  setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
-                
+
                  const variant = 'success'
                  enqueueSnackbar("tracker deleted",{ variant });
-                 
+
              }else if(response.data.error){
                 //auth error
                 console.log(response.data.error)
                 navigate("/logout",{ replace: true });
-                
+
              }else{
                 const variant = 'error'
                 enqueueSnackbar("unexpected error",{ variant });
@@ -277,7 +276,7 @@ export default function Pricetracker(props){
             enqueueSnackbar(error.message,{ variant });
             console.log(error);
         });
-        
+
     }
     // console.log(myTrackers)
     return (
@@ -295,7 +294,7 @@ export default function Pricetracker(props){
                         Confirmation
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Are you sure you want to delete this tracker? 
+                        Are you sure you want to delete this tracker?
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                         All the prices of this tracker will be lost
@@ -314,34 +313,105 @@ export default function Pricetracker(props){
                     }
                 </div>
             </Modal>
-            {!props.login && 
+            {!props.login &&
                 <div></div>
             }
-            {pageLoading &&
-            // <div className="pricetracker-fullpage-loading-wrapper">
-                <div className="pricetracker-fullpage-loading">
-                    <CircularProgress size="4rem" className="login-loading-circle" />
-                </div>
-            // </div>
-            }
-            {props.login && !pageLoading &&
+
+            {props.login &&
             <div className="pricetracker-fullpage">
                  <div className="pricetracker-inputcard">
                     <Typography variant="h4" gutterBottom>New price tracker</Typography>
                     <TextField placeholder="https://www.amazon.es/xxx" value={formData.url} onChange={handleChange}  required name="url" className="pricetracker-inputcard-url" id="product_url" label="Amazon product URL" variant="standard" />
-                    
-                    {newTrackerLoading ? 
+
+                    {newTrackerLoading ?
                         <CircularProgress size="2rem" className="login-loading-circle" />
-                        : 
+                        :
                         <Button variant="contained" id="addtraker" className="pricetracker-inputcard-submit" type="button" onClick={addTracker}>Add new tracker</Button>
                     }
                 </div>
-                 
+
                 <div className="pricetracker-mytrackers">
-                    {myTrackers.length >0 && 
+                    {pageLoading ?
+                    // <div className="pricetracker-fullpage-loading">
+                    //     <CircularProgress size="4rem" className="login-loading-circle" />
+                    // </div>
+                    
+                    <div  className="pricetracker-mytrackers-skeleton" >
+                        <div  className="pricetracker-mytrackers-header-skeleton" >
+                            <Skeleton sx={{ width: 200, height: 50}} animation="wave" variant="rectangular" />
+                        </div>
+                        <br></br>
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
+
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
+                        
+                        
+{/*
+                        <Typography variant="body1"  gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2"  gutterBottom><Skeleton/></Typography>
+                        <Skeleton sx={{ height: 150}} animation="wave" variant="rectangular" />
+                        <Typography variant="body1" gutterBottom><Skeleton/></Typography>
+                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography> */}
+                    </div>
+                    :
                     <div>
                         <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
-                        { myTrackers.map((tracker, i) => 
+                        { myTrackers.map((tracker, i) =>
                         (
                             <div className="pricetracker-tracker" key = {i}>
                                 <div className="pricetracker-mytrackers-info" id={tracker._id}>
