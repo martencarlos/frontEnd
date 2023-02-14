@@ -107,7 +107,7 @@ export default function Pricetracker(props){
             setPriceGraphData(newArray)
             setPageLoading(false)
         }else{
-            setPageLoading(false)
+            // setPageLoading(false)
         }
 
     }, [myTrackers])
@@ -290,13 +290,14 @@ export default function Pricetracker(props){
                 aria-describedby="modal-modal-description"
             >
                 <div className="delete-confirmation">
-                    <Typography id="modal-modal-title" variant="body1" component="h2">
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
                         Confirmation
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <br></br>
+                    <Typography id="modal-modal-description">
                         Are you sure you want to delete this tracker?
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                    <Typography id="modal-modal-description">
                         All the prices of this tracker will be lost
                     </Typography>
                     <br></br>

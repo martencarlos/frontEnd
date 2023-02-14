@@ -115,6 +115,10 @@
     min-height: 100vh;
 }
 
+#modal-modal-title{
+    font-weight: bold;
+}
+
 .pricetracker-inputcard{
     display: flex;
     flex-direction: column;

@@ -89,7 +89,7 @@ div.users .clickable-icon{
 
  .delete-confirmation-buttons{
     display: flex;
-    justify-content: start;
+    justify-content: end;
     gap: 20px;
     align-items: center;
 }
