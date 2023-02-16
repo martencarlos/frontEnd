@@ -4,6 +4,7 @@
     div.home div.sidebar{
         display: none ;
         margin-left: 2px !important;
+        margin-top: 0px !important;
         height: 100%;
         border: 1px solid lightgrey;
     }
