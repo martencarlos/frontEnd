@@ -97,8 +97,6 @@ div.users .clickable-icon{
         transform: translate(-50%, -50%) scale(1);
     }
 }
-
-
  .delete-confirmation-buttons{
     display: flex;
     justify-content: end;
