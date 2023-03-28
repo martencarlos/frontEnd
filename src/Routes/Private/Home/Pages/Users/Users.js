@@ -159,7 +159,7 @@ export default function Users(props){
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <div className="delete-confirmation">
+                <div id="delete-confirmation" className="delete-confirmation">
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         Confirmation
                     </Typography>

@@ -19,6 +19,7 @@ export default function Logout(props){
     console.log("logging out deleting cookie:")
     console.log(getCookie("me"))
     delCookie("me")
+    delCookie("ssid")
     
     return (
         <div></div>

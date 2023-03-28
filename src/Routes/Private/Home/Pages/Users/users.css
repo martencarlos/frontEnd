@@ -69,12 +69,11 @@ div.users div.MuiDataGrid-root{
 
 div.users .clickable-icon{
     cursor: pointer;
-    
 }
 
  .delete-confirmation{
-
     position: absolute;
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -85,7 +84,20 @@ div.users .clickable-icon{
     background-color: white;
     border-radius: 20px;
     padding: 20px;
+
+    animation-name: zoom-in-appear;
+    animation-duration: 0.3s;
 }
+
+@keyframes zoom-in-appear {
+    from {
+        transform: translate(-50%, -50%) scale(0);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
 
  .delete-confirmation-buttons{
     display: flex;

@@ -102,6 +102,7 @@ export default function Login(props){
                     // userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
                 
                     setCookie("me", JSON.stringify(response.data), 90001)
+                    setCookie("ssid",JSON.stringify(response.data.sessions.at(-1)), 90001) //last session
                     navigate({
                         pathname: '/home',
                         state: {  
