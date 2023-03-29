@@ -8,11 +8,14 @@ import {getCookie, setCookie} from "../../../Util/Cookie";
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+
+
 
 export default function Login(props){
     console.log("Rendering Login")
@@ -32,7 +35,6 @@ export default function Login(props){
         }
     )
 
-
     //Set title of page
     useEffect(() => {
         document.title = "Webframe - " + props.title;
@@ -41,20 +43,29 @@ export default function Login(props){
         }
     }, [props.title])
 
+    //Redirect to home if already logged in
     useEffect(() => {
-        // Get the input field
-        var input = document.getElementById("loginForm");
-
-        // Execute a function when the user presses a key on the keyboard
-        input.addEventListener("keypress", function(event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("login").click();
+        if(props.login){
+            navigate("/home",{ replace: true })
         }
-        });
+    }, [props.login,navigate])
+
+    useEffect(() => {
+        if(!props.login){
+            // Get the input field
+            var input = document.getElementById("loginForm");
+
+            // Execute a function when the user presses a key on the keyboard
+            input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("login").click();
+            }
+            });
+        }
       }, [])
 
 
@@ -151,7 +162,7 @@ export default function Login(props){
 
 
     return (
-        <div className={props.darkMode ? "dark" : ""}>
+        !props.login && <div className={props.darkMode ? "dark" : ""}>
         
             <form className="login-form">
                 <Typography variant="h2" gutterBottom>Login</Typography>
@@ -222,6 +233,11 @@ export default function Login(props){
                     
             
                     <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label="keep me logged in" />
+                    <br></br>
+                    <Typography variant="body2" gutterBottom>Not a user yet? &nbsp;
+                        <Link href="/register">create an account</Link>
+                    </Typography>
+                    
                     
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />

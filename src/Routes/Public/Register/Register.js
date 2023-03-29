@@ -35,6 +35,14 @@ export default function Register(props){
             password2: ""
     })
 
+    //redirect if already logged in
+    useEffect(() => {
+        if(props.login){
+            navigate("/home",{ replace: true })
+        }
+    }, [props.login,navigate])
+
+
     //Set title of page
     useEffect(() => {
         document.title = "Webframe - " + props.title;
@@ -52,19 +60,21 @@ export default function Register(props){
     }
 
     useEffect(() => {
-        // Get the input field
-        var input = document.getElementById("registerForm");
+        if(!props.login){
+            // Get the input field
+            var input = document.getElementById("registerForm");
 
-        // Execute a function when the user presses a key on the keyboard
-        input.addEventListener("keypress", function(event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("register-button").click();
+            // Execute a function when the user presses a key on the keyboard
+            input.addEventListener("keypress", function(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("register-button").click();
+            }
+            });
         }
-        });
       }, [])
 
     function validateForm(){
@@ -178,9 +188,9 @@ export default function Register(props){
     }
 
     return (
-        <div className={props.darkMode ? "dark" : ""}>
+        !props.login && <div className={props.darkMode ? "dark" : ""}>
             <form className="register-form">
-                <Typography variant="h2" gutterBottom>Register</Typography>
+                <Typography variant="h4" gutterBottom>Create Account</Typography>
                 <br></br>
                 <div id="registerForm" className="register-form-inputs">
                     <div className="register-form-input-row">
@@ -326,7 +336,7 @@ export default function Register(props){
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (
-                    <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>Register</Button>
+                    <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>Submit</Button>
                     )}
                 </div>
             </form>

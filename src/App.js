@@ -241,6 +241,7 @@ export default function App(){
                     
                     <Login 
                         darkMode = {darkMode}
+                        login = {login}
                         toggleLogin={toggleLogin}
                         title= "Login"
                         />
@@ -255,6 +256,7 @@ export default function App(){
                 <Route path="/register" element={
                     <Register 
                         darkMode = {darkMode}
+                        login = {login}
                         toggleLogin={toggleLogin}
                         title= "Register"
                     />}>  

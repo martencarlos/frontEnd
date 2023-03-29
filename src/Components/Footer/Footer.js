@@ -25,6 +25,9 @@ export default function Footer(props){
                 <li className="nav-item">
                     <Link underline="hover" href="/about" >About</Link>
                 </li>
+                <li className="nav-item">
+                    <Link underline="hover" href="https://status.webframe.one/" >Status</Link>
+                </li>
             </ul>
         </footer>
     )
