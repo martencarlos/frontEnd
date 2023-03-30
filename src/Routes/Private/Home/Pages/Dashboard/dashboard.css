@@ -131,7 +131,10 @@ div.dashboard .mini-widget-title{
     display: flex;
     font-weight: bold;
     color: var(--secondary-color);
-  
+}
+
+div.dashboard .TooltipMUI .MuiTooltip-tooltip {
+    background-color: (var(--primary-color));
 }
 
 div.dashboard .mini-widget-data{

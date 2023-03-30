@@ -10,6 +10,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LoginIcon from '@mui/icons-material/Login';
 import SellIcon from '@mui/icons-material/Sell';
 import { DataGrid } from '@mui/x-data-grid';
+import TooltipMUI from '@mui/material/Tooltip';
 import { BarChart, Bar, AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -180,7 +181,9 @@ export default function Dashboard(props){
             <div className="widget-row">
                 <div className="widget" >
                     <div className="widget-header">
-                        <SellIcon id="title" className="widget-title"/>
+                        <TooltipMUI title="my trackers" placement="right">
+                            <SellIcon id="title" className="widget-title"/>
+                        </TooltipMUI>
                         {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
                         <Typography id="title" className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
                     </div>
