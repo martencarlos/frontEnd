@@ -168,8 +168,9 @@ export default function Register(props){
             .then(function (response) {
                 
                 // const {email,password, errors} = response.data;
-                setCookie("me", JSON.stringify(response.data), 90001)
-                  
+                localStorage.setItem("user",JSON.stringify(response.data))
+                setCookie("uid", JSON.stringify(response.data._id), 90001)
+                setCookie("ssid",JSON.stringify(response.data.sessions.at(-1)), 90001) //last session
                 props.toggleLogin()
                 navigate({
                     pathname: '/home',
