@@ -63,7 +63,7 @@ export default function App(){
 
      // LOGIN
     var [login, setLogin] = React.useState(
-        ()=>getCookie("me") ? true : false
+        ()=>getCookie("uid") ? true : false
     )
     
     function toggleLogin() {
@@ -71,8 +71,7 @@ export default function App(){
     }
 
     function updateUserData(newUserData) {
-        delCookie("me")
-        setCookie("me", JSON.stringify(newUserData), 90001)
+        localStorage.setItem("user",JSON.stringify(newUserData))
         setUserData(newUserData)
     }
 
@@ -90,11 +89,9 @@ export default function App(){
             setUserData({})
         }
 
-        if(getCookie("me")){
-            var cookieUser = JSON.parse(getCookie("me"))
-            // console.log("PARSED COOKIE:")
-            // console.log(cookieUser)
-            setUserData(cookieUser)
+        if(localStorage.getItem("user")){
+            var userInfo = JSON.parse(localStorage.getItem("user"))
+            setUserData(userInfo)
             // console.log("LOCAL STORAGE PIC:")
             // console.log(localStorage.getItem("profilePic"))
             if(!localStorage.getItem("profilePic")){
@@ -120,7 +117,7 @@ export default function App(){
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': process.env.SERVER,
             },
-            data: getCookie("me"),
+            data: JSON.parse(localStorage.getItem("user")),
             withCredentials: true, // Now this is was the missing piece in the client side 
         };
         axios(config).then(function (response) {

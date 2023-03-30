@@ -111,8 +111,8 @@ export default function Login(props){
                     console.log(response.data)
                     // let userInfo = JSON.parse(JSON.stringify(response.data))
                     // userInfo.profilePic = userInfo.profilePic.replace("%2F", "/");
-                
-                    setCookie("me", JSON.stringify(response.data), 90001)
+                    localStorage.setItem("user",JSON.stringify(response.data))
+                    setCookie("uid", JSON.stringify(response.data._id), 90001)
                     setCookie("ssid",JSON.stringify(response.data.sessions.at(-1)), 90001) //last session
                     navigate({
                         pathname: '/home',

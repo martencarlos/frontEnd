@@ -13,12 +13,13 @@ export default function Logout(props){
         localStorage.removeItem("profilePic")
         localStorage.removeItem("firstName")
         localStorage.removeItem("cards")
+        localStorage.removeItem("user")
         navigate("/login")
         console.log("actual clear of localstorage")
       })
     console.log("logging out deleting cookie:")
-    console.log(getCookie("me"))
-    delCookie("me")
+    console.log(getCookie("uid"))
+    delCookie("uid")
     delCookie("ssid")
     
     return (

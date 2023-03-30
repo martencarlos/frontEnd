@@ -93,10 +93,10 @@ export default function FeatureCards(props){
     async function deleteCard(e){
         const card = e.target.parentElement.parentElement
         
-        if(props.login && getCookie("me")){
-            const me =JSON.parse(getCookie("me"))
+        if(props.login && getCookie("uid")){
+            const uid =JSON.parse(getCookie("uid"))
             const deleteInfo={
-                userID: me._id,
+                userID: uid,
                 cardID: card.id
             }
             
