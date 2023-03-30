@@ -107,7 +107,7 @@ export default function Pricetracker(props){
             setPriceGraphData(newArray)
             setPageLoading(false)
         }else{
-            // setPageLoading(false)
+            setPageLoading(false)
         }
 
     }, [myTrackers])
@@ -410,7 +410,7 @@ export default function Pricetracker(props){
                         <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography> */}
                     </div>
                     :
-                    <div>
+                    myTrackers.length>0 && <div>
                         <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
                         { myTrackers.map((tracker, i) =>
                         (
