@@ -115,6 +115,7 @@ export default function Navbar(props){
         var x = document.getElementById("hamb-menu");
         
         if(x.style.display === "flex"){
+            
             console.log(e.target.className)
             console.log(e.target.className.baseVal)
             if (e.target.id ==="hamb-menu" || e.target.id ==="hamb-zone" || 
@@ -122,6 +123,12 @@ export default function Navbar(props){
             {}else if(e.target.className.baseVal){}
             else{
                 x.classList.add("closeMenu");
+                if(e.target.className ==="bar1" || e.target.className ==="bar2" || e.target.className ==="bar3"){
+                }else{
+                    var icon = document.getElementById("hamb-zone");
+                    icon.classList.toggle("openHambMenu");
+                }
+                
                 setTimeout(function() {
                     x.style.display = "none";
                     x.classList.remove("closeMenu");
@@ -133,9 +140,12 @@ export default function Navbar(props){
     //open & close hamburguer by clicking the icon 
     function hambMenuClick(){
         var x = document.getElementById("hamb-menu");
-        
+        console.log("toggling openHambMenu")
+        var icon = document.getElementById("hamb-zone");
+        icon.classList.toggle("openHambMenu");
         if (x.style.display === "flex") {
             x.classList.add("closeMenu");
+            
             setTimeout(function() {
                 x.style.display = "none";
                 x.classList.remove("closeMenu");
@@ -367,8 +377,12 @@ export default function Navbar(props){
                         </div>
                     </div>
                 }
-
-                <MenuRoundedIcon id="hamb-zone" className="hamb-menu-icon" onClick={hambMenuClick}/>
+                <div id="hamb-zone" className="hamb-menu-icon" onClick={hambMenuClick}>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
+                </div>
+                {/* <MenuRoundedIcon id="hamb-zone" className="hamb-menu-icon" onClick={hambMenuClick}/> */}
                  
             </nav>
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
@@ -391,7 +405,8 @@ export default function Navbar(props){
                         <LightModeOutlinedIcon onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {()=>{
                             var x = document.getElementById("hamb-menu");
                             x.style.animationName = "";
-    
+                            var icon = document.getElementById("hamb-zone");
+                            icon.classList.toggle("openHambMenu");
                             x.classList.add("closeMenu");
                             setTimeout(function() {
                                 x.style.display = "none";
@@ -403,7 +418,8 @@ export default function Navbar(props){
                         <DarkModeOutlinedIcon onChange={switchHandler}  sx={{ m: 1 }} color='primary' checked={switchChecked} onClick= {()=>{
                             var x = document.getElementById("hamb-menu");
                             x.style.animationName = "";
-    
+                            var icon = document.getElementById("hamb-zone");
+                            icon.classList.toggle("openHambMenu");
                             x.classList.add("closeMenu");
                             setTimeout(function() {
                                 x.style.display = "none";
