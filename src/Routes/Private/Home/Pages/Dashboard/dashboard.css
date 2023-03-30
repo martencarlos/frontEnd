@@ -133,8 +133,8 @@ div.dashboard .mini-widget-title{
     color: var(--secondary-color);
 }
 
-div.dashboard .TooltipMUI .MuiTooltip-tooltip {
-    background-color: (var(--primary-color));
+.MuiTooltip-tooltip {
+    background-color: var(--secondary-color) !important;
 }
 
 div.dashboard .mini-widget-data{
