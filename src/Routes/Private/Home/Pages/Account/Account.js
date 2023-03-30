@@ -320,7 +320,7 @@ export default function Account(props){
                 aria-describedby="modal-modal-description"
             >
                 <div className="delete-confirmation">
-                    <Typography id="modal-modal-title" variant="body1" component="h2">
+                    <Typography id="modal-modal-title" variant="h6" component="h2">
                         Confirmation
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
