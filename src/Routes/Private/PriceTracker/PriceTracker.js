@@ -48,12 +48,13 @@ export default function Pricetracker(props){
     const deletetrackerID = useRef();
 
     function deleteUserConfirmation(e){
-
-        //get tracker ID from Event
-        if(!e.target.parentNode.id)
-            deletetrackerID.current = e.target.parentNode.parentNode.id
-        else
-            deletetrackerID.current = e.target.parentNode.id
+        // console.log(e.target)
+        // console.log(e.target.parentNode.parentNode.parentNode)
+        // //get tracker ID from Event
+        // if(!e.target.parentNode.id)
+        //     deletetrackerID.current = e.target.parentNode.parentNode.id
+        // else
+        //     deletetrackerID.current = e.target.parentNode.id
 
         handleOpen()
     }
@@ -64,6 +65,7 @@ export default function Pricetracker(props){
     const [trackerOptionAnchor, setTrackerOptionAnchor] = useState(null);
     const trackerOptionState = Boolean(trackerOptionAnchor);
     const setTrackerOptionsAnchor = (event) => {
+        deletetrackerID.current =event.currentTarget.parentNode.id
         setTrackerOptionAnchor(event.currentTarget);
     };
     const removeTrackerOptionsAnchor = () => {
