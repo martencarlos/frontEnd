@@ -457,6 +457,14 @@ export default function Pricetracker(props){
                                     </IconButton>
                                     <Menu
                                         elevation={2}
+                                        anchorOrigin={{
+                                            vertical: 'center',
+                                            horizontal: 'left',
+                                          }}
+                                          transformOrigin={{
+                                            vertical: 'center',
+                                            horizontal: 'right',
+                                          }}
                                         disableScrollLock={true}
                                         id="tracker-options"
                                         MenuListProps={{
@@ -465,9 +473,9 @@ export default function Pricetracker(props){
                                         anchorEl={trackerOptionAnchor}
                                         open={trackerOptionState}
                                         onClose={removeTrackerOptionsAnchor}
-                                        style={{ // Add here you negative margin
-                                            marginLeft: "-40px"
-                                        }}
+                                        // style={{ // Add here you negative margin
+                                        //     marginLeft: "-40px"
+                                        // }}
                                     >
                                         <MenuList dense>
                                             <MenuItem onClick={(e)=>{

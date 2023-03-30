@@ -12,6 +12,7 @@
         width: auto !important;
         min-width:unset !important;
         max-width: unset !important;
+        margin: 5px !important;
     }
     div.blog-posts-skeleton{
         width: auto !important;
@@ -89,7 +90,7 @@ div.blog-posts{
     flex-direction: column;
     align-items: center;
     width: 30%;
-    margin: 5px;
+    margin: 20px;
 }
 
 div.blog-posts-skeleton{
