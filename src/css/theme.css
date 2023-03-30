@@ -165,6 +165,10 @@ div.navbar div.sign-buttons .nav-button.dark{
     
 }
 
+body.dark div.navbar .hamb-menu-icon div{
+    background-color: var(--secondary-light)
+}
+
 /* input dark mode */
 
 div.dark .login-form {
