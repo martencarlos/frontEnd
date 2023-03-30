@@ -15,11 +15,20 @@ import Skeleton from '@mui/material/Skeleton';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Modal from '@mui/material/Modal';
 
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import MenuList from '@mui/material/MenuList';
+import { positions } from "@mui/system";
+
 export default function Pricetracker(props){
 
     console.log("Rendering Price Tracker")
 
-
+    
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     // const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -52,6 +61,15 @@ export default function Pricetracker(props){
         handleClose()
     }
 
+    const [trackerOptionAnchor, setTrackerOptionAnchor] = useState(null);
+    const trackerOptionState = Boolean(trackerOptionAnchor);
+    const setTrackerOptionsAnchor = (event) => {
+        setTrackerOptionAnchor(event.currentTarget);
+    };
+    const removeTrackerOptionsAnchor = () => {
+        setTrackerOptionAnchor(null);
+    };
+
     const [newTrackerLoading, setNewTrackerLoading] = useState(false)
     const [deleteTrackerLoading, setDeleteTrackerLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(true)
@@ -61,6 +79,7 @@ export default function Pricetracker(props){
         userID: "",
         url:""
     })
+    
 
     // get trackers
     useEffect(() => {
@@ -125,6 +144,8 @@ export default function Pricetracker(props){
             document.title = "Webframe"
         }
     }, [props.title])
+
+   
 
     async function fetchTrackers(){
         await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
@@ -424,7 +445,42 @@ export default function Pricetracker(props){
                                     <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
                                     {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
                                     <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"€"}</Typography>
-                                    <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/>
+                                    <IconButton
+                                        aria-label="more options"
+                                        id="tracker-options"
+                                        aria-controls={open ? 'tracker-options' : undefined}
+                                        aria-expanded={open ? 'true' : undefined}
+                                        aria-haspopup="true"
+                                        onClick={setTrackerOptionsAnchor}
+                                    >
+                                        <MoreVertIcon />
+                                    </IconButton>
+                                    <Menu
+                                        elevation={2}
+                                        disableScrollLock={true}
+                                        id="tracker-options"
+                                        MenuListProps={{
+                                        'aria-labelledby': 'tracker-options',
+                                        }}
+                                        anchorEl={trackerOptionAnchor}
+                                        open={trackerOptionState}
+                                        onClose={removeTrackerOptionsAnchor}
+                                        style={{ // Add here you negative margin
+                                            marginLeft: "-40px"
+                                        }}
+                                    >
+                                        <MenuList dense>
+                                            <MenuItem onClick={(e)=>{
+                                                removeTrackerOptionsAnchor()
+                                                deleteUserConfirmation(e)}}>
+                                                <ListItemIcon>
+                                                    <DeleteIcon  color="error" className="pricetracker-mytrackers-delete"/>
+                                                </ListItemIcon>
+                                                <ListItemText>Delete Tracker</ListItemText>
+                                            </MenuItem>
+                                        </MenuList>
+                                    </Menu>
+                                    {/* <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/> */}
                                 </div>
                                 {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-graph">
                                     <ResponsiveContainer width="100%" height="100%" >

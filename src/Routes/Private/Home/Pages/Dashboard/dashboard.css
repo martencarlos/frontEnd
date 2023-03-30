@@ -75,7 +75,10 @@ div.dashboard div.mini-widget{
     justify-content: center;
     align-items: center;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    
+}
+
+ #total-users{
+    cursor: pointer;
 }
 
 div.dashboard .data-widget{

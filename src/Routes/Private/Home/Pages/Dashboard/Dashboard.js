@@ -174,12 +174,14 @@ export default function Dashboard(props){
         
     }, [])
 
+    function openUsers(){
+        navigate("/home/users");
+    }
 
     return (
-        
         <div className="dashboard">
             <div className="widget-row">
-                <div className="widget" >
+                <div className="widget">
                     <div className="widget-header">
                         <TooltipMUI title="my trackers" placement="right">
                             <SellIcon id="title" className="widget-title"/>
@@ -233,7 +235,7 @@ export default function Dashboard(props){
                 </div>
 
                 <div className="widget-half-row">
-                    <div className="mini-widget" >
+                    <div id="total-users" onClick={openUsers} className="mini-widget" >
                         <div className="mini-widget-header">
                             <PeopleAltIcon className="mini-widget-icon"/>
                             <Typography className="mini-widget-title" variant="body1" >Total Users</Typography>

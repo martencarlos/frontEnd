@@ -249,10 +249,13 @@
     white-space: nowrap;
 } */
 
+.css-6hp17o-MuiList-root-MuiMenu-list{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
 .pricetracker-mytrackers-delete{
     display: flex;
-    margin-left: 20px;
-    margin-right: 20px;
     cursor: pointer;
 }
 
@@ -274,10 +277,7 @@
     backdrop-filter: blur(5px);
 }
 
-.pricetracker-mytrackers-delete :hover{
-   
-    color: rgb(255, 34, 34);
-}
+
 
 .pricetracker-inputcard-submit{
     margin-top: 4px;
