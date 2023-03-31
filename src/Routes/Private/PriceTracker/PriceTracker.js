@@ -147,7 +147,26 @@ export default function Pricetracker(props){
         }
     }, [props.title])
 
-   
+    //Enter key press to submit URL
+    useEffect(() => {
+        // Get the input field
+        var input = document.getElementById("product_url");
+        function sumbitFunction(event) {
+            // If the user presses the "Enter" key on the keyboard
+            if (event.key === "Enter") {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("addtraker").click();
+            }
+        }
+        // Execute a function when the user presses a key on the keyboard
+        input.addEventListener("keypress", sumbitFunction);
+        
+        return () => {
+            input.removeEventListener('keypress', sumbitFunction);
+        }
+      }, [])
 
     async function fetchTrackers(){
         await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
@@ -225,6 +244,13 @@ export default function Pricetracker(props){
                     variant = 'info'
                     enqueueSnackbar(response.data.message,{ variant });
                 }else if(!response.data.error){
+                    //Clear URL form data and field value
+                    setFormData(prevFormData => ({
+                        ...prevFormData,
+                        url: ""
+                    }))
+                    var productURL = document.getElementById("product_url");
+                    productURL.value=""
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,
