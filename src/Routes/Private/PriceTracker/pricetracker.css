@@ -234,9 +234,7 @@
     min-height: 80px;
 }
 
-.pricetracker-mytrackers-img-wrapper{
-    /* width: 100px; */
-}
+
 
 .pricetracker-mytrackers-img-link{
     width: 100px;
@@ -256,6 +254,11 @@
 .css-6hp17o-MuiList-root-MuiMenu-list{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
+}
+
+.css-r8u8y9 {
+        padding: 0px;
+        padding-inline-start: 0px;
 }
 
 .pricetracker-mytrackers-delete{
