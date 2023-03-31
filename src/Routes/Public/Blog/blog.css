@@ -16,8 +16,8 @@
     }
     div.blog-posts-skeleton{
         width: auto !important;
-        margin-left: 40px !important;
-        margin-right: 40px !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
         min-width:unset !important;
         max-width: unset !important;
     }
@@ -31,8 +31,8 @@
     }
     div.blog-mainArticle-skeleton{
         width: auto !important;
-        margin-left: 40px !important;
-        margin-right: 40px !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
         min-width: unset !important;
         max-width: unset !important;
     }
