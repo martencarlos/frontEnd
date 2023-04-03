@@ -2,6 +2,7 @@
 import "./blog.css";
 
 import Summary from "../../../Components/ArticleSummary/ArticleSummary";
+import TimelinePost from "../../../Components/TimelinePost/TimelinePost"
 import Article from "../../../Components/Article/Article";
 import {useNavigate,useParams} from "react-router-dom";
 
@@ -205,21 +206,33 @@ export default function Blog(props){
                         <br></br>
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                         <br></br>
-                        {posts.slice(0, numberOfArticles).map((post, i) => (
+                        <div className="timeline">
+                            {posts.map((post, i) => (
+                                <div key = {i}>
+                                    <TimelinePost
+                                        darkMode = {props.darkmode}
+                                        item = {post}
+                                        selected = {((blogRootUrl+"?p="+id) === post.id)}
+                                        openArticle = {openArticle}
+                                    />
+                                </div> 
+                            ))}
+                        </div>
+                        {/* {posts.slice(0, numberOfArticles).map((post, i) => (
                             ((blogRootUrl+"?p="+id) !== post.id) &&
                             <div key = {i}>
                                 <Summary
                                     darkMode = {props.darkmode}
                                     item = {post}
                                     openArticle = {openArticle}
-                                    />
+                                />
                                 
                                 <div className="separator"></div>
 
                             </div>
                         ))}
                         {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
-                        }
+                        } */}
                     </div>
                     }
                 </div>
