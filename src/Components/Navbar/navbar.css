@@ -235,6 +235,7 @@ Button.bt-nav-link:hover{
 .bt-nav-link-dropdown{
     padding: 5px !important;
     border-radius: 4px;
+    height: 34.5px;
     color: var(--primary-text) !important;
 }
 div.dark .bt-nav-link-dropdown{

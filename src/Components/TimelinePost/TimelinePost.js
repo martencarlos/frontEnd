@@ -19,7 +19,7 @@ export default function ArticleSummary(props){
                 <div id={props.item.id} className="container right right_selected" onClick={props.openArticle}>
                     <div class="content selected" >
                     
-                        <Typography  className="published" variant="h6" > {props.item.published.substring(0,16)}</Typography> 
+                        <Typography  className="published" variant="h6" > {props.item.published.substring(5,16)}</Typography> 
                         <Typography className="title" variant="body2" >  {props.item.title} </Typography>
                         {/* <img alt="img" src= {props.item.imageUrl} className="summaryImage"></img> */}
                         {/* <Typography className="summary" variant="body2" > {props.item.summary}</Typography> */}
@@ -28,7 +28,7 @@ export default function ArticleSummary(props){
             :
                 <div id={props.item.id} className="container right" onClick={props.openArticle}>
                     <div class="content">
-                        <Typography  className="published" variant="h6" > {props.item.published.substring(0,16)}</Typography> 
+                        <Typography  className="published" variant="h6" > {props.item.published.substring(5,16)}</Typography> 
                         <Typography className="title" variant="body2" >  {props.item.title} </Typography>
                         {/* <img alt="img" src= {props.item.imageUrl} className="summaryImage"></img> */}
                         {/* <Typography className="summary" variant="body2" > {props.item.summary}</Typography> */}
