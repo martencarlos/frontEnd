@@ -94,7 +94,7 @@ div.hamb-menu{
     justify-content: space-between;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: var(--primary-light);
+    background-color: white;
     /* animation-name: openMenu; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation-duration: 0.2s;
