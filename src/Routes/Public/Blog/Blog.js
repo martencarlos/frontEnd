@@ -33,8 +33,8 @@ export default function Blog(props){
     const [numberOfArticles, setNumerOfArticles] = useState(5);
     
     const loadMoreImages = () => {
-        if(posts.length >= (numberOfArticles+2))
-            setNumerOfArticles(numberOfArticles + 2)
+        if(posts.length >= (numberOfArticles+4))
+            setNumerOfArticles(numberOfArticles + 4)
         else if(posts.length > numberOfArticles){
             setNumerOfArticles(posts.length)
         }
@@ -207,7 +207,7 @@ export default function Blog(props){
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                         <br></br>
                         <div className="timeline">
-                            {posts.map((post, i) => (
+                            {posts.slice(0, numberOfArticles).map((post, i) => (
                                 <div key = {i}>
                                     <TimelinePost
                                         darkMode = {props.darkmode}
@@ -218,6 +218,9 @@ export default function Blog(props){
                                 </div> 
                             ))}
                         </div>
+                        <br></br>
+                        {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
+                        }
                         {/* {posts.slice(0, numberOfArticles).map((post, i) => (
                             ((blogRootUrl+"?p="+id) !== post.id) &&
                             <div key = {i}>
@@ -230,9 +233,8 @@ export default function Blog(props){
                                 <div className="separator"></div>
 
                             </div>
-                        ))}
-                        {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
-                        } */}
+                        ))} */}
+                        
                     </div>
                     }
                 </div>
