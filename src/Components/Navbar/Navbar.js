@@ -247,7 +247,7 @@ export default function Navbar(props){
                             hambMenuClick()
                             navigate('/projects/priceTracker')
                             }}>
-                            Price Tracker
+                            Price Tracker (login)
                         </MenuItem>
                         
                     </Menu>

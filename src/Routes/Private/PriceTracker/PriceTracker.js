@@ -149,22 +149,24 @@ export default function Pricetracker(props){
 
     //Enter key press to submit URL
     useEffect(() => {
-        // Get the input field
-        var input = document.getElementById("product_url");
-        function sumbitFunction(event) {
-            // If the user presses the "Enter" key on the keyboard
-            if (event.key === "Enter") {
-                // Cancel the default action, if needed
-                event.preventDefault();
-                // Trigger the button element with a click
-                document.getElementById("addtraker").click();
+        if(props.login){
+            // Get the input field
+            var input = document.getElementById("product_url");
+            function sumbitFunction(event) {
+                // If the user presses the "Enter" key on the keyboard
+                if (event.key === "Enter") {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("addtraker").click();
+                }
             }
-        }
-        // Execute a function when the user presses a key on the keyboard
-        input.addEventListener("keypress", sumbitFunction);
-        
-        return () => {
-            input.removeEventListener('keypress', sumbitFunction);
+            // Execute a function when the user presses a key on the keyboard
+            input.addEventListener("keypress", sumbitFunction);
+            
+            return () => {
+                input.removeEventListener('keypress', sumbitFunction);
+            }
         }
       }, [])
 
@@ -181,9 +183,11 @@ export default function Pricetracker(props){
             if(!data.error)
                 setMyTrackers(data)
             else{
-                //Auth error
-                console.log(data.error)
-                navigate("/logout",{ replace: true });
+                if (props.login){
+                    //Auth error
+                    console.log(data.error)
+                    navigate("/logout",{ replace: true });
+                }
             }
 
         }).finally(function(){
