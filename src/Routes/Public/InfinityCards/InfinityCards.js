@@ -32,6 +32,7 @@ export default function FeatureCards(props){
 
     // Assign the cardsLength
     useEffect(function(){
+        
         var postsPerPage = 8;
         var postNumber = 8;
         cardsLength.current=cards.length
@@ -77,7 +78,7 @@ export default function FeatureCards(props){
                 // Last posts
                 if(postNumber>=cardsLength.current){
                     postNumber = cardsLength.current
-                    window.removeEventListener("scroll",handleScroll)
+                    // window.removeEventListener("scroll",handleScroll)
                 }
                 setPosts([...Array(postNumber).keys()]);
             }
@@ -91,8 +92,15 @@ export default function FeatureCards(props){
 //*************************** Functions *******************************************
     
     async function deleteCard(e){
-        const card = e.target.parentElement.parentElement
+        var card;
+        if(e.target.parentElement.id){
+            card = e.target.parentElement
+        }else{
+            card = e.target.parentElement.parentElement
+        }
         
+        console.log("DEBUG - deleting card ID:")
+        console.log(e.target.parentElement.parentElement)
         if(props.login && getCookie("uid")){
             const uid =JSON.parse(getCookie("uid"))
             const deleteInfo={
@@ -120,7 +128,10 @@ export default function FeatureCards(props){
                     
                     setTimeout(function() {
                         // This will execute 5 seconds later
-                        card.parentElement.removeChild(card)
+                        // card.parentElement.removeChild(card)
+                        posts.pop()
+                        setPosts(posts)
+                        setCards(cards.filter(item => item._id !== deleteInfo.cardID));
                     }, 400);
                     
                 }else{
@@ -134,9 +145,6 @@ export default function FeatureCards(props){
         }
     }
 
-        // //Add a card functionality
-
-    
 
     //cards
     useEffect(() => {
@@ -157,21 +165,22 @@ export default function FeatureCards(props){
         };
         axios(config) 
         .then(function (response) {
-            
+            console.log("debug - newly added card:")
+            console.log(response.data)
+            setCards(prevCards => {
+            return [
+                ...prevCards,
+                response.data
+            ]
+            })
         })
         .catch(function (error) {
             console.log(error);
         });
-
-        setCards(prevCards => {
-            return [
-                ...prevCards,
-                newCard
-            ]
-        })
     }
    
-
+    console.log(cards)
+    console.log(posts)
     return (
         <feature is="x3d" className={props.darkMode ? "dark" : ""}>
            {props.login && 
