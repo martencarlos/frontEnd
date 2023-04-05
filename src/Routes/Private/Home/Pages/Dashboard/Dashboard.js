@@ -178,6 +178,8 @@ export default function Dashboard(props){
         navigate("/home/users");
     }
 
+    var style = getComputedStyle(document.body)
+
     return (
         <div className="dashboard">
             <div className="widget-row">
@@ -196,9 +198,9 @@ export default function Dashboard(props){
                                 margin={{top: 5,right: 30,left: 20,bottom: 5,}}
                                 strokeWidth={2}
                                 >
-                                <XAxis padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="month" />
+                                <XAxis padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--secondary-color').trim()} dataKey="month" />
                                 <Tooltip />
-                                <Area strokeWidth={1} type="monotone" dataKey="trackers" stroke="#f17e5b" fillOpacity={0.6} fill="#FF5733" activeDot={{ r: 6 }} />
+                                <Area strokeWidth={1} type="monotone" dataKey="trackers" stroke={style.getPropertyValue('--secondary-color').trim()} fillOpacity={0.6} fill={style.getPropertyValue('--secondary-color').trim()} activeDot={{ r: 6 }} />
                             </AreaChart>
                         </ResponsiveContainer>
                     }
@@ -216,8 +218,8 @@ export default function Dashboard(props){
                             <ResponsiveContainer width="100%" height="100%" >
 
                                 <BarChart width={150} height={40} data={userAnalytics} margin={{top: 5,right: 30,left: 20,bottom: 5,}}>
-                                    <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
-                                    <Bar dataKey="users" fill="#8884d8" />
+                                    <XAxis padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--primary-color').trim()} dataKey="month" />
+                                    <Bar dataKey="users" fill={style.getPropertyValue('--primary-color').trim()} />
                                     <Tooltip />
                                 </BarChart>
                                 {/* <LineChart

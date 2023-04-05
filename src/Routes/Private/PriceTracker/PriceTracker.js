@@ -331,6 +331,7 @@ export default function Pricetracker(props){
         });
 
     }
+    var style = getComputedStyle(document.body)
     // console.log(myTrackers)
     return (
         <div className="pricetracker-fullpage-wrapper">
@@ -529,10 +530,10 @@ export default function Pricetracker(props){
                                             margin={{top: 0,right: 6,left: -12,bottom: 0,}}
                                             strokeWidth={2}
                                             >
-                                            <XAxis strokeWidth={1} padding={{ left: 30, right: 30 }} stroke="#f17e5b" dataKey="date" />
-                                            <YAxis hide={true} strokeWidth={1} type="number" stroke="#f17e5b" domain={['dataMin-2', 'dataMax+2']} />
+                                            <XAxis strokeWidth={1} padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--secondary-color').trim()} dataKey="date" />
+                                            <YAxis hide={true} strokeWidth={1} type="number" stroke={style.getPropertyValue('--secondary-color').trim()} domain={['dataMin-2', 'dataMax+2']} />
                                             <Tooltip />
-                                            <Line strokeWidth={2} type="monotone" dataKey="price" stroke="#f17e5b" activeDot={{ r: 6 }} />
+                                            <Line strokeWidth={2} type="monotone" dataKey="price" stroke={style.getPropertyValue('--secondary-color').trim()} activeDot={{ r: 6 }} />
                                         </LineChart>
                                     </ResponsiveContainer>
                                 </div>}

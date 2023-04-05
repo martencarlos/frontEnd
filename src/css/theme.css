@@ -27,15 +27,23 @@ input {
 
 :root {
     
-    --primary-light: #e3e6fc;
-    --primary-color: #7986cb;
-    --primary-dark: #47589b;
+    --primary-light: #cbd6d3;
+    --primary-color: #3b5451;
+    --primary-dark: #1d2c2a;
+    /* --primary-color: #7986cb; */
+    /* --primary-dark: #47589b; */
+    
+
 
     --background-color: #f17e5b; 
 
-    --secondary-light: #fcf0eb;
-    --secondary-color: #f17e5b; 
-    --secondary-dark: #c63f17;
+    --secondary-light: #e6eefe;
+    --secondary-color: #3e556d;
+    --secondary-dark: #1d2e3f;
+    /* --secondary-color: #f17e5b;   */
+    /* --secondary-dark: #c63f17; */
+    
+
 
     /* --primary-light: #AEBDCA;
     --primary-color: #7895B2;
@@ -244,6 +252,11 @@ feature.dark {
     background-color: #f1f1f1;
 } 
 
+/* Price tracker */
+div.dark .css-kv8t8y-MuiTypography-root-MuiLink-root {
+    color: var(--primary-light);
+}
+
 /* Home */
 div.sidebar.dark{
     background-color: #000000!important;
@@ -251,8 +264,8 @@ div.sidebar.dark{
 }
 
 /* Footer */
-footer.dark {
-    background-color: #000000;
-    color: white;    
+div.dark .footer-brand {
+    
+    color: var(--primary-light);    
 }
 
