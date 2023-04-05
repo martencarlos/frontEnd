@@ -1,6 +1,7 @@
 
 import "./product.css";
 import Link from '@mui/material/Link';
+import Chip from '@mui/material/Chip';
 
 export default function Product(props){
     
@@ -15,7 +16,11 @@ export default function Product(props){
                     <div className="product-title">{item.title}</div>
                     <div className="product-mobile-bundle"> 
                         <div className="product-column">{item.price}</div>
-                        <div className="product-column"><Link href={item.url} className="link" underline="always">Amazon</Link></div>
+                        <div className="product-column">
+                            <a href={item.url} className="chip-link">
+                                <Chip color="primary" variant="filled" label="Amazon"/>
+                            </a>
+                        </div>
                     </div>
                 </div>
             ))}

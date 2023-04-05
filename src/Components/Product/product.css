@@ -83,6 +83,20 @@ img.table-product-img{
     border-radius: 10px;
 }
 
+a{
+   user-select: none;
+   text-decoration: none;
+}
+
+a .MuiChip-root{
+   cursor: pointer;
+}
+
+a .MuiChip-label{
+   user-select: none;
+   text-decoration: none;
+}
+
 
 
 

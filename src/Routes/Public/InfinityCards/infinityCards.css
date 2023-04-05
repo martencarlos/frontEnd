@@ -4,8 +4,10 @@ feature{
     display: flex;
     font-size: large;
     flex-direction: column;
-    margin-left: 60px;
-    margin-right: 60px;
+    background-color: var(--primary-color);
+    padding-left: 60px;
+    padding-right: 60px;
+    color:white;
 }
 
 .cards-list {

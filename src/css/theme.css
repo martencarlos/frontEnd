@@ -265,7 +265,9 @@ div.sidebar.dark{
 
 /* Footer */
 div.dark .footer-brand {
-    
     color: var(--primary-light);    
 }
 
+div.dark .css-1358sf3-MuiTypography-root-MuiLink-root{
+    color: var(--primary-light);
+}
