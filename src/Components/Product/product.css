@@ -87,13 +87,8 @@ a{
    user-select: none;
    text-decoration: none;
    border-radius: 30%;
+   -webkit-tap-highlight-color: transparent;
    outline: none;
-}
-
-a:active, 
-a:focus {
-  outline: none;
-  user-select: none;
 }
 
 a:hover{
