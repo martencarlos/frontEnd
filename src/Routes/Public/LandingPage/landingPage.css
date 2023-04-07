@@ -5,9 +5,24 @@
         width:auto !important;
     }
 
+    div.landingPage .title {
+     color:var(--primary-light) !important;
+      font-size: xx-large !important;
+     margin-bottom: 80px;
+     color:red;
+   }
+
     div.landingPage .text {
         margin:0px !important;
       }
+
+    div.landingPage .background{
+      height:100% !important;
+    }
+
+    div.landingPage {
+      height:auto !important;
+    }
 }
 
 @media (min-width: 900px) {
@@ -27,7 +42,7 @@ div.main{
 div.landingPage{
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: calc(100dvh - 101px);
     overflow: hidden;
     justify-content: center;
     color: var(--primary-light);
@@ -49,10 +64,8 @@ div.landingPage .title {
 div.landingPage .background{
     position: absolute;
     background-color: var(--primary-color);
-    height: 100vh;
+    height: calc(100dvh - 101px);
     width: 100%;
-    padding-bottom: 30px;
-    margin-top: 30px;
     z-index:-1;
     -webkit-filter: blur(2px);
     filter: blur(2px);

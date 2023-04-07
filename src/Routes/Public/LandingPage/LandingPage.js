@@ -37,7 +37,9 @@ export default function Main(props){
                     title = {landingHero.title}
                     text = {landingHero.text}
                     link={false}
+                    button={true}
                 />
+                
                 <div className="background"></div>
             </div>
 

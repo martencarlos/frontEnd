@@ -3,11 +3,11 @@
 
 const landingHero = 
     {
-        title: "What is Webframe?",
+        title: "Webframe App",
         text: 
-                `Webframe is the construction frame for any website. It offers all the basic tools in order to build your Web Application with full flexibility.
+                `Create your full-featured Website Application easily and fast with Webframe. Take a look at some website projects created with Webframe in the /projects tab.
 
-                This is your first and only stop to start building your fully modularized & customizable Website.`
+                Wordpress, Webflow, Shopify, Squarespace or Wix are great for standard static website creation. But if you are looking to create your own professional Website Application with the help of our developers check out Webframe.`
     }
 ;
 
