@@ -92,6 +92,7 @@ a{
 a:active, 
 a:focus {
   outline: none;
+  user-select: none;
 }
 
 a:hover{
