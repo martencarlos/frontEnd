@@ -47,7 +47,9 @@ div.landingPage{
     justify-content: center;
     color: var(--primary-light);
     padding-bottom: 30px;
-    
+    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-dark),var(--primary-color));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(2em);
 }
 
 div.main div.landingPage .hero{
@@ -56,6 +58,7 @@ div.main div.landingPage .hero{
 
 div.landingPage .title {
   color:var(--primary-light) !important;
+   margin-bottom: 30px !important;
    font-size: xxx-large;
 }
 

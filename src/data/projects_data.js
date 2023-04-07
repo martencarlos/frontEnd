@@ -2,7 +2,7 @@
 
 const sectionHeader = 
     {
-        title: "Live projects",
+        title: "Webframe projects",
         text: 
                 `Collection of all sandboxed live projects used in Webframe’s Web Application. The website is completely modular and new features are added progressively in the form of Sandboxed projects.
 

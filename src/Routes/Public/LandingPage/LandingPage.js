@@ -40,7 +40,7 @@ export default function Main(props){
                     button={true}
                 />
                 
-                <div className="background"></div>
+                {/* <div className="background"></div> */}
             </div>
 
             <Projects className= "projects"
