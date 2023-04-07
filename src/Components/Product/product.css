@@ -87,6 +87,7 @@ a{
    user-select: none;
    text-decoration: none;
    border-radius: 30%;
+   outline: none;
 }
 
 a:active, 
@@ -97,6 +98,7 @@ a:focus {
 
 a:hover{
    text-decoration: none !important;
+   outline: none;
 }
 
  a .MuiChip-root{
