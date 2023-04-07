@@ -22,7 +22,7 @@ export default function Hero(props){
                 }
                 {props.button &&
                 <div className="hero-button">
-                    <Button href="mailto:martencarlos@gmail.com" style={{color: "white"}} color="secondary" variant="contained" endIcon={<SendIcon />}>
+                    <Button href="mailto:martencarlos@gmail.com?subject=Webframe - contact" style={{color: "white"}} color="secondary" variant="contained" endIcon={<SendIcon />}>
                         Get in touch
                     </Button>
                 </div>
