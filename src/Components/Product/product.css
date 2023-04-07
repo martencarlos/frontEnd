@@ -86,16 +86,31 @@ img.table-product-img{
 a{
    user-select: none;
    text-decoration: none;
+   border-radius: 30%;
+}
+a:hover{
+   text-decoration: none !important;
 }
 
-a .MuiChip-root{
+ a .MuiChip-root{
    cursor: pointer;
+}
+/*
+
+a:hover .MuiChip-label {
+   user-select: none;
+   text-decoration: none !important;
+}
+
+a:hover .MuiChip-label span{
+   user-select: none;
+   text-decoration: none !important;
 }
 
 a .MuiChip-label{
-   user-select: none;
+   user-select: none ;
    text-decoration: none;
-}
+} */
 
 
 
