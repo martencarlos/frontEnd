@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import ForwardIcon from '@mui/icons-material/Forward';
 
 export default function Hero(props){
     console.log("Rendering Hero component")
@@ -18,7 +19,12 @@ export default function Hero(props){
                 <Typography variant="h4" className="title">{props.title}</Typography>
                 <Typography variant="body1"  className="text">{props.text}</Typography>
                 {props.link &&
-                <Link href={props.linkPath} className="link" underline="always">{props.linkText}</Link>
+                <div className="hero-button">
+                    <Button href={props.linkPath} style={{color: "white"}} color="secondary" variant="contained" endIcon={<ForwardIcon />}>
+                        {props.linkText}
+                    </Button>
+                </div>
+                // <Link href={props.linkPath} className="link" underline="always">{props.linkText}</Link>
                 }
                 {props.button &&
                 <div className="hero-button">

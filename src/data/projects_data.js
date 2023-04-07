@@ -17,7 +17,7 @@ const infinityCards =
                 `A project based on a basic free React course where you can create and delete cards. 
 
                 The cards are responsive based on the size of the screen and dynamically loaded when scrolling down. Incredibly useful for every web application.`,
-        linkText: "Go to demo >"
+        linkText: "Go to demo "
     }
 ;
 
@@ -27,8 +27,8 @@ const blogIntegration =
         text: 
                 `A blog is a basic component for any website where the team can share news with the world. But to create a blog requires a lot of time. 
 
-                Why not integrate with a great Blog editor like Medium?`,
-        linkText: "Go to demo >"
+                Why not integrate with a great Blog editor like Medium or Wordpress?`,
+        linkText: "Go to demo "
     }
 ;
 
