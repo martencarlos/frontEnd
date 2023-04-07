@@ -5,9 +5,11 @@ const featuresSection =
     {
         title: "All Features",
         text: 
-                `This framework is built in React and the Server in NodeJs. 
-
-                The only languages that you will have to know are plain JS, HTML & CSS. And yes, it is mobile friendly
+                `We offer a range of features to enhance your online experience, including a user-friendly interface, easy navigation, and responsive design. 
+                
+                Our website is optimized for speed and functionality, with a variety of tools and resources to help you find what you need quickly and easily. 
+                
+                Additionally, we offer a range of interactive features, such as forums, polls, and quizzes, to engage our users and foster a sense of community. Whether you're browsing for information, shopping for products, or connecting with others, our website has everything you need to make the most of your online experience.
                 `
     }
 ;
