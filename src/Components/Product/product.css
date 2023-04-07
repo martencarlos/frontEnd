@@ -88,6 +88,12 @@ a{
    text-decoration: none;
    border-radius: 30%;
 }
+
+a:active, 
+a:focus {
+  outline: none;
+}
+
 a:hover{
    text-decoration: none !important;
 }

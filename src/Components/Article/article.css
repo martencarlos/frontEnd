@@ -97,6 +97,7 @@ div.wp-block-embed__wrapper{
 
 div.blog .up-floating-icon{
     position: sticky;
+     color: var(--secondary-light);
     bottom: 70px;
     left:77%;
 }
