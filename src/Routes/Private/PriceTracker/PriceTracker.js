@@ -515,7 +515,7 @@ export default function Pricetracker(props){
                                                 removeTrackerOptionsAnchor()
                                                 deleteUserConfirmation(e)}}>
                                                 <ListItemIcon>
-                                                    <DeleteIcon  color="error" className="pricetracker-mytrackers-delete"/>
+                                                    <DeleteIcon style={{ color: '#9e1b32' }}  className="pricetracker-mytrackers-delete"/>
                                                 </ListItemIcon>
                                                 <ListItemText>Delete Tracker</ListItemText>
                                             </MenuItem>

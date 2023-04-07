@@ -83,7 +83,7 @@ img.table-product-img{
     border-radius: 10px;
 }
 
-a{
+div.product-table a{
    user-select: none;
    text-decoration: none;
    border-radius: 30%;
@@ -91,13 +91,21 @@ a{
    outline: none;
 }
 
-a:hover{
+div.product-table a:hover{
    text-decoration: none !important;
+   
    outline: none;
 }
 
- a .MuiChip-root{
+div.product-table a .MuiChip-root{
    cursor: pointer;
+}
+
+div.product-table a .MuiChip-root:hover{
+   cursor: pointer;
+   background-color: var(--primary-dark);
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   transform: translateY(-1px);
 }
 /*
 
