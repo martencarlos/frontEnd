@@ -14,6 +14,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Modal from '@mui/material/Modal';
 import {useNavigate } from 'react-router-dom';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
 // const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
@@ -502,10 +503,10 @@ export default function Account(props){
                         {uploadProgress && 
                             <div className="upload-progress">{uploadProgress+'%'}</div>}
                     </div>
-                    
+                    <br></br>
                     <div className="info-wrap">
-                        
-                        <Typography className="info-label" variant="body1" >{"#ID"}</Typography>
+                        <BadgeOutlinedIcon color="secondary"/>
+                        {/* <Typography className="info-label" variant="body1" >{"#ID"}</Typography> */}
                         <Typography className="info" variant="body1" gutterBottom>{userData._id} </Typography>
                         <br></br>
                         <br></br>

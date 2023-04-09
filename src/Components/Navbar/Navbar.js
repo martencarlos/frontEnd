@@ -17,6 +17,8 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+import Tooltip from '@mui/material/Tooltip';
 
 const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=a39b3f4a-9d54-4680-91fd-095a158a612c"
 
@@ -221,12 +223,17 @@ export default function Navbar(props){
                         MenuListProps={{
                         'aria-labelledby': 'basic-button',
                         }}>
-                        <MenuItem onClick={() => {
+                        <MenuItem id="css-paper-list-icon" onClick={() => {
                             handleClose()
                             hambMenuClick()
                             navigate('/projects/infinitycards')
                             }}>
-                            Infinity Cards
+                            <ListItemText>Infinity Cards</ListItemText>
+                            <ListItemIcon>
+                                <Tooltip title="req. login" placement="right">
+                                    <PersonIcon fontSize="small" />
+                                </Tooltip>
+                            </ListItemIcon>
                         </MenuItem>
                         <MenuItem onClick={() => {
                             handleClose()
@@ -242,12 +249,18 @@ export default function Navbar(props){
                             }}>
                             Web scrap
                         </MenuItem>
-                        <MenuItem onClick={() => {
+                        <MenuItem id="css-paper-list-icon" onClick={() => {
                             handleClose()
                             hambMenuClick()
                             navigate('/projects/priceTracker')
                             }}>
-                            Price Tracker (login)
+                            <ListItemText>Price Tracker</ListItemText>
+                            <ListItemIcon>
+                                <Tooltip title="req. login" placement="right">
+                                    <PersonIcon fontSize="small" />
+                                </Tooltip>
+                            </ListItemIcon>
+                             
                         </MenuItem>
                         
                     </Menu>

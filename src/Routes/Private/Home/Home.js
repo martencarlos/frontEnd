@@ -51,18 +51,14 @@ export default function Home(props){
 
     // Set the user data from APP
     useEffect(() => {
-        
-        
         var n = location.pathname.lastIndexOf('/');
         let path = location.pathname.substring(n + 1);
-        
         
         if(path !== "home"){
             if(document.getElementById(path)){
                 var x = document.getElementById(path);
                 x.classList.add("active");
             }
-            
             setPage(path)
         }
             
@@ -123,7 +119,6 @@ export default function Home(props){
             
     }
     
-    
     return (
         props.login && props.userData.profilePic &&
         <div className= {`home ${props.darkMode ? "dark": ""}`}>
@@ -139,16 +134,21 @@ export default function Home(props){
                     <br></br>
                     <Divider variant="middle" />
                     <br></br>
-                    <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
-                    <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
-                    {listStatus && 
-                        <div className="sidebar-dataList">
-                            <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
+                    {userData.role==='admin' &&
+                        <div>
+                            <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
+                            <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
+                            {listStatus && 
+                                <div className="sidebar-dataList">
+                                        <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
+                                    
+                                </div>}
+                            <br></br>
+                            <Divider variant="middle" />
+                            <br></br>
                         </div>
                     }
-                    <br></br>
-                    <Divider variant="middle" />
-                    <br></br>
+                    
                     <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
                     <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
 
@@ -161,6 +161,7 @@ export default function Home(props){
             { page === "dashboard" &&
                     <Dashboard 
                         darkMode = {props.darkMode}
+                        userData = {userData}
                         title={props.title}
                         login = {props.login}
                         toggleLogin={props.toggleLogin}

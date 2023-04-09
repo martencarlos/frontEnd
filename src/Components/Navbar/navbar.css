@@ -1,13 +1,13 @@
 /* navbar */
 /* The animation code */
 @keyframes openMenu {
-    from {top:-100px}
-    to {top: 100px}
+    from {top:-65}
+    to {top: 65px}
   }
 
   @keyframes closeMenu {
-    from {top:100px}
-    to {top: -110px}
+    from {top:65px}
+    to {top: -75px}
   }
 
 
@@ -365,6 +365,15 @@ li{
 div.navbar .MuiSvgIcon-root{
     margin:unset !important;
     padding: 8px !important;
+}
+
+#css-paper-list-icon .MuiListItemIcon-root {
+    display: flex;
+    justify-content: end;
+}
+
+#css-paper-list-icon:hover .MuiListItemIcon-root {
+    /* color: rgb(51, 51, 51); */
 }
 
 @keyframes appear {

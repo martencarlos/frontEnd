@@ -191,7 +191,7 @@ div.home div.avatar-container {
     position: absolute;
     visibility: hidden;
     opacity: 0;
-    background-color: var(--secondary-text);
+    background-color: var(--secondary-color);
     color: white;
     margin:15px;
     font-size: smaller;

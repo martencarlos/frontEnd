@@ -28,7 +28,13 @@ div.home div.dashboard{
     border-radius: 20px;
     margin: 5px;
     padding: 20px;
-    gap: 20px;
+    /* gap: 20px; */
+}
+
+div.home div.dashboard .page-title{
+    margin: 5px;
+    color: var(--secondary-color);
+    align-self: baseline;
 }
 
 div.dark div.home div.dashboard{

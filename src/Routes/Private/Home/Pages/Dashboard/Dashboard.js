@@ -11,6 +11,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import SellIcon from '@mui/icons-material/Sell';
 import { DataGrid } from '@mui/x-data-grid';
 import TooltipMUI from '@mui/material/Tooltip';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { BarChart, Bar, AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
@@ -44,11 +45,12 @@ export default function Dashboard(props){
     const totalUsers = useRef(0)
     const [users, setUsers] = useState()
     const totalLogins = useRef(0)
+    const activeSessions = useRef(0)
     
-
     //Set title of page
     useEffect(() => {
         document.title = "Webframe - " + props.title;
+
         return () => {
             document.title = "Webframe"
         }
@@ -100,9 +102,19 @@ export default function Dashboard(props){
         fetchTrackers()
     }, [props.title])
 
-    // useEffect(() => {
-    //     console.log(trackerAnalytics)
-    // }, [trackerAnalytics])
+    useEffect(() => {
+        activeSessions.current=0;
+        const today = new Date((new Date()).getTime())
+        console.log(props.userData)
+        if(props.userData.sessions){
+            props.userData.sessions.map(function(session,i){
+                var expireDate = new Date((session.expireDate))
+                if(expireDate>today){
+                    activeSessions.current += 1
+                }
+            })
+        }
+    }, [props.userData])
 
     //Get all users from the database
     useEffect(() => {
@@ -124,6 +136,7 @@ export default function Dashboard(props){
                     var graphData = []
                     totalUsers.current = res.data.length
                     totalLogins.current=0;
+                    
                     months.map(function (month, i) {
                         
                         let monthlyUsers = 0;
@@ -182,6 +195,109 @@ export default function Dashboard(props){
 
     return (
         <div className="dashboard">
+            {props.userData.role === 'admin' ? 
+                <div style={{width:'100%'}}>
+                    <Typography className="page-title" variant="h5"  gutterBottom> Users </Typography>
+                    <br></br>
+                    <div className="widget-row">
+                
+                    <div className="widget-half-row">
+                        <div className="widget" >
+                            <div className="widget-header">
+                                <PeopleAltIcon className="widget-title"/>
+                                {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
+                                <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
+                            </div>
+                            { userAnalytics &&
+                                <ResponsiveContainer width="100%" height="100%" >
+
+                                    <BarChart width={150} height={40} data={userAnalytics} margin={{top: 5,right: 30,left: 20,bottom: 5,}}>
+                                        <XAxis padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--primary-color').trim()} dataKey="month" />
+                                        <Bar dataKey="users" fill={style.getPropertyValue('--primary-color').trim()} />
+                                        <Tooltip />
+                                    </BarChart>
+                                    {/* <LineChart
+                                        data={userAnalytics}
+                                        margin={{top: 5,right: 30,left: 20,bottom: 5,}}
+                                        strokeWidth={2}
+                                        >
+                                        <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
+                                        <Tooltip />
+                                        <Line strokeWidth={3} type="monotone" dataKey="users" stroke="#8884d8" activeDot={{ r: 6 }} />
+                                    </LineChart> */}
+                                </ResponsiveContainer>
+                            }
+                        </div>
+                    </div>
+
+                    <div className="widget-half-row">
+                        <div id="total-users" onClick={openUsers} className="mini-widget" >
+                            <div className="mini-widget-header">
+                                <PeopleAltIcon className="mini-widget-icon"/>
+                                <Typography className="mini-widget-title" variant="body1" >Total Users</Typography>
+                            </div>
+                            <Typography className="mini-widget-data" variant="h2" >{totalUsers.current}</Typography>
+                        </div>
+
+                        <div className="mini-widget">
+                            <div className="mini-widget-header">
+                                <LoginIcon className="mini-widget-icon"/>
+                                <Typography className="mini-widget-title" variant="body1" >Total Logins</Typography>
+                            </div>
+                            <Typography className="mini-widget-data" variant="h2" >{totalLogins.current}</Typography>
+                        </div>
+                    </div>
+                </div>
+                <br></br>
+            </div>
+            :
+            <div style={{width:'100%'}}>
+                    <Typography className="page-title" variant="h5"  gutterBottom> My info </Typography>
+                    <br></br>
+                    <div className="widget-row">
+                        <div className="widget-half-row">
+                        <div className="mini-widget">
+                            <div className="mini-widget-header">
+                                <LoginIcon className="mini-widget-icon"/>
+                                <Typography className="mini-widget-title" variant="body1" >Total Logins</Typography>
+                            </div>
+                            <Typography className="mini-widget-data" variant="h2" >{props.userData.logins}</Typography>
+                        </div>
+                        <div className="mini-widget">
+                            <div className="mini-widget-header">
+                                <VpnKeyIcon className="mini-widget-icon"/>
+                                <Typography className="mini-widget-title" variant="body1" >Active Sessions</Typography>
+                            </div>
+                            <Typography className="mini-widget-data" variant="h2" >{activeSessions.current}</Typography>
+                        </div>
+                        
+                        </div>
+                        <div className="widget-half-row">
+                            {/* <div className="mini-widget"></div>
+                            <div className="mini-widget"></div> */}
+                        </div>
+                    </div>
+            </div>
+            }
+            {props.userData.role === 'admin' && <div className="widget-row-data">
+                <div className="data-widget">
+                    {users && 
+                    <div style={{ height: 482, width: '100%' }}>
+                        <DataGrid
+                        rows={users}
+                        columns={columns}
+                        pageSize={10}
+                        rowsPerPageOptions={[10]}
+                        density={"compact"}
+                        disableSelectionOnClick
+                        />
+                    </div>}
+                </div>
+            </div>
+            }
+            <br></br>
+            <Typography className="page-title" variant="h5"  gutterBottom> Price tracker </Typography>
+            <br></br>
             <div className="widget-row">
                 <div className="widget">
                     <div className="widget-header">
@@ -206,69 +322,10 @@ export default function Dashboard(props){
                     }
                 </div>
             </div>
-            <div className="widget-row">
-                <div className="widget-half-row">
-                    <div className="widget" >
-                        <div className="widget-header">
-                            <PeopleAltIcon className="widget-title"/>
-                            {/* <Typography className="widget-title" variant="subtitle1" gutterBottom>New Users</Typography> */}
-                            <Typography className="widget-year" variant="subtitle1" gutterBottom>{currentYear}</Typography>
-                        </div>
-                        { userAnalytics &&
-                            <ResponsiveContainer width="100%" height="100%" >
+            
+            <br></br>
 
-                                <BarChart width={150} height={40} data={userAnalytics} margin={{top: 5,right: 30,left: 20,bottom: 5,}}>
-                                    <XAxis padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--primary-color').trim()} dataKey="month" />
-                                    <Bar dataKey="users" fill={style.getPropertyValue('--primary-color').trim()} />
-                                    <Tooltip />
-                                </BarChart>
-                                {/* <LineChart
-                                    data={userAnalytics}
-                                    margin={{top: 5,right: 30,left: 20,bottom: 5,}}
-                                    strokeWidth={2}
-                                    >
-                                    <XAxis padding={{ left: 30, right: 30 }} stroke="#8884d8" dataKey="month" />
-                                    <Tooltip />
-                                    <Line strokeWidth={3} type="monotone" dataKey="users" stroke="#8884d8" activeDot={{ r: 6 }} />
-                                </LineChart> */}
-                            </ResponsiveContainer>
-                        }
-                    </div>
-                </div>
-
-                <div className="widget-half-row">
-                    <div id="total-users" onClick={openUsers} className="mini-widget" >
-                        <div className="mini-widget-header">
-                            <PeopleAltIcon className="mini-widget-icon"/>
-                            <Typography className="mini-widget-title" variant="body1" >Total Users</Typography>
-                        </div>
-                        <Typography className="mini-widget-data" variant="h2" >{totalUsers.current}</Typography>
-                    </div>
-
-                    <div className="mini-widget" >
-                        <div className="mini-widget-header">
-                            <LoginIcon className="mini-widget-icon"/>
-                            <Typography className="mini-widget-title" variant="body1" >Total Logins</Typography>
-                        </div>
-                        <Typography className="mini-widget-data" variant="h2" >{totalLogins.current}</Typography>
-                    </div>
-                </div>
-            </div>
-            <div className="widget-row-data">
-                <div className="data-widget">
-                    {users && 
-                    <div style={{ height: 482, width: '100%' }}>
-                        <DataGrid
-                        rows={users}
-                        columns={columns}
-                        pageSize={10}
-                        rowsPerPageOptions={[10]}
-                        density={"compact"}
-                        disableSelectionOnClick
-                        />
-                    </div>}
-                </div>
-            </div>
+            
         </div>
                 
     )
