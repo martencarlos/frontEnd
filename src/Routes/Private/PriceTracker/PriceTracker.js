@@ -180,8 +180,11 @@ export default function Pricetracker(props){
             credentials: 'include'
         }).then((response) => response.json())
         .then((data) => {
-            if(!data.error)
+            if(!data.error){
+                console.log("Debug - my trackers response data:")
+                console.log(data)
                 setMyTrackers(data)
+            }
             else{
                 if (props.login){
                     //Auth error
@@ -204,12 +207,17 @@ export default function Pricetracker(props){
     }
 
     function isInputValid (){
+       
         // check if url is valid
-        if(!String(formData.url).toLowerCase().match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)/gi)){
+        if(formData.url ===""){
+            const variant = 'error'
+            enqueueSnackbar("URL is empty",{ variant });
+            return false
+        }else if(!String(formData.url).toLowerCase().match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)/gi)){
             const variant = 'error'
             enqueueSnackbar("URL is invalid",{ variant });
             return false
-        }else if(!formData.url.startsWith("https://www.amazon.")){
+        }else if(!formData.url.startsWith("https://www.amazon.") && !formData.url.startsWith("https://amzn.eu/")&& !formData.url.startsWith("https://a.co/")){
             const variant = 'error'
             enqueueSnackbar("It needs to be an Amazon URL",{ variant });
             return false
@@ -235,7 +243,7 @@ export default function Pricetracker(props){
                 withCredentials: true, // Now this is was the missing piece in the client side
             };
 
-            axios(config).then(function (response) {
+            axios(config).then(async function (response) {
                 var variant;
 
                 if(response.data.message === "user tracker already exists"){
@@ -299,7 +307,7 @@ export default function Pricetracker(props){
             headers: {
                 'Content-Type': 'application/json',
             },
-            data: JSON.stringify({id:trackerIDToDelete}),
+            data: JSON.stringify({userID:props.userData._id ,trackerID:trackerIDToDelete}),
             withCredentials: true, // Now this is was the missing piece in the client side
         };
 
@@ -477,7 +485,12 @@ export default function Pricetracker(props){
                                     </div>
                                     <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
                                     {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
-                                    <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"€"}</Typography>
+                                    {tracker.productInfo.countryCode === "us" ?
+                                        <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"$"}</Typography>
+                                        :
+                                        <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"€"}</Typography>
+                                    }
+                                    
                                     <IconButton
                                         aria-label="more options"
                                         id="tracker-options"
