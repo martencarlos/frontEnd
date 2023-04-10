@@ -485,12 +485,9 @@ export default function Pricetracker(props){
                                     </div>
                                     <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
                                     {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
-                                    {tracker.productInfo.countryCode === "us" ?
-                                        <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"$"}</Typography>
-                                        :
-                                        <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+"€"}</Typography>
-                                    }
                                     
+                                    <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+tracker.productInfo.currency}</Typography>
+                                        
                                     <IconButton
                                         aria-label="more options"
                                         id="tracker-options"
