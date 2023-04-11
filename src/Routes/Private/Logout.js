@@ -7,8 +7,9 @@ export default function Logout(props){
     console.log("Rendering Logout")
     const navigate = useNavigate();
 
-    
     useEffect(() => {
+        deleteAllCookies()
+        props.updateUserData({})
         props.toggleLogin()
         localStorage.removeItem("profilePic")
         localStorage.removeItem("firstName")
@@ -19,8 +20,19 @@ export default function Logout(props){
       })
     console.log("logging out deleting cookie:")
     console.log(getCookie("uid"))
-    delCookie("uid")
-    delCookie("ssid")
+    // delCookie("uid")
+    // delCookie("ssid")
+    
+    function deleteAllCookies() {
+        const cookies = document.cookie.split(";");
+
+        for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+        }
+    }
     
     return (
         <div></div>

@@ -18,8 +18,6 @@ import Checkbox from '@mui/material/Checkbox';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
-
-
 export default function Login(props){
     console.log("Rendering Login")
 
@@ -166,10 +164,53 @@ export default function Login(props){
 
     const responseMessage = (googleAuth) => {
         const googleUserInfo = jwt_decode(googleAuth.credential);
-        console.log(googleUserInfo.name); 
+        console.log(googleUserInfo.name);
+        console.log(googleUserInfo.given_name);  
         console.log(googleUserInfo.email);
         console.log(googleUserInfo.picture);
+        expressLogin(googleUserInfo)
     };
+
+    function expressLogin(googleUserInfo){
+        setLoading(true)
+
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/expressLogin',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': process.env.SERVER,
+            },
+            data: JSON.stringify(googleUserInfo),
+            withCredentials: true, // Now this is was the missing piece in the client side 
+        };
+        
+        axios(config) 
+            .then(function (response) {
+                console.log(response.data)
+                localStorage.setItem("user",JSON.stringify(response.data))
+                setCookie("uid", JSON.stringify(response.data._id), 90001)
+                setCookie("ssid",JSON.stringify(response.data.sessions.at(-1)), 90001) //last session
+                navigate({
+                    pathname: '/home',
+                    state: {  
+                        user: response.data
+                    }
+                    })
+                props.toggleLogin()
+                }
+            ).finally(()=>{
+                setLoading(false)
+            })
+            .catch(function (error) {
+                const variant = 'error'
+                enqueueSnackbar(error,{ variant });
+                console.log(error);
+            }
+        );
+    }
+    
+    //google sign-in error 
     const errorMessage = (error) => {
         console.log(error);
     };
@@ -207,12 +248,9 @@ export default function Login(props){
                                 onChange={handleChange}
                             />}
 
-                            
-                
                         </div>
                     </div>
 
-                    
                     <div className="login-form-input-row">
 
                         <div className="login-form-input-row-inputanderror">
@@ -244,17 +282,19 @@ export default function Login(props){
                         </div>
                     </div>
                     
-            
                     <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label="keep me logged in" />
                     {/* <br></br> */}
                     <Typography style={{display:"flex", "justifyContent":"center"}} variant="body2" gutterBottom>OR </Typography>
                     {/* <br></br> */}
-                    <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+                    
+                    <div style={{display:"flex", "justifyContent":"center", width: "100%"}}>
+                        <GoogleLogin  onSuccess={responseMessage} onError={errorMessage} />
+                    </div>
+                    
                     <br></br>
                     <Typography variant="body2" gutterBottom>Not a user yet? &nbsp;
                         <Link href="/register">create an account</Link>
                     </Typography>
-                    
                     
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
@@ -263,7 +303,6 @@ export default function Login(props){
                     )}
                 </div>
             </form>
-            
         </div>
     )
 }   

@@ -252,6 +252,7 @@ export default function App(){
                     <Logout 
                         darkMode = {darkMode}
                         toggleLogin={toggleLogin}
+                        updateUserData= {updateUserData}
                     />}>
                 </Route>
                 <Route path="/register" element={
