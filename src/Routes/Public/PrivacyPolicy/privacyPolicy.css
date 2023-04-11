@@ -1,0 +1,24 @@
+
+/* PrivacyPolicy */
+
+@media (max-width: 800px) {
+
+    div.PrivacyPolicy{
+        width:90% !important;
+     }
+}
+
+div.PrivacyPolicy {
+    display: flex;
+    flex-direction: column;
+    width:60%;
+    align-self: center;
+    align-items: center;
+    gap: 20px;
+}
+
+div.PrivacyPolicy h6 {
+    
+    align-self: baseline;
+
+}

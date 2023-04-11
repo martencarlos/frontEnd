@@ -14,6 +14,7 @@ import Register from "./Routes/Public/Register/Register";
 import Projects from "./Routes/Public/Projects/Projects";
 import InfinityCards from "./Routes/Public/InfinityCards/InfinityCards";
 import Features from "./Routes/Public/Features/Features";
+import PrivacyPolicy from "./Routes/Public/PrivacyPolicy/PrivacyPolicy"
 import WebScrap from "./Routes/Public/WebScrap/WebScrap";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
@@ -299,6 +300,9 @@ export default function App(){
                 </Route>
                 <Route path="/about" element={
                     <About title="About" darkMode = {darkMode}/>}>
+                </Route>
+                <Route path="/PrivacyPolicy" element={
+                    <PrivacyPolicy title="Privacy Policy" darkMode = {darkMode}/>}>
                 </Route>
                 <Route path="/*" element={
                     <NotFound darkMode = {darkMode}/>}>
