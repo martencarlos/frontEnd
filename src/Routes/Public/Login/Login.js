@@ -164,10 +164,7 @@ export default function Login(props){
     }
 
     const responseMessage = (googleUser) => {
-        const profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do something with the user ID
-        console.log('Name: ' + profile.getName()); // Do something with the user name
-        console.log('Email: ' + profile.getEmail()); // Do something with the user email
+        console.log(googleUser); // Do something with the user ID
     };
     const errorMessage = (error) => {
         console.log(error);
