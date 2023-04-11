@@ -23,6 +23,9 @@ export default function Footer(props){
                     <Link underline="hover" href="/blog">Blog</Link>
                 </li>
                 <li className="nav-item">
+                    <Link underline="hover" href="/privacyPolicy" >Privacy</Link>
+                </li>
+                <li className="nav-item">
                     <Link underline="hover" href="/about" >About</Link>
                 </li>
                 <li className="nav-item">
