@@ -3,6 +3,7 @@ import React, { useState,useEffect } from "react";
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import {getCookie, setCookie, delCookie} from "./Util/Cookie";
 import axios from "axios";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Routes/Private/Home/Home";
@@ -13,6 +14,7 @@ import Register from "./Routes/Public/Register/Register";
 import Projects from "./Routes/Public/Projects/Projects";
 import InfinityCards from "./Routes/Public/InfinityCards/InfinityCards";
 import Features from "./Routes/Public/Features/Features";
+import PrivacyPolicy from "./Routes/Public/PrivacyPolicy/PrivacyPolicy"
 import WebScrap from "./Routes/Public/WebScrap/WebScrap";
 import Blog from "./Routes/Public/Blog/Blog";
 import About from "./Routes/Public/About/About";
@@ -25,6 +27,7 @@ import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 import { dark } from "@mui/material/styles/createPalette";
 import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
+
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -112,7 +115,7 @@ export default function App(){
         const config = {
             url: process.env.REACT_APP_SERVER+'/getProfileImage',
             method: 'POST',
-           
+            
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': process.env.SERVER,
@@ -167,10 +170,11 @@ export default function App(){
 
     console.log("User data passed to children")
     console.log(userData)
-
     return (
         <BrowserRouter>
         <SnackbarProvider maxSnack={3}>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <React.StrictMode>
         <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
@@ -296,6 +300,9 @@ export default function App(){
                 <Route path="/about" element={
                     <About title="About" darkMode = {darkMode}/>}>
                 </Route>
+                <Route path="/PrivacyPolicy" element={
+                    <PrivacyPolicy title="Privacy Policy" darkMode = {darkMode}/>}>
+                </Route>
                 <Route path="/*" element={
                     <NotFound darkMode = {darkMode}/>}>
                 </Route>
@@ -304,6 +311,8 @@ export default function App(){
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
+            </React.StrictMode>
+            </GoogleOAuthProvider>
             </SnackbarProvider>
         </BrowserRouter>
     )
