@@ -310,7 +310,7 @@ export default function Account(props){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     // console.log("account User data:")
-    // console.log(userData)
+    console.log(userData)
     return (
         props.login && props.userData.profilePic &&
         <div className="account">
@@ -431,7 +431,7 @@ export default function Account(props){
                             <br></br>
                             
                             
-                            <div className="account-form-input-row">
+                            {props.userData.role !=="googleUser" && <div className="account-form-input-row">
                                 <div className="account-form-input-row-inputanderror"> 
                                     {!formErrors.password && <TextField
                                         name="password"
@@ -456,9 +456,9 @@ export default function Account(props){
                                         onChange={handleChange}
                                     />}     
                                 </div>
-                            </div>
+                            </div>}
 
-                            <div className="account-form-input-row">
+                            {props.userData.role !=="googleUser" && <div className="account-form-input-row">
                                 <div className="account-form-input-row-inputanderror"> 
                                     {!formErrors.password2 && <TextField
                                         name="password2"
@@ -482,7 +482,7 @@ export default function Account(props){
                                         onChange={handleChange}
                                     />}     
                                 </div>
-                            </div>
+                            </div>}
                             <br></br>
                             <br></br>
                             <div className="main-card-actions">
