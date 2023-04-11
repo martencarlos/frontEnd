@@ -3,6 +3,7 @@ import React, { useState,useEffect } from "react";
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
 import {getCookie, setCookie, delCookie} from "./Util/Cookie";
 import axios from "axios";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Routes/Private/Home/Home";
@@ -25,6 +26,7 @@ import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 import { dark } from "@mui/material/styles/createPalette";
 import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
+
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -171,6 +173,8 @@ export default function App(){
     return (
         <BrowserRouter>
         <SnackbarProvider maxSnack={3}>
+        <GoogleOAuthProvider clientId="578900795966-s3fh60er65r6htb1csr766tgq1furrlh.apps.googleusercontent.com">
+        <React.StrictMode>
         <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
@@ -304,6 +308,8 @@ export default function App(){
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
+            </React.StrictMode>
+            </GoogleOAuthProvider>
             </SnackbarProvider>
         </BrowserRouter>
     )

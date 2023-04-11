@@ -14,6 +14,8 @@ import { useSnackbar } from 'notistack';
 
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { GoogleLogin } from '@react-oauth/google';
+
 
 
 
@@ -161,6 +163,16 @@ export default function Login(props){
         return errors
     }
 
+    const responseMessage = (googleUser) => {
+        const profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do something with the user ID
+        console.log('Name: ' + profile.getName()); // Do something with the user name
+        console.log('Email: ' + profile.getEmail()); // Do something with the user email
+    };
+    const errorMessage = (error) => {
+        console.log(error);
+    };
+
 
     return (
         !props.login && <div className={props.darkMode ? "dark" : ""}>
@@ -234,6 +246,10 @@ export default function Login(props){
                     
             
                     <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label="keep me logged in" />
+                    {/* <br></br> */}
+                    <Typography style={{display:"flex", "justify-content":"center"}} variant="body2" gutterBottom>OR </Typography>
+                    {/* <br></br> */}
+                    <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
                     <br></br>
                     <Typography variant="body2" gutterBottom>Not a user yet? &nbsp;
                         <Link href="/register">create an account</Link>
@@ -247,6 +263,7 @@ export default function Login(props){
                     )}
                 </div>
             </form>
+            
         </div>
     )
-}
+}   
