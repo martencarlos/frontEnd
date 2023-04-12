@@ -8,7 +8,7 @@
     }
     div.hero img{
         order:1;
-        
+        width: auto !important;
         margin-right: 0px !important;
         margin-left: 0px !important;
         margin-top: 10px ;
@@ -52,7 +52,7 @@ div.hero {
 }
 
 div.hero img {
-    width: 50%;
+   width: 50%;
     height: auto;
     min-width: 250px;
     max-width: 400px;
@@ -113,6 +113,7 @@ div.text-area{
 div.text-area .title{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     /* font-weight: bolder; */
     /* font-size: larger; */
     margin: 10px;
