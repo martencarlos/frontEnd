@@ -1,7 +1,7 @@
 
 import "./landingPage.css";
 
-import { useEffect} from "react"
+import { useEffect,useRef} from "react"
 
 import Hero from "../../../Components/Hero/Hero";
 import Projects from "../Projects/Projects";
@@ -10,6 +10,7 @@ import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";
 
 import Link from '@mui/material/Link';
+
 
 import {  landingHero } from "../../../data/main_data"
 import { featuresSection, featureCard1, featureCard2, featureCard3,} from "../../../data/features_data"
@@ -25,6 +26,8 @@ export default function Main(props){
             document.title = "Webframe"
         }
     }, [props.title])
+
+    
 
     return (
         <div className= {`main ${props.darkMode ? "dark": ""}`}>

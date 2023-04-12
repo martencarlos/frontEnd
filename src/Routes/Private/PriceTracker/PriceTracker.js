@@ -234,7 +234,7 @@ export default function Pricetracker(props){
             const config = {
                 url: process.env.REACT_APP_SERVER+'/newtracker',
                 method: 'POST',
-                timeout:5000,
+                // timeout:5000,
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,
@@ -340,7 +340,7 @@ export default function Pricetracker(props){
 
     }
     var style = getComputedStyle(document.body)
-    // console.log(myTrackers)
+    console.log(myTrackers)
     return (
         <div className="pricetracker-fullpage-wrapper">
             <Modal

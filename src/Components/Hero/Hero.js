@@ -1,15 +1,18 @@
 
 import "./hero.css";
 
-
+import { useEffect,useRef} from "react"
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import ForwardIcon from '@mui/icons-material/Forward';
 
+
+
 export default function Hero(props){
     console.log("Rendering Hero component")
+
     return (
         <div className= {`hero ${props.darkMode ? "dark": ""}`}>
             {props.direction === "right" && 
@@ -17,7 +20,12 @@ export default function Hero(props){
             }
             <div className="text-area">
                 <Typography variant="h4" className="title">{props.title}</Typography>
-                <Typography variant="body1"  className="text">{props.text}</Typography>
+                {/* {props.button ?
+                    <div ></div>
+                    : */}
+                    <Typography variant="body1"  className="text">{props.text}</Typography>
+                {/* } */}
+                
                 {props.link &&
                 <div className="hero-button">
                     <Button href={props.linkPath} style={{color: "white"}} color="secondary" variant="contained" endIcon={<ForwardIcon />}>
