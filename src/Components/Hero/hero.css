@@ -15,6 +15,10 @@
         margin-bottom: 10px ;
     }
 
+    div.landingPage div.hero img{
+        width: 50% !important;
+    }
+
     div.landingPage div.hero div.text-area .dynamic-title-wrap{
         margin:0px;
         margin-bottom: 30px;
