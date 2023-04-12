@@ -6,6 +6,9 @@
     div.sectionHeader {
         width: 90% !important;
     }
+    div.sectionHeader .title{
+        font-size: 2rem;
+    }
 }
 
 div.sectionHeader {
