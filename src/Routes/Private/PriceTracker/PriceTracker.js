@@ -86,6 +86,7 @@ export default function Pricetracker(props){
     // get trackers
     useEffect(() => {
         console.log("get all trackers")
+        setPageLoading(true)
         fetchTrackers()
     }, [])
 
@@ -462,14 +463,14 @@ export default function Pricetracker(props){
                                 </div>
                         </div>
                         
-                        
-{/*
+                    {/*
                         <Typography variant="body1"  gutterBottom><Skeleton/></Typography>
                         <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography>
                         <Typography variant="body2"  gutterBottom><Skeleton/></Typography>
                         <Skeleton sx={{ height: 150}} animation="wave" variant="rectangular" />
                         <Typography variant="body1" gutterBottom><Skeleton/></Typography>
-                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography> */}
+                        <Typography variant="body2" sx={{ width: 100 }} gutterBottom><Skeleton/></Typography> 
+                    */}
                     </div>
                     :
                     myTrackers.length>0 && <div>
