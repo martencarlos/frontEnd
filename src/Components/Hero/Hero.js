@@ -8,10 +8,13 @@ import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import ForwardIcon from '@mui/icons-material/Forward';
 
-
+import Typed from 'react-typed';
 
 export default function Hero(props){
     console.log("Rendering Hero component")
+
+
+
 
     return (
         <div className= {`hero ${props.darkMode ? "dark": ""}`}>
@@ -19,13 +22,30 @@ export default function Hero(props){
             <img fetchpriority="high" src= {props.imgSrc} alt="Hero"></img>
             }
             <div className="text-area">
+                {props.button ?
+                    <div className="dynamic-title-wrap">
+                    <Typography variant="h5" className="title">{props.title}</Typography>
+                    <Typed className="dynamicText"
+                            strings={[
+                                'Online marketplace',
+                                'Digital storefront',
+                                'E-commerce',
+                                'Web store',
+                                'Online business',
+                                'Digital commerce']}
+                                typeSpeed={40}
+                                backSpeed={50}
+                                attr="placeholder"
+                                loop >
+                                <input type="text"/>
+                        </Typed>
+                  </div>
+                :
                 <Typography variant="h4" className="title">{props.title}</Typography>
-                {/* {props.button ?
-                    <div ></div>
-                    : */}
-                    <Typography variant="body1"  className="text">{props.text}</Typography>
-                {/* } */}
-                
+                }
+            
+                <Typography variant="body1"  className="text">{props.text}</Typography>
+        
                 {props.link &&
                 <div className="hero-button">
                     <Button href={props.linkPath} style={{color: "white"}} color="secondary" variant="contained" endIcon={<ForwardIcon />}>

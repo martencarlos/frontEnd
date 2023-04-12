@@ -54,7 +54,7 @@ div.text-area{
    ;
 }
 
-div.text-area .title{
+div.card div.text-area .title{
     display: flex;
     align-items: center;
     color: var(--primary-text) ;

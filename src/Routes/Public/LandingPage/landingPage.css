@@ -5,12 +5,7 @@
         width:auto !important;
     }
 
-    div.landingPage .title {
-     color:var(--primary-light) !important;
-      font-size: xx-large !important;
-     margin-bottom: 80px;
-     color:red;
-   }
+    
 
     div.landingPage .text {
         margin:0px !important;
@@ -56,11 +51,7 @@ div.main div.landingPage .hero{
     width:85%;
 }
 
-div.landingPage .title {
-  color:var(--primary-light) !important;
-   margin-bottom: 30px !important;
-   font-size: xxx-large;
-}
+
 
 
 

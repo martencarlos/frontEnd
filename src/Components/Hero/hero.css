@@ -14,6 +14,25 @@
         margin-top: 10px ;
         margin-bottom: 10px ;
     }
+
+    div.landingPage div.hero div.text-area .dynamic-title-wrap{
+        margin:0px;
+        margin-bottom: 30px;
+        margin-top:10px;
+    }
+
+    div.landingPage div.text-area .title{
+        align-self: center;
+        margin:0px;
+        min-width: 130px;
+
+    }
+
+    div.hero .dynamicText {
+        
+        
+    }
+
     div.hero div.text-area{
         order: 2;
         width: 100% !important;
@@ -39,6 +58,45 @@ div.hero img {
     max-width: 400px;
     margin-right: 10px;
     margin-left: 10px;
+}
+
+div.landingPage div.hero div.text-area .dynamic-title-wrap{
+    display: flex;
+    flex-direction: row;
+}
+
+div.landingPage div.text-area .title{
+    color: var(--primary-light);
+    white-space: nowrap;
+  overflow: hidden;
+}
+
+div.hero .dynamicText {
+    justify-content: baseline;
+    flex-grow: 1;
+    display: flex;
+}
+
+div.hero .dynamicText input{
+    background-color: transparent;
+    padding: 0px;
+    min-width: 210px;
+    padding-top:7px;
+    width: fit-content;
+    height: auto;
+    border: none;
+}
+
+div.hero .dynamicText input::placeholder{
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    color: var(--primary-light);
+    
+    
+    
+    font-weight: 500;
+    font-size: x-large;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
 }
 
 

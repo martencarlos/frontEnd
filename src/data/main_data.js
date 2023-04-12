@@ -3,7 +3,7 @@
 
 const landingHero = 
     {
-        title: "Create your Web App",
+        title: "Create your",
         text: 
                 `Create a full-featured Website Application fast and effortlessly. Take a look at some website projects created with Webframe in the /projects tab.
 
