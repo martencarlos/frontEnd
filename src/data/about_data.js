@@ -1,4 +1,4 @@
-
+// --legacy-peer-deps
 
 
 const aboutSection = 

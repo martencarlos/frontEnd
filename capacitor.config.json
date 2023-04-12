@@ -1,0 +1,6 @@
+{
+  "appId": "one.webframe",
+  "appName": "Webframe",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

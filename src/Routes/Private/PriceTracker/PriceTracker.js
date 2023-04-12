@@ -86,7 +86,7 @@ export default function Pricetracker(props){
     // get trackers
     useEffect(() => {
         console.log("get all trackers")
-        setPageLoading(true)
+        
         fetchTrackers()
     }, [])
 
@@ -119,6 +119,7 @@ export default function Pricetracker(props){
 
     //set price graph from My trackers
     useEffect(() => {
+        
         if(myTrackers.length >0){
             let newArray = JSON.parse(JSON.stringify(myTrackers))
             myTrackers.map((tracker, i) => (
@@ -473,7 +474,8 @@ export default function Pricetracker(props){
                     */}
                     </div>
                     :
-                    myTrackers.length>0 && <div>
+                    myTrackers.length>0 &&
+                    <div>
                         <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
                         { myTrackers.map((tracker, i) =>
                         (
@@ -550,7 +552,8 @@ export default function Pricetracker(props){
                                 </div>}
                             </div>
                         ))}
-                    </div>}
+                    </div>
+                    }
                 </div>
             </div>
             }
