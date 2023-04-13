@@ -12,7 +12,7 @@ export default function NewCard(props){
     console.log(props.userData._id)
     const [formData, setFormData] = useState(
         {
-            title: "", 
+            title: "title will be generated", 
             image: "",
             stats:{
                 likes: 0,
@@ -166,14 +166,14 @@ export default function NewCard(props){
             <div className="newcard--form">
                 <h2>Add a new card</h2>
                 <div className="newcard--input">
-                    <input
+                    {/* <input
                         name="title"
                         type="text"
                         placeholder="Title"
                         required="required"
                         value={formData.title}
                         onChange={handleChange}
-                    />
+                    /> */}
                     {formErrors.title && <label className="newCard-error">{formErrors.title}</label>}
                     <input
                         name="image"
