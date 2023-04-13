@@ -55,6 +55,7 @@ export default function NewCard(props){
         
         setFormData(prevFormData => ({
             ...prevFormData,
+            title:"title will be generated",
             author:{
                 firstName: props.userData.name,
                 lastName:"",
@@ -73,6 +74,7 @@ export default function NewCard(props){
         const {name, value} = event.target
         setFormData(prevFormData => ({
             ...prevFormData,
+            title: "title will be generated",
             [name]: value
         }))
     }
@@ -110,6 +112,7 @@ export default function NewCard(props){
                 if(response){
                     setFormData(prevFormData => ({
                         ...prevFormData,
+                        title: "title will be generated",
                         image: response.data.url
                     }))
                 }
