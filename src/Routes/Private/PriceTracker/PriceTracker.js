@@ -119,7 +119,7 @@ export default function Pricetracker(props){
 
     //set price graph from My trackers
     useEffect(() => {
-        
+        console.log(myTrackers)
         if(myTrackers.length >0){
             let newArray = JSON.parse(JSON.stringify(myTrackers))
             myTrackers.map((tracker, i) => (
@@ -130,7 +130,7 @@ export default function Pricetracker(props){
             setPriceGraphData(newArray)
             setPageLoading(false)
         }else{
-            setPageLoading(false)
+            // setPageLoading(false)
         }
 
     }, [myTrackers])
@@ -186,6 +186,7 @@ export default function Pricetracker(props){
                 console.log("Debug - my trackers response data:")
                 console.log(data)
                 setMyTrackers(data)
+                setPageLoading(false)
             }
             else{
                 if (props.login){
