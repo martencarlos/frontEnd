@@ -290,3 +290,16 @@
     margin-top: 4px;
 }
 
+div.pricetracker-fullpage .container {
+    position: relative;
+    
+}
+
+div.pricetracker-fullpage .container .subscribe-bell {
+    position: absolute;
+    filter: drop-shadow(1px 3px 1px rgba(202, 202, 202, 0.4));
+    color: rgb(158, 27, 50);
+    top: -20px;
+    left: 5px;
+  }
+

@@ -287,6 +287,7 @@ export default function App(){
                         darkMode = {darkMode}
                         login = {login}
                         toggleLogin={toggleLogin}
+                        updateUserData= {updateUserData}
                         userData = {userData}
                     />
                 }>

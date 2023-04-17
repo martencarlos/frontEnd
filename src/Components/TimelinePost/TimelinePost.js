@@ -14,7 +14,7 @@ export default function ArticleSummary(props){
     }
 
     return (
-        <div >
+        <div className="timelinePost">
             {props.selected ? 
                 <div id={props.item.id} className="container right right_selected" onClick={props.openArticle}>
                     <div class="content selected" >

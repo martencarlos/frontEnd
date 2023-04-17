@@ -11,6 +11,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import NotificationsOffOutlinedIcon from '@mui/icons-material/NotificationsOffOutlined';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import Skeleton from '@mui/material/Skeleton';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Modal from '@mui/material/Modal';
@@ -22,7 +25,7 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuList from '@mui/material/MenuList';
-import { positions } from "@mui/system";
+// import { positions } from "@mui/system";
 
 export default function Pricetracker(props){
 
@@ -41,11 +44,79 @@ export default function Pricetracker(props){
             navigate("/login",{ replace: true });
     }, [props.login, navigate])
 
+
     //Confirmation dialog
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const deletetrackerID = useRef();
+
+    function priceTrackerSubscriptionToggle(e){
+        //getting notified
+        console.log(deletetrackerID.current)
+        
+        const trackerIDForSubscription =deletetrackerID.current;
+        
+        // delete request to server to delete from DB
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/tracker-subscribe',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify({userID:userData._id ,trackerID:trackerIDForSubscription}),
+            withCredentials: true, // Now this is was the missing piece in the client side
+        };
+
+        axios(config).then(function (response) {
+            console.log(response.data)
+            // console.log(userData.trackers)
+            let variant
+            if(response.data==="Subscribed"){
+                userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= true
+                variant = 'success'
+            }else{
+                userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= false
+                variant = 'info'
+            }
+                
+            //re-render
+            setMyTrackers(prevTrackers => {
+                return [
+                    ...prevTrackers
+                ]
+            })
+            props.updateUserData(userData)
+            setUserData(userData)
+            
+
+            // console.log(userData.trackers)
+            enqueueSnackbar(response.data,{ variant });
+
+            //  if(response.data === "deleted"){
+            //      setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
+
+            //      const variant = 'success'
+            //      enqueueSnackbar("tracker deleted",{ variant });
+
+            //  }else if(response.data.error){
+            //     //auth error
+            //     console.log(response.data.error)
+            //     navigate("/logout",{ replace: true });
+
+            //  }else{
+            //     const variant = 'error'
+            //     enqueueSnackbar("unexpected error",{ variant });
+            //  }
+
+        }).finally(()=>{
+            
+        }).catch(function (error) {
+            const variant = 'error'
+            enqueueSnackbar(error.message,{ variant });
+            console.log(error);
+        });
+    }
 
     function deleteUserConfirmation(e){
         // console.log(e.target)
@@ -77,6 +148,7 @@ export default function Pricetracker(props){
     const [pageLoading, setPageLoading] = useState(true)
     const [priceGraphData, setPriceGraphData] = useState([])
     const [myTrackers, setMyTrackers] = useState([])
+    const [userData, setUserData] = useState({})
     const [formData, setFormData] = useState({
         userID: "",
         url:""
@@ -89,6 +161,12 @@ export default function Pricetracker(props){
         
         fetchTrackers()
     }, [])
+
+    useEffect(() => {
+        console.log("setting user data")
+        setUserData(props.userData)
+        setFormData({userID: props.userData._id, url:""})
+    }, [props.userData])
 
     //fixed navbar
     useEffect(() => {
@@ -113,13 +191,11 @@ export default function Pricetracker(props){
         }
     }, [props.darkMode])
 
-    useEffect(() => {
-        setFormData({userID: props.userData._id, url:""})
-    }, [props])
+  
 
     //set price graph from My trackers
     useEffect(() => {
-        console.log(myTrackers)
+        
         if(myTrackers.length >0){
             let newArray = JSON.parse(JSON.stringify(myTrackers))
             myTrackers.map((tracker, i) => (
@@ -266,6 +342,10 @@ export default function Pricetracker(props){
                     }))
                     var productURL = document.getElementById("product_url");
                     productURL.value=""
+                    userData.trackers.push({trackerId:response.data._id, subscribed:false})
+                    
+                    setUserData(userData)
+                    props.updateUserData(userData)
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,
@@ -310,7 +390,7 @@ export default function Pricetracker(props){
             headers: {
                 'Content-Type': 'application/json',
             },
-            data: JSON.stringify({userID:props.userData._id ,trackerID:trackerIDToDelete}),
+            data: JSON.stringify({userID:userData._id ,trackerID:trackerIDToDelete}),
             withCredentials: true, // Now this is was the missing piece in the client side
         };
 
@@ -343,7 +423,7 @@ export default function Pricetracker(props){
 
     }
     var style = getComputedStyle(document.body)
-    console.log(myTrackers)
+    
     return (
         <div className="pricetracker-fullpage-wrapper">
             <Modal
@@ -487,7 +567,10 @@ export default function Pricetracker(props){
                                             <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
                                         </a>
                                     </div>
-                                    <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
+                                    <div class="container">
+                                        <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
+                                        {userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === tracker._id)].subscribed && <NotificationsOutlinedIcon className="subscribe-bell"/>}
+                                    </div>
                                     {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
                                     
                                     <Typography className="pricetracker-mytrackers-price" variant="body1" >{tracker.productInfo.price+tracker.productInfo.currency}</Typography>
@@ -525,6 +608,28 @@ export default function Pricetracker(props){
                                         // }}
                                     >
                                         <MenuList dense>
+                                        {deletetrackerID.current && userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed ?
+                                            <MenuItem onClick={(e)=>{
+                                                removeTrackerOptionsAnchor()
+                                                priceTrackerSubscriptionToggle(e)}}>
+                                                <ListItemIcon>
+                                                    <NotificationsOffOutlinedIcon   className="pricetracker-mytrackers-delete"/>
+                                                </ListItemIcon>
+                                                {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
+                                                    <ListItemText>Unsubscribe</ListItemText>
+                                                 
+                                            </MenuItem>
+                                            :
+                                            <MenuItem onClick={(e)=>{
+                                                removeTrackerOptionsAnchor()
+                                                priceTrackerSubscriptionToggle(e)}}>
+                                                <ListItemIcon>
+                                                    <NotificationsNoneOutlinedIcon   className="pricetracker-mytrackers-delete"/>
+                                                </ListItemIcon>
+                                                {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
+                                                    <ListItemText>Subscribe</ListItemText>
+                                            </MenuItem>
+                                            }
                                             <MenuItem onClick={(e)=>{
                                                 removeTrackerOptionsAnchor()
                                                 deleteUserConfirmation(e)}}>
