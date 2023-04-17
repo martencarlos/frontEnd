@@ -31,7 +31,7 @@ export default function About(props){
             />
             <br></br>
             <br></br>
-            <a href="https://www.buymeacoffee.com/martencarlos"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=martencarlos&button_colour=39524f&font_colour=ffffff&font_family=Comic&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
+            <a href="https://www.buymeacoffee.com/martencarlos"><img alt="coffee" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=martencarlos&button_colour=39524f&font_colour=ffffff&font_family=Comic&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
             <br></br>
             <br></br>
             <div className="team-row">
