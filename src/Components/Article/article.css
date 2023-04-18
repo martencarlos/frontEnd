@@ -31,6 +31,10 @@ div.article .published{
     /* font-size: small; */
 }
 
+div.dark div.article .published{
+    color: #6f97c1
+}
+
 
 
 div.article figure{

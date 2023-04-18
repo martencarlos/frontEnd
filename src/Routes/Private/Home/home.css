@@ -71,6 +71,10 @@ div.home .sidebar-section{
     font-weight: 500;
 }
 
+div.dark div.home .sidebar-section{
+    color: #6f97c1
+}
+
 div.home button.sidebar-button{
     display: flex;
     margin-left: 20px;
@@ -78,6 +82,10 @@ div.home button.sidebar-button{
     color: var(--primary-text-light);
     align-items: center;
     width: 90%;
+}
+
+div.dark div.home button.sidebar-button{
+    color: #ffffff
 }
 
 div.home button.sidebar-nestedButton{

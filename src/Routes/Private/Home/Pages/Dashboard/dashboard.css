@@ -41,6 +41,10 @@ div.dark div.home div.dashboard{
     background-color: black;
 }
 
+div.dark div.dashboard .page-title{
+    color: #6f97c1
+}
+
 div.dashboard .widget-row{
     display: flex;
     width: 100%;
