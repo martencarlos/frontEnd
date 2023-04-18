@@ -208,7 +208,10 @@ Button.bt-nav-link{
     
 }
 Button.bt-nav-link:hover{
-    background: var(--primary-light);
+    background: var(--primary-color);
+    color: white !important;
+}
+Button.bt-nav-link:hover a{
     color: white !important;
 }
 
@@ -230,7 +233,7 @@ Button.bt-nav-link .nav-link:hover{
 .nav-link-active{
     text-decoration: none;
     color: white;
-    background-color: var(--primary-light);
+    background-color: var(--primary-color);
     padding: 5px;
     border-radius: 4px;
     width: 100%;
@@ -238,7 +241,7 @@ Button.bt-nav-link .nav-link:hover{
 
 .nav-link-active:hover{
     text-decoration: none;
-    background-color: var(--primary-color);
+    background-color: var(--primary-dark);
     color:white;
 }
 
@@ -385,7 +388,7 @@ div.dark div.navbar .MuiSvgIcon-root{
     color:white;
 }
 div.dark div.navbar .MuiSvgIcon-root:hover{
-    color:var(--primary-color);
+    
 }
 
 #css-paper-list-icon .MuiListItemIcon-root {
