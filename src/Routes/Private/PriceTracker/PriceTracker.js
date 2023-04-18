@@ -71,25 +71,27 @@ export default function Pricetracker(props){
         axios(config).then(function (response) {
             console.log(response.data)
             // console.log(userData.trackers)
+            const newUserData = JSON.parse(JSON.stringify(userData));
             let variant
             if(response.data==="Subscribed"){
-                userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= true
+                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= true
                 variant = 'success'
-            }else{
-                userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= false
+            }else if(response.data==="Unsubscribed"){
+                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= false
                 variant = 'info'
+            }else{
+                variant = 'error'
             }
                 
             //re-render
-            setMyTrackers(prevTrackers => {
-                return [
-                    ...prevTrackers
-                ]
-            })
-            props.updateUserData(userData)
-            setUserData(userData)
+            // setMyTrackers(prevTrackers => {
+            //     return [
+            //         ...prevTrackers
+            //     ]
+            // })
+            props.updateUserData(newUserData)
+            setUserData(newUserData)
             
-
             // console.log(userData.trackers)
             enqueueSnackbar(response.data,{ variant });
 
@@ -342,10 +344,14 @@ export default function Pricetracker(props){
                     }))
                     var productURL = document.getElementById("product_url");
                     productURL.value=""
-                    userData.trackers.push({trackerId:response.data._id, subscribed:false})
+
+                    //Update user data
+                    const newUserData = JSON.parse(JSON.stringify(userData));
+                    newUserData.trackers.push({trackerId:response.data._id, subscribed:false})
                     
-                    setUserData(userData)
-                    props.updateUserData(userData)
+                    setUserData(newUserData)
+                    props.updateUserData(newUserData)
+
                     setMyTrackers(prevTrackers => {
                         return [
                             ...prevTrackers,
@@ -423,6 +429,8 @@ export default function Pricetracker(props){
 
     }
     var style = getComputedStyle(document.body)
+
+    // console.log(userData)
     
     return (
         <div className="pricetracker-fullpage-wrapper">
@@ -567,7 +575,7 @@ export default function Pricetracker(props){
                                             <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
                                         </a>
                                     </div>
-                                    <div class="container">
+                                    <div className="container">
                                         <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
                                         {userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === tracker._id)].subscribed && <NotificationsOutlinedIcon className="subscribe-bell"/>}
                                     </div>
