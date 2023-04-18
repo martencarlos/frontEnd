@@ -308,18 +308,20 @@ div.pricetracker-fullpage .container .subscribe-bell {
     color: var(--primary-color);
     top: -20px;
     left: 5px;
-  }
+}
+
+/* DARK MODE */
 
 div.dark div.pricetracker-fullpage .container .subscribe-bell {
     color: var(--primary-light);
-  }
+}
 
-div.pricetracker-fullpage .pricetracker-mytrackers-info button svg {
+div.dark div.pricetracker-fullpage .pricetracker-mytrackers-info button svg {
     color: white;
-  }
+}
 
 div.dark div.pricetracker-fullpage .pricetracker-mytrackers-info button.css-78trlr-MuiButtonBase-root-MuiIconButton-root:hover{
     background-color: rgb(48, 48, 48)
-  }
+}
 
 
