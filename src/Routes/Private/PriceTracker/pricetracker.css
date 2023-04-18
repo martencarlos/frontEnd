@@ -150,12 +150,18 @@
         display: flex;
     padding: 10px;
         overflow: hidden;
-    /* border: 1px solid #d8d9d8; */
+    border: 1px transparent #d8d9d8; 
     background: white;
     border-radius: 20px;
     margin-bottom: 10px;
     color: #000000;
     flex-direction: column;
+}
+
+div.dark .pricetracker-tracker{
+    
+    background: black;
+    color: #ffffff;
 }
 
 .pricetracker-mytrackers-info{
@@ -303,4 +309,17 @@ div.pricetracker-fullpage .container .subscribe-bell {
     top: -20px;
     left: 5px;
   }
+
+div.dark div.pricetracker-fullpage .container .subscribe-bell {
+    color: var(--primary-light);
+  }
+
+div.pricetracker-fullpage .pricetracker-mytrackers-info button svg {
+    color: white;
+  }
+
+div.dark div.pricetracker-fullpage .pricetracker-mytrackers-info button.css-78trlr-MuiButtonBase-root-MuiIconButton-root:hover{
+    background-color: rgb(48, 48, 48)
+  }
+
 
