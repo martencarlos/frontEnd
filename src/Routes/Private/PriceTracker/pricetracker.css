@@ -299,6 +299,7 @@ div.dark .pricetracker-tracker{
 div.pricetracker-fullpage .container {
     position: relative;
     display: flex;
+    padding-left: 20px;
     flex-grow: 1;
 }
 
@@ -307,7 +308,7 @@ div.pricetracker-fullpage .container .subscribe-bell {
     filter: drop-shadow(1px 3px 1px rgba(202, 202, 202, 0.4));
     color: var(--primary-color);
     top: -20px;
-    left: 5px;
+    left: 25px;
 }
 
 /* DARK MODE */
