@@ -43,7 +43,10 @@ div.home div.sidebar{
         margin-left: 25px;
     z-index: 1;
     border-radius: 10px; 
-    
+}
+
+div.dark div.home div.sidebar{
+    background: black;
 }
 
 div.home div.sidebar-sticky-content{
