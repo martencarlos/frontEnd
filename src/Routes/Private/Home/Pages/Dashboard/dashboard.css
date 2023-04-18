@@ -24,7 +24,7 @@ div.home div.dashboard{
     flex: 5;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-light);
+    background-color: var(--secondary-color);
     border-radius: 20px;
     margin: 5px;
     padding: 20px;
@@ -33,7 +33,7 @@ div.home div.dashboard{
 
 div.home div.dashboard .page-title{
     margin: 5px;
-    color: var(--secondary-color);
+    color: white;
     align-self: baseline;
 }
 
@@ -42,7 +42,7 @@ div.dark div.home div.dashboard{
 }
 
 div.dark div.dashboard .page-title{
-    color: #6f97c1
+    color: white;
 }
 
 div.dashboard .widget-row{

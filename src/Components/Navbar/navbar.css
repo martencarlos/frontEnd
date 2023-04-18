@@ -209,6 +209,16 @@ Button.bt-nav-link{
 }
 Button.bt-nav-link:hover{
     background: var(--primary-light);
+    color: white !important;
+}
+
+div.dark Button.bt-nav-link:hover{
+    background-color: #373636 !important;
+    color: white !important;
+}
+
+Button.bt-nav-link .nav-link:hover{
+    color: white !important;
 }
 
 
@@ -219,7 +229,7 @@ Button.bt-nav-link:hover{
 
 .nav-link-active{
     text-decoration: none;
-    color: var(--primary-dark);
+    color: white;
     background-color: var(--primary-light);
     padding: 5px;
     border-radius: 4px;
@@ -240,16 +250,17 @@ Button.bt-nav-link:hover{
 }
 div.dark .bt-nav-link-dropdown{
 
-    color: var(--secondary-light) !important;
+    color: white !important;
 }
 
 .bt-nav-link-dropdown:hover{
-    background-color: var(--primary-light)!important;
+    background-color: rgb(223, 223, 223) !important;
+    
 }
 
 div.dark .bt-nav-link-dropdown:hover{
-    color: var(--primary-light) !important;
-    background-color: var(--primary-color)!important;
+    color: white !important;
+    background-color: #282828!important;
 }
 
 .nav-links{
@@ -357,7 +368,6 @@ div.navbar li{
 }
 
 .toggler :hover{
-    color: var(--primary-dark);
     font-weight: 900;
     border-radius: 50%;
 }
@@ -367,8 +377,15 @@ div.navbar .MuiSvgIcon-root{
     padding: 8px !important;
 }
 
-div.dark .MuiSvgIcon-root{
-    color: var(--primary-light) ;
+div.navbar .MuiSvgIcon-root:hover{
+    color:var(--primary-dark);
+}
+
+div.dark div.navbar .MuiSvgIcon-root{
+    color:white;
+}
+div.dark div.navbar .MuiSvgIcon-root:hover{
+    color:var(--primary-color);
 }
 
 #css-paper-list-icon .MuiListItemIcon-root {

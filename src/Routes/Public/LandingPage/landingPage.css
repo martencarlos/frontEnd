@@ -40,7 +40,7 @@ div.landingPage{
     height: calc(100dvh - 101px);
     overflow: hidden;
     justify-content: center;
-    color: var(--primary-light);
+    color: white;
     padding-bottom: 30px;
     background: linear-gradient(to bottom, var(--secondary-color), var(--primary-dark),var(--primary-color));
     backdrop-filter: blur(10px);
@@ -86,6 +86,10 @@ div.main div.features-row{
     justify-content: center;
     font-size: larger;
     color: var(--primary-dark) ;
+ }
+
+ div.dark div.main .link a{
+    color: var(--primary-light) ;
  }
 
  

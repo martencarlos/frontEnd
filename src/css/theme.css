@@ -27,7 +27,7 @@ input {
 
 :root {
     
-    --primary-light: #cbd6d3;
+    --primary-light: #59887bfc;
     --primary-color: #3b5451;
     --primary-dark: #1d2c2a;
     /* --primary-color: #7986cb; */
@@ -37,7 +37,7 @@ input {
 
     --background-color: #f17e5b; 
 
-    --secondary-light: #e6eefe;
+    --secondary-light: #7192d5;
     --secondary-color: #3e556d;
     --secondary-dark: #1d2e3f;
     /* --secondary-color: #f17e5b;   */
@@ -106,7 +106,7 @@ div.dark div.text-area .title{
 }
 
 div.dark div.article .article-title{
-    color: var(--secondary-light) !important;
+    color: white !important;
 }
 
 div.dark div.article a{
@@ -162,9 +162,15 @@ body.dark div.nav-links-hamb  a.nav-link-active {
 div.navbar .bt-nav-link.dark .nav-link{
     color: var(--primary-light)
 }
+div.dark div.navbar .bt-nav-link.dark .nav-link{
+    color: white;
+}
+
+
+
 div.dark .bt-nav-link.dark .nav-link-active{
-    background-color: var(--primary-dark);
-    color: var(--primary-light);
+    background-color: var(--primary-color);
+    color: #fffffffc;
 }
 div.navbar .bt-nav-link.dark:hover{
     background-color: var(--primary-color);
@@ -178,7 +184,7 @@ div.navbar div.sign-buttons .nav-button.dark{
 }
 
 body.dark div.navbar .hamb-menu-icon div{
-    background-color: var(--secondary-light)
+    background-color: white;
 }
 
 /* input dark mode */

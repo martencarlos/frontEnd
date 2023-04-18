@@ -34,6 +34,10 @@ div.card i{
     color: var(--primary-color);
 }
 
+div.dark div.card i{
+    color: var(--primary-light);
+}
+
 
 div.card img{
     display: flex;

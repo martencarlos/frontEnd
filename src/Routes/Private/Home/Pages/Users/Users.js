@@ -174,8 +174,7 @@ export default function Users(props){
                     </div>
                 </div>
             </Modal>
-            <br></br>
-            <br></br>
+            
             <Typography className="page-title" variant="h4"  gutterBottom> Manage Users </Typography>
             
             {loading ? 

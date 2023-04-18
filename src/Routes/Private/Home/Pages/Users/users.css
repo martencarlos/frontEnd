@@ -14,7 +14,7 @@ div.users{
     justify-content: center;
     flex-direction: column;;
    
-    background-color: var(--primary-light);
+    background-color: var(--secondary-color);
     border-radius: 20px;
     margin: 5px;
 }
@@ -25,7 +25,7 @@ div.dark div.users{
 
 div.users .page-title{
     margin: 20px;
-    color: var(--secondary-color);
+    color: white;
 }
 
 div.users img.datagrid-mini-avatar{

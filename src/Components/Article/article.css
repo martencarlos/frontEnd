@@ -27,7 +27,7 @@ div.article .published{
     display: flex;
     margin-top: 10px;
     margin-bottom: 20px;
-    color: var(--primary-color)
+    color: var(--secondary-color)
     /* font-size: small; */
 }
 
@@ -101,7 +101,7 @@ div.wp-block-embed__wrapper{
 
 div.blog .up-floating-icon{
     position: sticky;
-     color: var(--secondary-light);
+     color: white;
     bottom: 70px;
     left:77%;
 }

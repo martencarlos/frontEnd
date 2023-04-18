@@ -338,8 +338,7 @@ export default function Account(props){
                     </div>
                 </div>
             </Modal>
-            <br></br>
-            <br></br>
+            
             <Typography variant="h4" className="page-title" gutterBottom>{"Account Settings"} </Typography>
 
             {userData.name &&
