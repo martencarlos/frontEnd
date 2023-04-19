@@ -78,7 +78,9 @@ export default function WebScrap(props){
            <SectionHeader 
                 darkMode = {props.darkMode}
                 title = "Webscrap"
-                text = "Getting the list of most sold laptops in Amazon.es at the time the page is loaded"
+                text = {`To get the list of the most sold laptops on Amazon.es at the time the page is loaded, you can use web scraping techniques to extract the necessary data from the webpage. This involves using a web scraping tool or library to automatically navigate to the webpage and extract the relevant information.
+
+                Once you have obtained the webpage data, you can search for the relevant sections and extract the data on the most sold laptops, such as the laptop models, their prices, and their current sales ranking. You can then store this data in a data structure such as an array or object for further use.`}
             />
             
             <br></br>

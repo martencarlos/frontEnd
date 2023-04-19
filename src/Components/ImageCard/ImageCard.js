@@ -14,7 +14,7 @@ export default function imageCard(props){
                     src={props.item.image}
                     alt="cover"
             />
-            <div className="imageCard--info">
+            {/* <div className="imageCard--info">
                 <span className="imageCard--stats">
                     <i className="bi-star" role="img"></i>
                         {props.item.stats.likes}
@@ -27,7 +27,7 @@ export default function imageCard(props){
                         <i className="bi-box-arrow-in-down"></i>
                         {props.item.stats.downloads}
                 </span>
-            </div>
+            </div> */}
             <div className={`imageCard--profile ${props.darkMode ? "dark": ""}`}>
                 <img  className="imageCard--profile--img"
                     src={props.item.author.pic}
