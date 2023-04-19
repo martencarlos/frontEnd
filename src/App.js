@@ -27,6 +27,7 @@ import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
 import { dark } from "@mui/material/styles/createPalette";
 import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
+import OpenAi from "./Routes/Private/OpenAi/OpenAi";
 
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
@@ -289,8 +290,15 @@ export default function App(){
                         toggleLogin={toggleLogin}
                         updateUserData= {updateUserData}
                         userData = {userData}
-                    />
-                }>
+                    />}>
+                </Route>
+                <Route path="projects/openai" element={
+                    <OpenAi 
+                        title="Open Ai" 
+                        darkMode = {darkMode}
+                        login = {login}
+                        userData = {userData}
+                    />}>
                 </Route>
                 <Route path="/features" element={
                     <Features title="Features" darkMode = {darkMode}/>}>

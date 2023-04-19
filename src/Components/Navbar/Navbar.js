@@ -260,7 +260,18 @@ export default function Navbar(props){
                                     <PersonIcon fontSize="small" />
                                 </Tooltip>
                             </ListItemIcon>
-                             
+                        </MenuItem>
+                        <MenuItem id="css-paper-list-icon" onClick={() => {
+                            handleClose()
+                            hambMenuClick()
+                            navigate('/projects/openai')
+                            }}>
+                            <ListItemText>Open AI</ListItemText>
+                            <ListItemIcon>
+                                <Tooltip title="req. login" placement="right">
+                                    <PersonIcon fontSize="small" />
+                                </Tooltip>
+                            </ListItemIcon>
                         </MenuItem>
                         
                     </Menu>

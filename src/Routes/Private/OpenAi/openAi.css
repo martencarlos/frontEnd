@@ -1,0 +1,97 @@
+/* Price Tracker */
+
+
+@media (max-width: 770px) {
+
+    .openai-fullpage-wrapper{
+        height: 100% !important;
+    }
+    .openai-fullpage{
+        flex-direction: column;
+        margin-top: 0px !important;
+        margin-bottom:0px !important
+    }
+    
+    .openai-input-form{
+        margin: 50px auto;
+        order: 1;
+        margin-left: auto !important;
+        position: relative!important;
+        width: 95%!important;
+        
+    }
+    .openai-response{
+        margin-left: auto!important;
+        margin-right: auto !important;
+        margin-top: 30px!important;
+        order: 2;
+        width: 95%!important;
+        margin-bottom: 0px !important;
+    }
+    div.openai-fullpage-wrapper img{
+        align-self: center;
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+    }
+    
+
+}
+
+div.openai-fullpage-wrapper img{
+    max-width: 512px;
+    max-height: 512px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.openai-fullpage-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: calc(100vh - 155px);
+}
+
+.openai-fullpage{
+    display: flex;
+    gap: 5%;
+    height:100%;
+    justify-content: end;
+   
+}
+
+.openai-input-form{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+    row-gap: 20px;
+    justify-content: center;
+    height: 60%;
+    margin-left: 50px;
+    /* margin-right: 1%; */
+    width: 40%;
+}
+
+.openai-input-button-loading-circle{
+    display: flex;
+    
+    width: 100%;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    /* margin-top: 18px; */
+}
+
+.openai-response{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    
+    width: 45%;
+}
+
+
+
+
+
