@@ -6,7 +6,7 @@
         margin-left: 2px !important;
         margin-top: 0px !important;
         height: 100%;
-        border: 1px solid lightgrey;
+        
     }
 
     div.home div.sidebar-toggle{
@@ -32,17 +32,17 @@ div.home{
 
     
 div.home div.sidebar{
-    /* display: flex; */
-    flex:1;
-    max-width:180px;
-    margin-top: 25px;
+       /* display: flex; */
+    flex: 1 1;
+    max-width: 180px;
+    /* margin-top: 25px; */
     margin-bottom: 25px;
     flex-direction: column;
     padding: 20px;
     background: white;
-        margin-left: 25px;
+    margin-left: 25px;
     z-index: 1;
-    border-radius: 10px; 
+    /* border-radius: 10px;*/
 }
 
 div.dark div.home div.sidebar{

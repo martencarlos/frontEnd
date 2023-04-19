@@ -194,6 +194,14 @@ div.dark .pricetracker-tracker{
     color: #ffffff;
 }
 
+.pricetracker-mytrackers-img-wrapper{
+    transition: transform 0.2s ease-in-out;
+}
+
+.pricetracker-mytrackers-img-wrapper:hover{
+    transform: translateY(-2px);
+}
+
 .pricetracker-mytrackers-info{
     display: flex;
     align-items: center;
