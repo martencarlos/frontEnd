@@ -76,7 +76,7 @@
     }
 
      div.pricetracker-mytrackers-info .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
-        padding-right: 0px;
+       
     }
 
     .pricetracker-mytrackers-delete{
@@ -179,12 +179,11 @@
 }
 
 .pricetracker-tracker{
-        display: flex;
-    padding: 5x;
-        overflow: hidden;
-    border: 1px transparent #d8d9d8; 
+    display: flex;
+    overflow: hidden;
+    
+    margin-bottom: 5px;
     background: white;
-    border-radius: 20px;
     color: #000000;
     flex-direction: column;
 }
