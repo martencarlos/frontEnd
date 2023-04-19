@@ -467,6 +467,61 @@ export default function Pricetracker(props){
                     }
                 </div>
             </Modal>
+            <Menu
+                elevation={2}
+                anchorOrigin={{
+                    vertical: 'center',
+                    horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                    vertical: 'center',
+                    horizontal: 'right',
+                    }}
+                disableScrollLock={true}
+                id="tracker-options"
+                MenuListProps={{
+                'aria-labelledby': 'tracker-options',
+                }}
+                anchorEl={trackerOptionAnchor}
+                open={trackerOptionState}
+                onClose={removeTrackerOptionsAnchor}
+                // style={{ // Add here you negative margin
+                //     marginLeft: "-40px"
+                // }}
+            >
+                <MenuList dense>
+                {deletetrackerID.current && userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed ?
+                    <MenuItem onClick={(e)=>{
+                        removeTrackerOptionsAnchor()
+                        priceTrackerSubscriptionToggle(e)}}>
+                        <ListItemIcon>
+                            <NotificationsOffOutlinedIcon   className="pricetracker-mytrackers-delete"/>
+                        </ListItemIcon>
+                        {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
+                            <ListItemText>Unsubscribe</ListItemText>
+                            
+                    </MenuItem>
+                    :
+                    <MenuItem onClick={(e)=>{
+                        removeTrackerOptionsAnchor()
+                        priceTrackerSubscriptionToggle(e)}}>
+                        <ListItemIcon>
+                            <NotificationsNoneOutlinedIcon   className="pricetracker-mytrackers-delete"/>
+                        </ListItemIcon>
+                        {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
+                            <ListItemText>Subscribe</ListItemText>
+                    </MenuItem>
+                    }
+                    <MenuItem onClick={(e)=>{
+                        removeTrackerOptionsAnchor()
+                        deleteUserConfirmation(e)}}>
+                        <ListItemIcon>
+                            <DeleteIcon style={{ color: '#9e1b32' }}  className="pricetracker-mytrackers-delete"/>
+                        </ListItemIcon>
+                        <ListItemText>Delete Tracker</ListItemText>
+                    </MenuItem>
+                </MenuList>
+            </Menu>
             {!props.login &&
                 <div></div>
             }
@@ -593,61 +648,7 @@ export default function Pricetracker(props){
                                     >
                                         <MoreVertIcon />
                                     </IconButton>
-                                    <Menu
-                                        elevation={2}
-                                        anchorOrigin={{
-                                            vertical: 'center',
-                                            horizontal: 'left',
-                                          }}
-                                          transformOrigin={{
-                                            vertical: 'center',
-                                            horizontal: 'right',
-                                          }}
-                                        disableScrollLock={true}
-                                        id="tracker-options"
-                                        MenuListProps={{
-                                        'aria-labelledby': 'tracker-options',
-                                        }}
-                                        anchorEl={trackerOptionAnchor}
-                                        open={trackerOptionState}
-                                        onClose={removeTrackerOptionsAnchor}
-                                        // style={{ // Add here you negative margin
-                                        //     marginLeft: "-40px"
-                                        // }}
-                                    >
-                                        <MenuList dense>
-                                        {deletetrackerID.current && userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed ?
-                                            <MenuItem onClick={(e)=>{
-                                                removeTrackerOptionsAnchor()
-                                                priceTrackerSubscriptionToggle(e)}}>
-                                                <ListItemIcon>
-                                                    <NotificationsOffOutlinedIcon   className="pricetracker-mytrackers-delete"/>
-                                                </ListItemIcon>
-                                                {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
-                                                    <ListItemText>Unsubscribe</ListItemText>
-                                                 
-                                            </MenuItem>
-                                            :
-                                            <MenuItem onClick={(e)=>{
-                                                removeTrackerOptionsAnchor()
-                                                priceTrackerSubscriptionToggle(e)}}>
-                                                <ListItemIcon>
-                                                    <NotificationsNoneOutlinedIcon   className="pricetracker-mytrackers-delete"/>
-                                                </ListItemIcon>
-                                                {/* <ListItemText>{userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)]._id}</ListItemText> */}
-                                                    <ListItemText>Subscribe</ListItemText>
-                                            </MenuItem>
-                                            }
-                                            <MenuItem onClick={(e)=>{
-                                                removeTrackerOptionsAnchor()
-                                                deleteUserConfirmation(e)}}>
-                                                <ListItemIcon>
-                                                    <DeleteIcon style={{ color: '#9e1b32' }}  className="pricetracker-mytrackers-delete"/>
-                                                </ListItemIcon>
-                                                <ListItemText>Delete Tracker</ListItemText>
-                                            </MenuItem>
-                                        </MenuList>
-                                    </Menu>
+                                    
                                     {/* <DeleteIcon onClick={(e)=>deleteUserConfirmation(e)} color="error" className="pricetracker-mytrackers-delete"/> */}
                                 </div>
                                 {priceGraphData.length>0 && priceGraphData.length ===myTrackers.length && tracker.productInfo.prices.length>1 &&<div className="pricetracker-mytrackers-graph">

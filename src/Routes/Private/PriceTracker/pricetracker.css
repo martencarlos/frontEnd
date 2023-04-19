@@ -43,8 +43,40 @@
         width: 95%!important;
         margin-bottom: 0px !important
     }
+
+    img.pricetracker-mytrackers-img {
+        width: 80px;
+    }
+
+    .pricetracker-mytrackers-img-link {
+        width: 75px !important;
+    }
+
+    div.pricetracker-fullpage .container {
+        padding-left:10px !important;
+    }
+
+    div.pricetracker-fullpage .container .subscribe-bell {
+        left:15px !important;
+    }
+
     .pricetracker-mytrackers-info{
         
+    }
+
+    .pricetracker-mytrackers-title {
+        
+        line-height: 1.0 !important;
+        letter-spacing: 0.00338em !important;
+    }
+
+    .pricetracker-mytrackers-price {
+        padding-left: 5px !important;
+        padding-right: 0px !important;
+    }
+
+     div.pricetracker-mytrackers-info .css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+        padding-right: 0px;
     }
 
     .pricetracker-mytrackers-delete{
@@ -148,12 +180,11 @@
 
 .pricetracker-tracker{
         display: flex;
-    padding: 10px;
+    padding: 5x;
         overflow: hidden;
     border: 1px transparent #d8d9d8; 
     background: white;
     border-radius: 20px;
-    margin-bottom: 10px;
     color: #000000;
     flex-direction: column;
 }
@@ -181,7 +212,7 @@ div.dark .pricetracker-tracker{
     padding: 0.5em ;
     word-wrap: break-word;
     max-height: 2.5em;
-    line-height: 1em;
+    line-height: 0.98 !important;
 }
 
 .pricetracker-mytrackers-title-skeleton{
