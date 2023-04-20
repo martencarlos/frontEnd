@@ -206,7 +206,8 @@ export default function OpenAi(props){
                     {audioUrl && (
                         <div>
                            
-                        <audio
+                        <audio 
+                            autoPlay={true}
                             src={audioUrl}
                             controls={true}
                             onPlay={handlePlay}
