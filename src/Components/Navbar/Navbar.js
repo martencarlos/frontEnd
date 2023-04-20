@@ -199,8 +199,10 @@ export default function Navbar(props){
        //<img src={`../images/${props.img}`} className="card--image" />
         <div  className="navbar">
             <nav id="navbar" className={props.darkMode ? "dark": ""}>
-                <Link className="nav-brand"  to="/">{props.siteTitle}</Link>
-
+                {/* <Link className="nav-brand"  to="/">{props.siteTitle}</Link> */}
+                
+                <img className="nav-brand-img" onClick={() => {navigate('/')}} src="https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FBrand.png?alt=media&token=cc86f988-d765-429f-a356-25c05460be7d" alt="logo" />
+                
                 {props.login &&
                     <ul className="nav-links">
                         <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>

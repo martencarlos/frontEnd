@@ -183,12 +183,18 @@ div.navbar .nav-brand{
     text-decoration: none;
     padding: 0.5rem;
     
-
     transition: all .2s ease-in-out;
     /* border: 1px solid transparent; */
 }
 
-div.navbar .nav-brand:hover{
+div.navbar .nav-brand-img{
+    transition: all .2s ease-in-out;
+    max-height: 65px;
+    max-width: 135px;
+    cursor: pointer;
+}
+
+div.navbar .nav-brand-img:hover{
     /* box-shadow: rgba(0, 0, 0, 0.308) 0px 8px 13px; */
     text-shadow: -1px 2px 2px rgba(79, 78, 78, 0.3);
     
