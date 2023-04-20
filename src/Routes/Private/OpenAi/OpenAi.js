@@ -130,11 +130,17 @@ export default function OpenAi(props){
         setSendingPrompt(true)
         if(isInputValid()){
             var formToSend = { ...formData };
+            console.log(formToSend.prompt)
+            setSendingPrompt(true)
+            const startIndex = formToSend.prompt.indexOf('/');
+            const endIndex = formToSend.prompt.indexOf(' ', startIndex);
+            const command = formToSend.prompt.substring(startIndex, endIndex);
 
             const config = {
                 url: process.env.REACT_APP_SERVER+'/openai',
                 method: 'POST',
                 // timeout:5000,
+                // responseType: 'arraybuffer',
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': process.env.SERVER,
@@ -142,9 +148,12 @@ export default function OpenAi(props){
                 data: JSON.stringify(formToSend),
                 withCredentials: true, // Now this is was the missing piece in the client side
             };
-
+            
+            if(command==="/speak"){
+                config.responseType = 'arraybuffer';
+            }
             axios(config).then(function (response) {
-                // console.log(response)
+                
                 setSendingPrompt(false)
 
                 setFormData({prompt: ""})
@@ -169,7 +178,7 @@ export default function OpenAi(props){
     }
 
     // console.log(userData)
-    console.log(audioUrl?"audio":"no audio")
+   
     return (
         <div className="openai-fullpage-wrapper">
             {!props.login &&
@@ -180,7 +189,7 @@ export default function OpenAi(props){
             <div className="openai-fullpage">
                 <div className="openai-input-form">
                     <Typography variant="h4" gutterBottom>Prompt</Typography>
-                    <TextField multiline minRows={2} maxRows={6} placeholder="Ask your question or create an image with /imagine as prefix " value={formData.prompt} onChange={handleChange}  required name="prompt" className="openai-input-prompt" id="input-prompt-id" label="My text prompt" variant="standard" />
+                    <TextField multiline minRows={2} maxRows={6} placeholder="Ask your question or create an image with /imagine as prefix or audio with /speak " value={formData.prompt} onChange={handleChange}  required name="prompt" className="openai-input-prompt" id="input-prompt-id" label="My text prompt" variant="standard" />
 
                     {sendingPrompt ?
                         <CircularProgress size="2rem" className="openai-input-button-loading-circle" />
@@ -192,7 +201,7 @@ export default function OpenAi(props){
                     <Typography variant="h4" gutterBottom>Response</Typography>
                     
                     <br></br>
-                    {chatResponse && <Typography variant="body1" gutterBottom>{chatResponse}</Typography>}
+                    {chatResponse && <Typography variant="body1" style={{ whiteSpace: 'pre-line', overflowWrap: 'break-word' }} gutterBottom>{chatResponse}</Typography>}
                     {imageResponse && <img src={imageResponse} alt="generated img"></img>}
                     {audioUrl && (
                         <div>
