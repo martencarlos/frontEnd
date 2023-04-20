@@ -28,6 +28,8 @@ export default function OpenAi(props){
     const [formData, setFormData] = useState({
         prompt: ""
     })
+    const [audioUrl, setAudioUrl] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
     
     /****UseEffects****/
 
@@ -106,10 +108,25 @@ export default function OpenAi(props){
         }))
     }
 
+    //Audio functions
+    const handlePlay = () => {
+        setIsPlaying(true);
+    };
+    const handlePause = () => {
+        setIsPlaying(false);
+    };
+    const handleAudioLoad = () => {
+        setIsPlaying(true);
+    };
+    const handleAudioError = (error) => {
+        console.log('Error loading audio:', error);
+    };
+
     function sendPrompt(){
         console.log("send prompt")
         setChatResponse()
         setImageResponse()
+        setAudioUrl()
         setSendingPrompt(true)
         if(isInputValid()){
             var formToSend = { ...formData };
@@ -127,12 +144,14 @@ export default function OpenAi(props){
             };
 
             axios(config).then(function (response) {
-                console.log(response)
+                // console.log(response)
                 setSendingPrompt(false)
 
                 setFormData({prompt: ""})
-                
-                if(response.data.type==="chat")
+                if(!response.data.type){
+                    setAudioUrl(URL.createObjectURL(new Blob([response.data], { type: 'audio/mpeg' })));
+                }
+                else if(response.data.type==="chat")
                     setChatResponse(response.data.result)
                 else if(response.data.type==="image")
                     setImageResponse(response.data.result)
@@ -150,7 +169,7 @@ export default function OpenAi(props){
     }
 
     // console.log(userData)
-    // console.log(formData)
+    console.log(audioUrl?"audio":"no audio")
     return (
         <div className="openai-fullpage-wrapper">
             {!props.login &&
@@ -169,13 +188,28 @@ export default function OpenAi(props){
                         <Button variant="contained" id="button-sendPrompt-id" className="openai-input-button" type="button" onClick={sendPrompt}>send prompt</Button>
                     }
                 </div>
-                {(chatResponse || imageResponse) &&<div className="openai-response">
+                {(chatResponse || imageResponse || audioUrl) &&<div className="openai-response">
                     <Typography variant="h4" gutterBottom>Response</Typography>
                     
                     <br></br>
                     {chatResponse && <Typography variant="body1" gutterBottom>{chatResponse}</Typography>}
                     {imageResponse && <img src={imageResponse} alt="generated img"></img>}
-                </div>}
+                    {audioUrl && (
+                        <div>
+                           
+                        <audio
+                            src={audioUrl}
+                            controls={true}
+                            onPlay={handlePlay}
+                            onPause={handlePause}
+                            onLoad={handleAudioLoad}
+                            onError={handleAudioError}
+                        />
+                        <p>{isPlaying ? 'Playing' : 'Paused'}</p>
+                        </div>
+                    )}
+                </div>
+                }
             </div>
             }
         </div>
