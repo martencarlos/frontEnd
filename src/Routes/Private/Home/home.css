@@ -1,11 +1,17 @@
 /* home */
 
+@keyframes openSidebar {
+    from {left:-150px}
+    to {left: 0px}
+  }
+
 @media (max-width: 700px) {
     div.home div.sidebar{
         display: none ;
         margin-left: 2px !important;
         margin-top: 0px !important;
         height: 100%;
+        animation: openSidebar 0.2s ease-out;
         
     }
 
@@ -38,6 +44,7 @@ div.home div.sidebar{
     /* margin-top: 25px; */
     margin-bottom: 25px;
     flex-direction: column;
+    
     padding: 20px;
     background: white;
     margin-left: 25px;
