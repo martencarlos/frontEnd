@@ -151,11 +151,12 @@ export default function Navbar(props){
             setTimeout(function() {
                 x.style.display = "none";
                 x.classList.remove("closeMenu");
-            }, 170);
+            }, 200);//170
             
         } else {
-            x.style.animationName = "openMenu";
             x.style.display = "flex";
+            x.style.animationName = "openMenu";
+            
         }
     }
 

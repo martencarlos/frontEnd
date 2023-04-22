@@ -1,13 +1,13 @@
 /* navbar */
 /* The animation code */
 @keyframes openMenu {
-    from {top:-65}
-    to {top: 65px}
+    from {top:-150px}
+    to {top: 56px}
   }
 
   @keyframes closeMenu {
-    from {top:65px}
-    to {top: -75px}
+    from {top:56px}
+    to {top: -150px}
   }
 
 
@@ -95,10 +95,10 @@ div.hamb-menu{
     padding-top: 15px;
     padding-bottom: 15px;
     background-color: white;
-    /* animation-name: openMenu; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation-duration: 0.2s;
-    animation-direction: alternate;
+    animation: openMenu ease-in-out 0.2s;
+    /* animation: ease-in-out 2.2s; */
+    /* animation-direction: alternate; */
 }
 
  .closeMenu{
