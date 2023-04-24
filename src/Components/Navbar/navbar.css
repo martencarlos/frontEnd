@@ -405,7 +405,7 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
     
 }
 
-#css-paper-list-icon .MuiListItemIcon-root {
+.navbar #css-paper-list-icon .MuiListItemIcon-root {
     display: flex;
     justify-content: end;
 }
@@ -415,8 +415,8 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
 }
 
 
-#css-paper-list-icon:hover .MuiListItemIcon-root {
-    /* color: rgb(51, 51, 51); */
+.dark.navbar svg:hover {
+    color: var(--secondary-light);
 }
 
 .dark .css-i0ju2c-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {

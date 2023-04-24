@@ -218,7 +218,7 @@ export default function Navbar(props){
                     
                     </ul>}
                     <Menu
-                        className={props.darkMode ? "dark": ""}
+                        className={`navbar ${props.darkMode ? "dark": ""}` }
                         disableScrollLock={true}
                         id="basic-menu"
                         anchorEl={anchorEl}
