@@ -468,6 +468,7 @@ export default function Pricetracker(props){
                 </div>
             </Modal>
             <Menu
+                className={props.darkMode ? "dark": ""}
                 elevation={2}
                 anchorOrigin={{
                     vertical: 'center',
@@ -489,9 +490,9 @@ export default function Pricetracker(props){
                 //     marginLeft: "-40px"
                 // }}
             >
-                <MenuList dense>
+                <MenuList  dense>
                 {deletetrackerID.current && userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed ?
-                    <MenuItem onClick={(e)=>{
+                    <MenuItem id="css-paper-list-icon" onClick={(e)=>{
                         removeTrackerOptionsAnchor()
                         priceTrackerSubscriptionToggle(e)}}>
                         <ListItemIcon>

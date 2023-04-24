@@ -151,7 +151,7 @@ export default function Navbar(props){
             setTimeout(function() {
                 x.style.display = "none";
                 x.classList.remove("closeMenu");
-            }, 200);//170
+            }, 170);//170
             
         } else {
             x.style.display = "flex";
@@ -218,6 +218,7 @@ export default function Navbar(props){
                     
                     </ul>}
                     <Menu
+                        className={props.darkMode ? "dark": ""}
                         disableScrollLock={true}
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -286,6 +287,7 @@ export default function Navbar(props){
                         
 
                         <Menu
+                            className={props.darkMode ? "dark": ""}
                             disableScrollLock={true}
                             id="logout-profile-menu"
                             anchorEl={logoutProfileMenu}
@@ -306,7 +308,7 @@ export default function Navbar(props){
                             
                             <Typography className="profile-name" variant="subtitle1" gutterBottom>{"Unknown User"}</Typography>
                             
-                            <MenuItem className="profile-option" onClick={() => {
+                            <MenuItem id="css-paper-list-icon" className="profile-option" onClick={() => {
                                 closeLogoutProfileMenu()
                                 navigate('/Login')
                                 }}>
@@ -316,7 +318,7 @@ export default function Navbar(props){
                                 <ListItemText>Login</ListItemText>
                             </MenuItem>
                              
-                            <MenuItem className="profile-option" onClick={() => {
+                            <MenuItem id="css-paper-list-icon" className="profile-option" onClick={() => {
                                 closeLogoutProfileMenu()
                                 navigate('/Register')
                                 }}>
