@@ -294,7 +294,7 @@ div.dark .pricetracker-tracker{
 } */
 
 
-.priceTrackerMenu [class*="-MuiList-root-MuiMenu-list"] {
+.priceTrackerMenu [class*="MuiMenu-list"] {
     padding-top: 0px;
     padding-bottom: 0px;
 }
