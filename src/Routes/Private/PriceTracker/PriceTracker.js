@@ -468,7 +468,7 @@ export default function Pricetracker(props){
                 </div>
             </Modal>
             <Menu
-                className={props.darkMode ? "dark": ""}
+                className={`priceTrackerMenu ${props.darkMode ? "dark": ""}` }
                 elevation={2}
                 anchorOrigin={{
                     vertical: 'center',

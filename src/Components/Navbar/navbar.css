@@ -405,7 +405,7 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
     
 }
 
-.navbar #css-paper-list-icon .MuiListItemIcon-root {
+.navbar-paper-projects-list #css-paper-list-icon .MuiListItemIcon-root {
     display: flex;
     justify-content: end;
 }
@@ -424,10 +424,13 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
     color: white
 }
 
-/* .dark .css-i0ju2c-MuiPaper-root-MuiMenu-paper-MuiPopover-paper li:hover{
+.dark .navbar-paper-projects-list [class*="MuiPaper-root-MuiMenu-paper-MuiPopover-paper"] li:hover{
     background-color: rgb(0, 0, 0);
-    
-} */
+} 
+
+.dark #profile-menu [class*="-MuiList-root-MuiMenu-list"] li:hover{
+    background-color: rgb(0, 0, 0);
+}
 
 .dark .MuiListItemIcon-root{
     color: white !important;

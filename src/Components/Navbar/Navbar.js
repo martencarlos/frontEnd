@@ -218,7 +218,7 @@ export default function Navbar(props){
                     
                     </ul>}
                     <Menu
-                        className={`navbar ${props.darkMode ? "dark": ""}` }
+                        className={`navbar-paper-projects-list ${props.darkMode ? "dark": ""}` }
                         disableScrollLock={true}
                         id="basic-menu"
                         anchorEl={anchorEl}
@@ -287,7 +287,7 @@ export default function Navbar(props){
                         
 
                         <Menu
-                            className={props.darkMode ? "dark": ""}
+                            className={`navbar-paper-account-list ${props.darkMode ? "dark": ""}` }
                             disableScrollLock={true}
                             id="logout-profile-menu"
                             anchorEl={logoutProfileMenu}
