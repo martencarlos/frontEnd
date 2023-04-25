@@ -133,14 +133,21 @@ div.navbar .hamb-menu-icon{
     font-size: 40px;
     padding-left: 5px;
     cursor:pointer;
+    
 }
 
 div.navbar .hamb-menu-icon div{
     width: 35px;
     height: 3px;
     margin: 6px 0;
-    transition: 0.4s;
+    user-select: none;
+    transition: 0.2s;
     background-color: rgb(43, 40, 58);
+    
+}
+
+div.dark div.navbar .hamb-menu-icon div{
+    background-color: rgb(255, 255, 255);
 }
 
 .openHambMenu .bar1 {

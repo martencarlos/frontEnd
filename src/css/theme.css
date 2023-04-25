@@ -68,10 +68,12 @@ input {
     --primary-text: #6e6e6e;
     --primary-text-light: #656565;
     --secondary-text: #757575;
-
-
-
 }
+
+*{
+    -webkit-tap-highlight-color: transparent;
+}
+
 
 html{
     overflow-y: scroll;

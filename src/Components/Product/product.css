@@ -87,7 +87,6 @@ div.product-table a{
    user-select: none;
    text-decoration: none;
    border-radius: 30%;
-   -webkit-tap-highlight-color: transparent;
    outline: none;
 }
 
