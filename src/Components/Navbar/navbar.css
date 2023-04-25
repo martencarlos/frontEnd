@@ -419,12 +419,12 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
     color: var(--secondary-light);
 }
 
-.dark [class*="MuiPaper-root-MuiMenu-paper-MuiPopover-paper"] {
+.dark [class*="MuiPaper-root"] {
     background-color: rgb(20, 20, 20);
     color: white
 }
 
-.dark .navbar-paper-projects-list [class*="MuiPaper-root-MuiMenu-paper-MuiPopover-paper"] li:hover{
+.dark .navbar-paper-projects-list [class*="MuiPaper-root"] li:hover{
     background-color: rgb(0, 0, 0);
 } 
 
