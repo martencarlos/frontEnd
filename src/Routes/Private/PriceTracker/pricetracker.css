@@ -358,13 +358,9 @@ div.dark div.pricetracker-fullpage .pricetracker-mytrackers-info button.css-78tr
     background-color: rgb(48, 48, 48)
 }
 
-.dark .css-11qccju-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
-    background-color: rgb(20, 20, 20);
-    color: white
-}
-.dark .css-11qccju-MuiPaper-root-MuiMenu-paper-MuiPopover-paper li:hover{
+
+.dark .priceTrackerMenu [class*="MuiMenu-list"] li:hover{
     background-color: rgb(0, 0, 0);
-    
 }
 
 .recharts-tooltip-label{

@@ -428,7 +428,7 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
     background-color: rgb(0, 0, 0);
 } 
 
-.dark #profile-menu [class*="-MuiList-root-MuiMenu-list"] li:hover{
+.dark #profile-menu [class*="MuiList-root"] li:hover{
     background-color: rgb(0, 0, 0);
 }
 
