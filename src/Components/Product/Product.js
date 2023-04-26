@@ -18,7 +18,7 @@ export default function Product(props){
                         <div className="product-column">{item.price}</div>
                         <div className="product-column">
                             <a href={item.url} className="chip-link">
-                                <Chip color="primary" variant="filled" label="Amazon"/>
+                                <Chip color="primary" variant="filled" label="Details"/>
                             </a>
                         </div>
                     </div>

@@ -28,6 +28,7 @@
     div.landingPage div.text-area .title{
         align-self: center;
         margin:0px;
+        justify-content: start;
         min-width: 130px;
 
     }
