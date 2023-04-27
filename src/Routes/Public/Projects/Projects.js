@@ -38,6 +38,8 @@ export default function Projects(props){
             <br></br>
             <br></br>
             <br></br>
+            <br></br>
+            <br></br>
         
             <div className= "blogIntegration">
                 <Hero
@@ -51,6 +53,8 @@ export default function Projects(props){
                     linkText = {blogIntegration.linkText}
                 />
             </div>
+            <br></br>
+            <br></br>
             <br></br>
             <br></br>
             <br></br>
@@ -72,6 +76,8 @@ export default function Projects(props){
             <br></br>
             <br></br>
             <br></br>
+            <br></br>
+            <br></br>
         
             <div className= "blogIntegration">
                 <Hero
@@ -87,7 +93,7 @@ export default function Projects(props){
             </div>
             <br></br>
             <br></br>
-
+        
         </div>
     )
 }

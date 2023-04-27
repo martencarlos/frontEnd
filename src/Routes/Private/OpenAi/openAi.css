@@ -12,14 +12,14 @@
         margin-bottom:0px !important
     }
     
-    .openai-input-form{
+    .openai-input{
         margin: 50px auto;
         order: 1;
         margin-left: auto !important;
         position: relative!important;
         width: 95%!important;
-        
     }
+    
     .openai-response{
         margin-left: auto!important;
         margin-right: auto !important;
@@ -57,19 +57,24 @@ div.openai-fullpage-wrapper img{
     justify-content: end;
    
 }
+.openai-input{
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    left: 0px;
+    justify-content: center;
+    height: calc(100% - 170px);
+    width: 40%;
+    margin-left: 50px;
+}
 
 .openai-input-form{
     display: flex;
     flex-direction: column;
-    position: fixed;
-    left: 0px;
     row-gap: 20px;
-    justify-content: center;
-    height: 60%;
-    margin-left: 50px;
-    /* margin-right: 1%; */
-    width: 40%;
+    /* align-self: center; */
 }
+
 
 .openai-input-button-loading-circle{
     display: flex;

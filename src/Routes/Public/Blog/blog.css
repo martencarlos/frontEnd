@@ -121,6 +121,12 @@ div.dark span.MuiSkeleton-root{
     background-color: rgb(67, 67, 67);
 }
 
+div.dark #blog-load-more{
+    color: var(--secondary-light);
+    border-color: var(--secondary-light);
+}
+    
+
 /* Deprecated - just for reference */
 
 /* .loading-circle{

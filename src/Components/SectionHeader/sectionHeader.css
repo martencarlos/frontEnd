@@ -8,6 +8,8 @@
     }
     div.sectionHeader .title{
         font-size: 2rem;
+            margin-right: 0px !important;
+    margin-left: 0px !important;
     }
 }
 
@@ -16,6 +18,7 @@ div.sectionHeader {
     flex-direction: column;
     justify-content: center;
     white-space: pre-line;
+    max-width: 750px;
     width: 60%;
     margin-top: 20px;
     margin-bottom: 20px;

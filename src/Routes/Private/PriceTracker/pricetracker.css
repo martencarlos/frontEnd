@@ -211,6 +211,7 @@ div.dark .pricetracker-tracker{
 
 .pricetracker-mytrackers-info-skeleton{
     display: flex;
+    height: fit-content;
 }
 
 .pricetracker-mytrackers-title{
@@ -257,6 +258,12 @@ div.dark .pricetracker-tracker{
     margin-top: 10px;
     height: 100px;
     justify-content: space-between;
+}
+
+.pricetracker-mytrackers-graph-skeleton{
+    width: 100%;
+    margin-top: 5px;
+    height: 100px !important;
 }
 
 .pricetracker-mytrackers-graph .recharts-surface{

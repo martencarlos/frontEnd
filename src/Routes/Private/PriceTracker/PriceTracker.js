@@ -565,7 +565,42 @@ export default function Pricetracker(props){
                                     <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
                                 </div>
                         </div>
+                        
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                            <Skeleton className="pricetracker-mytrackers-graph-skeleton" animation="wave" variant="rectangular" />
+                        </div>
 
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                            <Skeleton className="pricetracker-mytrackers-graph-skeleton" animation="wave" variant="rectangular" />
+                        </div>
+                        <br></br>
+                        <div className="pricetracker-mytrackers-info-skeleton">
+                                <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />
+                                <div className="pricetracker-mytrackers-title-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                    <Skeleton className="pricetracker-mytrackers-info-title-text-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-price-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-price-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                                <div className="pricetracker-mytrackers-delete-column-skeleton">
+                                    <Skeleton className="pricetracker-mytrackers-delete-skeleton" animation="wave" variant="rectangular" />
+                                </div>
+                        </div>
                         <br></br>
                         <div className="pricetracker-mytrackers-info-skeleton">
                                 <Skeleton className="pricetracker-mytrackers-info-img-skeleton" animation="wave" variant="rectangular" />

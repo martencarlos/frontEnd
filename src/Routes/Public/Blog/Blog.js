@@ -219,7 +219,7 @@ export default function Blog(props){
                             ))}
                         </div>
                         <br></br>
-                        {numberOfArticles<posts.length && <Button variant="outlined" onClick={loadMoreImages}>Load more</Button>
+                        {numberOfArticles<posts.length && <Button id="blog-load-more" variant="outlined" onClick={loadMoreImages}>Load more</Button>
                         }
                         {/* {posts.slice(0, numberOfArticles).map((post, i) => (
                             ((blogRootUrl+"?p="+id) !== post.id) &&

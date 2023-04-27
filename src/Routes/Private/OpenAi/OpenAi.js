@@ -187,15 +187,17 @@ export default function OpenAi(props){
 
             {props.login &&
             <div className="openai-fullpage">
-                <div className="openai-input-form">
-                    <Typography variant="h4" gutterBottom>Prompt</Typography>
-                    <TextField multiline minRows={2} maxRows={6} placeholder="Ask your question or create an image with /imagine as prefix or audio with /speak " value={formData.prompt} onChange={handleChange}  required name="prompt" className="openai-input-prompt" id="input-prompt-id" label="My text prompt" variant="standard" />
+                <div className="openai-input">
+                    <div className="openai-input-form">
+                        <Typography variant="h4" gutterBottom>Prompt</Typography>
+                        <TextField multiline minRows={2} maxRows={6} placeholder="Ask your question or create an image with /imagine as prefix or audio with /speak " value={formData.prompt} onChange={handleChange}  required name="prompt" className="openai-input-prompt" id="input-prompt-id" label="My text prompt" variant="standard" />
 
-                    {sendingPrompt ?
-                        <CircularProgress size="2rem" className="openai-input-button-loading-circle" />
-                        :
-                        <Button variant="contained" id="button-sendPrompt-id" className="openai-input-button" type="button" onClick={sendPrompt}>send prompt</Button>
-                    }
+                        {sendingPrompt ?
+                            <CircularProgress size="2rem" className="openai-input-button-loading-circle" />
+                            :
+                            <Button variant="contained" id="button-sendPrompt-id" className="openai-input-button" type="button" onClick={sendPrompt}>send prompt</Button>
+                        }
+                    </div>
                 </div>
                 {(chatResponse || imageResponse || audioUrl) &&<div className="openai-response">
                     <Typography variant="h4" gutterBottom>Response</Typography>

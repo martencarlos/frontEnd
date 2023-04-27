@@ -57,7 +57,8 @@ export default function Main(props){
                     title = "Features"
                     text = {featuresSection.text}
                 />
-
+                <br></br>
+                <br></br>
                 <div className="features-row">
                     <Card 
                         darkMode = {props.darkMode}
@@ -80,7 +81,9 @@ export default function Main(props){
                         title = {featureCard3.title}
                         text = {featureCard3.text}
                     />
+                    
                 </div>
+                <br></br>
             </div>
 
             <div className="link">
@@ -89,11 +92,11 @@ export default function Main(props){
 
             <br></br>
             <br></br>
-
-            <About
-                darkMode = {props.darkMode}
-            />
-
+            <div className= "landingPage-about">
+                <About 
+                    darkMode = {props.darkMode}
+                />
+            </div>
             <br></br>
             <br></br>
             
