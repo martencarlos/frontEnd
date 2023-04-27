@@ -203,11 +203,23 @@ div.dark .pricetracker-tracker{
     text-align: center;
     color: red ;
 }
-.pricetracker-mytrackers-img-outofstock{
+/* .pricetracker-mytrackers-img-outofstock{
     position: absolute;
     
     text-decoration-style: solid;
     text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #fffefe;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+
+.pricetracker-mytrackers-img-outofstock{
+    position: absolute;
+    width: 85px;
+    border-radius: 5px 0px 5px 0px;
+    border: 2px solid red;
+    background-color: white;
+    /* backdrop-filter: blur(50px); */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
