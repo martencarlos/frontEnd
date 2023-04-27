@@ -198,9 +198,25 @@ div.dark .pricetracker-tracker{
     transition: transform 0.2s ease-in-out;
 }
 
+.pricetracker-mytrackers-img-outofstock-container{
+    position: relative;
+    text-align: center;
+    color: red ;
+}
+.pricetracker-mytrackers-img-outofstock{
+    position: absolute;
+    
+    text-decoration-style: solid;
+    text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #fffefe;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .pricetracker-mytrackers-img-wrapper:hover{
     transform: translateY(-2px);
 }
+
 
 .pricetracker-mytrackers-info{
     display: flex;

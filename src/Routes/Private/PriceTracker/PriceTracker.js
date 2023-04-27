@@ -17,6 +17,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import Skeleton from '@mui/material/Skeleton';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Modal from '@mui/material/Modal';
+import TooltipMui from '@mui/material/Tooltip';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
@@ -663,12 +664,24 @@ export default function Pricetracker(props){
                                 <div className="pricetracker-mytrackers-info" id={tracker._id}>
                                     <div className="pricetracker-mytrackers-img-wrapper">
                                         <a className="pricetracker-mytrackers-img-link" href={tracker.url} target="_blank" rel="noopener noreferrer">
+                                        {tracker.productInfo.outOfStock ?
+                                            <div className="pricetracker-mytrackers-img-outofstock-container">
+                                                <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
+                                                <div class="pricetracker-mytrackers-img-outofstock">Out of stock</div>
+                                            </div>
+                                            :
                                             <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
+                                        }
                                         </a>
+                                        
                                     </div>
                                     <div className="container">
                                         <Typography className="pricetracker-mytrackers-title" variant="body1" >{tracker.productInfo.title}</Typography>
-                                        {userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === tracker._id)].subscribed && <NotificationsOutlinedIcon className="subscribe-bell"/>}
+                                        {userData.trackers[userData.trackers.findIndex(obj => obj.trackerId === tracker._id)].subscribed && 
+                                            <TooltipMui title="subscribed" placement="right">
+                                                <NotificationsOutlinedIcon className="subscribe-bell"/>
+                                            </TooltipMui>
+                                        }
                                     </div>
                                     {/* <Typography className="pricetracker-mytrackers-url" variant="body1" gutterBottom>{tracker.url}</Typography> */}
                                     
