@@ -141,6 +141,7 @@ export default function Pricetracker(props){
                 if(!data.error){
                     console.log("Debug - my trackers response data:")
                     console.log(data)
+                    localStorage.setItem("myTrackers", JSON.stringify(data))
                     setMyTrackers(data)
                     setPageLoading(false)
                 }
@@ -156,8 +157,15 @@ export default function Pricetracker(props){
     
             });
         }
-        if(props.login)
-            fetchTrackers()
+        if(props.login){
+            if(localStorage.getItem("myTrackers") !== null){
+                console.log("myTrackers from local storage")
+                setMyTrackers(JSON.parse(localStorage.getItem("myTrackers")))
+                setPageLoading(false)
+            }else
+                fetchTrackers()
+        }
+            
     }, [navigate, props.login])
     
     //set user/form data
