@@ -18,6 +18,7 @@ export default function Logout(props){
             localStorage.removeItem("firstName")
             localStorage.removeItem("cards")
             localStorage.removeItem("user")
+            localStorage.removeItem("myTrackers")
             navigate("/login")
             console.log("actual clear of localstorage")
         }

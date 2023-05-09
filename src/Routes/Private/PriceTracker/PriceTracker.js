@@ -161,7 +161,7 @@ export default function Pricetracker(props){
             if(localStorage.getItem("myTrackers") !== null){
                 console.log("myTrackers from local storage")
                 setMyTrackers(JSON.parse(localStorage.getItem("myTrackers")))
-                setPageLoading(false)
+                // setPageLoading(false)
             }else
                 fetchTrackers()
         }
@@ -429,7 +429,7 @@ export default function Pricetracker(props){
             console.log(error);
         });
     }
-    
+    console.log(myTrackers)
     //RENDER
     return (
         <div className="pricetracker-fullpage-wrapper">
