@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 
 import {BrowserRouter,Routes,Route,} from "react-router-dom";
-import {getCookie, setCookie, delCookie} from "./Util/Cookie";
+import {getCookie} from "./Util/Cookie"; //, setCookie, delCookie
 import axios from "axios";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
@@ -25,7 +25,7 @@ import { SnackbarProvider } from 'notistack';
 
 import "./css/theme.css";
 import {ThemeProvider, createTheme } from '@mui/material/styles';
-import { dark } from "@mui/material/styles/createPalette";
+// import { dark } from "@mui/material/styles/createPalette";
 import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
 import OpenAi from "./Routes/Private/OpenAi/OpenAi";
 
@@ -175,7 +175,7 @@ export default function App(){
         <BrowserRouter>
         <SnackbarProvider maxSnack={3}>
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-        <React.StrictMode>
+        {/* <React.StrictMode> renders the components twice in dev mode!!!!!!! */}
         <ThemeProvider theme={theme}>
             <div id="website" className= {`website ${darkMode ? "dark": ""}`}>
             <Navbar 
@@ -321,7 +321,7 @@ export default function App(){
             <Footer darkMode = {darkMode} />
             </div>
             </ThemeProvider>
-            </React.StrictMode>
+            {/* </React.StrictMode> */}
             </GoogleOAuthProvider>
             </SnackbarProvider>
         </BrowserRouter>

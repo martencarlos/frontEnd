@@ -1,7 +1,7 @@
 
 import "./blog.css";
 
-import Summary from "../../../Components/ArticleSummary/ArticleSummary";
+// import Summary from "../../../Components/ArticleSummary/ArticleSummary";
 import TimelinePost from "../../../Components/TimelinePost/TimelinePost"
 import Article from "../../../Components/Article/Article";
 import {useNavigate,useParams} from "react-router-dom";
@@ -52,8 +52,38 @@ export default function Blog(props){
     //Load articles from Medium
     useEffect(() => {
         console.log("Blog useEffect - load articles from medium or wordpress")
+
+        async function getWordpressFeed() {
+            await fetch(process.env.REACT_APP_SERVER+'/wordpress',{
+                method: 'GET',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                }
+              })
+              .then((response) => response.text())
+              .then((responseData) => rssParser.parse(responseData))
+              .then((feed) => {
+                    
+                    
+                    if(id && !feed.items.find(x=>x.id === blogRootUrl+"?p="+id)){
+                        navigate("/404", { replace: true });
+                    }else{
+                        setPosts(feed.items);
+                        setMainArticle(feed.items[0])
+                        
+                    }
+                }).catch(function(error) {
+                    const variant = 'error'
+                    enqueueSnackbar(error.message,{ variant });
+                    
+                }).finally(function(){
+                    setLoading(false)
+                });
+        }
+
         getWordpressFeed()
-    }, [])
+    }, [navigate,id,enqueueSnackbar])
 
     useEffect(() => {
         if (posts.length !== 0){
@@ -75,61 +105,34 @@ export default function Blog(props){
         }
     })
 
-    async function getWordpressFeed() {
-        await fetch(process.env.REACT_APP_SERVER+'/wordpress',{
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            }
-          })
-          .then((response) => response.text())
-          .then((responseData) => rssParser.parse(responseData))
-          .then((feed) => {
-                
-                
-                if(id && !feed.items.find(x=>x.id === blogRootUrl+"?p="+id)){
-                    navigate("/404", { replace: true });
-                }else{
-                    setPosts(feed.items);
-                    setMainArticle(feed.items[0])
-                    
-                }
-            }).catch(function(error) {
-                const variant = 'error'
-                enqueueSnackbar(error.message,{ variant });
-                
-            }).finally(function(){
-                setLoading(false)
-            });
-    }
+    
 
-    async function getMediumFeed() {
-        await fetch(process.env.REACT_APP_SERVER+'/medium',{
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            }
-          })
-          .then((response) => response.text())
-          .then((responseData) => rssParser.parse(responseData))
-          .then((feed) => {
-                if(id && !feed.items.find(x=>x.id === "https://medium.com/p/"+id)){
-                    navigate("/404", { replace: true });
-                }else{
-                    setPosts(feed.items);
-                    setMainArticle(feed.items[0])
+    // async function getMediumFeed() {
+    //     await fetch(process.env.REACT_APP_SERVER+'/medium',{
+    //         method: 'GET',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*',
+    //             'Content-Type': 'application/json',
+    //         }
+    //       })
+    //       .then((response) => response.text())
+    //       .then((responseData) => rssParser.parse(responseData))
+    //       .then((feed) => {
+    //             if(id && !feed.items.find(x=>x.id === "https://medium.com/p/"+id)){
+    //                 navigate("/404", { replace: true });
+    //             }else{
+    //                 setPosts(feed.items);
+    //                 setMainArticle(feed.items[0])
                     
-                }
-            }).catch(function(error) {
-                const variant = 'error'
-                enqueueSnackbar(error.message,{ variant });
+    //             }
+    //         }).catch(function(error) {
+    //             const variant = 'error'
+    //             enqueueSnackbar(error.message,{ variant });
                 
-            }).finally(function(){
-                setLoading(false)
-            });
-    }
+    //         }).finally(function(){
+    //             setLoading(false)
+    //         });
+    // }
     
     //open article by using event.currentTarget id
     function openArticle(e){
@@ -207,8 +210,8 @@ export default function Blog(props){
                         <Typography variant="h6" gutterBottom className="blog-posts-title"> Latest updates</Typography>
                         <br></br>
                         <div className="timeline">
-                            {posts.slice(0, numberOfArticles).map((post, i) => (
-                                <div key = {i}>
+                            {posts.slice(0, numberOfArticles).map(post => 
+                                <div key = {post.id}>
                                     <TimelinePost
                                         darkMode = {props.darkmode}
                                         item = {post}
@@ -216,7 +219,7 @@ export default function Blog(props){
                                         openArticle = {openArticle}
                                     />
                                 </div> 
-                            ))}
+                            )}
                         </div>
                         <br></br>
                         {numberOfArticles<posts.length && <Button id="blog-load-more" variant="outlined" onClick={loadMoreImages}>Load more</Button>

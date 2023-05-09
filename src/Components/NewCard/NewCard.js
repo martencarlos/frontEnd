@@ -66,18 +66,18 @@ export default function NewCard(props){
         
       }, [props.userData])
 
-    function urlIsImage(url) {
-        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-    }
+    // function urlIsImage(url) {
+    //     return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    // }
 
-    function handleChange(event) {
-        const {name, value} = event.target
-        setFormData(prevFormData => ({
-            ...prevFormData,
-            title: "title will be generated",
-            [name]: value
-        }))
-    }
+    // function handleChange(event) {
+    //     const {name, value} = event.target
+    //     setFormData(prevFormData => ({
+    //         ...prevFormData,
+    //         title: "title will be generated",
+    //         [name]: value
+    //     }))
+    // }
 
     const processImage = async (e) => {
         var file = e.target.files[0];

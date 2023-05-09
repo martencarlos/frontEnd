@@ -2,7 +2,7 @@
 import "./openAi.css";
 
 //React
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react"; // , useRef
 import {useNavigate} from 'react-router-dom';
 
 //MUI
@@ -20,11 +20,11 @@ export default function OpenAi(props){
     const navigate = useNavigate();
     
     //UseStates
-    const [pageLoading, setPageLoading] = useState(true)
+    // const [pageLoading, setPageLoading] = useState(true)
     const [sendingPrompt, setSendingPrompt] = useState(false)
     const [chatResponse, setChatResponse] = useState()
     const [imageResponse, setImageResponse] = useState()
-    const [userData, setUserData] = useState({})
+    // const [userData, setUserData] = useState({})
     const [formData, setFormData] = useState({
         prompt: ""
     })
@@ -72,10 +72,10 @@ export default function OpenAi(props){
     // }, [props.darkMode])
 
     //Set user data
-    useEffect(() => {
-        console.log("setting user data")
-        setUserData(props.userData)
-    }, [props.userData])
+    // useEffect(() => {
+    //     console.log("setting user data")
+    //     setUserData(props.userData)
+    // }, [props.userData])
 
     //Event Listener - Enter key press to submit URL
     // useEffect(() => {

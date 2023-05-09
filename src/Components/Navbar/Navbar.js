@@ -1,6 +1,6 @@
 import "./navbar.css";
 
-import {Link, NavLink} from 'react-router-dom';
+import { NavLink} from 'react-router-dom'; // Link,
 import { useNavigate } from 'react-router-dom';
 import {getCookie} from "../../Util/Cookie";
 import {useState, useEffect} from "react"
@@ -9,7 +9,6 @@ import Button from '@mui/material/Button'
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Typography from '@mui/material/Typography';
-import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -195,7 +194,7 @@ export default function Navbar(props){
         setLogoutProfileMenu(null);
     };
 
-    var reRenderIfChanged =1;
+    
     return (
        //<img src={`../images/${props.img}`} className="card--image" />
         <div  className="navbar">

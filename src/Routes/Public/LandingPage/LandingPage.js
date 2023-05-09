@@ -1,7 +1,7 @@
 
 import "./landingPage.css";
 
-import { useEffect,useRef} from "react"
+import { useEffect} from "react"
 
 import Hero from "../../../Components/Hero/Hero";
 import Projects from "../Projects/Projects";

@@ -1,6 +1,6 @@
 
 import "./product.css";
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Chip from '@mui/material/Chip';
 
 export default function Product(props){

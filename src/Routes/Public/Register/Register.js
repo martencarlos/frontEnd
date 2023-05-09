@@ -75,7 +75,7 @@ export default function Register(props){
             }
             });
         }
-      }, [])
+      }, [props.login])
 
     function validateForm(){
         console.log(formData)

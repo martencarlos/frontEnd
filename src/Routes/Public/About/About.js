@@ -1,7 +1,7 @@
 
 import "./about.css";
 
-import { useState,useEffect} from "react"
+import { useEffect} from "react" // useState,
 
 import SectionHeader from "../../../Components/SectionHeader/SectionHeader";
 import Card from "../../../Components/Card/Card";

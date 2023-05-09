@@ -15,7 +15,7 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import NotificationsOffOutlinedIcon from '@mui/icons-material/NotificationsOffOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import Skeleton from '@mui/material/Skeleton';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis,  Tooltip, ResponsiveContainer } from 'recharts'; // CartesianGrid,Legend, 
 import Modal from '@mui/material/Modal';
 import TooltipMui from '@mui/material/Tooltip';
 
@@ -26,116 +26,33 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import MenuList from '@mui/material/MenuList';
-// import { positions } from "@mui/system";
 
 export default function Pricetracker(props){
 
     console.log("Rendering Price Tracker")
 
-    
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
+    var style = getComputedStyle(document.body)
+    
     // const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
-    const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
-    //redirect to login page if logged out
-    useEffect(() => {
-        console.log("useEffect - check if logged in")
-        if(!props.login)
-            navigate("/login",{ replace: true });
-    }, [props.login, navigate])
+    const [newTrackerLoading, setNewTrackerLoading] = useState(false)
+    const [deleteTrackerLoading, setDeleteTrackerLoading] = useState(false)
+    const [pageLoading, setPageLoading] = useState(true)
 
-
-    //Confirmation dialog
+    const [userData, setUserData] = useState({})
+    const [formData, setFormData] = useState({userID: "", url:""})
+    const [priceGraphData, setPriceGraphData] = useState([])
+    const [myTrackers, setMyTrackers] = useState([])
+    
+    //confirmation dialog
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const deletetrackerID = useRef();
-
-    function priceTrackerSubscriptionToggle(e){
-        //getting notified
-        console.log(deletetrackerID.current)
-        
-        const trackerIDForSubscription =deletetrackerID.current;
-        
-        // delete request to server to delete from DB
-        const config = {
-            url: process.env.REACT_APP_SERVER+'/tracker-subscribe',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            data: JSON.stringify({userID:userData._id ,trackerID:trackerIDForSubscription}),
-            withCredentials: true, // Now this is was the missing piece in the client side
-        };
-
-        axios(config).then(function (response) {
-            console.log(response.data)
-            // console.log(userData.trackers)
-            const newUserData = JSON.parse(JSON.stringify(userData));
-            let variant
-            if(response.data==="Subscribed"){
-                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= true
-                variant = 'success'
-            }else if(response.data==="Unsubscribed"){
-                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= false
-                variant = 'info'
-            }else{
-                variant = 'error'
-            }
-                
-            //re-render
-            // setMyTrackers(prevTrackers => {
-            //     return [
-            //         ...prevTrackers
-            //     ]
-            // })
-            props.updateUserData(newUserData)
-            setUserData(newUserData)
-            
-            // console.log(userData.trackers)
-            enqueueSnackbar(response.data,{ variant });
-
-            //  if(response.data === "deleted"){
-            //      setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
-
-            //      const variant = 'success'
-            //      enqueueSnackbar("tracker deleted",{ variant });
-
-            //  }else if(response.data.error){
-            //     //auth error
-            //     console.log(response.data.error)
-            //     navigate("/logout",{ replace: true });
-
-            //  }else{
-            //     const variant = 'error'
-            //     enqueueSnackbar("unexpected error",{ variant });
-            //  }
-
-        }).finally(()=>{
-            
-        }).catch(function (error) {
-            const variant = 'error'
-            enqueueSnackbar(error.message,{ variant });
-            console.log(error);
-        });
-    }
-
-    function deleteUserConfirmation(e){
-        // console.log(e.target)
-        // console.log(e.target.parentNode.parentNode.parentNode)
-        // //get tracker ID from Event
-        // if(!e.target.parentNode.id)
-        //     deletetrackerID.current = e.target.parentNode.parentNode.id
-        // else
-        //     deletetrackerID.current = e.target.parentNode.id
-
-        handleOpen()
-    }
-    function cancel(){
-        handleClose()
-    }
-
+    
+    //tracker options menu
     const [trackerOptionAnchor, setTrackerOptionAnchor] = useState(null);
     const trackerOptionState = Boolean(trackerOptionAnchor);
     const setTrackerOptionsAnchor = (event) => {
@@ -146,32 +63,22 @@ export default function Pricetracker(props){
         setTrackerOptionAnchor(null);
     };
 
-    const [newTrackerLoading, setNewTrackerLoading] = useState(false)
-    const [deleteTrackerLoading, setDeleteTrackerLoading] = useState(false)
-    const [pageLoading, setPageLoading] = useState(true)
-    const [priceGraphData, setPriceGraphData] = useState([])
-    const [myTrackers, setMyTrackers] = useState([])
-    const [userData, setUserData] = useState({})
-    const [formData, setFormData] = useState({
-        userID: "",
-        url:""
-    })
-    
-
-    // get trackers
+    //redirect to login page if logged out
     useEffect(() => {
-        console.log("get all trackers")
-        
-        fetchTrackers()
-    }, [])
+        console.log("useEffect - check if logged in")
+        if(!props.login)
+            navigate("/login",{ replace: true });
+    }, [props.login, navigate])
 
+    //Set title of page
     useEffect(() => {
-        console.log("setting user data")
-        setUserData(props.userData)
-        setFormData({userID: props.userData._id, url:""})
-    }, [props.userData])
+        document.title = "Webframe - " + props.title;
+        return () => {
+            document.title = "Webframe"
+        }
+    }, [props.title])
 
-    //fixed navbar
+    //CSS - fixed navbar
     useEffect(() => {
         var x = document.getElementById("navbar");
         x.classList.add("fixed-navbar");
@@ -194,41 +101,7 @@ export default function Pricetracker(props){
         }
     }, [props.darkMode])
 
-  
-
-    //set price graph from My trackers
-    useEffect(() => {
-        
-        if(myTrackers.length >0){
-            let newArray = JSON.parse(JSON.stringify(myTrackers))
-            myTrackers.map((tracker, i) => (
-                tracker.productInfo.prices.map((price, j) => (
-                    newArray[i].productInfo.prices[j].date = (new Date(price.date).getDate())+" "+ (months[new Date(price.date).getMonth()])
-                ))
-            ))
-            setPriceGraphData(newArray)
-            setPageLoading(false)
-        }else{
-            // setPageLoading(false)
-        }
-
-    }, [myTrackers])
-
-    // useEffect(() => {
-    //     console.log("updated price graph data: ")
-    //     console.log(priceGraphData)
-    // }, [priceGraphData])
-
-
-    //Set title of page
-    useEffect(() => {
-        document.title = "Webframe - " + props.title;
-        return () => {
-            document.title = "Webframe"
-        }
-    }, [props.title])
-
-    //Enter key press to submit URL
+    //event listener - Enter key press to submit URL
     useEffect(() => {
         if(props.login){
             // Get the input field
@@ -249,37 +122,86 @@ export default function Pricetracker(props){
                 input.removeEventListener('keypress', sumbitFunction);
             }
         }
-      }, [])
+    }, [props.login])
 
-    async function fetchTrackers(){
-        await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
-            method: 'GET',
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include'
-        }).then((response) => response.json())
-        .then((data) => {
-            if(!data.error){
-                console.log("Debug - my trackers response data:")
-                console.log(data)
-                setMyTrackers(data)
-                setPageLoading(false)
-            }
-            else{
-                if (props.login){
-                    //Auth error
-                    console.log(data.error)
-                    navigate("/logout",{ replace: true });
+    //load trackers
+    useEffect(() => {
+        console.log("get all trackers")
+
+        async function fetchTrackers(){
+            await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
+                method: 'GET',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include'
+            }).then((response) => response.json())
+            .then((data) => {
+                if(!data.error){
+                    console.log("Debug - my trackers response data:")
+                    console.log(data)
+                    setMyTrackers(data)
+                    setPageLoading(false)
                 }
-            }
+                else{
+                    if (props.login){
+                        //Auth error
+                        console.log(data.error)
+                        navigate("/logout",{ replace: true });
+                    }
+                }
+    
+            }).finally(function(){
+    
+            });
+        }
+        if(props.login)
+            fetchTrackers()
+    }, [navigate, props.login])
+    
+    //set user/form data
+    useEffect(() => {
+        console.log("setting user data")
+        if(props.userData._id !== undefined){
+            setUserData(props.userData)
+            setFormData({userID: props.userData._id, url:""})
+        }
+    }, [props.userData])
+    //set price graph from My trackers
+    useEffect(() => {
+        const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+        if(myTrackers.length >0){
+            let newArray = JSON.parse(JSON.stringify(myTrackers))
+            myTrackers.map((tracker, i) => (
+                tracker.productInfo.prices.map((price, j) => (
+                    newArray[i].productInfo.prices[j].date = (new Date(price.date).getDate())+" "+ (months[new Date(price.date).getMonth()])
+                ))
+            ))
+            setPriceGraphData(newArray)
+            setPageLoading(false)
+        }else{
+            // setPageLoading(false)
+        }
+    }, [myTrackers])
+    
+    //state change - delete confirmation dialog (open)
+    function deleteUserConfirmation(e){
+        // console.log(e.target)
+        // console.log(e.target.parentNode.parentNode.parentNode)
+        // //get tracker ID from Event
+        // if(!e.target.parentNode.id)
+        //     deletetrackerID.current = e.target.parentNode.parentNode.id
+        // else
+        //     deletetrackerID.current = e.target.parentNode.id
 
-        }).finally(function(){
-
-        });
+        handleOpen()
     }
-
+    //state change - delete confirmation dialog (cancel)
+    function cancel(){
+        handleClose()
+    }
+    //state change - form data
     function handleChange(event) {
         const {name, value} = event.target
         setFormData(prevFormData => ({
@@ -288,26 +210,7 @@ export default function Pricetracker(props){
         }))
     }
 
-    function isInputValid (){
-       
-        // check if url is valid
-        if(formData.url ===""){
-            const variant = 'error'
-            enqueueSnackbar("URL is empty",{ variant });
-            return false
-        }else if(!String(formData.url).toLowerCase().match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&=]*)/gi)){
-            const variant = 'error'
-            enqueueSnackbar("URL is invalid",{ variant });
-            return false
-        }else if(!formData.url.startsWith("https://www.amazon.") && !formData.url.startsWith("https://amzn.eu/")&& !formData.url.startsWith("https://a.co/")){
-            const variant = 'error'
-            enqueueSnackbar("It needs to be an Amazon URL",{ variant });
-            return false
-        }else
-            return true
-    }
-
-
+    //add tracker
     function addTracker(){
         if(isInputValid()){
             setNewTrackerLoading(true)
@@ -385,7 +288,26 @@ export default function Pricetracker(props){
             });
         }
     }
+    //add tracker (auxiliar - validation)
+    function isInputValid (){
+        // check if url is valid
+        if(formData.url ===""){
+            const variant = 'error'
+            enqueueSnackbar("URL is empty",{ variant });
+            return false
+        }else if(!String(formData.url).toLowerCase().match(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&=]*)/gi)){
+            const variant = 'error'
+            enqueueSnackbar("URL is invalid",{ variant });
+            return false
+        }else if(!formData.url.startsWith("https://www.amazon.") && !formData.url.startsWith("https://amzn.eu/")&& !formData.url.startsWith("https://a.co/")){
+            const variant = 'error'
+            enqueueSnackbar("It needs to be an Amazon URL",{ variant });
+            return false
+        }else
+            return true
+    }
 
+    //delete tracker
     function deleteTracker(){
         var trackerIDToDelete =deletetrackerID.current;
         setDeleteTrackerLoading(true)
@@ -429,10 +351,78 @@ export default function Pricetracker(props){
         });
 
     }
-    var style = getComputedStyle(document.body)
 
-    // console.log(userData)
+    //update subscription
+    function priceTrackerSubscriptionToggle(e){
+        //getting notified
+        console.log(deletetrackerID.current)
+        
+        const trackerIDForSubscription = deletetrackerID.current;
+        
+        //delete request to server to delete from DB
+        const config = {
+            url: process.env.REACT_APP_SERVER+'/tracker-subscribe',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify({userID:userData._id ,trackerID:trackerIDForSubscription}),
+            withCredentials: true, // Now this is was the missing piece in the client side
+        };
+
+        axios(config).then(function (response) {
+            console.log(response.data)
+            // console.log(userData.trackers)
+            const newUserData = JSON.parse(JSON.stringify(userData));
+            let variant
+            if(response.data==="Subscribed"){
+                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= true
+                variant = 'success'
+            }else if(response.data==="Unsubscribed"){
+                newUserData.trackers[userData.trackers.findIndex(obj => obj.trackerId === deletetrackerID.current)].subscribed= false
+                variant = 'info'
+            }else{
+                variant = 'error'
+            }
+                
+            //re-render
+            // setMyTrackers(prevTrackers => {
+            //     return [
+            //         ...prevTrackers
+            //     ]
+            // })
+            props.updateUserData(newUserData)
+            setUserData(newUserData)
+            
+            //console.log(userData.trackers)
+            enqueueSnackbar(response.data,{ variant });
+
+            //  if(response.data === "deleted"){
+            //      setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
+
+            //      const variant = 'success'
+            //      enqueueSnackbar("tracker deleted",{ variant });
+
+            //  }else if(response.data.error){
+            //     //auth error
+            //     console.log(response.data.error)
+            //     navigate("/logout",{ replace: true });
+
+            //  }else{
+            //     const variant = 'error'
+            //     enqueueSnackbar("unexpected error",{ variant });
+            //  }
+
+        }).finally(()=>{
+            
+        }).catch(function (error) {
+            const variant = 'error'
+            enqueueSnackbar(error.message,{ variant });
+            console.log(error);
+        });
+    }
     
+    //RENDER
     return (
         <div className="pricetracker-fullpage-wrapper">
             <Modal
@@ -457,7 +447,7 @@ export default function Pricetracker(props){
                     <br></br>
                     <br></br>
                     {deleteTrackerLoading ?
-                        <div Style={"transform: translate(0px, -15px);display:flex ; justify-content:center"}>
+                        <div style={{transform: "translate(0px, -15px)",display:"flex", justifyContent:"center"}}>
                             <CircularProgress size="2rem" className="login-loading-circle" />
                         </div>
                         :
@@ -667,7 +657,7 @@ export default function Pricetracker(props){
                                         {tracker.productInfo.outOfStock ?
                                             <div className="pricetracker-mytrackers-img-outofstock-container">
                                                 <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
-                                                <div class="pricetracker-mytrackers-img-outofstock">Out of stock</div>
+                                                <div className="pricetracker-mytrackers-img-outofstock">Out of stock</div>
                                             </div>
                                             // <div className="pricetracker-mytrackers-img-outofstock-container">
                                             //     <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>

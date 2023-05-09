@@ -12,7 +12,7 @@ import SellIcon from '@mui/icons-material/Sell';
 import { DataGrid } from '@mui/x-data-grid';
 import TooltipMUI from '@mui/material/Tooltip';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import { BarChart, Bar, AreaChart, Area, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, AreaChart, Area,  XAxis,  Tooltip,  ResponsiveContainer } from 'recharts'; // LineChart, Line, YAxis, CartesianGrid,Legend,
 
 const months = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 const currentYear = new Date().getFullYear()
@@ -77,9 +77,9 @@ export default function Dashboard(props){
                 }else{
                     setTrackerAnalytics(response.data)
                     var graphData = []
-                    months.map(function (month, i) {
+                    months.forEach(function (month, i) {
                         let monthlyTracker =0
-                        response.data.filter((item) => {
+                        response.data.forEach((item) => {
                                 
                             if(i===0 && item.logins){
                                 totalLogins.current +=  item.logins
@@ -100,14 +100,14 @@ export default function Dashboard(props){
             })
         }
         fetchTrackers()
-    }, [props.title])
+    }, [props.title,navigate])
 
     useEffect(() => {
         activeSessions.current=0;
         const today = new Date((new Date()).getTime())
         console.log(props.userData)
         if(props.userData.sessions){
-            props.userData.sessions.map(function(session,i){
+            props.userData.sessions.forEach(function(session){
                 var expireDate = new Date((session.expireDate))
                 if(expireDate>today){
                     activeSessions.current += 1
@@ -137,11 +137,11 @@ export default function Dashboard(props){
                     totalUsers.current = res.data.length
                     totalLogins.current=0;
                     
-                    months.map(function (month, i) {
+                    months.forEach(function (month, i) {
                         
                         let monthlyUsers = 0;
                         
-                        res.data.filter((item) => {
+                        res.data.forEach((item) => {
                             
                             if(i===0 && item.logins){
                                 totalLogins.current +=  item.logins

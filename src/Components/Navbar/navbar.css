@@ -27,7 +27,7 @@
 
     div.sign-buttons{
         flex:1;
-        justify-content: end;
+        justify-content: flex-end;
         /* display: none;
         width: 200px; */
     }
@@ -216,7 +216,10 @@ div.navbar .nav-brand-img:hover{
 .nav-link{
     text-decoration: none;
     color: var(--primary-text);
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 Button.bt-nav-link{
@@ -414,7 +417,7 @@ div.dark div.navbar .MuiSvgIcon-root:hover{
 
 .navbar-paper-projects-list #css-paper-list-icon .MuiListItemIcon-root {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .dark #css-paper-list-icon .MuiListItemIcon-root {

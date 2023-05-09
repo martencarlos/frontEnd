@@ -90,7 +90,7 @@ div.account .account-form{
 
 div.account div.main-card-actions{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 20px;
     align-items: center;
 }

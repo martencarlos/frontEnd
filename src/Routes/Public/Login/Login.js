@@ -3,7 +3,7 @@ import "./login.css";
 import {useState,useEffect,useRef} from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {getCookie, setCookie} from "../../../Util/Cookie";
+import { setCookie} from "../../../Util/Cookie"; //getCookie,
 
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField';
@@ -68,7 +68,7 @@ export default function Login(props){
             }
             });
         }
-      }, [])
+      }, [props.login])
 
 
     const[formErrors,setFormErrors] = useState({

@@ -1,9 +1,9 @@
 
 import "./hero.css";
 
-import { useEffect,useRef} from "react"
+// import { useEffect,useRef} from "react"
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import ForwardIcon from '@mui/icons-material/Forward';

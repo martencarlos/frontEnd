@@ -128,7 +128,7 @@
 .pricetracker-fullpage{
     display: flex;
     gap: 5%;
-    justify-content: end;
+    justify-content: flex-end;
     /* margin-right: 5%; */
     /* justify-content: center; */
     margin-top: 100px;

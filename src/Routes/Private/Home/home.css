@@ -84,7 +84,7 @@ div.dark div.home .sidebar-section{
 div.home button.sidebar-button{
     display: flex;
     margin-left: 20px;
-    justify-content: start;
+    justify-content: flex-start;
     color: var(--primary-text-light);
     align-items: center;
     width: 90%;
@@ -107,7 +107,7 @@ div.dark div.home button.sidebar-button{
 div.home button.sidebar-nestedButton{
     display: flex;
     margin-left: 20px;
-    justify-content: start;
+    justify-content: flex-start;
     color: var(--primary-text-light);
     flex:1;
 
