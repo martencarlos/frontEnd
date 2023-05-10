@@ -128,7 +128,7 @@ export default function Pricetracker(props){
     useEffect(() => {
         console.log("get all trackers")
 
-        async function fetchTrackers(){
+        async  function fetchTrackers(){
             await fetch(process.env.REACT_APP_SERVER+'/mytrackers',{
                 method: 'GET',
                 headers: {
@@ -143,7 +143,7 @@ export default function Pricetracker(props){
                     console.log(data)
                     localStorage.setItem("myTrackers", JSON.stringify(data))
                     setMyTrackers(data)
-                    setPageLoading(false)
+                    // setPageLoading(false)
                 }
                 else{
                     if (props.login){
@@ -161,7 +161,6 @@ export default function Pricetracker(props){
             if(localStorage.getItem("myTrackers") !== null){
                 console.log("myTrackers from local storage")
                 setMyTrackers(JSON.parse(localStorage.getItem("myTrackers")))
-                // setPageLoading(false)
             }else
                 fetchTrackers()
         }
@@ -429,7 +428,7 @@ export default function Pricetracker(props){
             console.log(error);
         });
     }
-    console.log(myTrackers)
+    
     //RENDER
     return (
         <div className="pricetracker-fullpage-wrapper">

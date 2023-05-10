@@ -158,6 +158,17 @@ div.account .info{
     color: var(--secondary-text);
 }
 
+div.account .infocard-language-label{
+    display: flex;
+    align-items: center;
+}
+
+div.account .infocard-app-settings{
+    /* align-self: flex-start; */
+    margin-top: 10px;
+    /* padding-left: 30px;  */
+}
+
 
 /***************** AVATAR ******************/
 

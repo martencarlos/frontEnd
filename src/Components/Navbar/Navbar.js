@@ -19,6 +19,8 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import PersonIcon from '@mui/icons-material/Person';
 import Tooltip from '@mui/material/Tooltip';
 
+import { useTranslation } from "react-i18next";
+
 const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=a39b3f4a-9d54-4680-91fd-095a158a612c"
 
 // Darkmode switch definition
@@ -72,6 +74,7 @@ const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframeb
 export default function Navbar(props){
     console.log("Rendering Navbar")
     const navigate = useNavigate();
+    const { t, i18n } = useTranslation("global");
     
     // ***** USE STATES & USE EFFECTS *****
     const [userData, setUserData] = useState({})
@@ -205,15 +208,15 @@ export default function Navbar(props){
                 
                 {props.login &&
                     <ul className="nav-links">
-                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
-                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}` }   variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">{t("navbar.home")}</NavLink></Button></li>
+                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">{t("navbar.projects")}</Button></li>
                     </ul>}
                 {!props.login &&     
                     <ul className="nav-links">
-                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
-                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
-                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
-                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
+                        <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">{t("navbar.projects")}</Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">{t("navbar.features")}</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">{t("navbar.blog")}</NavLink></Button></li>
+                        <li><Button className= {`bt-nav-link ${props.darkMode ? "dark": ""}`}  variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">{t("navbar.about")}</NavLink></Button></li>
                     
                     </ul>}
                     <Menu
@@ -231,7 +234,7 @@ export default function Navbar(props){
                             hambMenuClick()
                             navigate('/projects/infinitycards')
                             }}>
-                            <ListItemText>Infinity Cards</ListItemText>
+                            <ListItemText>{t("navbar.projects-dropdown.infinitycards")}</ListItemText>
                             <ListItemIcon>
                                 <Tooltip title="req. login" placement="right">
                                     <PersonIcon fontSize="small" />
@@ -243,21 +246,21 @@ export default function Navbar(props){
                             hambMenuClick()
                             navigate('/projects/blog')
                             }}>
-                            Blog Integration
+                            {t("navbar.projects-dropdown.blogintegration")}
                         </MenuItem>
                         <MenuItem onClick={() => {
                             handleClose()
                             hambMenuClick()
                             navigate('/projects/webScrap')
                             }}>
-                            Web scrap
+                            {t("navbar.projects-dropdown.webscrap")}
                         </MenuItem>
                         <MenuItem id="css-paper-list-icon" onClick={() => {
                             handleClose()
                             hambMenuClick()
                             navigate('/projects/priceTracker')
                             }}>
-                            <ListItemText>Price Tracker</ListItemText>
+                            <ListItemText>{t("navbar.projects-dropdown.pricetracker")}</ListItemText>
                             <ListItemIcon>
                                 <Tooltip title="req. login" placement="right">
                                     <PersonIcon fontSize="small" />
@@ -269,7 +272,7 @@ export default function Navbar(props){
                             hambMenuClick()
                             navigate('/projects/openai')
                             }}>
-                            <ListItemText>Open AI</ListItemText>
+                            <ListItemText>{t("navbar.projects-dropdown.openai")}</ListItemText>
                             <ListItemIcon>
                                 <Tooltip title="req. login" placement="right">
                                     <PersonIcon fontSize="small" />
@@ -305,7 +308,7 @@ export default function Navbar(props){
                               }}
                             >
                             
-                            <Typography className="profile-name" variant="subtitle1" gutterBottom>{"Unknown User"}</Typography>
+                            <Typography className="profile-name" variant="subtitle1" gutterBottom>{t("navbar.avatar-dropdown.unknown")}</Typography>
                             
                             <MenuItem id="css-paper-list-icon" className="profile-option" onClick={() => {
                                 closeLogoutProfileMenu()
@@ -314,7 +317,7 @@ export default function Navbar(props){
                                 <ListItemIcon>
                                     <ManageAccountsIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText>Login</ListItemText>
+                                <ListItemText>{t("navbar.avatar-dropdown.login")}</ListItemText>
                             </MenuItem>
                              
                             <MenuItem id="css-paper-list-icon" className="profile-option" onClick={() => {
@@ -324,7 +327,7 @@ export default function Navbar(props){
                                 <ListItemIcon>
                                     <LogoutIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText>Register</ListItemText>
+                                <ListItemText>{t("navbar.avatar-dropdown.register")}</ListItemText>
                             </MenuItem>
                         </Menu>
                         
@@ -381,7 +384,7 @@ export default function Navbar(props){
                                 <ListItemIcon>
                                     <ManageAccountsIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText>Account</ListItemText>
+                                <ListItemText>{t("navbar.avatar-dropdown.profile")}</ListItemText>
                             </MenuItem>
                              
                             <MenuItem className="profile-option" onClick={() => {
@@ -391,7 +394,7 @@ export default function Navbar(props){
                                 <ListItemIcon>
                                     <LogoutIcon fontSize="small" />
                                 </ListItemIcon>
-                                <ListItemText>Logout</ListItemText>
+                                <ListItemText>{t("navbar.avatar-dropdown.logout")}</ListItemText>
                             </MenuItem>
                            
                         </Menu>

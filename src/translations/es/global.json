@@ -1,0 +1,58 @@
+{
+    "navbar":{
+        "home":"Inicio",
+        "projects":"Soluciones",
+        "projects-dropdown":{
+            "infinitycards":"Cartas infinitas",
+            "blogintegration":"Integracion de Blog",
+            "webscrap":"Extraccion de Datos",
+            "pricetracker":"Seguidor de Precios",
+            "openai":"OpenAI"
+        },
+        "features": "Características",
+        "blog":"Blog",
+        "about":"¿Quienes somos?",
+        "avatar-dropdown":{
+            "unknown":"No registrado",
+            "profile":"Perfil",
+            "login":"Iniciar sesión",
+            "logout":"Cerrar sesión",
+            "register":"Dar de alta"
+        },
+        "contact":"Contact",
+        "login":"Iniciar sesión",
+        "register":"Registro",
+        "logout":"Cerrar sesión"
+    },
+    "login":{
+        "title":"Iniciar sesión",
+        "email":"Correo electrónico",
+        "password":"Contraseña",
+        "keeploggedin":"Mantener sesión iniciada",
+        "altlogin":"O inicia sesión con",
+        "register1":"¿No tienes cuenta?",
+        "register2":"Regístrate aquí",
+        "submit":"Iniciar sesión",
+        "error":{
+            "email-req":"Email es obligatorio",
+            "password-req":"Contraseña es obligatoria"
+        }
+    },
+    "register":{
+        "title":"Crear cuenta",
+        "name":"Nombre",
+        "username":"Nombre de usuario",
+        "email":"Correo electrónico",
+        "password":"Contraseña",
+        "password2":"Repetir contraseña",
+        "submit":"Crear cuenta"
+    },
+    "footer":{
+        "features":"Características",
+        "privacy":"Aviso de privacidad",
+        "blog":"Blog",
+        "about":"¿Quienes somos?",
+        "status":"Estado"
+    }
+    
+}

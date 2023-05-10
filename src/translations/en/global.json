@@ -1,0 +1,58 @@
+{
+    "navbar":{
+        "home":"Home",
+        "projects":"Solutions",
+        "projects-dropdown":{
+            "infinitycards":"Lazy load",
+            "blogintegration":"Blog integration",
+            "webscrap":"Webscrap",
+            "pricetracker":"Price tracker",
+            "openai":"OpenAI"
+        },
+        "features": "Features",
+        "blog":"Blog",
+        "about":"About us",
+        "avatar-dropdown":{
+            "unknown":"Unknown",
+            "profile":"Profile",
+            "login":"Login",
+            "logout":"Logout",
+            "register":"Create account"
+        },
+        "contact":"Contact",
+        "login":"Login",
+        "register":"Create account",
+        "logout":"Logout"
+    },
+    "login":{
+        "title":"Login",
+        "email":"Email",
+        "password":"Password",
+        "keeploggedin":"Keep me logged in",
+        "altlogin":"Or",
+        "register1":"Not have an account?",
+        "register2":"Register here",
+        "submit":"Login",
+        "error":{
+            "email-req":"Email is required",
+            "password-req":"Password is required"
+        }
+    },
+    "register":{
+        "title":"Create account",
+        "name":"Name",
+        "username":"Usernmae",
+        "email":"Email",
+        "password":"Password",
+        "password2":"Re-enter password",
+        "submit":"Register"
+    },
+    "footer":{
+        "features":"Features",
+        "privacy":"Privacy policy",
+        "blog":"Blog",
+        "about":"About us",
+        "status":"Status"
+    }
+    
+}

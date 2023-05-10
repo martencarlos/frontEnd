@@ -13,19 +13,18 @@
     "@mui/material": "^5.10.5",
     "@mui/x-data-grid": "^5.17.7",
     "@react-oauth/google": "^0.9.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap-icons": "^1.8.1",
+    "i18next": "^22.4.15",
     "jwt-decode": "^3.1.2",
     "notistack": "^2.0.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-i18next": "^12.2.2",
     "react-image-file-resizer": "^0.4.8",
     "react-native-parser-rss": "^1.0.3",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-typed": "^1.2.0",
     "recharts": "^2.1.15",
     "typed.js": "^2.0.15"
@@ -56,6 +55,9 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "next"
+    "@capacitor/cli": "^5.0.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^13.5.0"
   }
 }

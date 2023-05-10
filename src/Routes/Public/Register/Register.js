@@ -12,9 +12,12 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useSnackbar } from 'notistack';
 
+import { useTranslation } from "react-i18next";
+
 export default function Register(props){
     console.log("rendering Register")
     const navigate = useNavigate();
+    const { t } = useTranslation("global");
     const { enqueueSnackbar } = useSnackbar();
 
     const [loading, setLoading] = useState(false)
@@ -191,7 +194,7 @@ export default function Register(props){
     return (
         !props.login && <div className={props.darkMode ? "dark" : ""}>
             <form className="register-form">
-                <Typography variant="h4" gutterBottom>Create Account</Typography>
+                <Typography variant="h4" gutterBottom>{t("register.title")}</Typography>
                 <br></br>
                 <div id="registerForm" className="register-form-inputs">
                     <div className="register-form-input-row">
@@ -201,7 +204,7 @@ export default function Register(props){
                                 required
                                 name="name"
                                 id="standard-required"
-                                label="name"
+                                label={t("register.name")}
                                 defaultValue={formData.name}
                                 variant="standard"
                                 onChange={handleChange}
@@ -230,7 +233,7 @@ export default function Register(props){
                                 required
                                 name="username"
                                 id="standard-required"
-                                label="username"
+                                label={t("register.username")}
                                 defaultValue={formData.username}
                                 variant="standard"
                                 onChange={handleChange}
@@ -256,7 +259,7 @@ export default function Register(props){
                                 required
                                 name="email"
                                 id="standard-required"
-                                label="Email"
+                                label={t("register.email")}
                                 defaultValue={formData.email}
                                 variant="standard"
                                 onChange={handleChange}
@@ -283,7 +286,7 @@ export default function Register(props){
                                 required
                                 name="password"
                                 id="standard-password-input"
-                                label="Password"
+                                label={t("register.password")}
                                 type="password"
                                 defaultValue={formData.password}
                                 autoComplete="current-password"
@@ -312,7 +315,7 @@ export default function Register(props){
                                 required
                                 name="password2"
                                 id="standard-password-input"
-                                label="re-enter password"
+                                label={t("register.password2")}
                                 type="password"
                                 defaultValue={formData.password2}
                                 variant="standard"
@@ -337,7 +340,7 @@ export default function Register(props){
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (
-                    <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>Submit</Button>
+                    <Button id="register-button" variant="contained"  className="register" type="button" onClick={validate}>{t("register.submit")}</Button>
                     )}
                 </div>
             </form>

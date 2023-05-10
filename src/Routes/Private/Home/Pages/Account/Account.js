@@ -16,6 +16,13 @@ import Modal from '@mui/material/Modal';
 import {useNavigate } from 'react-router-dom';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+import { useTranslation } from "react-i18next";
+
 // const BootstrapInput = styled(InputBase)(({ theme }) => ({
     
 //     '& .MuiInputBase-input': {
@@ -54,7 +61,7 @@ import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 export default function Account(props){
 
     console.log("Rendering Account")
-
+    const { t, i18n } = useTranslation("global");
     //UserData & upload progress    
     const [userData, setUserData] = useState({})
     const [uploadProgress, setUploadProgress] = useState('')
@@ -80,6 +87,16 @@ export default function Account(props){
         }
         
     }, [props]);
+
+    const [language, setLanguage] = useState('en');
+    const handleChangeLanguage = (event) => {
+        setLanguage(event.target.value);
+    };
+
+    useEffect(() => {
+        i18n.changeLanguage(language);
+        
+    }, [language,i18n]);
 
     //Profile Image functions
     function changePicture(){
@@ -510,12 +527,28 @@ export default function Account(props){
                         <br></br>
                         <br></br>
                         <div className="infocard-row" >
-                            <Typography className="info-label" variant="body1" gutterBottom>{"Register Date:"}</Typography>
-                            <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
+                            <Typography className="info-label" variant="body1" >{"Register Date:"}</Typography>
+                            <Typography className="info" variant="body1" >{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
                         </div>
                         <div className="infocard-row" >
                             <Typography className="info-label" variant="body1" gutterBottom>{"Last Update:"}</Typography>
                             <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
+                        </div>
+                        <Typography className="infocard-app-settings" variant="body1" gutterBottom>App settings</Typography>
+                        <div className="infocard-row" >
+                            <Typography className="infocard-language-label" variant="body1" >Language</Typography>
+                            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                                <Select
+                                    // labelId="language-label"
+                                    // id="language"
+                                    value={language}
+                                    // label="Language"
+                                    onChange={handleChangeLanguage}
+                                >
+                                    <MenuItem value={"en"}>English</MenuItem>
+                                    <MenuItem value={"es"}>Spanish</MenuItem>
+                                </Select>
+                            </FormControl>
                         </div>
                     </div>
                 </div>
@@ -523,6 +556,7 @@ export default function Account(props){
             </div>}
             <br></br>
             <br></br>
+            
             <Snackbar open={notification} autoHideDuration={6000} onClose={handleCloseNotif} >
                 <Alert severity="info" sx={{ width: '100%' }}>
                     {notificationMessage.current}

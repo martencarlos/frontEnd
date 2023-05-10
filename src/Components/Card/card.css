@@ -75,7 +75,7 @@ div.card div.text-area .title{
 div.text-area .text{
     display: flex;
     flex-wrap: wrap;
-    text-align: justify;
+    
     white-space: pre-line;
     min-width: 100%;
     margin: 10px;

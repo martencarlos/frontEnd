@@ -21,6 +21,8 @@ import About from "./Routes/Public/About/About";
 import NotFound from "./Routes/Public/NotFound/NotFound";
 import Footer from "./Components/Footer/Footer";
 
+
+
 import { SnackbarProvider } from 'notistack';
 
 import "./css/theme.css";
@@ -29,6 +31,23 @@ import {ThemeProvider, createTheme } from '@mui/material/styles';
 import PriceTracker from "./Routes/Private/PriceTracker/PriceTracker";
 import OpenAi from "./Routes/Private/OpenAi/OpenAi";
 
+import {I18nextProvider} from "react-i18next";
+import i18next from "i18next";
+import global_es from "./translations/es/global.json";
+import global_en from "./translations/en/global.json";
+
+i18next.init({
+    interpolation: { escapeValue: false },  // React already does escaping
+    lng: 'en',                              // language to use
+    resources: {
+        en: {
+            global: global_en               // 'common' is our custom namespace
+        },
+        es: {
+            global: global_es
+        }
+    }
+});
 
 // const Alert = React.forwardRef(function Alert(props, ref) {
 //     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -173,6 +192,7 @@ export default function App(){
     console.log(userData)
     return (
         <BrowserRouter>
+        <I18nextProvider i18n={i18next}>
         <SnackbarProvider maxSnack={3}>
         <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         {/* <React.StrictMode> renders the components twice in dev mode!!!!!!! */}
@@ -324,6 +344,7 @@ export default function App(){
             {/* </React.StrictMode> */}
             </GoogleOAuthProvider>
             </SnackbarProvider>
+            </I18nextProvider>
         </BrowserRouter>
     )
 }

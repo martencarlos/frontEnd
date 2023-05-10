@@ -18,10 +18,13 @@ import Checkbox from '@mui/material/Checkbox';
 import { GoogleLogin } from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
 
+import { useTranslation } from "react-i18next";
+
 export default function Login(props){
     console.log("Rendering Login")
 
     const navigate = useNavigate();
+    const { t } = useTranslation("global");
     const { enqueueSnackbar } = useSnackbar();
     const keepLoggedIn = useRef(false);
 
@@ -219,7 +222,7 @@ export default function Login(props){
         !props.login && <div className={props.darkMode ? "dark" : ""}>
         
             <form className="login-form">
-                <Typography variant="h2" gutterBottom>Login</Typography>
+                <Typography variant="h4" gutterBottom>{t("login.title")}</Typography>
                 <br></br>
                 <div id="loginForm" className="login-form-inputs">
                     <div className="login-form-input-row">
@@ -231,7 +234,7 @@ export default function Login(props){
                                 required
                                 name="email"
                                 id="standard-required"
-                                label="Email"
+                                label={t("login.email")}
                                 defaultValue={formData.email}
                                 variant="standard"
                                 onChange={handleChange}
@@ -241,7 +244,7 @@ export default function Login(props){
                                 error
                                 name="email"
                                 id="standard-error-helper-text"
-                                label="Error"
+                                label={t("login.email")}
                                 defaultValue={formData.email}
                                 helperText={formErrors.email}
                                 variant="standard"
@@ -259,7 +262,7 @@ export default function Login(props){
                                 required
                                 name="password"
                                 id="standard-password-input"
-                                label="Password"
+                                label={t("login.password")}
                                 type="password"
                                 defaultValue={formData.password}
                                 autoComplete="current-password"
@@ -271,7 +274,7 @@ export default function Login(props){
                                 error
                                 name="password"
                                 id="standard-error-helper-text"
-                                label="Error"
+                                label={t("login.password")}
                                 type="password"
                                 defaultValue={formData.password}
                                 helperText={formErrors.password}
@@ -282,9 +285,9 @@ export default function Login(props){
                         </div>
                     </div>
                     
-                    <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label="keep me logged in" />
+                    <FormControlLabel className="login-form-input-checkbox" control={<Checkbox onChange={handleKeepLoggedIn} />} label={t("login.keeploggedin")} />
                     {/* <br></br> */}
-                    <Typography style={{display:"flex", "justifyContent":"center"}} variant="body2" gutterBottom>OR </Typography>
+                    <Typography style={{display:"flex", "justifyContent":"center"}} variant="body2" gutterBottom>{t("login.altlogin")}</Typography>
                     {/* <br></br> */}
                     
                     <div style={{display:"flex", "justifyContent":"center", width: "100%"}}>
@@ -292,14 +295,14 @@ export default function Login(props){
                     </div>
                     
                     <br></br>
-                    <Typography variant="body2" gutterBottom>Not a user yet? &nbsp;
-                        <Link href="/register">create an account</Link>
+                    <Typography variant="body2" gutterBottom> {t("login.register1")} &nbsp;
+                        <Link href="/register">{t("login.register2")}</Link>
                     </Typography>
                     
                     {loading ? (
                         <CircularProgress size="2rem" className="login-loading-circle" />
                     ) : (
-                    <Button variant="contained" id="login" className="login" type="button" onClick={validate}>Login</Button>
+                    <Button variant="contained" id="login" className="login" type="button" onClick={validate}>{t("login.submit")}</Button>
                     )}
                 </div>
             </form>
