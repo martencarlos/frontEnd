@@ -254,7 +254,7 @@ Button.bt-nav-link .nav-link:hover{
     text-decoration: none;
     color: white;
     background-color: var(--primary-color);
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 4px;
     width: 100%;
 }
