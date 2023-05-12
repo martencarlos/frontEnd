@@ -88,9 +88,10 @@ export default function Account(props){
         
     }, [props]);
 
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
     const handleChangeLanguage = (event) => {
         setLanguage(event.target.value);
+        localStorage.setItem("language", event.target.value)
     };
 
     useEffect(() => {
@@ -544,8 +545,8 @@ export default function Account(props){
                                     // label="Language"
                                     onChange={handleChangeLanguage}
                                 >
-                                    <MenuItem value={"en"}>English</MenuItem>
-                                    <MenuItem value={"es"}>Spanish</MenuItem>
+                                    <MenuItem value={"en"}>{t("language.english")}</MenuItem>
+                                    <MenuItem value={"es"}>{t("language.spanish")}</MenuItem>
                                 </Select>
                             </FormControl>
                         </div>

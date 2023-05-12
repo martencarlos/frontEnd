@@ -37,11 +37,11 @@ import global_es from "./translations/es/global.json";
 import global_en from "./translations/en/global.json";
 
 i18next.init({
-    interpolation: { escapeValue: false },  // React already does escaping
-    lng: 'en',                              // language to use
+    interpolation: { escapeValue: false },         // React already does escaping
+    lng: localStorage.getItem("language") || "en", // language to use
     resources: {
         en: {
-            global: global_en               // 'common' is our custom namespace
+            global: global_en                      // 'common' is our custom namespace
         },
         es: {
             global: global_es
@@ -167,9 +167,32 @@ export default function App(){
     
     
     // DARK MODE
-    const [darkMode, setDarkMode] = React.useState(
-        ()=>localStorage.getItem("dark-mode") ? JSON.parse(localStorage.getItem("dark-mode")) : false)
-        // ()=>getCookie("dark") ? JSON.parse(getCookie("dark")) : false)
+    const [darkMode, setDarkMode] = useState(
+        ()=>{
+            //prioritize setting set by the user
+            let darkmode = localStorage.getItem("dark-mode") ? JSON.parse(localStorage.getItem("dark-mode")) : false;
+            
+            //if user has not setup darkmode, check system preferences
+            if (!localStorage.getItem("dark-mode") && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                darkmode = true
+            }
+            return darkmode
+        }
+    )
+
+    // darkmode event listener
+    useEffect(() => {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if(!localStorage.getItem("dark-mode"))
+                setDarkMode(event.matches ? true : false)
+        });
+
+        return () => {
+            if(window.matchMedia('(prefers-color-scheme: dark)').change)
+                window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change');
+        }
+    },[])
+    
     
     // check if darkmode and update Body
     useEffect(() => {

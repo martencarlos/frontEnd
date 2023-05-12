@@ -1,4 +1,8 @@
 {
+    "language":{
+        "english":"Inglés",
+        "spanish":"Español (España)"
+    },
     "navbar":{
         "home":"Inicio",
         "projects":"Soluciones",

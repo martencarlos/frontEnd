@@ -4,6 +4,9 @@
     div.users{
         
     }
+    .delete-confirmation{
+            width: 80% !important;
+    }
     
 }
 
