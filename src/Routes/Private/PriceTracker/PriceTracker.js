@@ -655,8 +655,7 @@ export default function Pricetracker(props){
                     myTrackers.length>0 &&
                     <div>
                         <Typography className="pricetracker-mytrackers-header"  variant="h4" gutterBottom>My trackers</Typography>
-                        { myTrackers.map((tracker, i) =>
-                        (
+                        { myTrackers.map((tracker, i) =>(
                             <div className="pricetracker-tracker" key = {i}>
                                 <div className="pricetracker-mytrackers-info" id={tracker._id}>
                                     <div className="pricetracker-mytrackers-img-wrapper">

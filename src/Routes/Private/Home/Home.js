@@ -20,10 +20,13 @@ import PeopleIcon from '@mui/icons-material/People';
 import ViewSidebarIcon from '@mui/icons-material/ViewSidebar';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
+import { useTranslation } from "react-i18next";
+
 export default function Home(props){
 
     console.log("Rendering home")
     const navigate = useNavigate();
+    const { t } = useTranslation("global");
     const location = useLocation();
     
     //UserData & upload progress    
@@ -129,18 +132,18 @@ export default function Home(props){
                     <br></br>
                     <br></br>
                     <br></br>
-                    <Typography className="sidebar-section" variant="body1"  gutterBottom> Dashboard </Typography>
-                    <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} >Dashboard</Button>
+                    <Typography className="sidebar-section" variant="body1"  gutterBottom> {t("home.dashboard")} </Typography>
+                    <Button id="dashboard" onClick= {goToDashboard}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<DashboardIcon />} >{t("home.dashboard")}</Button>
                     <br></br>
                     <Divider variant="middle" />
                     <br></br>
                     {userData.role==='admin' &&
                         <div>
-                            <Typography className="sidebar-section" variant="body1"  gutterBottom> Storage </Typography>
-                            <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">Objects</Button>    
+                            <Typography className="sidebar-section" variant="body1"  gutterBottom> {t("home.storage")} </Typography>
+                            <Button style={{textTransform: 'none'}} onClick={toggleList} className="sidebar-button" startIcon={<StorageIcon />} endIcon={listStatus ?<KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />} color="primary">{t("home.objects")}</Button>    
                             {listStatus && 
                                 <div className="sidebar-dataList">
-                                        <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">Users</Button>
+                                        <Button id="users" onClick={goToUsers} style={{textTransform: 'none'}} className="sidebar-nestedButton" startIcon={<PeopleIcon />}  color="primary">{t("home.users")}</Button>
                                     
                                 </div>}
                             <br></br>
@@ -149,8 +152,8 @@ export default function Home(props){
                         </div>
                     }
                     
-                    <Typography className="sidebar-section" variant="body1"  gutterBottom> {"Settings"} </Typography>
-                    <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">Account</Button>
+                    <Typography className="sidebar-section" variant="body1"  gutterBottom> {t("home.settings")} </Typography>
+                    <Button id="account" onClick= {goToAccount}style={{textTransform: 'none'}} className="sidebar-button" startIcon={<AccountCircleIcon />} color="primary">{t("home.account")}</Button>
 
                 </div>
             </div>

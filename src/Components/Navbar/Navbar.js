@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import LoginIcon from '@mui/icons-material/Login';
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
@@ -287,7 +289,6 @@ export default function Navbar(props){
                         {/* <Button variant="outlined" color="primary" className= {`nav-button-login ${props.darkMode ? "dark": ""}`} type="button" onClick={() => navigate('/login')}>Login</Button>
                         <Button variant="contained" color="primary" className="nav-button" type="button" onClick={() => navigate('/register')}>Register</Button> */}
                         
-
                         <Menu
                             className={`navbar-paper-account-list ${props.darkMode ? "dark": ""}` }
                             disableScrollLock={true}
@@ -315,7 +316,7 @@ export default function Navbar(props){
                                 navigate('/Login')
                                 }}>
                                 <ListItemIcon>
-                                    <ManageAccountsIcon fontSize="small" />
+                                    <LoginIcon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText>{t("navbar.avatar-dropdown.login")}</ListItemText>
                             </MenuItem>
@@ -325,7 +326,7 @@ export default function Navbar(props){
                                 navigate('/Register')
                                 }}>
                                 <ListItemIcon>
-                                    <LogoutIcon fontSize="small" />
+                                    <PersonAddAlt1Icon fontSize="small" />
                                 </ListItemIcon>
                                 <ListItemText>{t("navbar.avatar-dropdown.register")}</ListItemText>
                             </MenuItem>
@@ -419,16 +420,16 @@ export default function Navbar(props){
             <div id="hamb-menu"  className= {`hamb-menu ${props.darkMode ? "dark": ""}`}>
                 {props.login && 
                 <div className="nav-links-hamb">   
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">Home</NavLink></Button></li>
-                    <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
+                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/home">{t("navbar.home")}</NavLink></Button></li>
+                    <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">{t("navbar.projects")}</Button></li>
                 </div>}
                 {!props.login && 
                 <div className="nav-links-hamb"> 
                     {/* <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/projects">Projects</NavLink></Button></li> */}
-                    <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">Projects</Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">Features</NavLink></Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">Blog</NavLink></Button></li>
-                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">About</NavLink></Button></li>
+                    <li><Button onClick={handleClick} endIcon={<KeyboardArrowDownIcon />} className= {`bt-nav-link-dropdown ${props.darkMode ? "dark": ""}`}  variant="text">{t("navbar.projects")}</Button></li>
+                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/features">{t("navbar.features")}</NavLink></Button></li>
+                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/blog">{t("navbar.blog")}</NavLink></Button></li>
+                    <li><Button className="bt-nav-link" variant="text"><NavLink className={({ isActive }) =>isActive ? "nav-link-active" : "nav-link"}  to="/about">{t("navbar.about")}</NavLink></Button></li>
                 </div>}
 
                 <div className="toggler" >

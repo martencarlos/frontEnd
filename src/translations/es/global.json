@@ -47,6 +47,30 @@
         "password2":"Repetir contraseña",
         "submit":"Crear cuenta"
     },
+    "home":{
+        "dashboard":"Panel de control",
+        "storage":"Almacenamiento",
+        "objects":"Objetos",
+        "users":"Usuarios",
+        "settings":"Ajustes",
+        "account":"Cuenta"
+    },
+    "pages":{
+        "account":{
+            "title":"Ajustes de cuenta",
+            "name":"Nombre completo",
+            "username":"Usuario",
+            "email":"Email",
+            "newpassword":"Nueva contraseña",
+            "newpassword2":"Repetir nueva contraseña",
+            "update":"Actualizar",
+            "delete":"Borrar cuenta",
+            "registerdate":"Fecha de registro",
+            "lastupdate":"Ultima actualización",
+            "appsettings":"Ajustes de la aplicación",
+            "language":"Idioma"
+        }
+    },
     "footer":{
         "features":"Características",
         "privacy":"Aviso de privacidad",

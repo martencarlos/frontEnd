@@ -95,7 +95,6 @@ export default function Account(props){
 
     useEffect(() => {
         i18n.changeLanguage(language);
-        
     }, [language,i18n]);
 
     //Profile Image functions
@@ -356,7 +355,7 @@ export default function Account(props){
                 </div>
             </Modal>
             
-            <Typography variant="h4" className="page-title" gutterBottom>{"Account Settings"} </Typography>
+            <Typography variant="h4" className="page-title" gutterBottom>{t("pages.account.title")} </Typography>
 
             {userData.name &&
             <div className="row" >
@@ -372,7 +371,7 @@ export default function Account(props){
                                         
                                         name="name"
                                         id="standard-required"
-                                        label="Full Name"
+                                        label={t("pages.account.name")}
                                         defaultValue={formData.name? formData.name :userData.name}
                                         
                                         variant="standard"
@@ -383,7 +382,7 @@ export default function Account(props){
                                         error
                                         name="name"
                                         id="standard-error-helper-text"
-                                        label="Error"
+                                        label={t("pages.account.name")}
                                         defaultValue={formData.name}
                                         helperText={formErrors.name}
                                         variant="standard"
@@ -400,7 +399,7 @@ export default function Account(props){
                                         
                                         name="username"
                                         id="username-input"
-                                        label="UserName"
+                                        label={t("pages.account.username")}
                                         defaultValue={formData.username? formData.username :userData.username}
                                         
                                         variant="standard"
@@ -411,7 +410,7 @@ export default function Account(props){
                                         error
                                         name="username"
                                         id="standard-error-helper-text"
-                                        label="Error"
+                                        label={t("pages.account.username")}
                                         defaultValue={formData.username}
                                         helperText={formErrors.username}
                                         variant="standard"
@@ -426,7 +425,7 @@ export default function Account(props){
                                         
                                         name="email"
                                         id="standard-required"
-                                        label="Email"
+                                        label={t("pages.account.email")}
                                         defaultValue={userData.email}
                                         variant="standard"
                                         onChange={handleChange}
@@ -436,7 +435,7 @@ export default function Account(props){
                                         error
                                         name="email"
                                         id="standard-error-helper-text"
-                                        label="Error"
+                                        label={t("pages.account.email")}
                                         defaultValue={formData.email}
                                         helperText={formErrors.email}
                                         variant="standard"
@@ -452,7 +451,7 @@ export default function Account(props){
                                     {!formErrors.password && <TextField
                                         name="password"
                                         id="standard-password-input"
-                                        label="New Password"
+                                        label={t("pages.account.newpassword")}
                                         type="password"
                                         defaultValue={formData.password}
                                         autoComplete="current-password"
@@ -464,7 +463,7 @@ export default function Account(props){
                                         error
                                         name="password"
                                         id="standard-error-helper-text"
-                                        label="Error"
+                                        label={t("pages.account.newpassword")}
                                         type="password"
                                         defaultValue={formData.password}
                                         helperText={formErrors.password}
@@ -479,7 +478,7 @@ export default function Account(props){
                                     {!formErrors.password2 && <TextField
                                         name="password2"
                                         id="standard-password-input"
-                                        label="Repeat New Password"
+                                        label={t("pages.account.newpassword2")}
                                         type="password"
                                         defaultValue={formData.password2}
                                         variant="standard"
@@ -490,7 +489,7 @@ export default function Account(props){
                                         error
                                         name="password2"
                                         id="standard-error-helper-text"
-                                        label="Error"
+                                        label={t("pages.account.newpassword2")}
                                         type="password"
                                         defaultValue={formData.password2}
                                         helperText={formErrors.password2}
@@ -502,8 +501,8 @@ export default function Account(props){
                             <br></br>
                             <br></br>
                             <div className="main-card-actions">
-                                <Button onClick={validate} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">Update</Button>
-                                <Button onClick={deleteUserConfirmation} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="primary">Delete</Button>
+                                <Button onClick={validate} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<UpgradeIcon />} color="success">{t("pages.account.update")}</Button>
+                                <Button onClick={deleteUserConfirmation} style={{textTransform: 'none'}} variant="contained"  disabled={false} endIcon={<DeleteIcon />} color="primary">{t("pages.account.delete")}</Button>
                             </div>
                         </div>
                     </form>
@@ -527,16 +526,16 @@ export default function Account(props){
                         <br></br>
                         <br></br>
                         <div className="infocard-row" >
-                            <Typography className="info-label" variant="body1" >{"Register Date:"}</Typography>
+                            <Typography className="info-label" variant="body1" >{t("pages.account.registerdate")}</Typography>
                             <Typography className="info" variant="body1" >{new Date(Date.parse(userData.createDate)).toLocaleDateString()} </Typography>
                         </div>
                         <div className="infocard-row" >
-                            <Typography className="info-label" variant="body1" gutterBottom>{"Last Update:"}</Typography>
+                            <Typography className="info-label" variant="body1" gutterBottom>{t("pages.account.lastupdate")}</Typography>
                             <Typography className="info" variant="body1" gutterBottom>{new Date(Date.parse(userData.lastUpdate)).toLocaleDateString()} </Typography>
                         </div>
-                        <Typography className="infocard-app-settings" variant="body1" gutterBottom>App settings</Typography>
+                        <Typography className="infocard-app-settings" variant="body1" gutterBottom>{t("pages.account.appsettings")}</Typography>
                         <div className="infocard-row" >
-                            <Typography className="infocard-language-label" variant="body1" >Language</Typography>
+                            <Typography className="infocard-language-label" variant="body1" >{t("pages.account.language")}</Typography>
                             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                                 <Select
                                     // labelId="language-label"

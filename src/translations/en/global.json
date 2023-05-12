@@ -47,6 +47,30 @@
         "password2":"Re-enter password",
         "submit":"Register"
     },
+    "home":{
+        "dashboard":"Dashboard",
+        "storage":"storage",
+        "objects":"Objects",
+        "users":"Users",
+        "settings":"Settings",
+        "account":"Account"
+    },
+    "pages":{
+        "account":{
+            "title":"Account settings",
+            "name":"Full name",
+            "username":"Username",
+            "email":"Email",
+            "newpassword":"New Password",
+            "newpassword2":"Re-enter new password",
+            "update":"Update",
+            "delete":"Delete",
+            "registerdate":"Register date",
+            "lastupdate":"Last update",
+            "appsettings":"App settings",
+            "language":"Language"
+        }
+    },
     "footer":{
         "features":"Features",
         "privacy":"Privacy policy",
