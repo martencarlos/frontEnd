@@ -174,8 +174,8 @@ nav{
     position:relative;
   
     color: #2B283A;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+       padding-top: 15px;
+    padding-bottom: 15px;
     padding-left: 20px;
     padding-right: 20px;
     background-color:white;
@@ -293,6 +293,8 @@ div.dark .bt-nav-link-dropdown:hover{
     list-style-type: none;
     align-items: center;
     margin-right: auto;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
 .sign-buttons{

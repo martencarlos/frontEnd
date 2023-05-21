@@ -44,6 +44,8 @@ footer {
 footer li.nav-item {
   padding-left: 5px;
   padding-right: 5px;
+  
+    text-align: center;
   align-self: center;
 }
 
