@@ -320,7 +320,10 @@ export default function Pricetracker(props){
     function deleteTracker(){
         var trackerIDToDelete =deletetrackerID.current;
         setDeleteTrackerLoading(true)
-
+        setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
+        localStorage.setItem("myTrackers", JSON.stringify(myTrackers.filter(x => x._id !== trackerIDToDelete)))
+        setDeleteTrackerLoading(false)
+        handleClose()
         // delete request to server to delete from DB
         const config = {
             url: process.env.REACT_APP_SERVER+'/deletetracker',
@@ -335,10 +338,9 @@ export default function Pricetracker(props){
         axios(config).then(function (response) {
             console.log(response.data)
              if(response.data === "deleted"){
-                 setMyTrackers(myTrackers.filter(x => x._id !== trackerIDToDelete));
-
+                 
                  const variant = 'success'
-                 enqueueSnackbar("tracker deleted",{ variant });
+                 enqueueSnackbar("tracker deleted from database",{ variant });
 
              }else if(response.data.error){
                 //auth error
@@ -351,8 +353,7 @@ export default function Pricetracker(props){
              }
 
         }).finally(()=>{
-            setDeleteTrackerLoading(false)
-            handleClose()
+            
         }).catch(function (error) {
             const variant = 'error'
             enqueueSnackbar(error.message,{ variant });
