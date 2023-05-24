@@ -160,7 +160,6 @@ export default function Navbar(props){
         } else {
             x.style.display = "flex";
             x.style.animationName = "openMenu";
-            
         }
     }
 

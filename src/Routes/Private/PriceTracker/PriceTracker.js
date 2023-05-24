@@ -157,10 +157,12 @@ export default function Pricetracker(props){
     
             });
         }
+
         if(props.login){
             if(localStorage.getItem("myTrackers") !== null){
                 console.log("myTrackers from local storage")
                 setMyTrackers(JSON.parse(localStorage.getItem("myTrackers")))
+                fetchTrackers()
             }else
                 fetchTrackers()
         }
