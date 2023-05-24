@@ -6,6 +6,7 @@
 
     .pricetracker-fullpage-wrapper{
         height: 100% !important;
+        overflow-x: hidden;
     }
     .pricetracker-fullpage{
         flex-direction: column;

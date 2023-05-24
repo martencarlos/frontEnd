@@ -37,7 +37,7 @@ export default function Hero(props){
                                 backSpeed={50}
                                 attr="placeholder"
                                 loop >
-                                <input type="text"/>
+                                <input disabled type="text"/>
                         </Typed>
                   </div>
                 :

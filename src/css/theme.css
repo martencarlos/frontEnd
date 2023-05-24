@@ -76,8 +76,8 @@ input {
 
 
 html{
-    /* overflow-y: scroll; */
-    overflow-x: hidden ;
+    /* overflow-y: scroll;
+    overflow-x: hidden ; */
 }
 
 body{
