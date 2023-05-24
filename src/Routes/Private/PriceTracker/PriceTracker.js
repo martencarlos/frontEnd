@@ -140,8 +140,10 @@ export default function Pricetracker(props){
             .then((data) => {
                 if(!data.error){
                     console.log("Debug - my trackers response data:")
-                    console.log(data)
-                    if (JSON.parse(localStorage.getItem("myTrackers")) !== data){
+                    // console.log(data)
+                    // console.log(localStorage.getItem("myTrackers"))
+                    if (localStorage.getItem("myTrackers") !== JSON.stringify(data)){
+                        console.log("DEBUG - ENTER COMPARISON")
                         localStorage.setItem("myTrackers", JSON.stringify(data))
                         setMyTrackers(data)
                     }
