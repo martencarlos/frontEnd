@@ -51,6 +51,7 @@ export default function Pricetracker(props){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const deletetrackerID = useRef();
+    const isMobile = navigator.userAgentData.mobile;
     
     //tracker options menu
     const [trackerOptionAnchor, setTrackerOptionAnchor] = useState(null);
@@ -483,7 +484,7 @@ export default function Pricetracker(props){
                     vertical: 'center',
                     horizontal: 'right',
                     }}
-                disableScrollLock={true}
+                disableScrollLock={isMobile ? false:true}
                 id="tracker-options"
                 MenuListProps={{
                 'aria-labelledby': 'tracker-options',
