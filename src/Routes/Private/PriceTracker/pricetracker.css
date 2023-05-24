@@ -6,6 +6,9 @@
 
     .pricetracker-fullpage-wrapper{
         height: 100% !important;
+        
+    }
+    .website{
         overflow-x: hidden;
     }
     .pricetracker-fullpage{
