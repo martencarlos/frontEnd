@@ -144,7 +144,7 @@ export default function Navbar(props){
     }
 
     //open & close hamburguer by clicking the icon 
-    function hambMenuClick(){
+    async function hambMenuClick(){
         var x = document.getElementById("hamb-menu");
         console.log("toggling openHambMenu")
         var icon = document.getElementById("hamb-zone");
@@ -258,8 +258,13 @@ export default function Navbar(props){
                         </MenuItem>
                         <MenuItem id="css-paper-list-icon" onClick={() => {
                             handleClose()
-                            hambMenuClick()
+                            var x = document.getElementById("hamb-menu");
+                            console.log("toggling openHambMenu")
+                            var icon = document.getElementById("hamb-zone");
+                            icon.classList.toggle("openHambMenu");
+                            x.style.display = "none";
                             navigate('/projects/priceTracker')
+
                             }}>
                             <ListItemText>{t("navbar.projects-dropdown.pricetracker")}</ListItemText>
                             <ListItemIcon>
