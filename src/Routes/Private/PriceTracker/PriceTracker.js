@@ -484,8 +484,9 @@ export default function Pricetracker(props){
                     vertical: 'center',
                     horizontal: 'right',
                     }}
-                disableScrollLock={()=>{if(!isMobile){return true}}}
-                // disableScrollLock={isMobile?:true}
+                // disableScrollLock={()=>{if(!isMobile){return true}}}
+                
+                disableScrollLock={true}
                 id="tracker-options"
                 MenuListProps={{
                 'aria-labelledby': 'tracker-options',
