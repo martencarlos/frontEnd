@@ -77,17 +77,17 @@ input {
 
 html{
     /* overflow-y: scroll; */
-    /* overflow-x: hidden !important; */
+    overflow-x: hidden ;
 }
 
 body{
     margin:0px;
-    overflow-x: hidden !important;
+
     
 }
 
 .root{
-    /* overflow-x: hidden !important; */
+  
 }
 
 .website{
@@ -95,7 +95,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* overflow-x: hidden !important; */
+    
 }
 
 /*** Dark Mode ***/

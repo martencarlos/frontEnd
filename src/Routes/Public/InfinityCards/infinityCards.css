@@ -19,7 +19,7 @@ div.dark feature {
     flex-wrap: nowrap;
     gap: 20px;
     
-    overflow-x: auto;
+   
     padding-bottom: 20px;
 }
 

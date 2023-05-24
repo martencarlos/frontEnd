@@ -1,6 +1,6 @@
 @media (max-width: 900px) {
     div.table{
-        overflow-x: auto;
+        
         display: block;
         width: 100% !important;
     }
