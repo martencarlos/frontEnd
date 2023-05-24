@@ -51,7 +51,7 @@ export default function Pricetracker(props){
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const deletetrackerID = useRef();
-    const isMobile = navigator.userAgentData.mobile;
+    // const isMobile = navigator.userAgentData.mobile;
     
     //tracker options menu
     const [trackerOptionAnchor, setTrackerOptionAnchor] = useState(null);
