@@ -83,7 +83,7 @@ div.landingPage div.hero img{
     margin-right: 0px;
     margin-left: 0px;
     transform: translatey(0px);
-	animation: float 15s ease-in-out infinite;
+	animation: float 5s ease-in-out infinite;
 }
 
 @keyframes float {
