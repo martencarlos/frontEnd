@@ -75,6 +75,13 @@ div.hero img {
     max-width: 400px;
     margin-right: 10px;
     margin-left: 10px;
+    
+}
+
+div.landingPage div.hero img{
+    width: 100%;
+    margin-right: 0px;
+    margin-left: 0px;
     transform: translatey(0px);
 	animation: float 15s ease-in-out infinite;
 }
