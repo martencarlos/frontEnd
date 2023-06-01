@@ -26,7 +26,7 @@
 
 @media (min-width: 900px) {
     div.landingPage div.hero img {
-        max-width: 700px !important;
+       
     }
 }
 
@@ -42,12 +42,12 @@ div.landingPage{
     display: flex;
     align-items: center;
     height: calc(100dvh - 101px);
- width:100%;
+    width:100%;
     overflow: hidden;
     justify-content: center;
-    color: white;
+    color: black;
     padding-bottom: 30px;
-    background: linear-gradient(to bottom, var(--secondary-color), var(--primary-dark),var(--primary-color));
+    /* background: linear-gradient(to bottom, var(--secondary-color), var(--primary-dark),var(--primary-color)); */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(2em);
 }
@@ -57,17 +57,13 @@ div.landingPage div.text-area {
     flex-direction: column;
     justify-content: center;
     max-width: 650px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 div.main div.landingPage .hero{
     width:85%;
 }
-
-
-
-
 
 div.landingPage .background{
     position: absolute;

@@ -48,7 +48,7 @@ export default function Hero(props){
         
                 {props.link &&
                 <div className="hero-button">
-                    <Button href={props.linkPath} style={{color: "white"}} color="secondary" variant="contained" endIcon={<ForwardIcon />}>
+                    <Button href={props.linkPath} style={{backgroundColor:"#59887bfc", color: "white"}} variant="contained" endIcon={<ForwardIcon />}>
                         {props.linkText}
                     </Button>
                 </div>
@@ -56,7 +56,7 @@ export default function Hero(props){
                 }
                 {props.button &&
                 <div className="hero-button">
-                    <Button href="mailto:martencarlos@gmail.com?subject=Webframe - contact" style={{color: "white"}} color="secondary" variant="contained" endIcon={<SendIcon />}>
+                    <Button href="mailto:martencarlos@gmail.com?subject=Webframe - contact" style={{backgroundColor:"#59887bfc", color: "white"}}  variant="contained" endIcon={<SendIcon />}>
                         Get in touch
                     </Button>
                 </div>

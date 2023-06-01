@@ -71,7 +71,7 @@ div.landingPage div.hero div.text-area .dynamic-title-wrap{
 }
 
 div.landingPage div.text-area .title{
-    color: white;
+    color: black;
     white-space: nowrap;
   overflow: hidden;
 }
@@ -95,9 +95,6 @@ div.hero .dynamicText input{
 div.hero .dynamicText input::placeholder{
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     color: var(--secondary-light);
-    
-    
-    
     font-weight: 500;
     font-size: x-large;
     line-height: 1.6;
