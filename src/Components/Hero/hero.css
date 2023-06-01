@@ -33,6 +33,18 @@
 
     }
 
+    .row{
+        flex-direction: column !important;
+    }
+    form.contact-modal-form{
+        margin:0px !important;
+        width: -webkit-fill-available !important;
+    }
+    .contact-modal-image{
+        
+        margin:20px  0px 20px 0px !important;
+    }
+
     div.hero .dynamicText {
         
         
@@ -101,7 +113,57 @@ div.hero .dynamicText input::placeholder{
     letter-spacing: 0.0075em;
 }
 
+div.contact-modal{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    white-space:pre-line;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2.5rem 2rem -2rem hsl(200 50% 20% / 40%);
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
 
+    animation-name: zoom-in-appear;
+    animation-duration: 0.1s;
+}
+
+/* div.contact-modal.dark{
+    background-color: black;
+} */
+
+div.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-modal-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:30px;
+}
+
+.contact-modal-image img{
+    width: auto;
+    height: 200px;
+}
+
+form.contact-modal-form{
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin:30px;
+}
 
 div.text-area{
     display: flex;
