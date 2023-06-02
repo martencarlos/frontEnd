@@ -157,7 +157,7 @@ div.contact-modal{
     background-color: black;
 } */
 
-div.row{
+div.landingmodal-row{
     display: flex;
     flex-direction: row;
     justify-content: center;
