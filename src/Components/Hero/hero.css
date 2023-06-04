@@ -33,7 +33,7 @@
 
     }
 
-    .row{
+    .landingmodal-row{
         flex-direction: column !important;
     }
     form.contact-modal-form{
