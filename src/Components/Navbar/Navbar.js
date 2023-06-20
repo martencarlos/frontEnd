@@ -23,7 +23,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 import { useTranslation } from "react-i18next";
 
-const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpg?alt=media&token=a39b3f4a-9d54-4680-91fd-095a158a612c"
+const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/default.webp?alt=media&token=37f5860c-8e8a-49be-8383-2bb8b7c7d9bf"
 
 // Darkmode switch definition
 // const MaterialUISwitch = styled(Switch)(({ theme }) => ({
