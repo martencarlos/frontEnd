@@ -3,7 +3,7 @@ import "./hero.css";
 
 // import { useEffect,useRef} from "react"
 import Typography from '@mui/material/Typography';
-import {useState,Fragment,forwardRef} from "react";
+import {useState,Fragment,forwardRef, useEffect} from "react";
 // import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
@@ -22,6 +22,11 @@ import { grey, red } from "@mui/material/colors";
 
 export default function Hero(props){
     console.log("Rendering Hero component")
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setLoaded(true);
+    }, [])
 
     const Alert = forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -81,7 +86,7 @@ export default function Hero(props){
     }
 
     return (
-        <div className= {`hero ${props.darkMode ? "dark": ""}`}>
+        loaded && <div className= {`hero ${props.darkMode ? "dark": ""}`}>
             {props.direction === "right" &&
                 <img fetchpriority="high" src= {props.imgSrc} alt="Hero"></img>
             }
