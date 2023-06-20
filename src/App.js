@@ -152,7 +152,7 @@ export default function App(){
             if(response.data){
                 localStorage.setItem("profilePic", response.data)
             }else{
-                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/profiles%2Fdefault.jpeg?alt=media&token=a220a7a4-ab49-4b95-ac02-d024b1ccb5db"
+                const defaultProfilePic = "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/default.webp?alt=media&token=37f5860c-8e8a-49be-8383-2bb8b7c7d9bf"
                 localStorage.setItem("profilePic", defaultProfilePic)
             }
             setUserData(prevFormData => ({
