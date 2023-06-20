@@ -205,7 +205,7 @@ export default function Navbar(props){
             <nav id="navbar" className={props.darkMode ? "dark": ""}>
                 {/* <Link className="nav-brand"  to="/">{props.siteTitle}</Link> */}
                 
-                <img className="nav-brand-img" onClick={() => {navigate('/')}} src="https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FBrand.png?alt=media&token=cc86f988-d765-429f-a356-25c05460be7d" alt="logo" />
+                <img className="nav-brand-img" onClick={() => {navigate('/')}} src="https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/logo.webp?alt=media&token=c508ba1f-0d10-4013-9819-83cda58eb142" alt="logo" />
                 
                 {props.login &&
                     <ul className="nav-links">
