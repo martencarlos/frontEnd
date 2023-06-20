@@ -36,7 +36,7 @@ export default function Main(props){
                 <Hero
                     darkMode = {props.darkMode}
                     direction= "right"
-                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FWebframe%20-%20feature%20image.webp?alt=media&token=6fcf2363-875f-4fb6-8915-fa352a2c11c5"
+                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Webframe%20-%20feature%20image.webp?alt=media&token=ec682f5f-bf43-459e-8655-131882101a2c"
                     title = {landingHero.title}
                     text = {landingHero.text}
                     link={false}
