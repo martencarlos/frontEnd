@@ -22,11 +22,8 @@ import { grey, red } from "@mui/material/colors";
 
 export default function Hero(props){
     console.log("Rendering Hero component")
-    const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setLoaded(true);
-    }, [])
 
     const Alert = forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -86,7 +83,7 @@ export default function Hero(props){
     }
 
     return (
-        loaded && <div className= {`hero ${props.darkMode ? "dark": ""}`}>
+        <div className= {`hero ${props.darkMode ? "dark": ""}`}>
             {props.direction === "right" &&
                 <img fetchpriority="high" src= {props.imgSrc} alt="Hero"></img>
             }
@@ -133,7 +130,7 @@ export default function Hero(props){
                         onClose={handleCloseContactUs}
                     >
                         {/* <div className={`contact-modal ${props.darkMode ? "dark": ""}`}> */}
-                        <div className="contact-modal">
+                        <div style={{display: loading ? "none" : "block"}} className="contact-modal">
                             <div className="close-modal" style={{right: "20px", position:"absolute"}}>
                             <IconButton onClick={handleCloseContactUs}>
                                 <CloseIcon />
@@ -144,7 +141,7 @@ export default function Hero(props){
                             </div>
                             <div className="landingmodal-row">
                                 <div className="contact-modal-image">
-                                    <img src="https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Landing%20Page%20%20-%20contact%20us.webp?alt=media&token=f8c7ac3c-4f1e-427c-8ee1-127d97e4f42e" alt=""></img>
+                                    <img onLoad={()=>{setLoading(false)}} src="https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Landing%20Page%20%20-%20contact%20us.webp?alt=media&token=f8c7ac3c-4f1e-427c-8ee1-127d97e4f42e" alt=""></img>
                                 </div>
 
                                 <form className="contact-modal-form">
