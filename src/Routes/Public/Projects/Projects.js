@@ -26,7 +26,7 @@ export default function Projects(props){
                 <Hero
                         darkMode = {props.darkMode}
                         direction= "right"
-                        imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FInfinity%20Cards%20-%20feature%20image.webp?alt=media&token=2d0fb718-e579-4961-af38-c439b6607d5d"
+                        imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/infinity%20cards.png?alt=media&token=b9c851d4-dd51-40df-8fe6-ca5d809c00c1"
                         title = {infinityCards.title}
                         text = {infinityCards.text}
                         link={true}
@@ -45,7 +45,7 @@ export default function Projects(props){
                 <Hero
                     darkMode = {props.darkMode}
                     direction= "left"
-                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FBlog%20-%20feature%20image.webp?alt=media&token=03059140-e6a1-43d5-b7bb-9e4da7177aa2"
+                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/blog%20integration.png?alt=media&token=94b7a540-6f9a-4ec7-bfdb-ae51f2c458d5"
                     title = {blogIntegration.title}
                     text = {blogIntegration.text}
                     link={true}
@@ -64,7 +64,7 @@ export default function Projects(props){
                 <Hero
                     darkMode = {props.darkMode}
                     direction= "right"
-                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FWebscrap%20-%20feature%20image.jpg?alt=media&token=73db8d98-6350-4aa3-9c6b-9cda1ffe4fc0"
+                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/webscrap.png?alt=media&token=55e09eab-6734-4503-af52-e675882a5a6d"
                     title = {webScrap.title}
                     text = {webScrap.text}
                     link={true}
@@ -83,7 +83,7 @@ export default function Projects(props){
                 <Hero
                     darkMode = {props.darkMode}
                     direction= "left"
-                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FPrice%20tracker%20-%20feature%20image.jpg?alt=media&token=2a0cb616-573e-4d33-8724-af21fe2c5b1b"
+                    imgSrc= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Price%20tracker.png?alt=media&token=286a855b-b982-4213-b57d-eaf07212eb38"
                     title = {priceTracker.title}
                     text = {priceTracker.text}
                     link={true}

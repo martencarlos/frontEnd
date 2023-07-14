@@ -14,21 +14,21 @@ const aboutSection =
 
 const teamMember1 = 
     {
-        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FAvatar.webp?alt=media&token=ab4337cb-99c9-4f66-9bac-59fb84649f29",
+        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Avatar.png?alt=media&token=00dd510e-f7d1-48b8-8cf7-c0a38f777269",
         name: "Carlos Marten",
         postion: "Founder & CEO of Webframe.one"
     }
 ;
 const teamMember2 = 
     {
-        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FAvatar.webp?alt=media&token=ab4337cb-99c9-4f66-9bac-59fb84649f29",
+        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Avatar.png?alt=media&token=00dd510e-f7d1-48b8-8cf7-c0a38f777269",
         name: "Carlos Marten",
         postion: "Full Stack Developer of Webframe.one"
     }
 ;
 const teamMember3 = 
     {
-        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2FAvatar.webp?alt=media&token=ab4337cb-99c9-4f66-9bac-59fb84649f29",
+        imgSrc: "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/Avatar.png?alt=media&token=00dd510e-f7d1-48b8-8cf7-c0a38f777269",
         name: "Carlos Marten",
         postion: "CIO, CPO & More of Webframe.one"
     }
