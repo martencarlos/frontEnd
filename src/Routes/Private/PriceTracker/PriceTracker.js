@@ -720,7 +720,7 @@ export default function Pricetracker(props){
                                             <XAxis strokeWidth={1} padding={{ left: 30, right: 30 }} stroke={style.getPropertyValue('--secondary-color').trim()} dataKey="date" />
                                             <YAxis hide={true} strokeWidth={1} type="number" stroke={style.getPropertyValue('--secondary-color').trim()} domain={['dataMin-2', 'dataMax+2']} />
                                             <Tooltip />
-                                            <Line strokeWidth={2} type="monotone" dataKey="price" stroke={style.getPropertyValue('--secondary-color').trim()} activeDot={{ r: 6 }} />
+                                            <Line strokeWidth={2} type="monotone" dataKey="price" stroke={style.getPropertyValue('--secondary-color').trim()}  />
                                         </LineChart>
                                     </ResponsiveContainer>
                                 </div>}
