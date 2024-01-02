@@ -677,7 +677,7 @@ export default function Pricetracker(props){
                                             // </div>
                                             <div className="pricetracker-mytrackers-img-outofstock-container">
                                                 <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
-                                                <img  className="pricetracker-mytrackers-img-outofstock" fetchpriority="high" src= "https://firebasestorage.googleapis.com/v0/b/webframebase.appspot.com/o/static%20images%2Foutofstock.png?alt=media&token=a4518969-a580-4f53-ab90-6322e24c30d7" alt="outofstock"></img>
+                                                <img  className="pricetracker-mytrackers-img-outofstock" fetchpriority="high" src= "https://firebasestorage.googleapis.com/v0/b/webframe-one.appspot.com/o/outofstock.png?alt=media&token=24514c3d-8009-4032-b71b-73266851d609" alt="outofstock"></img>
                                             </div>
                                             :
                                             <img  className="pricetracker-mytrackers-img" fetchpriority="high" src= {tracker.productInfo.imgSrc} alt="product"></img>
